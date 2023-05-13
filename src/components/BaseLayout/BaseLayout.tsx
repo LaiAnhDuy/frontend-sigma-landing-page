@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { ReactNode } from 'react';
+import Header from './Header';
+import Footer from './Footer';
 
-export default function BaseLayout() {
-  return (
-    <div>BaseLayout</div>
-  )
+interface BaseLayoutProps {
+  children: ReactNode;
 }
+
+function BaseLayout(props: BaseLayoutProps) {
+  return (
+    <>
+      <Header />
+      {props.children}
+      <Footer />
+    </>
+  );
+}
+
+export default BaseLayout;
