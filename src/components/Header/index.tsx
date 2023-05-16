@@ -1,5 +1,4 @@
-import React from 'react';
-import './header.css';
+import React from 'react'
 
 export default function Header() {
   return (
@@ -10,5 +9,5 @@ export default function Header() {
       <h1>Header</h1>
       <h2>hihi</h2>
     </div>
-  );
+  )
 }

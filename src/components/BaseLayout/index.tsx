@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react';
-import Header from './Header';
-import Footer from './Footer';
+import React, { ReactNode } from 'react'
+import Header from '../Header'
+import Footer from '../Footer'
 
 interface BaseLayoutProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
 function BaseLayout(props: BaseLayoutProps) {
@@ -13,7 +13,7 @@ function BaseLayout(props: BaseLayoutProps) {
       {props.children}
       <Footer />
     </>
-  );
+  )
 }
 
-export default BaseLayout;
+export default BaseLayout

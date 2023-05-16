@@ -1,57 +1,77 @@
 module.exports = {
-  env: {
-    browser: true,
-    jest: true,
-  },
-  plugins: ['@typescript-eslint', 'react', 'prettier', 'simple-import-sort'],
-  settings: {
-    react: {
-      pragma: 'React',
-      version: '18.0',
-    },
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-        moduleDirectory: ['node_modules', './'],
-      },
-    },
-  },
-  extends: ['airbnb', 'airbnb/hooks', 'prettier'],
+  plugins: ['prettier', '@typescript-eslint'],
+  extends: ['airbnb-typescript', 'react-app', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true,
+    project: './tsconfig.eslint.json',
+    tsconfigRootDir: __dirname,
+    sourceType: 'module',
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+      },
     },
   },
   rules: {
-    'no-console': 'warn',
-    'no-eval': 'error',
-    'react/react-in-jsx-scope': 'off',
-    'react/jsx-filename-extension': [
-      2,
+    'object-curly-spacing': ['warn', 'always'],
+    'no-unused-vars': [
+      'warn',
       {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+        vars: 'all',
+        args: 'none',
       },
     ],
-    'import/extensions': [
-      'error',
-      'ignorePackages',
+    '@typescript-eslint/semi': ['off'],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
       {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
+        vars: 'all',
+        args: 'none',
       },
     ],
-    'prettier/prettier': [
+    '@typescript-eslint/no-explicit-any': [
       'error',
       {
-        printWidth: 80,
-        trailingComma: 'es5',
-        semi: true,
-        'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
-        'no-unused-vars': ['error'],
+        ignoreRestArgs: true,
       },
     ],
+    'max-len': [
+      'warn',
+      {
+        code: 80,
+        ignoreStrings: true,
+        ignoreTemplateLiterals: true,
+        ignoreComments: true,
+      },
+    ],
+    'no-plusplus': [
+      'error',
+      {
+        allowForLoopAfterthoughts: true,
+      },
+    ],
+    'react/jsx-key': 'error',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '**/*.test.js',
+          '**/*.test.jsx',
+          '**/*.test.ts',
+          '**/*.test.tsx',
+          'src/tests/**/*',
+        ],
+      },
+    ],
+    'react/jsx-props-no-spreading': 'off',
+    'import/prefer-default-export': 'off',
+    'react/jsx-boolean-value': 'off',
+    'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-wrap-multilines': 'off',
+    'react/destructuring-assignment': 'off',
   },
-};
+}
