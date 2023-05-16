@@ -1,4 +1,4 @@
-# frontend-sigma-landing-page
+# Getting Started with Create React App
 
 Sigma landing page project
 
