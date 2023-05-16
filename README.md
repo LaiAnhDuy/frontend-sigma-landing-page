@@ -29,7 +29,11 @@ Sigma landing page project
 
 | STT | Người phụ trách | Tính năng                        | Mô tả                                               |
 | --: | :-------------: | :------------------------------- | :-------------------------------------------------- |
-|   1 |                 | Register, Login, Logout, Comment | Đăng ký, Đăng nhập, Đăng xuất và Bình luận resource |
-|   2 |                 | Manage resources                 | CRUD resources                                      |
-|   3 |                 | Chat (Admin)                     | Chức năng chat với vai trò Admin                    |
-|   4 |                 | Chat (User)                      | Chức năng chat với vai trò User                     |
+|   1 |    Điểm             | Register, Login, Logout, Comment | Đăng ký, Đăng nhập, Đăng xuất và Bình luận resource |
+|   2 |      Bách           | Manage resources                 | CRUD resources                                      |
+|   3 |       Trường          | Chat (Admin)                     | Chức năng chat với vai trò Admin                    |
+|   4 |      Duy           | Chat (User)                      | Chức năng chat với vai trò User                     |
+|   5 |       Bách          | Header-Footer + 4 trang Home     |  
+|   6 |   Duy              | 5 trang đầu Product              |
+|   7 |       Trường          | 4 trang cuối Product + OTT       |
+|   8 |     Điểm            | các trang free trial, support, about us, talk to export   |      
