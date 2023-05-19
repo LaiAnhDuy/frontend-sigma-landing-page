@@ -1,0 +1,20 @@
+.header {
+  height: 112px;
+  width: 100%;
+}
+#img {
+  height: 56px;
+  width: 144px;
+}
+.header-item:nth-child(1) {
+  flex-grow: 2;
+}
+
+.header-item:nth-child(2) {
+  flex-grow: 3;
+}
+
+.header-item:nth-child(3) {
+  flex-grow: 1;
+}
+

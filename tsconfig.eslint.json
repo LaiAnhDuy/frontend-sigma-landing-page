@@ -3,6 +3,7 @@
   "include": [
     // repeated from base config's "include" setting
     "src",
+    "test",
     // these are the eslint-only inclusions
     ".eslintrc.js",
     "tailwind.config.js"

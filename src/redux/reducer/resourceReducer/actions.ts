@@ -1,19 +1,14 @@
-// action types
-export enum ActionTypes {
-    ACTION_1 = 'ACTION_1',
-    ACTION_2 = 'ACTION_2',
-  }
-  
+import { ACTION2,ACTION1 } from './../../constants/constants';
   // action interfaces
   interface Action1 {
-    type: ActionTypes.ACTION_1;
+    type: typeof ACTION1;
     payload: {
       // payload của action 1
     };
   }
   
   interface Action2 {
-    type: ActionTypes.ACTION_2;
+    type: typeof ACTION2;
     payload: {
       // payload của action 2
     };
@@ -21,12 +16,12 @@ export enum ActionTypes {
   
   // action creators
   export const action1 = (payload: Action1['payload']): Action1 => ({
-    type: ActionTypes.ACTION_1,
+    type: ACTION1,
     payload,
   });
   
   export const action2 = (payload: Action2['payload']): Action2 => ({
-    type: ActionTypes.ACTION_2,
+    type: ACTION2,
     payload,
   });
   

@@ -1,20 +1,13 @@
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import ResourcePage from './pages/ResourcePage';
-import BaseLayout from './components/BaseLayout';
+import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import AppRouter from './router'
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <BaseLayout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/resource" element={<ResourcePage />} />
-        </Routes>
-      </BaseLayout>
+      <AppRouter />
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App

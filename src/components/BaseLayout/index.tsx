@@ -9,7 +9,7 @@ interface BaseLayoutProps {
 function BaseLayout(props: BaseLayoutProps) {
   return (
     <>
-      <Header />
+      <Header />  
       {props.children}
       <Footer />
     </>
