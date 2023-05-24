@@ -8,7 +8,6 @@ interface State1 {
 }
 
 const initialState: State1 = {
-  count: 0,
 }
 
 const productReducer: Reducer<State1, AddProductProps> = (
