@@ -1,6 +1,5 @@
 import React from 'react'
-import './index.style.css'
-import { DownOutlined } from '@ant-design/icons'
+import './index.style.scss'
 import DropDown from './Dropdown'
 
 const menuItems = [

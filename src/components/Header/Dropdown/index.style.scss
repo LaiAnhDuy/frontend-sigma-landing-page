@@ -1,0 +1,17 @@
+/* eslint-disable-next-line */
+.arrow {
+  font-size: 10px;
+}
+.item:hover {
+  cursor: pointer;
+  color: hsl(27, 98%, 56%);
+  .arrow {
+    rotate: 180deg;
+  }
+}
+
+.ant-dropdown {
+  top: 112.8px !important;
+  /* CSS tùy chỉnh cho Dropdown */
+}
+

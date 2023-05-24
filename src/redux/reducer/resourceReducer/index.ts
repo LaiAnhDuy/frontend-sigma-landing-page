@@ -1,7 +1,7 @@
 // reducer1.ts
 
 import { Reducer } from 'redux'
-import { Action} from './actions'
+import { Action } from './actions'
 import { ACTION1 } from 'src/redux/constants/constants'
 
 interface State1 {

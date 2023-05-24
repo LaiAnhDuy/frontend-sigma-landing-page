@@ -5,6 +5,7 @@
     "src",
     "test",
     // these are the eslint-only inclusions
+    "postcss.config.js",
     ".eslintrc.js",
     "tailwind.config.js"
   ]

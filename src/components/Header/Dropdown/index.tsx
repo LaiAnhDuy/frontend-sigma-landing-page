@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { DownOutlined } from '@ant-design/icons'
 import { MenuProps, message } from 'antd'
 import { Dropdown, Space } from 'antd'
-import './index.style.css'
+import './index.style.scss'
 
 interface DropDownProps {
   menuItems: MenuProps['items']
@@ -19,12 +19,10 @@ function DropDown(props: DropDownProps) {
         menu={{ items: props.menuItems, onClick }}
         className={`mx-6  item`}
       >
-        <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            {props.hoverText}
-            <DownOutlined className="arrow ml-1" />
-          </Space>
-        </a>
+        <Space>
+          {props.hoverText}
+          <DownOutlined className="arrow ml-1" />
+        </Space>
       </Dropdown>
     </div>
   )
