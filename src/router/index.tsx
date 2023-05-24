@@ -1,8 +1,8 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import BaseLayout from 'src/components/BaseLayout'
-import HomePage from 'src/pages/HomePage'
-import ResourcePage from 'src/pages/ResourcePage'
+import HomePage from 'src/pages/Home'
+import ResourcePage from 'src/pages/Resources'
 interface RouteType {
   component: React.ReactNode
   path: string

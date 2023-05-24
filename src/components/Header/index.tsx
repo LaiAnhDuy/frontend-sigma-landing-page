@@ -54,7 +54,7 @@ export default function Header() {
           id="img"
           className="header-item"
         />
-        <div className="flex header-item ">
+        <div className="flex header-item">
           {menuItems.map((val, index) => (
             <DropDown hoverText={val.name} menuItems={val.item} key={index} />
           ))}
