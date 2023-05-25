@@ -1,17 +1,15 @@
 import React from 'react'
 import BaseLayout from '../BaseLayout'
-import { Route } from 'react-router-dom'
-import { RouteType } from 'src/router'
 
-const PrivateRoute = (route: RouteType) => {
-    // FIXME: check authorization
+type PrivateRouteProps = {
+  title?: string
+  children: React.ReactNode
+}
 
-  return (
-    <Route
-      path={route.path}
-      element={<BaseLayout>{route.component}</BaseLayout>}
-    />
-  )
+const PrivateRoute = (props: PrivateRouteProps) => {
+  // FIXME: check authorization
+
+  return <BaseLayout>{props.children}</BaseLayout>
 }
 
 export default PrivateRoute
