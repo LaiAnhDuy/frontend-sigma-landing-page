@@ -40,15 +40,15 @@ Sigma landing page project
 
 ## 4. Cấu trúc thư mục
 
-| STT | Folder     | Ý nghĩa                                                              |
-| --: | :--------- | :------------------------------------------------------------------- |
-|   1 | Api        | Tạo axios-instant dùng khi gọi call Api, tạo các phương thức gọi Api |
-|   2 | Components | Chứa các component có thể tái sử dụng ở các projject khác nhau       |
-|   3 | configs    | Chứa các biến logic hoặc cấu hình ứng dụng                           |
-|   4 | constants  | Chứa các hằng số                                                     |
-|   5 | Page       | Chứa các page(route)                                                 |
-|   6 | redux      | Chức các cấu hình reducer, action,store                              |
-|   7 | router     | Chứa các route                                                       |
-|   8 | themes     | Chứa các màu, style                                                  |
-|   8 | types      | Chứa các propstype dùng chung                                        |
-|   8 | utils      | Chứa các file convert                                                |
+| STT | Folder     | Ý nghĩa                                                                    |
+| --: | :--------- | :------------------------------------------------------------------------- |
+|   1 | api        | Tạo axios_instance dùng khi gọi call Api, tạo các phương thức gọi Api      |
+|   2 | components | Chứa các component có thể tái sử dụng ở các project khác nhau             |
+|   3 | configs    | Chứa các biến logic hoặc cấu hình ứng dụng                                 |
+|   4 | constants  | Chứa các hằng số                                                           |
+|   5 | pages      | Chứa các pages(route)                                                       |
+|   6 | redux      | Chức các cấu hình reducer, actions, store                                    |
+|   7 | router     | Chứa các route                                                             |
+|   8 | themes     | Chứa các màu, style                                                        |
+|   9 | types      | Chứa các propstype dùng chung                                              |
+|  10 | utils      | Chứa các phương thức dùng chung, không phụ thuộc vào ngữ cảnh của ứng dụng |
