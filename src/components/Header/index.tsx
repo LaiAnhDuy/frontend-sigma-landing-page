@@ -1,47 +1,8 @@
 import React from 'react'
 import './index.style.scss'
 import DropDown from './Dropdown'
+import { menuItems } from './menuItems'
 
-const menuItems = [
-  {
-    name: 'Product',
-    item: [
-      {
-        key: '1',
-        label: (
-          <span style={{ color: 'red', fontWeight: 'bold' }}>
-            1st menu item
-          </span>
-        ),
-      },
-      {
-        key: '2',
-        label: '2nd menu item (disabled)',
-      },
-      {
-        key: '3',
-        label: '3rd menu item',
-      },
-      {
-        key: '4',
-        label: 'a danger item',
-      },
-    ],
-  },
-  {
-    name: 'Resource',
-    item: [
-      {
-        key: '1',
-        label: '1st menu item',
-      },
-      {
-        key: '2',
-        label: '2nd menu item (disabled)',
-      },
-    ],
-  },
-]
 
 // const logo = process.env.PUBLIC_URL + '/images/Logo.svg';
 export default function Header() {
