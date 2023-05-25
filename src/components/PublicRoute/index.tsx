@@ -3,11 +3,11 @@ import BaseLayout from '../BaseLayout'
 import { Route } from 'react-router-dom'
 import { RouteType } from 'src/router'
 
-const PublicRoute = (route: RouteType) => {
+const PublicRoute: React.FC<RouteType> = (props) => {
   return (
     <Route
-      path={route.path}
-      element={<BaseLayout>{route.component}</BaseLayout>}
+      path={props.path}
+      element={<BaseLayout>{props.component}</BaseLayout>}
     />
   )
 }

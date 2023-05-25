@@ -23,9 +23,15 @@ const routes: RouteType[] = [
 export default function AppRouter() {
   return (
     <Routes>
-      {routes.map((item: RouteType, index) => {
-        if (item?.isPrivate) {
-          return <PrivateRoute key={item.path} {...item} />
+      {routes.map((item) => {
+        if (item.isPrivate === true) {
+          return (
+            <PrivateRoute
+              key={item.path}
+              path={item.path}
+              component={item.component}
+            />
+          )
         }
         return <PublicRoute key={item.path} {...item} />
       })}

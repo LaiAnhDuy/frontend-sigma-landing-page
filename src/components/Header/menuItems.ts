@@ -5,7 +5,7 @@ export const menuItems = [
     item: [
       {
         key: '1',
-        label:"ten",
+        label: 'ten',
       },
       {
         key: '2',
@@ -27,6 +27,44 @@ export const menuItems = [
       {
         key: '1',
         label: '1st menu item',
+      },
+      {
+        key: '2',
+        label: '2nd menu item (disabled)',
+      },
+    ],
+  },
+  {
+    name: 'Resource',
+    item: [
+      {
+        key: '1',
+        label: '1st menu item',
+      },
+      {
+        key: '2',
+        label: '2nd menu item (disabled)',
+      },
+    ],
+  },
+  {
+    name: 'Solution',
+    item: [
+      {
+        key: '1',
+        label: '1st menu item',
+      },
+      {
+        key: '2',
+        label: '2nd menu item (disabled)',
+      },
+      {
+        key: '2',
+        label: '2nd menu item (disabled)',
+      },
+      {
+        key: '2',
+        label: '2nd menu item (disabled)',
       },
       {
         key: '2',
