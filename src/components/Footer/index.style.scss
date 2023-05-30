@@ -1,0 +1,28 @@
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #dee2e6;
+  margin: 1em 0;
+  padding: 0;
+}
+.footerContent {
+  h2 {
+    font-size: 16px;
+  }
+  grid-template-columns: auto auto auto 260px;
+  p {
+    margin: 13px 0;
+    cursor: pointer;
+  }
+}
+.product {
+  grid-template-columns: auto auto;
+}
+#input{
+width: 233px;
+}
+
+.button1{
+  margin: 0 !important;
+}

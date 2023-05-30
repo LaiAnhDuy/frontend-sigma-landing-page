@@ -1,17 +1,52 @@
-/* eslint-disable-next-line */
-.arrow {
-  font-size: 10px;
-}
-.item:hover {
+.item_active {
   cursor: pointer;
   color: hsl(27, 98%, 56%);
-  .arrow {
-    rotate: 180deg;
-  }
 }
-
+.arrow_active {
+  stroke: #fd8421;
+  stroke-width: 30;
+  font-size: 10px;
+  rotate: 180deg;
+  color: #fd8421;
+}
+.item_menu {
+  cursor: pointer;
+  color: black;
+}
+.arrow_menu {
+  font-size: 10px;
+  color: black;
+  stroke: #000000;
+  stroke-width: 30;
+}
+.item_header {
+  cursor: pointer;
+  color: white;
+}
+.arrow_header {
+  font-size: 10px;
+  color: white;
+  stroke: #ffffff;
+  stroke-width: 30;
+}
 .ant-dropdown {
   top: 112.8px !important;
   /* CSS tùy chỉnh cho Dropdown */
 }
+.customMenu {
+  display: grid;
+  grid-template-columns: 250px 250px;
+  padding: 40px !important;
+}
+.custom {
+  display: grid;
+  grid-template-columns: 250px;
 
+  padding: 40px !important;
+}
+.hidden {
+  display: none !important;
+}
+.menuItem {
+  display: flex;
+}
