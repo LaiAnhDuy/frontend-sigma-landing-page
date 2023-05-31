@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <div className='mt-auto'>
       <hr />
-      <div className=" max-w-5xl m-auto ">
+      <div className=" lg:container m-auto ">
         <div className="grid footer-content">
           {listItem.map((val, index) => (
             <div key={index}>

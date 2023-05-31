@@ -26,7 +26,7 @@ export default function Header() {
     >
       <div className=" lg:container  items-center flex justify-around  ">
         {/*eslint-disable-next-line jsx-a11y/alt-text */}
-        <div className="header-item text-center">
+        <div className="header-item ">
           <Link to={'/'}>
             <img
               id="img"
@@ -54,7 +54,7 @@ export default function Header() {
             />
           ))}
         </div>
-        <div className="header-item flex">
+        <div className="header-item flex justify-end">
           <button
             onClick={() => {
               setActiveHeader(false);
@@ -83,12 +83,11 @@ export default function Header() {
             suffixIcon={
               <DownOutlined
                 style={{ pointerEvents: 'none' }}
-                className={`${activeHeader ? 'arrow1' : 'arrow2'}`}
+                className={`right-9 ${activeHeader ? 'arrow1' : 'arrow2'}`}
               />
             }
             defaultValue="vn"
-            style={{ width: 110 }}
-            className={`bg-transparent ${activeHeader ? ' select' : 'select1'}`}
+            className={`bg-transparent w-[100px] ${activeHeader ? ' select' : 'select1'}`}
             options={[
               {
                 value: 'usa',
@@ -102,7 +101,7 @@ export default function Header() {
               {
                 value: 'vn',
                 label: (
-                  <div className="flex items-center">
+                  <div className="flex items-center ">
                     <img alt="#" src={IMAGE_PATH.VN} className="mr-1" />
                     Vn
                   </div>
