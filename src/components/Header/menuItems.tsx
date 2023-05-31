@@ -9,10 +9,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma DRM/Multi DRM
               </p>
               <p className="font-medium m-0 content">
@@ -27,10 +24,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Transcoder
               </p>
               <p className="font-medium m-0 content">
@@ -45,10 +39,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Origin/Packager
               </p>
               <p className="font-medium m-0 content">
@@ -64,10 +55,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Livestreaming
               </p>
               <p className="font-medium m-0 content">
@@ -82,10 +70,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Interactive
               </p>
               <p className="font-medium m-0 content">
@@ -100,10 +85,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Multi CDN
               </p>
               <p className="font-medium m-0 content">
@@ -118,10 +100,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Audio Warter Marking
               </p>
               <p className="font-medium m-0 content">
@@ -136,10 +115,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Dynamic Ads Insert
               </p>
               <p className="font-medium m-0 content">
@@ -155,10 +131,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 NS53
               </p>
               <p className="font-medium m-0 content">
@@ -179,10 +152,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 OTT Service{' '}
               </p>
               <p className="font-medium m-0 content">
@@ -206,10 +176,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma DRM/Multi DRM
               </p>
               <p className="font-medium m-0 content">
@@ -224,10 +191,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Transcoder
               </p>
               <p className="font-medium m-0 content">
@@ -242,10 +206,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Origin/Packager
               </p>
               <p className="font-medium m-0 content">
@@ -261,10 +222,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Livestreaming
               </p>
               <p className="font-medium m-0 content">
@@ -279,10 +237,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Interactive
               </p>
               <p className="font-medium m-0 content">
@@ -297,10 +252,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Multi CDN
               </p>
               <p className="font-medium m-0 content">
@@ -315,10 +267,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Audio Warter Marking
               </p>
               <p className="font-medium m-0 content">
@@ -333,10 +282,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 Sigma Dynamic Ads Insert
               </p>
               <p className="font-medium m-0 content">
@@ -352,10 +298,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p
-                className="m-0 text-base font-medium mb-2"
-                style={{ color: '#fd8421' }}
-              >
+              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
                 NS53
               </p>
               <p className="font-medium m-0 content">

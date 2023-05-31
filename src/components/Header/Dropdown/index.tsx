@@ -14,11 +14,10 @@ interface DropDownProps {
 
 function DropDown(props: DropDownProps) {
 
-  const [active, SetActive] = useState(true);
+  const [active, setActive] = useState(true);
   const onClick: MenuProps['onClick'] = ({ key }) => {
-    SetActive(true);
+    setActive(true);
   };
-  console.log(props.menuItems?.length);
 
   return (
     <div>
@@ -31,21 +30,21 @@ function DropDown(props: DropDownProps) {
               ? 'hidden'
               : props.menuItems?.length === 1
               ? 'custom'
-              : 'customMenu'
+              : 'custom-menu'
           } `,
         }}
         className={`mx-6 font-medium ${
           props.activeHeader
-            ? ' item_header '
+            ? ' item-header '
             : active
-            ? ' item_menu '
-            : ' item_active '
+            ? ' item-menu '
+            : ' item-active '
         }
            `}
         trigger={props.menuItems?.length === 0 ? ['hover'] : ['click']}
         onOpenChange={() => {
           props.clickHeader();
-          SetActive(!active);
+          setActive(!active);
         }}
       >
         <Space>
@@ -55,10 +54,10 @@ function DropDown(props: DropDownProps) {
               props.menuItems?.length === 0
                 ? 'hidden'
                 : props.activeHeader
-                ? ' arrow_header '
+                ? ' arrow-header '
                 : active
-                ? ' arrow_menu '
-                : ' arrow_active '
+                ? ' arrow-menu '
+                : ' arrow-active '
             }
                ml-1`}
           />

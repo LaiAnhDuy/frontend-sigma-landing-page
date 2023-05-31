@@ -6,14 +6,46 @@ import {
   faLinkedinIn,
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
+import { IMAGE_PATH } from 'src/constants/images';
+import { listItem } from './config';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
     <>
       <hr />
       <div className=" max-w-5xl m-auto">
-        <div className="grid footerContent">
-          <div>
+        <div className="grid footer-content">
+          {listItem.map((val, index) => (
+            <div key={index}>
+              <h2>{val.title}</h2>
+              {val.title === 'Product' ? (
+                <div className="grid product">
+                  <div>
+                    {val.content.slice(0, 5).map((item, count) => (
+                      <Link key={count} to={item.url}>
+                        <p>{item.subtitle}</p>
+                      </Link>
+                    ))}
+                  </div>
+                  <div>
+                  {val.content.slice(5,9).map((item, count) => (
+                      <Link key={count} to={item.url}>
+                        <p>{item.subtitle}</p>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                val.content.map((item, count) => (
+                  <Link key={count} to={item.url}>
+                    <p>{item.subtitle}</p>
+                  </Link>
+                ))
+              )}
+            </div>
+          ))}
+          {/* <div>
             <h2>Develope</h2>
             <p>Blog</p>
             <p>Case Study</p>
@@ -43,7 +75,7 @@ export default function Footer() {
                 <p>Interactive</p>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div>
             <h2>Subscribe to our newsletter</h2>
@@ -73,7 +105,7 @@ export default function Footer() {
         <div className="grid grid-cols-3">
           <div className="col-span-2">
             <div className="flex">
-              <img src="./images/logo-footer.svg" alt="#"></img>
+              <img src={`${IMAGE_PATH}logo-footer.svg`} alt="#"></img>
               <p>Thu Do Multimedia Communications Joint Stock Company</p>
             </div>
             <p className="font-light mb-2">10th floor, No 48 Le Van Luong</p>
@@ -82,9 +114,11 @@ export default function Footer() {
             </p>
           </div>
           <div>
-            <p className='font-light mb-2 mt-10'>Tel: (+84) 4 3668 7038</p>
-            <p className='font-light mt-1 mb-2'>Email: thudojsc@gviet.vn</p>
-            <p className='font-light mt-1'>2022 by Thu Do Multimedia. All rights reserved</p>
+            <p className="font-light mb-2 mt-10">Tel: (+84) 4 3668 7038</p>
+            <p className="font-light mt-1 mb-2">Email: thudojsc@gviet.vn</p>
+            <p className="font-light mt-1">
+              2022 by Thu Do Multimedia. All rights reserved
+            </p>
           </div>
         </div>
       </div>

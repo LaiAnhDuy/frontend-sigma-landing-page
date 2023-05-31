@@ -5,22 +5,23 @@ import { menuItems } from './menuItems';
 import { Link } from 'react-router-dom';
 import { DownOutlined, SearchOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
+import { IMAGE_PATH } from 'src/constants/images';
 
 // const logo = process.env.PUBLIC_URL + '/images/Logo.svg';
 export default function Header() {
-  const [activeHeader, SetActiveHeader] = useState(true);
+  const [activeHeader, setActiveHeader] = useState(true);
 
   const handleClickMenu = () => {
-    SetActiveHeader(false);
+    setActiveHeader(false);
   };
   const handleClickHeader = () => {
-    SetActiveHeader(true);
+    setActiveHeader(true);
   };
 
   return (
     <div
       className={`flex ${
-        activeHeader ? 'header' : 'header_mau shadow-lg'
+        activeHeader ? 'header' : 'header2 shadow-lg'
       } justify-center `}
     >
       <div className=" lg:container  items-center flex justify-around  ">
@@ -33,7 +34,7 @@ export default function Header() {
               onClick={() => {
                 handleClickHeader();
               }}
-              src={`./images/${activeHeader ? 'Logo.svg' : 'Logo-mau.svg'}`}
+              src={`${IMAGE_PATH}${activeHeader ? 'logo.svg' : 'logo-mau.svg'}`}
               className="image"
             />
           </Link>
@@ -54,7 +55,7 @@ export default function Header() {
         <div className="header-item flex">
           <button
             onClick={() => {
-              SetActiveHeader(false);
+              setActiveHeader(false);
             }}
             className={`cursor-pointer h-7 w-24 rounded mr-5 ${
               activeHeader ? ' support ' : ' support1 '
@@ -64,7 +65,7 @@ export default function Header() {
           </button>
           <button
             onClick={() => {
-              SetActiveHeader(false);
+              setActiveHeader(false);
             }}
             className={`cursor-pointer h-7 w-24 rounded mr-5 ${
               activeHeader ? ' freetrial ' : ' freetrial1 '
@@ -87,7 +88,7 @@ export default function Header() {
                 value: 'usa',
                 label: (
                   <div className="flex items-center ">
-                    <img alt="#" src="./images/usa.svg" className="mr-1" />
+                    <img alt="#" src={`${IMAGE_PATH}usa.svg`} className="mr-1" />
                     Eng
                   </div>
                 ),
@@ -96,7 +97,7 @@ export default function Header() {
                 value: 'vn',
                 label: (
                   <div className="flex items-center">
-                    <img alt="#" src="./images/vn.svg" className="mr-1" />
+                    <img alt="#" src={`${IMAGE_PATH}vn.svg`} className="mr-1" />
                     Vn
                   </div>
                 ),
