@@ -34,7 +34,7 @@ export default function Header() {
               onClick={() => {
                 handleClickHeader();
               }}
-              src={`${IMAGE_PATH}${activeHeader ? 'logo.svg' : 'logo-mau.svg'}`}
+              src={activeHeader? IMAGE_PATH.LOGO_WHITE: IMAGE_PATH.LOGO_ORANGE}
               className="image"
             />
           </Link>
@@ -88,7 +88,7 @@ export default function Header() {
                 value: 'usa',
                 label: (
                   <div className="flex items-center ">
-                    <img alt="#" src={`${IMAGE_PATH}usa.svg`} className="mr-1" />
+                    <img alt="#" src={IMAGE_PATH.USA} className="mr-1" />
                     Eng
                   </div>
                 ),
@@ -97,7 +97,7 @@ export default function Header() {
                 value: 'vn',
                 label: (
                   <div className="flex items-center">
-                    <img alt="#" src={`${IMAGE_PATH}vn.svg`} className="mr-1" />
+                    <img alt="#" src={IMAGE_PATH.VN} className="mr-1" />
                     Vn
                   </div>
                 ),

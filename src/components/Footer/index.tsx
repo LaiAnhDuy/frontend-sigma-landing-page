@@ -29,7 +29,7 @@ export default function Footer() {
                     ))}
                   </div>
                   <div>
-                  {val.content.slice(5,9).map((item, count) => (
+                    {val.content.slice(5, 9).map((item, count) => (
                       <Link key={count} to={item.url}>
                         <p>{item.subtitle}</p>
                       </Link>
@@ -45,37 +45,6 @@ export default function Footer() {
               )}
             </div>
           ))}
-          {/* <div>
-            <h2>Develope</h2>
-            <p>Blog</p>
-            <p>Case Study</p>
-            <p>Document</p>
-            <p>Video</p>
-            <p>News</p>
-          </div>
-          <div>
-            <h2>Company</h2>
-            <p>About us</p>
-            <p>Contact Us</p>
-          </div>
-          <div>
-            <h2>Product</h2>
-            <div className="grid product">
-              <div>
-                <p>Multi DRM</p>
-                <p>Livestreaming</p>
-                <p>OTT</p>
-                <p>Packager/ Transcoder</p>
-                <p>Audio warter marking</p>
-              </div>
-              <div>
-                <p>Multi CDN</p>
-                <p>NS53</p>
-                <p>Dynamic Ads Insert</p>
-                <p>Interactive</p>
-              </div>
-            </div>
-          </div> */}
 
           <div>
             <h2>Subscribe to our newsletter</h2>
@@ -85,7 +54,7 @@ export default function Footer() {
               className="px-3 h-12 rounded-xl border-solid border-black"
             ></input>
             <button className="h-12 w-24 mt-3 rounded-xl bg-[#fd841f] border-none text-[#ffffff]">
-              <p className="button1 text-base">Subcribe</p>
+              <p className="button1 text-base">Subscribe</p>
             </button>
             <h2 className="mt-8">For Enquiries</h2>
             <div className="flex">
@@ -105,7 +74,7 @@ export default function Footer() {
         <div className="grid grid-cols-3">
           <div className="col-span-2">
             <div className="flex">
-              <img src={`${IMAGE_PATH}logo-footer.svg`} alt="#"></img>
+              <img src={IMAGE_PATH.LOGO_FOOTER} alt="#"></img>
               <p>Thu Do Multimedia Communications Joint Stock Company</p>
             </div>
             <p className="font-light mb-2">10th floor, No 48 Le Van Luong</p>

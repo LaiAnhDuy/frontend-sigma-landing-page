@@ -9,7 +9,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma DRM/Multi DRM
               </p>
               <p className="font-medium m-0 content">
@@ -24,11 +24,11 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Transcoder
               </p>
               <p className="font-medium m-0 content">
-                Encode and convert video files to many other formats{' '}
+                Encode and convert video files to many other formats
               </p>
             </div>
           </a>
@@ -39,7 +39,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Origin/Packager
               </p>
               <p className="font-medium m-0 content">
@@ -55,7 +55,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Livestreaming
               </p>
               <p className="font-medium m-0 content">
@@ -70,7 +70,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Interactive
               </p>
               <p className="font-medium m-0 content">
@@ -85,7 +85,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Multi CDN
               </p>
               <p className="font-medium m-0 content">
@@ -100,7 +100,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Audio Warter Marking
               </p>
               <p className="font-medium m-0 content">
@@ -115,7 +115,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Dynamic Ads Insert
               </p>
               <p className="font-medium m-0 content">
@@ -131,7 +131,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 NS53
               </p>
               <p className="font-medium m-0 content">
@@ -152,7 +152,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 OTT Service{' '}
               </p>
               <p className="font-medium m-0 content">
@@ -176,7 +176,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma DRM/Multi DRM
               </p>
               <p className="font-medium m-0 content">
@@ -191,7 +191,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Transcoder
               </p>
               <p className="font-medium m-0 content">
@@ -206,7 +206,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Origin/Packager
               </p>
               <p className="font-medium m-0 content">
@@ -222,7 +222,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Livestreaming
               </p>
               <p className="font-medium m-0 content">
@@ -237,7 +237,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Interactive
               </p>
               <p className="font-medium m-0 content">
@@ -252,7 +252,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Multi CDN
               </p>
               <p className="font-medium m-0 content">
@@ -267,7 +267,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Audio Warter Marking
               </p>
               <p className="font-medium m-0 content">
@@ -282,7 +282,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Dynamic Ads Insert
               </p>
               <p className="font-medium m-0 content">
@@ -298,7 +298,7 @@ export const menuItems = [
         label: (
           <a href="#">
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-[#fd8421]">
+              <p className="m-0 text-base font-medium mb-2 text-main">
                 NS53
               </p>
               <p className="font-medium m-0 content">
