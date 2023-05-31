@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <div className='absolute bottom-0 w-full'>
+    <div className='mt-auto'>
       <hr />
       <div className=" max-w-5xl m-auto ">
         <div className="grid footer-content">

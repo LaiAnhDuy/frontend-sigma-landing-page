@@ -34,7 +34,9 @@ export default function Header() {
               onClick={() => {
                 handleClickHeader();
               }}
-              src={activeHeader? IMAGE_PATH.LOGO_WHITE: IMAGE_PATH.LOGO_ORANGE}
+              src={
+                activeHeader ? IMAGE_PATH.LOGO_WHITE : IMAGE_PATH.LOGO_ORANGE
+              }
               className="image"
             />
           </Link>
@@ -78,11 +80,15 @@ export default function Header() {
             className="text-xl mr-2"
           />
           <Select
-            suffixIcon={<DownOutlined style={{ pointerEvents: 'none' }} className={`${activeHeader?"arrow1":"arrow2"}`} />}
+            suffixIcon={
+              <DownOutlined
+                style={{ pointerEvents: 'none' }}
+                className={`${activeHeader ? 'arrow1' : 'arrow2'}`}
+              />
+            }
             defaultValue="vn"
             style={{ width: 110 }}
-            
-            className={`bg-transparent ${activeHeader?" select" : "select1"}`}
+            className={`bg-transparent ${activeHeader ? ' select' : 'select1'}`}
             options={[
               {
                 value: 'usa',
