@@ -12,9 +12,9 @@ import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <>
+    <div className='absolute bottom-0 w-full'>
       <hr />
-      <div className=" max-w-5xl m-auto">
+      <div className=" max-w-5xl m-auto ">
         <div className="grid footer-content">
           {listItem.map((val, index) => (
             <div key={index}>
@@ -91,6 +91,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

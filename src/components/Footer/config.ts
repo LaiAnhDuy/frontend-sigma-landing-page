@@ -57,7 +57,7 @@ export const listItem = [
         url: '#',
       },
       {
-        subtitle: 'Audio warter marking',
+        subtitle: 'Audio water marking',
         url: '#',
       },
       {
