@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <div
       className={`flex ${
-        activeHeader ? 'header' : 'header2 shadow-lg'
+        activeHeader ? 'header' : 'header2 relative shadow-lg'
       } justify-center `}
     >
       <div className=" lg:container  items-center flex justify-around  ">
