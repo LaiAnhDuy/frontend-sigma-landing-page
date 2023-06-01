@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useRef, useState } from 'react';
-import { DownOutlined, LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
+import React, { useRef } from 'react';
+import { LeftCircleOutlined, RightCircleOutlined } from '@ant-design/icons';
 import { Carousel } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
 
@@ -22,7 +22,7 @@ function CarouselShow(props: CarouselProps) {
           carouselRef.current?.prev();
         }}
       />
-      <div className="w-[1110px]">
+      <div className="max-w-[1110px]  min-w-0">
         <Carousel draggable dots={false} slidesToShow={4} ref={carouselRef}>
           {props.list.map((val, index) => (
             <div key={index} className="outline-none border-none">

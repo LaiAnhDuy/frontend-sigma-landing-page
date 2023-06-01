@@ -50,7 +50,7 @@ export default function HomePage() {
   };
   return (
     <div>
-      <div className="bg-main background h-[1550px] text-center">
+      <div className="bg-main background  text-center">
         <div className="container m-auto">
           <div>
             <h1 className="mt-0 text-white text-5xl pt-8">
@@ -81,8 +81,8 @@ export default function HomePage() {
             </div>
           </div>
           <img src={IMAGE_PATH.VIDEO} alt="#" />
-          <h1 className=" text-white text-5xl mt-12 ">Our Products</h1>
-          <div className="flex items-center pt-10 justify-between">
+          <h1 className=" text-white text-5xl mt-10 ">Our Products</h1>
+          <div className="flex items-center py-7  justify-between">
             <CarouselShow list={arr} />
           </div>
         </div>
@@ -200,12 +200,97 @@ export default function HomePage() {
           />
         </div>
       </div>
-      <div className="bg-[#F9F9F9] h-[1105px] mt-28">
-        <div className="container m-auto flex">
-          <img alt="#" src="./images/home/image1.svg" />
-          <div className='mx-10'> 
-          <h1 className='text-xl'>Thu Do Multimedia’s Sigma DRM completed Farncombe Security Audit®</h1></div>
+      <div className="bg-[#F9F9F9]  mt-28 py-24">
+        <div className="container bg-white mb-1 rounded-xl m-auto flex ">
+          <img className=" absolute" alt="#" src={IMAGE_PATH.NEWS} />
+          <img alt="#" src={IMAGE_PATH.IMAGE1} />
+          <div className="px-10 pb-10  min-w-[250px] flex flex-col  justify-between">
+            <div>
+              <h1 className=" text-2xl">
+                Thu Do Multimedia’s Sigma DRM completed Farncombe Security
+                Audit®
+              </h1>
+              <h1 className="text-base">
+                <span className="text-main ">Date:</span> 01/2020
+                <br />
+                <span className="text-main ">Location:</span>
+                <span className="font-normal"> Ha Noi, Vietnam</span>
+              </h1>
+              <p className="text-lg ">
+                The Farncombe Security Audit® is Cartesian’s independent
+                specialist content security auditing service for content owners,
+                broadcasters, video service providers, and technology suppliers
+                worldwide.
+              </p>
+            </div>
+            <div className="flex cursor-pointer w-fit">
+              <p className="text-[#4D4D4D] m-0 pr-2 font-medium"> Learn more</p>
+              <img alt="#" src={IMAGE_PATH.ARROW} />
+            </div>
+          </div>
         </div>
+        <div className="grid mt-11 grid-cols-3 gap-x-8 m-auto container">
+          <div className="bg-white rounded-xl">
+            <img className="absolute" alt="#" src={IMAGE_PATH.NEWS} />
+            <img alt="#" className="w-full" src={IMAGE_PATH.IMAGE2} />
+            <div className="mx-8 pb-10  flex flex-col justify-between">
+              <h1 className="text-2xl h-36">
+                OTT market will triple in value by 2028
+              </h1>
+              <div className="flex  cursor-pointer w-fit">
+                <p className="text-[#4D4D4D] m-0 pr-2 font-medium">
+                  {' '}
+                  Learn more
+                </p>
+                <img alt="#" src={IMAGE_PATH.ARROW} />
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl">
+            <img className="absolute" alt="#" src={IMAGE_PATH.NEWS} />
+            <img alt="#" className="w-full" src={IMAGE_PATH.IMAGE3} />
+            <div className="mx-8 pb-10  flex flex-col justify-between">
+              <h1 className="text-2xl h-36">
+                Infringement of copyrighted content makes it difficult for
+                Vietnamese businesses
+              </h1>
+              <div className="flex  cursor-pointer w-fit">
+                <p className="text-[#4D4D4D] m-0 pr-2 font-medium">
+                  {' '}
+                  Learn more
+                </p>
+                <img alt="#" src={IMAGE_PATH.ARROW} />
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-xl">
+            <img className="absolute" alt="#" src={IMAGE_PATH.NEWS} />
+            <img alt="#" className="w-full" src={IMAGE_PATH.IMAGE4} />
+            <div className="mx-8 pb-10  flex flex-col justify-between">
+              <h1 className="text-2xl h-36">
+                Digital businesses do not want to be "single" in the world
+                market{' '}
+              </h1>
+              <div className="flex  cursor-pointer w-fit">
+                <p className="text-[#4D4D4D] m-0 pr-2 font-medium">
+                  {' '}
+                  Learn more
+                </p>
+                <img alt="#" src={IMAGE_PATH.ARROW} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container m-auto text-center">
+        <h1 className="text-3xl text-main mt-12">Ready to Get Started ?</h1>
+        <p className="text-xl font-medium">
+          Start streaming today with our integrated video platform.
+        </p>
+        <button className="bg-main w-[135px] h-10 rounded border-none active:bg-main/90 cursor-pointer">
+          <span className="text-white font-medium">Free trial</span>
+        </button>
+        <p className='text-main font-medium cursor-pointer'>Talk to a Streaming Expert</p>
       </div>
     </div>
   );
