@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import './index.style.scss';
 import DropDown from './Dropdown';
 import { menuItems } from './menuItems';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { DownOutlined, SearchOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
 import { IMAGE_PATH } from 'src/constants/images';
 
-// const logo = process.env.PUBLIC_URL + '/images/Logo.svg';
 export default function Header() {
+  const location = useLocation();
+  const path = location.pathname;
   const [activeHeader, setActiveHeader] = useState(true);
 
   const handleClickMenu = () => {
@@ -21,7 +22,9 @@ export default function Header() {
   return (
     <div
       className={`flex ${
-        activeHeader ? 'header' : 'header2 relative shadow-lg'
+        activeHeader && path === '/'
+          ? 'header'
+          : `header2 relative ${path === '/' ? ' shadow-lg' : null}`
       } justify-center `}
     >
       <div className=" lg:container  items-center flex justify-around  ">
@@ -35,7 +38,9 @@ export default function Header() {
                 handleClickHeader();
               }}
               src={
-                activeHeader ? IMAGE_PATH.LOGO_WHITE : IMAGE_PATH.LOGO_ORANGE
+                activeHeader && path === '/'
+                  ? IMAGE_PATH.LOGO_WHITE
+                  : IMAGE_PATH.LOGO_ORANGE
               }
               className="image"
             />
@@ -44,6 +49,7 @@ export default function Header() {
         <div className="flex header-item ">
           {menuItems.map((val, index) => (
             <DropDown
+              path={path}
               hoverText={val.name}
               menuItems={val.item}
               key={index}
@@ -60,7 +66,7 @@ export default function Header() {
               setActiveHeader(false);
             }}
             className={`cursor-pointer h-7 w-24 rounded mr-5 ${
-              activeHeader ? ' support ' : ' support1 '
+              activeHeader && path === '/' ? ' support ' : ' support1 '
             } `}
           >
             Support
@@ -70,24 +76,30 @@ export default function Header() {
               setActiveHeader(false);
             }}
             className={`cursor-pointer h-7 w-24 rounded mr-5 ${
-              activeHeader ? ' freetrial ' : ' freetrial1 '
+              activeHeader && path === '/' ? ' freetrial ' : ' freetrial1 '
             } `}
           >
             Free trial
           </button>
           <SearchOutlined
-            style={{ color: `${activeHeader ? 'white' : 'black'}` }}
+            style={{
+              color: `${activeHeader && path === '/' ? 'white' : 'black'}`,
+            }}
             className="text-xl mr-2"
           />
           <Select
             suffixIcon={
               <DownOutlined
                 style={{ pointerEvents: 'none' }}
-                className={`right-9 ${activeHeader ? 'arrow1' : 'arrow2'}`}
+                className={`right-9 ${
+                  activeHeader && path === '/' ? 'arrow1' : 'arrow2'
+                }`}
               />
             }
             defaultValue="vn"
-            className={`bg-transparent w-[100px] ${activeHeader ? ' select' : 'select1'}`}
+            className={`bg-transparent w-[100px] ${
+              activeHeader && path === '/' ? ' select' : 'select1'
+            }`}
             options={[
               {
                 value: 'usa',
