@@ -4,6 +4,7 @@ import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import ResourcePage from 'src/pages/Resources';
+import SigmadaiPage from 'src/pages/Products/SigmaDai';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -18,6 +19,12 @@ const routes: RouteType[] = [
     path: ROUTE.RESOURCES,
     title: 'Resources',
     element: ResourcePage,
+    isPrivate: true,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMADAI,
+    title: 'ProductSigmadai',
+    element: SigmadaiPage,
     isPrivate: true,
   },
 ];
@@ -48,3 +55,4 @@ export default function AppRouter() {
     </Routes>
   );
 }
+
