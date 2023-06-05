@@ -1,3 +1,7 @@
-.image-tv {
-    image-rendering: pixelated;
+.feature-element {
+    transition: transform 0.3s;
+}
+
+.feature-element:hover {
+    transform: translateY(-5px);
 }
