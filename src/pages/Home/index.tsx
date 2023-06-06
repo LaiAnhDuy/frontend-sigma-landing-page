@@ -6,7 +6,7 @@ import { Carousel } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
 import { list } from './configs';
 import Item from 'src/components/Item';
-import CarouselShow from './carousel';
+import CarouselShow from './Carousel';
 
 export default function HomePage() {
   const arr = [
@@ -34,19 +34,19 @@ export default function HomePage() {
     {
       title: 'OTT market will triple in value by 2028',
       url: '#',
-      image:IMAGE_PATH.IMAGE2
+      image: IMAGE_PATH.IMAGE2,
     },
     {
       title:
         'Infringement of copyrighted content makes it difficult for Vietnamese businesses',
       url: '#',
-      image:IMAGE_PATH.IMAGE3
+      image: IMAGE_PATH.IMAGE3,
     },
     {
       title:
         'Digital businesses do not want to be "single" in the world market',
       url: '#',
-      image:IMAGE_PATH.IMAGE4
+      image: IMAGE_PATH.IMAGE4,
     },
   ];
   const carouselRef = useRef<CarouselRef>(null);
@@ -251,7 +251,7 @@ export default function HomePage() {
         </div>
         <div className="grid mt-11 grid-cols-3 gap-x-8 m-auto container">
           {item.map((val, index) => (
-            <Item key={index} title={val.title}  image={val.image}/>
+            <Item key={index} title={val.title} image={val.image} />
           ))}
         </div>
       </div>

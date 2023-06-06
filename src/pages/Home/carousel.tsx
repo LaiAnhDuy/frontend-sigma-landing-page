@@ -25,8 +25,8 @@ function CarouselShow(props: CarouselProps) {
       <div className="max-w-[1110px]  min-w-0">
         <Carousel draggable dots={false} slidesToShow={4} ref={carouselRef}>
           {props.list.map((val, index) => (
-            <div key={index} className="outline-none border-none">
-              <img className="w-[262.5px] h-[268px]" alt="#" src={val} />
+            <div key={index} className="outline-none border-none ">
+              <img className="w-[262.5px] h-[268px] test_svg" alt="#" src={val} />
             </div>
           ))}
         </Carousel>
