@@ -6,6 +6,7 @@ import { Carousel } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
 import { list } from './configs';
 import CarouselShow from './carousel';
+import Item from 'src/components/Item';
 
 export default function HomePage() {
   const arr = [
@@ -28,6 +29,25 @@ export default function HomePage() {
     IMAGE_PATH.VIN,
     IMAGE_PATH.VTV,
     IMAGE_PATH.TRUE,
+  ];
+  const item = [
+    {
+      title: 'OTT market will triple in value by 2028',
+      url: '#',
+      image:IMAGE_PATH.IMAGE2
+    },
+    {
+      title:
+        'Infringement of copyrighted content makes it difficult for Vietnamese businesses',
+      url: '#',
+      image:IMAGE_PATH.IMAGE3
+    },
+    {
+      title:
+        'Digital businesses do not want to be "single" in the world market',
+      url: '#',
+      image:IMAGE_PATH.IMAGE4
+    },
   ];
   const carouselRef = useRef<CarouselRef>(null);
   const [isActive, setIsActive] = useState(false);
@@ -230,56 +250,9 @@ export default function HomePage() {
           </div>
         </div>
         <div className="grid mt-11 grid-cols-3 gap-x-8 m-auto container">
-          <div className="bg-white rounded-xl">
-            <img className="absolute" alt="#" src={IMAGE_PATH.NEWS} />
-            <img alt="#" className="w-full" src={IMAGE_PATH.IMAGE2} />
-            <div className="mx-8 pb-10  flex flex-col justify-between">
-              <h1 className="text-2xl h-36">
-                OTT market will triple in value by 2028
-              </h1>
-              <div className="flex  cursor-pointer w-fit">
-                <p className="text-[#4D4D4D] m-0 pr-2 font-medium">
-                  {' '}
-                  Learn more
-                </p>
-                <img alt="#" src={IMAGE_PATH.ARROW} />
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-xl">
-            <img className="absolute" alt="#" src={IMAGE_PATH.NEWS} />
-            <img alt="#" className="w-full" src={IMAGE_PATH.IMAGE3} />
-            <div className="mx-8 pb-10  flex flex-col justify-between">
-              <h1 className="text-2xl h-36">
-                Infringement of copyrighted content makes it difficult for
-                Vietnamese businesses
-              </h1>
-              <div className="flex  cursor-pointer w-fit">
-                <p className="text-[#4D4D4D] m-0 pr-2 font-medium">
-                  {' '}
-                  Learn more
-                </p>
-                <img alt="#" src={IMAGE_PATH.ARROW} />
-              </div>
-            </div>
-          </div>
-          <div className="bg-white rounded-xl">
-            <img className="absolute" alt="#" src={IMAGE_PATH.NEWS} />
-            <img alt="#" className="w-full" src={IMAGE_PATH.IMAGE4} />
-            <div className="mx-8 pb-10  flex flex-col justify-between">
-              <h1 className="text-2xl h-36">
-                Digital businesses do not want to be "single" in the world
-                market{' '}
-              </h1>
-              <div className="flex  cursor-pointer w-fit">
-                <p className="text-[#4D4D4D] m-0 pr-2 font-medium">
-                  {' '}
-                  Learn more
-                </p>
-                <img alt="#" src={IMAGE_PATH.ARROW} />
-              </div>
-            </div>
-          </div>
+          {item.map((val, index) => (
+            <Item key={index} title={val.title}  image={val.image}/>
+          ))}
         </div>
       </div>
       <div className="container m-auto text-center">
@@ -290,7 +263,9 @@ export default function HomePage() {
         <button className="bg-main w-[135px] h-10 rounded border-none active:bg-main/90 cursor-pointer">
           <span className="text-white font-medium">Free trial</span>
         </button>
-        <p className='text-main font-medium cursor-pointer'>Talk to a Streaming Expert</p>
+        <p className="text-main font-medium cursor-pointer">
+          Talk to a Streaming Expert
+        </p>
       </div>
     </div>
   );

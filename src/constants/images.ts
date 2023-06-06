@@ -26,4 +26,7 @@ export const IMAGE_PATH = {
   IMAGE3: '../images/home/image3.png',
   IMAGE4: '../images/home/image4.png',
   NEWS: '../images/home/news.svg',
+  TV: './images/resource/TV.png',
+  VECTOR: './images/resource/vector.svg',
+  IMAGE: './images/resource/image1.svg',
 };
