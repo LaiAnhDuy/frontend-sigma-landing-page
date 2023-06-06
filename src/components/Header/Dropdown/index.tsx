@@ -7,9 +7,10 @@ import './index.style.scss';
 
 interface DropDownProps {
   menuItems: MenuProps['items'];
-  hoverText: string;
+  hoverText: JSX.Element|string;
   clickHeader: () => void;
   activeHeader: boolean;
+  path:string
 }
 
 function DropDown(props: DropDownProps) {
@@ -34,14 +35,14 @@ function DropDown(props: DropDownProps) {
           } `,
         }}
         className={`mx-6 font-medium ${
-          props.activeHeader
+          props.activeHeader && props.path==="/"
             ? ' item-header '
             : active
             ? ' item-menu '
             : ' item-active '
         }
            `}
-        trigger={props.menuItems?.length === 0 ? ['hover'] : ['click']}
+        trigger={['hover']}
         onOpenChange={() => {
           props.clickHeader();
           setActive(!active);
@@ -53,7 +54,7 @@ function DropDown(props: DropDownProps) {
             className={`${
               props.menuItems?.length === 0
                 ? 'hidden'
-                : props.activeHeader
+                : props.activeHeader && props.path==="/"
                 ? ' arrow-header '
                 : active
                 ? ' arrow-menu '

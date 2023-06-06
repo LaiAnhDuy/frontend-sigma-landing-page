@@ -4,6 +4,7 @@ import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import ResourcePage from 'src/pages/Resources';
+import Blog from 'src/pages/Resources/Blog';
 import Sigman53Page from 'src/pages/Products/SigmaN53';
 
 export type RouteType = {
@@ -15,6 +16,7 @@ export type RouteType = {
 
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
+  { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',
@@ -23,7 +25,7 @@ const routes: RouteType[] = [
   },
   {
     path: ROUTE.PRODUCT_SIGMAN53,
-    title: 'ProductSigman53',
+    title: 'Product_Sigman53',
     element: Sigman53Page,
     isPrivate: true,
   },
