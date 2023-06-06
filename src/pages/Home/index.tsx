@@ -6,7 +6,7 @@ import { Carousel } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
 import { list } from './configs';
 import Item from 'src/components/Item';
-import CarouselShow from './Carousel';
+import CarouselShow from './CarouselShow';
 
 export default function HomePage() {
   const arr = [
