@@ -10,5 +10,6 @@ export const IMAGE_PATH = {
   TV_PACKAGE: './images/tv-package.png',
   TV_TRANSCODER: './images/tv-transcoder.png',
   BLOCKES_1: './images/blockers1.png',
-  BLOCKES_2: './images/blockers2.png'
+  BLOCKES_2: './images/blockers2.png',
+  DNSCS: './images/dnscs.png'
 };

@@ -1,7 +1,9 @@
-.feature-element {
+.trans {
     transition: transform 0.3s;
 }
 
-.feature-element:hover {
+.trans:hover {
     transform: translateY(-5px);
 }
+
+
