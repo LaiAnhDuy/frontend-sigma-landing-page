@@ -4,6 +4,8 @@ import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import Item from 'src/components/Item';
 import { Pagination, PaginationProps } from 'antd';
+import { blogs, casestudy, documents, news, videos } from './item';
+import ScrollToTopButton from 'src/components/ScrollToTop';
 
 export default function Resources() {
   const [title, setTitle] = useState('news');
@@ -29,473 +31,40 @@ export default function Resources() {
       value: 'video',
     },
   ];
-  const arr = [
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-    {
-      title: 'Content Packages',
-      url: '#',
-      image: IMAGE_PATH.IMAGE,
-    },
-  ];
+
   const itemRender: PaginationProps['itemRender'] = (
-    current,
+    _,
     type,
     originalElement,
   ) => {
     if (type === 'prev') {
-      return currentPage === 1 ? null : <a className='text-black hover:text-black '>Prev</a>;
+      return currentPage === 1 ? null : (
+        <a className="text-black hover:text-black ">Prev</a>
+      );
     }
     if (type === 'next') {
-      return currentPage === Math.ceil(arr.length / 6) ? null : <a className='text-black hover:text-black'>Next</a>;
+      return currentPage ===
+        Math.ceil(
+          (title === 'news'
+            ? news
+            : title === 'blogs'
+            ? blogs
+            : title === 'documents'
+            ? documents
+            : title === 'video'
+            ? videos
+            : casestudy
+          ).length / 6,
+        ) ? null : (
+        <a className="text-black hover:text-black">Next</a>
+      );
     }
     return originalElement;
   };
 
   const [currentPage, setCurrentPage] = useState(1);
+  console.log(currentPage);
+
   return (
     <div className="container m-auto ">
       <div className="grid grid-cols-[auto_660px]">
@@ -531,13 +100,41 @@ export default function Resources() {
             <span className="text-main">news from us</span>
           </h1>
           <div className="grid grid-cols-3 gap-x-10 gap-y-14 text-left">
-            {arr.map((val, index) => (
-              <Item key={index} image={val.image} title={val.title} />
-            ))}
+            {(title === 'news'
+              ? news
+              : title === 'blogs'
+              ? blogs
+              : title === 'documents'
+              ? documents
+              : title === 'video'
+              ? videos
+              : casestudy
+            )
+              .slice((currentPage - 1) * 6, currentPage * 6)
+              .map((val, index) => (
+                <Item
+                  key={index}
+                  image={val.image}
+                  title={val.title}
+                  option={val.option}
+                />
+              ))}
           </div>
           <Pagination
+            className="my-16"
             itemRender={itemRender}
-            total={arr.length}
+            total={
+              (title === 'news'
+                ? news
+                : title === 'blogs'
+                ? blogs
+                : title === 'documents'
+                ? documents
+                : title === 'video'
+                ? videos
+                : casestudy
+              ).length
+            }
             current={currentPage}
             onChange={(page) => {
               setCurrentPage(page);
@@ -548,6 +145,7 @@ export default function Resources() {
           />
         </div>
       </div>
+      <ScrollToTopButton/>
     </div>
   );
 }

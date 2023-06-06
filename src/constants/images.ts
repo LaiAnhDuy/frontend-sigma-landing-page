@@ -1,4 +1,4 @@
-import { PUBLIC_URL } from "src/configs";
+import { PUBLIC_URL } from 'src/configs';
 
 export const IMAGE_PATH = {
   LOGO_FOOTER: `${PUBLIC_URL}/images/logo-footer.svg`,
@@ -31,4 +31,8 @@ export const IMAGE_PATH = {
   TV: `${PUBLIC_URL}/images/resource/TV.png`,
   VECTOR: `${PUBLIC_URL}/images/resource/vector.svg`,
   IMAGE: `${PUBLIC_URL}/images/resource/image1.svg`,
+  BLOGS: `${PUBLIC_URL}/images/resource/blogs.svg`,
+  CASESTUDY: `${PUBLIC_URL}/images/resource/casestudy.svg`,
+  DOCUMENTS: `${PUBLIC_URL}/images/resource/documents.svg`,
+  VIDEOS: `${PUBLIC_URL}/images/resource/video.svg`,
 };

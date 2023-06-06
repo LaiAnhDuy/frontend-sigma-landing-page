@@ -3,12 +3,13 @@ import { IMAGE_PATH } from 'src/constants/images';
 
 interface ItemProps {
   title: string;
-  image: string
+  image: string;
+  option:string| undefined
 }
 export default function Item(props: ItemProps) {
   return (
     <div className={`bg-white rounded-xl ${window.location.pathname ==="/"? null : "shadow-xl"} `}>
-      <img className="absolute" alt="#" src={IMAGE_PATH.NEWS} />
+      <img className="absolute" alt="#" src={props.option} />
       <img alt="#" className="w-full" src={props.image} />
       <div className="mx-8 pb-10  flex flex-col justify-between">
         <h1 className="text-2xl h-36">
