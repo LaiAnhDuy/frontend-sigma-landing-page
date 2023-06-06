@@ -45,7 +45,7 @@ function SigmaN53() {
           </div>
           <div className="grid grid-rows-2 grid-cols-3">
             {SIGMA_N53F.map((e, index) => (
-              <div key={index} className="trans py-12 pr-36 cursor-pointer">
+              <div key={index} className="trans py-12 px-24 cursor-pointer">
                 <div className="flex flex-col">
                   <div className="flex pb-5">
                     <img className="w-[80px] h-[80px]" src={e.img} alt="" />
@@ -58,8 +58,11 @@ function SigmaN53() {
               </div>
             ))}
           </div>
-
-          <div className="flex flex-col h-[804px] bg-[#F9F9F9]">
+        </div>
+      </div>
+      <div className="flex flex-col bg-[#F9F9F9]">
+        <div className="mx-[184px]">
+          <div className="flex flex-col h-[804px]">
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[50px] pb-[20px]">
               The advantages of{' '}
               <span className="text-main">DNS load balancing</span> include:
@@ -93,7 +96,10 @@ function SigmaN53() {
               ))}
             </div>
           </div>
-
+        </div>
+      </div>
+      <div className="flex flex-col">
+        <div className="mx-[184px]">
           <div>
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[105px] pb-[20px]">
               The advantages of{' '}
