@@ -6,29 +6,28 @@ function SigmaN53() {
   return (
     <div className="text-black">
       <div className="flex flex-col">
-        <div className="flex justify-center h-[540px]">
+        <div className="flex justify-between h-[540px] mx-[184px]">
           <div className="pt-9">
-            <div className="relative z-[1] text-[50px] font-bold w-[526px] h-[150px] leading-[50px] pb-2 break-words">
+            <div className="relative z-[1] text-[55px] font-bold h-[150px] leading-[50px] pb-2 break-words">
               Sigma <span className="text-main">NS53</span> load balancing,
               system optimization
             </div>
             <div className="top-[-29px] relative bg-main/50 w-[276px] h-[30px] rounded-[20px]" />
-            <div className="w-[501px] h-[120px] font-medium text-[21px] leading-[30px] pb-8">
-              Dynamic Ad Insertion – also known as Server-side ad insertion
-              (SSAI) – enables the seamless delivery of video ads into content
-              streamed on internet-enabled devices.
+            <div className="w-[501px] h-[90px] font-medium text-[21px] leading-[30px] pb-8">
+              Scale your applications and improve availability, security, and
+              performance across your infrastructure in a few clicks.
             </div>
             <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer hover:bg-[#eb694c]">
               Start your free trial
             </button>
           </div>
           <div className="">
-            <img className="" src={IMAGE_PATH.TV_N53} alt="TV_N53" />
+            <img className="w-[900px]" src={IMAGE_PATH.TV_N53} alt="TV_N53" />
           </div>
         </div>
 
-        <div className="flex justify-center flex-col px-[331px]">
-          <div className="w-full h-[254px] bg-main rounded-[20px] flex justify-center flex-col mb-28">
+        <div className="flex justify-center flex-col mx-[184px]">
+          <div className="w-full h-[254px] bg-main rounded-[20px] flex justify-center flex-col mb-28 mt-20">
             <div className="flex justify-center font-bold text-[30px] text-white h-[42px] mb-5">
               What is a NS53 ?
             </div>
@@ -46,7 +45,7 @@ function SigmaN53() {
           </div>
           <div className="grid grid-rows-2 grid-cols-3">
             {SIGMA_N53F.map((e, index) => (
-              <div key={index} className="trans p-12 cursor-pointer">
+              <div key={index} className="trans py-12 pr-36 cursor-pointer">
                 <div className="flex flex-col">
                   <div className="flex pb-5">
                     <img className="w-[80px] h-[80px]" src={e.img} alt="" />
