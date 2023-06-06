@@ -6,12 +6,12 @@ function SigmaDai() {
   return (
     <div className="text-black">
       <div className="flex flex-col">
-        <div className="flex justify-center h-[540px]">
+        <div className="flex justify-between h-[540px] mx-[184px]">
           <div className="pt-9">
-            <div className="relative z-[1] text-[50px] font-bold w-[526px] h-[100px] leading-[50px] pb-2">
+            <div className="relative z-[1] text-[55px] font-bold h-[100px] leading-[50px] pb-2 pr-8">
               Enable <span className="text-main">ADS Insertion</span> Everywhere
             </div>
-            <div className="top-[-29px] relative bg-main/50 w-[276px] h-[30px] rounded-[20px]" />
+            <div className="top-[-29px] relative bg-main/50 w-[302px] h-[30px] rounded-[20px]" />
             <div className="w-[501px] h-[120px] font-medium text-[21px] leading-[30px] pb-8">
               Dynamic Ad Insertion – also known as Server-side ad insertion
               (SSAI) – enables the seamless delivery of video ads into content
@@ -22,17 +22,17 @@ function SigmaDai() {
             </button>
           </div>
           <div className="">
-            <img className="" src={IMAGE_PATH.TV_DAI} alt="TV_DAI" />
+            <img className="w-[900px]" src={IMAGE_PATH.TV_DAI} alt="TV_DAI" />
           </div>
         </div>
 
-        <div className="flex justify-center flex-col px-[331px]">
+        <div className="flex justify-center flex-col px-[184px]">
           <div className="font-bold text-[30px] leading-[30px] text-center pb-[22px]">
             <span className="text-main">Key</span> Feature
           </div>
           <div className="grid grid-rows-2 grid-cols-3">
             {SIGMA_DAI.map((feature, index) => (
-              <div key={index} className="feature-element p-12 cursor-pointer">
+              <div key={index} className="feature-element py-12 px-24 cursor-pointer">
                 <div className="flex justify-center flex-col">
                   <div className="flex justify-center pb-5">
                     <img
