@@ -5,6 +5,7 @@ import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import ResourcePage from 'src/pages/Resources';
 import SigmadaiPage from 'src/pages/Products/SigmaDai';
+import Blog from 'src/pages/Resources/Blog';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -15,6 +16,7 @@ export type RouteType = {
 
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
+  { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',
@@ -23,10 +25,11 @@ const routes: RouteType[] = [
   },
   {
     path: ROUTE.PRODUCT_SIGMADAI,
-    title: 'ProductSigmadai',
+    title: 'Product_Sigmadai',
     element: SigmadaiPage,
     isPrivate: true,
   },
+
 ];
 
 export default function AppRouter() {

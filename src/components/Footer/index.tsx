@@ -18,19 +18,19 @@ export default function Footer() {
         <div className="grid footer-content">
           {listItem.map((val, index) => (
             <div key={index}>
-              <h2>{val.title}</h2>
+              <h2 className='mb-0'>{val.title}</h2>
               {val.title === 'Product' ? (
                 <div className="grid product">
                   <div>
                     {val.content.slice(0, 5).map((item, count) => (
-                      <Link key={count} to={item.url}>
+                      <Link className='block w-fit' key={count} to={item.url}>
                         <p>{item.subtitle}</p>
                       </Link>
                     ))}
                   </div>
                   <div>
                     {val.content.slice(5, 9).map((item, count) => (
-                      <Link key={count} to={item.url}>
+                      <Link className='block w-fit' key={count} to={item.url}>
                         <p>{item.subtitle}</p>
                       </Link>
                     ))}
@@ -38,7 +38,7 @@ export default function Footer() {
                 </div>
               ) : (
                 val.content.map((item, count) => (
-                  <Link key={count} to={item.url}>
+                  <Link className='block w-fit' key={count} to={item.url}>
                     <p>{item.subtitle}</p>
                   </Link>
                 ))
@@ -51,9 +51,9 @@ export default function Footer() {
             <input
               placeholder="Enter your email*"
               id="input"
-              className="px-3 h-12 rounded-xl border-solid border-black"
+              className="px-3 h-12 rounded-xl border-solid border-black text-base"
             ></input>
-            <button className="h-12 w-24 mt-3 rounded-xl bg-[#fd841f] border-none text-[#ffffff]">
+            <button className="h-12 w-24 mt-3 rounded-xl bg-main border-none text-white cursor-pointer active:bg-main/75">
               <p className="button1 text-base">Subscribe</p>
             </button>
             <h2 className="mt-8">For Enquiries</h2>

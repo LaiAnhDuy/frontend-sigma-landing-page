@@ -1,14 +1,20 @@
 .item-header {
   cursor: pointer;
-  color: white;
+  a {
+    color: white !important;
+  }
 }
 .item-active {
   cursor: pointer;
-  color: hsl(27, 98%, 56%);
+  a {
+    color: hsl(27, 98%, 56%) !important;
+  }
 }
 .item-menu {
   cursor: pointer;
-  color: black;
+  a {
+    color: black !important;
+  }
 }
 .arrow-menu {
   font-size: 10px;
@@ -30,7 +36,7 @@
   stroke-width: 30;
 }
 .ant-dropdown {
-  top: 112.8px !important;
+  padding-top: 42.4px;
   /* CSS tùy chỉnh cho Dropdown */
 }
 .custom-menu {

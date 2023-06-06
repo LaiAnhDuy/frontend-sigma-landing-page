@@ -31,21 +31,21 @@ function SigmaDai() {
             <span className="text-main">Key</span> Feature
           </div>
           <div className="grid grid-rows-2 grid-cols-3">
-            {SIGMA_DAI.map((feature, index) => (
-              <div key={index} className="feature-element py-12 px-24 cursor-pointer">
+            {SIGMA_DAI.map((e, index) => (
+              <div key={index} className="trans-element py-12 px-24 cursor-pointer">
                 <div className="flex justify-center flex-col">
                   <div className="flex justify-center pb-5">
                     <img
                       className="w-[140px] h-[140px]"
-                      src={feature.img}
+                      src={e.img}
                       alt=""
                     />
                   </div>
                   <div className="font-medium text-[21px] leading-[21px] text-center pb-[10px]">
-                    {feature.name}
+                    {e.name}
                   </div>
                   <div className="font-normal text-[16px] leading-4 text-center">
-                    {feature.title}
+                    {e.title}
                   </div>
                 </div>
               </div>

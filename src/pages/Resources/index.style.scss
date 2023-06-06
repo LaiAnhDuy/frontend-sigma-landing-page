@@ -1,0 +1,42 @@
+.active:hover {
+  color: rgba(253, 132, 31, 1);
+  hr {
+    border-color: rgba(253, 132, 31, 1);
+  }
+}
+.selected {
+  color: rgba(253, 132, 31, 1);
+  hr {
+    border-color: rgba(253, 132, 31, 1);
+  }
+}
+.ant-pagination-item-active {
+  border-color: transparent !important;
+  a {
+    border: 1px solid rgba(253, 132, 31, 1) !important;
+    border-radius: 3px;
+    color: white !important;
+    background-color: rgba(253, 132, 31, 1);
+  }
+}
+.ant-pagination-item {
+  a {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 3px;
+  }
+}
+.ant-pagination-prev, .ant-pagination-next {
+  a {
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 3px;
+    width: auto;
+    height: 30px;
+    position: relative;
+    display: block;
+    padding: 0 6px;
+    margin: 0.8px;
+  }
+}
+.ant-pagination-item-ellipsis{
+  color: black !important;
+}
