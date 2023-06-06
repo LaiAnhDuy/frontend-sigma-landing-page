@@ -5,8 +5,8 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Carousel } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
 import { list } from './configs';
-import CarouselShow from './Carousel';
 import Item from 'src/components/Item';
+import CarouselShow from './carousel';
 
 export default function HomePage() {
   const arr = [
