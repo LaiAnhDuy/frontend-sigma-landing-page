@@ -35,4 +35,9 @@ export const IMAGE_PATH = {
   CASESTUDY: `${PUBLIC_URL}/images/resource/casestudy.svg`,
   DOCUMENTS: `${PUBLIC_URL}/images/resource/documents.svg`,
   VIDEOS: `${PUBLIC_URL}/images/resource/video.svg`,
+  IMAGE_NEW1:`${PUBLIC_URL}/images/resource/image_new.svg`,
+  IMAGE_BLOG1:`${PUBLIC_URL}/images/resource/image_blog.svg`,
+  IMAGE_BLOG2:`${PUBLIC_URL}/images/resource/image_blog2.svg`,
+  IMAGE_BLOG3:`${PUBLIC_URL}/images/resource/image_blog3.svg`,
+  IMAGE_BLOG4:`${PUBLIC_URL}/images/resource/image_blog4.svg`,
 };
