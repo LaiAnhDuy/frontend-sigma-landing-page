@@ -4,6 +4,7 @@ import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import ResourcePage from 'src/pages/Resources';
+import Blog from 'src/pages/Resources/Blog';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -14,12 +15,14 @@ export type RouteType = {
 
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
+  { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',
     element: ResourcePage,
     isPrivate: true,
   },
+
 ];
 
 export default function AppRouter() {
