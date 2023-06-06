@@ -5,7 +5,7 @@ import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 import { Carousel } from 'antd';
 import { CarouselRef } from 'antd/es/carousel';
 import { list } from './configs';
-import CarouselShow from './carousel';
+import CarouselShow from './Carousel';
 import Item from 'src/components/Item';
 
 export default function HomePage() {
