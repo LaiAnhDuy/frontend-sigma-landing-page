@@ -2,6 +2,7 @@
 import React from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
+import ScrollToTopButton from 'src/components/ScrollToTop';
 
 export default function Blog() {
   return (
@@ -77,7 +78,7 @@ export default function Blog() {
             />
             <img className="w-full mb-8" alt="#" src={IMAGE_PATH.IMAGE_BLOG3} />
             <img className="w-full mb-4" alt="#" src={IMAGE_PATH.IMAGE_BLOG4} />
-            <p className='mb-10'>
+            <p className="mb-10">
               Broadcasters can drop assets in any HDR format and Amagi CLOUDPORT
               – our cloud playout solution - starts processing them further. If
               formats differ, it can use tone mapping to transcode the same. For
@@ -87,14 +88,14 @@ export default function Blog() {
               format, which is HDR10 in this case. The process used in achieving
               this is tone mapping.
               <span className="block my-4"></span>
-              <span className='text-main'>Formats supported</span>
+              <span className="text-main">Formats supported</span>
               <span className="block my-4"></span>
               Currently, Amagi CLOUDPORT can support playout in HLG, HDR. While
               we can also support Dolby Vision and all HDR formats including
               HDR10+, these haven’t gained much traction in the broadcast
               industry as of now.
               <span className="block my-4"></span>
-              <span className='text-main'>Exciting roadmap</span>
+              <span className="text-main">Exciting roadmap</span>
             </p>
           </div>
         </div>
@@ -193,7 +194,8 @@ export default function Blog() {
             </div>
           </div>
         </div>
-      </div>{' '}
+      </div>
+      <ScrollToTopButton />
     </div>
   );
 }
