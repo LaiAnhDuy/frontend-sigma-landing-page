@@ -5,6 +5,7 @@ import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import ResourcePage from 'src/pages/Resources';
 import Blog from 'src/pages/Resources/Blog';
+import Comment from 'src/pages/Comment';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -16,6 +17,7 @@ export type RouteType = {
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
+  { path: ROUTE.COMMENT, title: 'Comment', element: Comment },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',
