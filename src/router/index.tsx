@@ -3,6 +3,7 @@ import PrivateRoute from 'src/components/PrivateRoute';
 import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
+import Product from 'src/pages/Product';
 import ResourcePage from 'src/pages/Resources';
 import Blog from 'src/pages/Resources/Blog';
 
@@ -16,6 +17,7 @@ export type RouteType = {
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
+  { path: ROUTE.PRODUCT, title: 'Product', element: Product },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',

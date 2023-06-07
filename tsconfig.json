@@ -17,6 +17,6 @@
     "jsx": "react-jsx",
     "baseUrl": "./"
   },
-  "include": ["src"],
+  "include": ["src", "public/images/products/index.tsx"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
