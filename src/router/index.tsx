@@ -1,37 +1,53 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import BaseLayout from 'src/components/BaseLayout'
-import HomePage from 'src/pages/Home'
-import Register from 'src/pages/Register'
-import ResourcePage from 'src/pages/Resources'
-interface RouteType {
-  component: React.ReactNode
-  path: string
-}
+import { Routes, Route } from 'react-router-dom';
+import PrivateRoute from 'src/components/PrivateRoute';
+import PublicRoute from 'src/components/PublicRoute';
+import ROUTE from 'src/constants/route';
+import HomePage from 'src/pages/Home';
+import Register from 'src/pages/Register';
+import Login from 'src/pages/Login'
+import ResourcePage from 'src/pages/Resources';
+
+export type RouteType = {
+  path: ROUTE | string;
+  title?: string;
+  isPrivate?: boolean;
+  element: () => JSX.Element;
+};
 
 const routes: RouteType[] = [
-  { path: '/', component: <HomePage /> },
-
+  { path: ROUTE.HOME, title: 'Home', element: HomePage },
+  { path: ROUTE.REGISTER, title: 'Register', element: Register },
+  { path: ROUTE.LOGIN, title: 'Login', element: Login },
   {
-    path: '/resource',
-    component: <ResourcePage />,
+    path: ROUTE.RESOURCES,
+    title: 'Resources',
+    element: ResourcePage,
+    isPrivate: true,
   },
-  {
-    path: '/register',
-    component: <Register /> 
-  }
 ]
-
 export default function AppRouter() {
   return (
     <Routes>
-      {routes.map((item, index) => (
-        <Route
-          key={index}
-          path={item.path}
-          element={<BaseLayout>{item.component}</BaseLayout>}
-        />
-      ))}
+      {routes.map((route) => {
+        const { isPrivate, element: Component } = route;
+        return (
+          <Route
+            key={route.path}
+            {...route}
+            element={
+              isPrivate ? (
+                <PrivateRoute>
+                  <Component />
+                </PrivateRoute>
+              ) : (
+                <PublicRoute>
+                  <Component />
+                </PublicRoute>
+              )
+            }
+          ></Route>
+        );
+      })}
     </Routes>
-  )
+  );
 }

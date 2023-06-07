@@ -8,11 +8,11 @@ interface BaseLayoutProps {
 
 function BaseLayout(props: BaseLayoutProps) {
   return (
-    <>
+    <div className='flex flex-col min-h-[100vh]'>
       <Header />  
       {props.children}
       <Footer />
-    </>
+    </div>
   )
 }
 

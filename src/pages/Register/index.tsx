@@ -106,7 +106,7 @@ export default function Register() {
                 Password
               </label>
               <input
-                  type={`${active1 ? "password":"text"}`} // điều kiện active 
+                  type={`${active1 ? "password":"text"}`} // điều kiện active hiện lên số, chữ 
                   // type='password'
                   className="form_control"
                   id="password"
@@ -114,7 +114,7 @@ export default function Register() {
                   value={formValue.password}
                   onChange={handleChange}
               />
-              {active1 ? <EyeOutlined className="icon" onClick={()=>setActive1(!active1)} /> : <EyeInvisibleOutlined className="icon" onClick={()=>setActive1(!active1)} />}
+              {active1 ? <EyeOutlined className=" relative right-[10%]" onClick={()=>setActive1(!active1)} /> : <EyeInvisibleOutlined className="icon" onClick={()=>setActive1(!active1)} />}
               {/* <EyeInvisibleOutlined className="icon" />  */}
                
             </div>
