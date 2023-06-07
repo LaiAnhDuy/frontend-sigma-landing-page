@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import './index.style.scss';
+import './index.style.scss';
 import { Button, Modal } from "antd";
 
 export default function Comment() {
@@ -17,8 +17,9 @@ export default function Comment() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     return (
         <div>
-            <Button type="primary" onClick={showModal}>
-                Open Modal
+            
+            <Button type="primary" onClick={showModal} className={"fixed bottom-28 right-4"}>
+                Comment
             </Button>
             <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
                 <p>Some contents...</p>

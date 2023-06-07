@@ -3,7 +3,7 @@ enum ROUTE {
   RESOURCES = '/resources',
   PAGE_NOT_FOUND = '/404',
   BLOG='/resources/blog',
-  COMMENT = '/comment'
+  //COMMENT = '/comment'
 }
 
 export default ROUTE;

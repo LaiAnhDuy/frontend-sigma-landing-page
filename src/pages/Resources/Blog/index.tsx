@@ -1,7 +1,10 @@
 import React from 'react'
+import Comment from 'src/components/Comment'
 
 export default function Blog() {
   return (
-    <div>blog </div>
+    <div>blog<Comment/>
+     </div>
+    
   )
 }
