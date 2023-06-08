@@ -7,6 +7,7 @@ enum ROUTE {
   BLOG = '/resources/blog/:id',
   NEW = '/resources/new/:id',
   ADMIN = '/admin',
+  PRODUCT = '/product',
 }
 
 export default ROUTE;

@@ -5,6 +5,7 @@ import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import Register from 'src/pages/Register';
 import Login from 'src/pages/Login'
+import Product from 'src/pages/Product';
 import ResourcePage from 'src/pages/Resources';
 import Blog from 'src/pages/Resources/Blog';
 
@@ -21,6 +22,7 @@ const routes: RouteType[] = [
   { path: ROUTE.LOGIN, title: 'Login', element: Login },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
+  { path: ROUTE.PRODUCT, title: 'Product', element: Product },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',

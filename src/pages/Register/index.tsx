@@ -20,24 +20,28 @@ export default function Register() {
   const validateForm = () => {
     const error: { [key: string]: string } = {};
     if (isEmptyValue(formValue.phone)) {
-      error.phone = "Phone is required";
-    } else if (formValue.phone.length < 10 || formValue.phone.length >= 11 || formValue.phone.charAt(0) !== "0") {
-      error.phone = "Phone number is not correct"
+      error.phone = 'Phone is required';
+    } else if (
+      formValue.phone.length < 10 ||
+      formValue.phone.length >= 11 ||
+      formValue.phone.charAt(0) !== '0'
+    ) {
+      error.phone = 'Phone number is not correct';
     }
     if (isEmptyValue(formValue.email)) {
-      error.email = "Phone is required";
+      error.email = 'Phone is required';
     } else {
       if (!isEmailValid(formValue.email)) {
-        error.email = "Email is invalid";
+        error.email = 'Email is invalid';
       }
     }
     if (isEmptyValue(formValue.password)) {
-      error.password = "Password is required";
+      error.password = 'Password is required';
     }
     if (isEmptyValue(formValue.confirmPassword)) {
-      error.confirmPassword = "Confirm password is required";
+      error.confirmPassword = 'Confirm password is required';
     } else if (formValue.confirmPassword !== formValue.password) {
-      error.confirmPassword = "Confirm password not match"
+      error.confirmPassword = 'Confirm password not match';
     }
     setFormError(error);
     return Object.keys(error).length === 0;
@@ -45,7 +49,6 @@ export default function Register() {
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setFormValue((prevFormValue) => ({
-
       ...prevFormValue,
       [name]: value,
     }));
@@ -55,9 +58,8 @@ export default function Register() {
     event.preventDefault();
     if (validateForm()) {
       console.log('Form Value:', formValue);
-    }
-    else {
-      console.log("Form invalid :))")
+    } else {
+      console.log('Form invalid :))');
     }
   };
   console.log(formError);
@@ -67,7 +69,11 @@ export default function Register() {
         <h1 className="title">Register</h1>
         <form className="form-parent" onSubmit={handleSubmit}>
           <div className="form-1">
-            <img className="form-picture" src="./images/pic_register.svg" alt="" />
+            <img
+              className="form-picture"
+              src="./images/pic_register.svg"
+              alt=""
+            />
           </div>
           <div className="form-2">
             <div className="element">
@@ -101,7 +107,7 @@ export default function Register() {
                 Password
               </label>
               <input
-                type={`${active1 ? "password" : "text"}`} // điều kiện active hiện lên số, chữ 
+                type={`${active1 ? 'password' : 'text'}`} // điều kiện active hiện lên số, chữ
                 // type='password'
                 className="form_control"
                 id="password"
@@ -109,23 +115,42 @@ export default function Register() {
                 value={formValue.password}
                 onChange={handleChange}
               />
-              {active1 ? <EyeOutlined className=" relative right-[10%]" onClick={() => setActive1(!active1)} /> : <EyeInvisibleOutlined className="icon" onClick={() => setActive1(!active1)} />}
+              {active1 ? (
+                <EyeOutlined
+                  className=" relative right-[10%]"
+                  onClick={() => setActive1(!active1)}
+                />
+              ) : (
+                <EyeInvisibleOutlined
+                  className="icon"
+                  onClick={() => setActive1(!active1)}
+                />
+              )}
               {/* <EyeInvisibleOutlined className="icon" />  */}
-
             </div>
             <div className="element">
               <label htmlFor="confirmPassword" className="form_input">
                 Confirm Password
               </label>
               <input
-                type={`${active2 ? "password" : "text"}`}
+                type={`${active2 ? 'password' : 'text'}`}
                 className="form_control"
                 id="confirmPassword"
                 name="confirmPassword"
                 value={formValue.confirmPassword}
                 onChange={handleChange}
               />
-              {active2 ? <EyeOutlined className="icon" onClick={() => setActive2(!active2)} /> : <EyeInvisibleOutlined className="icon" onClick={() => setActive2(!active2)} />}
+              {active2 ? (
+                <EyeOutlined
+                  className="icon"
+                  onClick={() => setActive2(!active2)}
+                />
+              ) : (
+                <EyeInvisibleOutlined
+                  className="icon"
+                  onClick={() => setActive2(!active2)}
+                />
+              )}
               {/* <EyeInvisibleOutlined className="icon" /> */}
             </div>
 
