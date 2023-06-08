@@ -3,8 +3,8 @@ enum ROUTE {
   RESOURCES = '/resources',
   PAGE_NOT_FOUND = '404',
   REGISTER = '/register',
-  LOGIN = '/login'
-
+  LOGIN = '/login',
+  BLOG = '/resources/blog'
 }
 
 export default ROUTE;

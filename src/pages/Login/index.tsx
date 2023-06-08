@@ -5,6 +5,7 @@ import { Checkbox } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { EyeInvisibleOutlined, EyeOutlined, GoogleOutlined } from '@ant-design/icons';
+import { isEmailValid, isEmptyValue } from 'src/utils';
 const initFormValue = {
     email: "",
     password: ""
@@ -12,12 +13,12 @@ const initFormValue = {
 interface FormValues {
     [key: string]: string;
 }
-const isEmptyValue = (value: string) => {
-    return !value || value.trim().length < 1;
-}
-const isEmailValid = (email: string) => {
-    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-}
+// const isEmptyValue = (value: string) => {
+//     return !value || value.trim().length < 1;
+// }
+// const isEmailValid = (email: string) => {
+//     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
+// }
 export default function Login() {
     const [formValue, setFormValue] = useState<FormValues>(initFormValue);
     const [formError, setFormError] = useState({});
@@ -111,11 +112,7 @@ export default function Login() {
                 {/* Đây là ảnh */}
                 <div className="" style={{ width: '40%', backgroundImage: `url(${IMAGE_PATH.LOGIN})` }}>
                 </div>
-
             </div>
-
-
-
         </div>
     );
 }

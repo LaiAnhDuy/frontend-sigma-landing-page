@@ -6,6 +6,7 @@ import HomePage from 'src/pages/Home';
 import Register from 'src/pages/Register';
 import Login from 'src/pages/Login'
 import ResourcePage from 'src/pages/Resources';
+import Blog from 'src/pages/Resources/Blog';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -18,13 +19,15 @@ const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
   { path: ROUTE.REGISTER, title: 'Register', element: Register },
   { path: ROUTE.LOGIN, title: 'Login', element: Login },
+  { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',
     element: ResourcePage,
     isPrivate: true,
   },
-]
+];
+
 export default function AppRouter() {
   return (
     <Routes>
