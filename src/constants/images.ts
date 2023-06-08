@@ -31,4 +31,5 @@ export const IMAGE_PATH = {
   TV: `${PUBLIC_URL}/images/resource/TV.png`,
   VECTOR: `${PUBLIC_URL}/images/resource/vector.svg`,
   IMAGE: `${PUBLIC_URL}/images/resource/image1.svg`,
+  LOGIN: `${PUBLIC_URL}/images/vector.jpg`
 };
