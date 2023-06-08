@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { IMAGE_PATH } from 'src/constants/images';
 
 interface ItemProps {
@@ -9,26 +9,30 @@ interface ItemProps {
   id: string;
 }
 export default function Item(props: ItemProps) {
+  const location = useLocation()
   return (
     <div
       className={`bg-white rounded-xl ${
-        window.location.pathname === '/' ? null : 'shadow-xl'
+        location.pathname === '/' ? null : 'shadow-xl'
       } `}
     >
       <img
         className="absolute"
         alt="#"
-        src={
-          props.option === 'new'
-            ? IMAGE_PATH.NEWS
-            : props.option === 'blog'
-            ? IMAGE_PATH.BLOGS
-            : props.option === 'document'
-            ? IMAGE_PATH.DOCUMENTS
-            : props.option === 'video'
-            ? IMAGE_PATH.VIDEOS
-            : IMAGE_PATH.CASESTUDY
-        }
+        src={(() => {
+          switch (props.option) {
+            case 'new':
+              return IMAGE_PATH.NEWS;
+            case 'blog':
+              return IMAGE_PATH.BLOGS;
+            case 'document':
+              return IMAGE_PATH.DOCUMENTS;
+            case 'video':
+              return IMAGE_PATH.VIDEOS;
+            case 'casestudy':
+              return IMAGE_PATH.CASESTUDY;
+          }
+        })()}
       />
       <img alt="#" className="w-full" src={props.image} />
       <div className="mx-8 pb-10  flex flex-col justify-between">
