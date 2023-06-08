@@ -20,6 +20,7 @@ const routes: RouteType[] = [
   { path: ROUTE.REGISTER, title: 'Register', element: Register },
   { path: ROUTE.LOGIN, title: 'Login', element: Login },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
+  { path: ROUTE.NEW, title: 'New', element: Blog },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',

@@ -173,7 +173,7 @@ export const menuItems = [
       {
         key: '1',
         label: (
-          <Link to="/resources/blog">
+          <Link to="/resources/blog/1">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">Blog</p>
               <p className="font-medium m-0 content">
