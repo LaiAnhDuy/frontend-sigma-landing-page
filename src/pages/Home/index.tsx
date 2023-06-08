@@ -35,22 +35,25 @@ export default function HomePage() {
     {
       title: 'OTT market will triple in value by 2028',
       url: '#',
+      id: '1',
       image: IMAGE_PATH.IMAGE2,
-      option: IMAGE_PATH.NEWS,
+      option: "new",
     },
     {
       title:
         'Infringement of copyrighted content makes it difficult for Vietnamese businesses',
       url: '#',
+      id: '2',
       image: IMAGE_PATH.IMAGE3,
-      option: IMAGE_PATH.NEWS,
+      option: "new",
     },
     {
       title:
         'Digital businesses do not want to be "single" in the world market',
       url: '#',
+      id: '3',
       image: IMAGE_PATH.IMAGE4,
-      option: IMAGE_PATH.NEWS,
+      option: "new",
     },
   ];
   const carouselRef = useRef<CarouselRef>(null);
@@ -260,6 +263,7 @@ export default function HomePage() {
               title={val.title}
               image={val.image}
               option={val.option}
+              id={val.id}
             />
           ))}
         </div>
@@ -276,7 +280,7 @@ export default function HomePage() {
           Talk to a Streaming Expert
         </p>
       </div>
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
     </div>
   );
 }

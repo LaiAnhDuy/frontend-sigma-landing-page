@@ -117,6 +117,7 @@ export default function Resources() {
                   image={val.image}
                   title={val.title}
                   option={val.option}
+                  id={val.id}
                 />
               ))}
           </div>
