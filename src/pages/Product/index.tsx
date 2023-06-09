@@ -2,6 +2,8 @@ import React from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { cdns } from './config';
+import { items } from './item';
+import Item from 'src/components/Item';
 
 const Product = () => {
   return (
@@ -12,7 +14,7 @@ const Product = () => {
             <span className="text-orange-400">Optimizing</span> Content Delivery
             Network
           </h1>
-          <h1 className="bg-orange-300 w-auto h-8 rounded-xl -mt-16"></h1>
+          <p className="bg-orange-300 w-auto h-8 rounded-xl -mt-16"></p>
           <p className="text-2xl">
             Sigma multi-CDN helps you reduce latency, improve performance, and
             save costs when routing traffic in real time by choosing to use a
@@ -86,53 +88,17 @@ const Product = () => {
       <div className="bg-gray-50">
         <div className="container m-auto py-10">
           <div className="grid grid-cols-3 gap-x-10">
-            <div>
-              <img src={IMAGE_PATH.NEWS} className="index" />
-              <div className="bg-white rounded-2xl">
-                <img src={IMAGE_PATH.RECTANGLE_2812} className="mt-5 w-full" />
-                <div className="p-5">
-                  <h1 className="h-44">
-                    Impact of CDN on VOD service providers
-                  </h1>
-                  <div className="flex">
-                    <h6 className="pr-3 text-xl">Learn more</h6>
-                    <img src={IMAGE_PATH.ARROW1} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <img src={IMAGE_PATH.NEWS} className="index" />
-              <div className="bg-white rounded-2xl">
-                <img src={IMAGE_PATH.RECTANGLE_2810} className="mt-5 w-full" />
-                <div className="p-5">
-                  <h1 className="h-44">
-                    Statistics of famous CDN distribution units in the world
-                  </h1>
-                  <div className="flex">
-                    <h6 className="pr-3 text-xl">Download</h6>
-                    <img src={IMAGE_PATH.ARROW2} />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <img src={IMAGE_PATH.NEWS} className="index" />
-              <div className="bg-white rounded-2xl">
-                <img src={IMAGE_PATH.RECTANGLE_2811} className="mt-5 w-full" />
-                <div className="p-5">
-                  <h1 className="h-44">
-                    Multi CDN: The Problem of Correlation of Quality and Price
-                  </h1>
-                  <div className="flex">
-                    <h6 className="pr-3 text-xl">Learn more</h6>
-                    <img src={IMAGE_PATH.ARROW1} />
-                  </div>
-                </div>
-              </div>
-            </div>
+              {
+                items.map((item, index) => (
+                  <Item 
+                      key={index}
+                      option={item.option}
+                      title={item.title}
+                      image={item.image}
+                      id={item.id}
+                  />
+                ))
+              }
           </div>
         </div>
       </div>
