@@ -58,5 +58,5 @@ export const IMAGE_PATH = {
   RECTANGLE_2812: `${PUBLIC_URL}/images/products/rectangle 2812.png`,
   RECTANGLE_2816: `${PUBLIC_URL}/images/products/rectangle2816.png`,
   ARROW1: `${PUBLIC_URL}/images/products/arrow1.svg`,
-  DATA_SHEET: `${PUBLIC_URL}/images/products/datasheet.svg`,
+  DATA_SHEET: `${PUBLIC_URL}/images/products/data_sheet.svg`,
 };
