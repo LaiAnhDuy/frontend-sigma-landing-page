@@ -3,7 +3,7 @@ import './index.style.scss';
 /* eslint-disable jsx-a11y/anchor-is-valid */
 export const menuItems = [
   {
-    name: (<Link  to={"/product"} className='no-underline'>Product</Link>),
+    name: (<Link to={"/product"} className='no-underline'>Product</Link>),
     item: [
       {
         key: '1',
@@ -144,7 +144,7 @@ export const menuItems = [
     ],
   },
   {
-    name: (<Link  to={"/service"} className='no-underline'>Service</Link>),
+    name: (<Link to={"/service"} className='no-underline'>Service</Link>),
     item: [
       {
         key: '1',
@@ -164,16 +164,16 @@ export const menuItems = [
     ],
   },
   {
-    name: (<Link  to={"/solution"} className='no-underline'>Solution</Link>),
+    name: (<Link to={"/solution"} className='no-underline'>Solution</Link>),
     item: [],
   },
   {
-    name: (<Link  to={"/resources"} className='no-underline'>Resources</Link>),
+    name: (<Link to={"/resources"} className='no-underline'>Resources</Link>),
     item: [
       {
         key: '1',
         label: (
-          <Link to="/resources/blog">
+          <Link to="/resources/blog/1">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">Blog</p>
               <p className="font-medium m-0 content">
