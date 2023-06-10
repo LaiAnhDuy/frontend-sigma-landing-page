@@ -4,9 +4,10 @@ import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import Register from 'src/pages/Register';
-import Login from 'src/pages/Login'
+import Login from 'src/pages/Login';
 import Product from 'src/pages/Product';
 import ResourcePage from 'src/pages/Resources';
+import SigmaDAIPage from 'src/pages/Products/SigmaDai';
 import Blog from 'src/pages/Resources/Blog';
 
 export type RouteType = {
@@ -27,6 +28,12 @@ const routes: RouteType[] = [
     path: ROUTE.RESOURCES,
     title: 'Resources',
     element: ResourcePage,
+    isPrivate: true,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_DAI,
+    title: 'Product Sigma DAI',
+    element: SigmaDAIPage,
     isPrivate: true,
   },
 ];

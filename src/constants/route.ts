@@ -8,6 +8,7 @@ enum ROUTE {
   NEW = '/resources/new/:id',
   ADMIN = '/admin',
   PRODUCT = '/product',
+  PRODUCT_SIGMA_DAI = '/product/sigmadai',
 }
 
 export default ROUTE;
