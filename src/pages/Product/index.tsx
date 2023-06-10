@@ -3,12 +3,14 @@ import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { cdns } from './config';
 import { items } from './item';
+import { frames } from './frame';
 import Item from 'src/components/Item';
+import Frame from 'src/components/Frame';
 
 const Product = () => {
   return (
     <div>
-      <div className="container m-auto grid grid-cols-2 justify-between">
+      <div className="container m-auto grid grid-cols-2 justify-between h-auto">
         <div>
           <h1 className="text-6xl">
             <span className="text-orange-400">Optimizing</span> Content Delivery
@@ -43,7 +45,7 @@ const Product = () => {
         </p>
       </div>
 
-      <div className="container m-auto">
+      <div className="container m-auto mt-10">
         <h1 className="text-orange-400">CDN performance over 30 days</h1>
         <img src={IMAGE_PATH.CHART} alt="" className="w-full" />
         <div className="grid grid-cols-8 mt-6">
@@ -52,7 +54,7 @@ const Product = () => {
           ))}
         </div>
       </div>
-      <div className="bg-orange-400 mt-5">
+      <div className="bg-orange-400 mt-12">
         <div className="container m-auto text-center py-5">
           <h1 className="text-white text-4xl">Outstanding advantages</h1>
           <p className="text-white m-10 text-xl">
@@ -61,8 +63,17 @@ const Product = () => {
             flexible and powerful DNS traffic management enable our customers to
             achieve significant performance gains and cost reductions.
           </p>
-          <img src={IMAGE_PATH.FRAME_1} alt="" className="m-6" />
-          <img src={IMAGE_PATH.FRAME_2} alt="" className="m-6" />
+          <div className='grid grid-cols-3 text-white text-xl'>
+              {
+                frames.map((frame, index) => (
+                  <Frame 
+                      key={index}
+                      image={frame.image}
+                      title={frame.title}
+                  />
+                ))
+              }
+          </div>
         </div>
       </div>
 
