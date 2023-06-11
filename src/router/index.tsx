@@ -4,7 +4,7 @@ import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import ResourcePage from 'src/pages/Resources';
-import SigmadaiPage from 'src/pages/Products/SigmaDai';
+import SigmaDAIPage from 'src/pages/Products/SigmaDai';
 import Blog from 'src/pages/Resources/Blog';
 
 export type RouteType = {
@@ -25,8 +25,8 @@ const routes: RouteType[] = [
   },
   {
     path: ROUTE.PRODUCT_SIGMADAI,
-    title: 'Product_Sigmadai',
-    element: SigmadaiPage,
+    title: 'Product Sigma DAI',
+    element: SigmaDAIPage,
     isPrivate: true,
   },
 
