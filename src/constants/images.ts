@@ -61,4 +61,13 @@ export const IMAGE_PATH = {
   PM5: `${PUBLIC_URL}/images/pm5.png`,
   TRANS_W: `${PUBLIC_URL}/images/trans-w.png`,
   LINE: `${PUBLIC_URL}/images/line.svg`,
+  PACKAGE_W: `${PUBLIC_URL}/images/package-w.png`,
+  PO1: `${PUBLIC_URL}/images/po1.png`,
+  PO2: `${PUBLIC_URL}/images/po2.png`,
+  PO3: `${PUBLIC_URL}/images/po3.png`,
+  PO4: `${PUBLIC_URL}/images/po4.png`,
+  PO5: `${PUBLIC_URL}/images/po5.png`,
+  PO6: `${PUBLIC_URL}/images/po6.png`,
+  P_MAC: `${PUBLIC_URL}/images/p-mac.png`,
+  P_SOLUTION: `${PUBLIC_URL}/images/p-solution.png`,
 };

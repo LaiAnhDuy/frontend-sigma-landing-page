@@ -6,6 +6,7 @@ enum ROUTE {
   PRODUCT_SIGMADAI = '/product/sigmadai',
   PRODUCT_SIGMAN53 = '/product/sigman53',
   PRODUCT_SIGMATRANSCODER = '/product/sigmatranscoder',
+  PRODUCT_SIGMAPACKAGE = '/product/sigmapackage',
 }
 
 export default ROUTE;
