@@ -17,7 +17,7 @@ function SigmaDai() {
               (SSAI) – enables the seamless delivery of video ads into content
               streamed on internet-enabled devices.
             </div>
-            <button className="bg-main rounded-[4px] border-none text-white w-[248px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer hover:bg-[#eb694c]">
+            <button className="bg-main rounded-[4px] border-none text-white w-[248px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
               Request your free DRM trial
             </button>
           </div>
@@ -84,10 +84,10 @@ function SigmaDai() {
             Let share your <span className="text-main">project</span> with Us
           </div>
           <div className="flex justify-center mb-24">
-            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] hover:bg-[#eb694c]">
+            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
               Free Trial
             </button>
-            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer hover:bg-[#cfcbcb]">
+            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
               Talk to a Streaming Expert
             </button>
           </div>
