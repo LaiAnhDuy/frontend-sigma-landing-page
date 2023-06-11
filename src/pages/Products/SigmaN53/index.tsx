@@ -17,7 +17,7 @@ function SigmaN53() {
               Scale your applications and improve availability, security, and
               performance across your infrastructure in a few clicks.
             </div>
-            <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer hover:bg-[#eb694c]">
+            <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
               Start your free trial
             </button>
           </div>
@@ -127,10 +127,10 @@ function SigmaN53() {
             </div>
           </div>
           <div className="flex justify-center mb-24">
-            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] hover:bg-[#eb694c]">
+            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
               Free Trial
             </button>
-            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer hover:bg-[#cfcbcb]">
+            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
               Talk to a Streaming Expert
             </button>
           </div>
