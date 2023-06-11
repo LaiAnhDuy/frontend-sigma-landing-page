@@ -6,7 +6,7 @@ interface FrameProps {
   }
 export default function Frame(props: FrameProps) {
     return (
-        <div>
+        <div className='m-5'>
             <img src={props.image} alt=''/>
             <p>{props.title}</p>
         </div>

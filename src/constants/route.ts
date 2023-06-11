@@ -7,7 +7,8 @@ enum ROUTE {
   BLOG = '/resources/blog/:id',
   NEW = '/resources/new/:id',
   ADMIN = '/admin',
-  PRODUCT = '/product',
+  MULTI = '/product/multi',
+  AUDIO = '/product/audio-wartermarking',
   PRODUCT_SIGMA_DAI = '/product/sigmadai',
 }
 
