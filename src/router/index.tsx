@@ -5,7 +5,7 @@ import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
 import ResourcePage from 'src/pages/Resources';
 import Blog from 'src/pages/Resources/Blog';
-import SigmaTRANSCODERPage from 'src/pages/Products/SigmaTranscoder';
+import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -24,9 +24,9 @@ const routes: RouteType[] = [
     isPrivate: true,
   },
   {
-    path: ROUTE.PRODUCT_SIGMATRANSCODER,
+    path: ROUTE.PRODUCT_SIGMA_TRANSCODER,
     title: 'Product Sigma TRANSCODER',
-    element: SigmaTRANSCODERPage,
+    element:SigmaTranscoderPage,
     isPrivate: true,
   },
 ];
