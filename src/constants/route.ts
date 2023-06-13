@@ -12,6 +12,8 @@ enum ROUTE {
   PRODUCT_SIGMA_NS53 = '/product/sigma-ns53',
   PRODUCT_SIGMA_TRANSCODER = '/product/sigma-transcoder',
   PRODUCT_SIGMA_PACKAGE = '/product/sigma-package',
+  MULTI = '/product/multi',
+  AUDIO_WATERMARKING = '/product/audio-watermarking',
 }
 
 export default ROUTE;
