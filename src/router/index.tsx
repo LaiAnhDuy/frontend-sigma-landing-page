@@ -12,6 +12,7 @@ import SigmaDAIPage from 'src/pages/Products/SigmaDai';
 import Blog from 'src/pages/Resources/Blog';
 import SigmaN53Page from 'src/pages/Products/SigmaN53';
 import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
+import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -40,7 +41,7 @@ const routes: RouteType[] = [
   },
   {
     path: ROUTE.PRODUCT_SIGMA_NS53,
-    title: 'Product Sigma N53',
+    title: 'Product Sigma NS53',
     element: SigmaN53Page,
   },
   {
@@ -52,6 +53,11 @@ const routes: RouteType[] = [
     path: ROUTE.PRODUCT_SIGMA_PACKAGE,
     title: 'Product Sigma Package',
     element: SigmaPackagePage,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_TRANSCODER,
+    title: 'Product Sigma Transcoder',
+    element: SigmaTranscoderPage,
     isPrivate: true,
   },
 ];
