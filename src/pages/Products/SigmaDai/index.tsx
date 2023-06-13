@@ -32,14 +32,13 @@ function SigmaDai() {
           </div>
           <div className="grid grid-rows-2 grid-cols-3">
             {SIGMA_DAI.map((e, index) => (
-              <div key={index} className="trans-element py-12 px-24 cursor-pointer">
+              <div
+                key={index}
+                className="trans-element py-12 px-24 cursor-pointer"
+              >
                 <div className="flex justify-center flex-col">
                   <div className="flex justify-center pb-5">
-                    <img
-                      className="w-[140px] h-[140px]"
-                      src={e.img}
-                      alt=""
-                    />
+                    <img className="w-[140px] h-[140px]" src={e.img} alt="" />
                   </div>
                   <div className="font-medium text-[21px] leading-[21px] text-center pb-[10px]">
                     {e.name}
@@ -60,7 +59,7 @@ function SigmaDai() {
             Monetization
           </div>
           <div className="flex justify-center items-center border-dashed border-[#A5A5A5] border-[3px] rounded-[10px] h-[487px]">
-            <img src={IMAGE_PATH.BLOCKES_1} alt="" />
+            <img src={IMAGE_PATH.BLOCKERS_1} alt="" />
           </div>
           <div className="pt-[20px] font-normal text-[21px] text-center text-[#000] pb-[50px]">
             By integrating content and ads into one continuous stream, SSAI
@@ -70,7 +69,7 @@ function SigmaDai() {
             increase yield from linear streams within OTT and web environments
           </div>
           <div className="flex justify-center items-center border-dashed border-[#A5A5A5] border-[3px] rounded-[10px] h-[487px]">
-            <img src={IMAGE_PATH.BLOCKES_2} alt="" />
+            <img src={IMAGE_PATH.BLOCKERS_2} alt="" />
           </div>
           <div className="pt-[20px] font-normal text-[21px] text-center text-[#000] pb-[100px]">
             Users stream video or OTT content on internet-enabled devices via

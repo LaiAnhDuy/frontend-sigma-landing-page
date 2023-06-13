@@ -9,6 +9,7 @@ import Product from 'src/pages/Product';
 import ResourcePage from 'src/pages/Resources';
 import SigmaDAIPage from 'src/pages/Products/SigmaDai';
 import Blog from 'src/pages/Resources/Blog';
+import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -34,6 +35,11 @@ const routes: RouteType[] = [
     path: ROUTE.PRODUCT_SIGMA_DAI,
     title: 'Product Sigma DAI',
     element: SigmaDAIPage,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_PACKAGE,
+    title: 'Product Sigma PACKAGE',
+    element: SigmaPackagePage,
     isPrivate: true,
   },
 ];
