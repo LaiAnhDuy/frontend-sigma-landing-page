@@ -70,6 +70,7 @@ export const SIGMA_TRANSCODER2 = [
     id: 4,
     img: IMAGE_PATH.PM5,
     title: 'System optimization',
-    description: 'Save bandwidth and storage requirements with the unmatched compression efficiency of Kyrion and TITAN. Optimize your delivery platform by repurposing available cloud-native resources for file transcoding. Reduce waste and complexity with a single workflow for both live and file transcoding. Simplicity– with no compromise on video quality',
+    description:
+      'Save bandwidth and storage requirements with the unmatched compression efficiency of Kyrion and TITAN. Optimize your delivery platform by repurposing available cloud-native resources for file transcoding. Reduce waste and complexity with a single workflow for both live and file transcoding. Simplicity– with no compromise on video quality',
   },
 ];
