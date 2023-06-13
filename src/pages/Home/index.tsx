@@ -98,8 +98,8 @@ export default function HomePage() {
                   value={input}
                   onChange={handleInputChange}
                 />
-                <button className="icon " onClick={handleClick}>
-                  <p className="text-main font-semibold text-base m-auto">
+                <button className="icon w-fit " onClick={handleClick}>
+                  <p className="text-main font-semibold text-base m-auto ">
                     Get Started For Free
                   </p>
                 </button>

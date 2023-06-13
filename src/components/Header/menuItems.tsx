@@ -1,9 +1,20 @@
 import { Link } from 'react-router-dom';
 import './index.style.scss';
 /* eslint-disable jsx-a11y/anchor-is-valid */
+
 export const menuItems = [
   {
-    name: (<Link to={"/product"} className='no-underline'>Product</Link>),
+    name: (
+      <div
+        className={`${
+          window.location.pathname.split('/')[1] === 'product'
+            ? 'text-main'
+            : null
+        }`}
+      >
+        Product
+      </div>
+    ),
     item: [
       {
         key: '1',
@@ -57,7 +68,7 @@ export const menuItems = [
           <a href="#">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Livestreaming
+                Sigma Live streaming
               </p>
               <p className="font-medium m-0 content">
                 Go live with recorded content and broadcast in real time.
@@ -84,7 +95,7 @@ export const menuItems = [
       {
         key: '6',
         label: (
-          <a href="#">
+          <a href="/product/sigma">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Multi CDN
@@ -102,7 +113,7 @@ export const menuItems = [
           <a href="#">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Audio Warter Marking
+                Sigma Audio Water Marking
               </p>
               <p className="font-medium m-0 content">
                 Audio signal processing to determine copyright
@@ -121,7 +132,7 @@ export const menuItems = [
               </p>
               <p className="font-medium m-0 content">
                 Server-Side Ad Insertion Solution exclusively for Television,
-                Livestreaming Event and VOD
+                Live streaming Event and VOD
               </p>
             </div>
           </a>
@@ -144,7 +155,17 @@ export const menuItems = [
     ],
   },
   {
-    name: (<Link to={"/service"} className='no-underline'>Service</Link>),
+    name: (
+      <div
+        className={`${
+          window.location.pathname.split('/')[1] === 'service'
+            ? 'text-main'
+            : null
+        }`}
+      >
+        Service
+      </div>
+    ),
     item: [
       {
         key: '1',
@@ -164,29 +185,36 @@ export const menuItems = [
     ],
   },
   {
-    name: (<Link to={"/solution"} className='no-underline'>Solution</Link>),
+    name: (
+      <div
+        className={`${
+          window.location.pathname.split('/')[1] === 'solution'
+            ? 'text-main'
+            : null
+        }`}
+      >
+        Solution
+      </div>
+    ),
     item: [],
   },
   {
-    name: (<Link to={"/resources"} className='no-underline'>Resources</Link>),
+    name: (
+      <div
+        className={`${
+          window.location.pathname.split('/')[1] === 'resources'
+            ? 'text-main'
+            : null
+        }`}
+      >
+        Resource
+      </div>
+    ),
     item: [
       {
         key: '1',
         label: (
-          <Link to="/resources/blog/1">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">Blog</p>
-              <p className="font-medium m-0 content">
-                Lets see more infor about our solution{' '}
-              </p>
-            </div>
-          </Link>
-        ),
-      },
-      {
-        key: '2',
-        label: (
-          <a href="#">
+          <a href="/resources/new">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">News</p>
               <p className="font-medium m-0 content">
@@ -197,20 +225,22 @@ export const menuItems = [
         ),
       },
       {
-        key: '3',
+        key: '2',
         label: (
-          <a href="#">
+          <Link to="/resources/blog" reloadDocument>
             <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">Video</p>
-              <p className="font-medium m-0 content">Maybe you want to watch</p>
+              <p className="m-0 text-base font-medium mb-2 text-main">Blogs</p>
+              <p className="font-medium m-0 content">
+                Lets see more info about our solution{' '}
+              </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
-        key: '4',
+        key: '3',
         label: (
-          <a href="#">
+          <Link to="/resources/casestudy" reloadDocument>
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Casestudy
@@ -219,22 +249,33 @@ export const menuItems = [
                 Understand the customer{' '}
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
-        key: '5',
+        key: '4',
         label: (
-          <a href="#">
+          <Link to="/resources/document" reloadDocument>
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
-                Document
+                Documents
               </p>
               <p className="font-medium m-0 content">
                 Let's see the latest information of the market{' '}
               </p>
             </div>
-          </a>
+          </Link>
+        ),
+      },
+      {
+        key: '5',
+        label: (
+          <Link to="/resources/video" reloadDocument>
+            <div className="w-50">
+              <p className="m-0 text-base font-medium mb-2 text-main">Video</p>
+              <p className="font-medium m-0 content">Maybe you want to watch</p>
+            </div>
+          </Link>
         ),
       },
     ],

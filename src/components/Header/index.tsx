@@ -6,6 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { DownOutlined, SearchOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
 import { IMAGE_PATH } from 'src/constants/images';
+import User from './User';
 
 export default function Header() {
   const location = useLocation();
@@ -121,6 +122,7 @@ export default function Header() {
               },
             ]}
           />
+          <User user={activeHeader && path === '/' ? ' support ' : ' support1 '}/>
         </div>
       </div>
     </div>

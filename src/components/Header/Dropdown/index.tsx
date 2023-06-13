@@ -7,14 +7,13 @@ import './index.style.scss';
 
 interface DropDownProps {
   menuItems: MenuProps['items'];
-  hoverText: JSX.Element|string;
+  hoverText: JSX.Element | string;
   clickHeader: () => void;
   activeHeader: boolean;
-  path:string
+  path: string;
 }
 
 function DropDown(props: DropDownProps) {
-
   const [active, setActive] = useState(true);
   const onClick: MenuProps['onClick'] = ({ key }) => {
     setActive(true);
@@ -35,26 +34,26 @@ function DropDown(props: DropDownProps) {
           } `,
         }}
         className={`mx-6 font-medium ${
-          props.activeHeader && props.path==="/"
+          props.activeHeader && props.path === '/'
             ? ' item-header '
             : active
             ? ' item-menu '
             : ' item-active '
         }
            `}
-        trigger={['hover']}
+        trigger={['click']}
         onOpenChange={() => {
           props.clickHeader();
           setActive(!active);
         }}
       >
         <Space>
-          {props.hoverText}
+        {props.hoverText}
           <DownOutlined
             className={`${
               props.menuItems?.length === 0
                 ? 'hidden'
-                : props.activeHeader && props.path==="/"
+                : props.activeHeader && props.path === '/'
                 ? ' arrow-header '
                 : active
                 ? ' arrow-menu '

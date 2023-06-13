@@ -1,13 +1,11 @@
 enum ROUTE {
   HOME = '/',
-  RESOURCES = '/resources',
+  RESOURCES = '/resources/:tab',
   PAGE_NOT_FOUND = '/404',
-  REGISTER = '/register',
-  LOGIN = '/login',
   BLOG = '/resources/blog/:id',
   NEW = '/resources/new/:id',
   ADMIN = '/admin',
-  PRODUCT = '/product',
+  PRODUCT = '/product/:tab',
 }
 
 export default ROUTE;

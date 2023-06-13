@@ -18,8 +18,6 @@ export type RouteType = {
 
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
-  { path: ROUTE.REGISTER, title: 'Register', element: Register },
-  { path: ROUTE.LOGIN, title: 'Login', element: Login },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
   { path: ROUTE.PRODUCT, title: 'Product', element: Product },
