@@ -1,22 +1,16 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.css';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
+import { isEmailValid, isEmptyValue } from 'src/utils'
 const initFormValue = {
   phone: '',
   email: '',
   password: '',
   confirmPassword: '',
 };
-const isEmptyValue = (value:string) => {
-  return !value || value.trim().length < 1;
-}
-const isEmailValid = (email:string) => {
-  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-}
 interface FormValues {
   [key: string]: string;
 }
-
 export default function Register() {
   const [formValue, setFormValue] = useState<FormValues>(initFormValue);
   const [formError, setFormError] = useState({});

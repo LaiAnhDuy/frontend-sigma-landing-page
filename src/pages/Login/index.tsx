@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-redeclare */
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss'
 import { IMAGE_PATH } from 'src/constants/images';
@@ -13,12 +14,6 @@ const initFormValue = {
 interface FormValues {
     [key: string]: string;
 }
-// const isEmptyValue = (value: string) => {
-//     return !value || value.trim().length < 1;
-// }
-// const isEmailValid = (email: string) => {
-//     return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-// }
 export default function Login() {
     const [formValue, setFormValue] = useState<FormValues>(initFormValue);
     const [formError, setFormError] = useState({});
@@ -31,10 +26,8 @@ export default function Login() {
         }));
     };
     const validateForm = () => {
-        // const error = {};
         const error: { [key: string]: string } = {};
         if (isEmptyValue(formValue.email)) {
-            // error["email"] = "Email is required!";
             error.email = "Email is required!";
         } else {
             if (!isEmailValid(formValue.email)) {
@@ -83,6 +76,9 @@ export default function Login() {
                                 value={formValue.email}
                                 onChange={handleChange}
                             />
+                            {/* {formError.email && (
+                               <div className="error-feedback">{formError.email}</div>
+                            )} */}
                         </div>
                         <label htmlFor="passWord" className="text-lg">
                             Password
