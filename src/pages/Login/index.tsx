@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { EyeInvisibleOutlined, EyeOutlined, GoogleOutlined } from '@ant-design/icons';
 import { isEmailValid, isEmptyValue } from 'src/utils';
+import { Link } from 'react-router-dom';
 const initFormValue = {
     email: "",
     password: ""
@@ -16,8 +17,9 @@ interface FormValues {
 }
 export default function Login() {
     const [formValue, setFormValue] = useState<FormValues>(initFormValue);
-    const [formError, setFormError] = useState({});
+    const [formError, setFormError] = useState<FormValues>({});
     const [active1, setActive1] = useState(true);
+
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value, name } = event.target;
         setFormValue((prevFormValue) => ({
@@ -31,12 +33,12 @@ export default function Login() {
             error.email = "Email is required!";
         } else {
             if (!isEmailValid(formValue.email)) {
-                error.email = "Email is invalid";
+                error.email = "Email is invalid!";
             }
         }
         if (isEmptyValue(formValue.password)) {
-            error.password = "Password is required";
-        }
+            error.password = "Password is required!";
+        } else { } // check password valid or invalid 
         setFormError(error);
         return Object.keys(error).length === 0;
     };
@@ -78,15 +80,15 @@ export default function Login() {
                             />
                             {/* {formError.email && (
                                <div className="error-feedback">{formError.email}</div>
-                            )} */}
+                            )}  */}
+                            <div className="h-3 text-red-700 text-sm font-semibold">{formError.email}</div>
                         </div>
                         <label htmlFor="passWord" className="text-lg">
                             Password
                         </label>
-                        <div className='mb-4'>
+                        <div className=''>
                             <input
                                 type={`${active1 ? "password" : "text"}`} // điều kiện active hiện lên số, chữ 
-                                // type="password"
                                 id="password"
                                 name="password"
                                 className="border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200"
@@ -94,12 +96,14 @@ export default function Login() {
                                 onChange={handleChange}
                             />
                             {active1 ? <EyeOutlined className="-ml-[30px]" onClick={() => setActive1(!active1)} /> : <EyeInvisibleOutlined className="-ml-[30px]" onClick={() => setActive1(!active1)} />}
-
                         </div>
+                        <div className="h-3 text-red-700 text-sm font-semibold mb-4">{formError.password}</div>
                         <Checkbox onChange={() => { }} className="flex justify-start text-sm mb-4">Remember password</Checkbox>
                         <div className='flex justify-center'>
-                            <input type="submit" className="w-24 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white" value="Sign In" />
-                            <input type="submit" className="w-24 ml-4 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base" value="Sign Up" />
+                            <input type="submit" className="w-24 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" value="Sign In" />
+                            <Link to="/register" className="">
+                                <input type="submit" className="h-9 w-24 ml-4 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" value="Sign Up" />
+                            </Link>
                         </div>
                         <p className="flex justify-center text-pink-500 text-sm">Forgot Password</p>
 
