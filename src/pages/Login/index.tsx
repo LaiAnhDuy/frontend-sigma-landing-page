@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
@@ -23,10 +25,10 @@ interface FormValues {
 }
 
 interface LoginProps {
-  SignUp: () => void;
-  SignIn: () => void;
+  signUp: () => void;
+  signIn: () => void;
 }
-export default function Login(props: LoginProps) {
+export default function Login({ signIn, signUp }: LoginProps) {
   const [formValue, setFormValue] = useState<FormValues>(initFormValue);
   const [formError, setFormError] = useState({});
   const [active1, setActive1] = useState(true);
@@ -62,7 +64,6 @@ export default function Login(props: LoginProps) {
       console.log('Form invalid');
     }
   };
-  console.log(formError);
   return (
     <div className="login-page my-4">
       <div className="" style={{ display: 'flex', width: 600, margin: 'auto' }}>
@@ -139,14 +140,14 @@ export default function Login(props: LoginProps) {
             </Checkbox>
             <div className="flex justify-center ">
               <input
-              onClick={props.SignIn}
+                onClick={signIn}
                 type="submit"
                 className="w-24 h-9 border-solid cursor-pointer border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white"
                 value="Sign In"
               />
               <input
                 type="submit"
-                onClick={props.SignUp}
+                onClick={signUp}
                 className="w-24 ml-4 h-9 border-solid cursor-pointer border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white"
                 value="Sign Up"
               />

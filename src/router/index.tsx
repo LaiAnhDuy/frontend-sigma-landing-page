@@ -3,8 +3,6 @@ import PrivateRoute from 'src/components/PrivateRoute';
 import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
-import Register from 'src/pages/Register';
-import Login from 'src/pages/Login'
 import Product from 'src/pages/Product';
 import ResourcePage from 'src/pages/Resources';
 import Blog from 'src/pages/Resources/Blog';

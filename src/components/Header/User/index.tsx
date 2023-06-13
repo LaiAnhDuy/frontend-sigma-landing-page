@@ -9,7 +9,7 @@ interface UserProps {
   user: string;
 }
 
-export default function User(props: UserProps) {
+export default function User({ user }: UserProps) {
   const [logIn, setLogIn] = useState(false);
   const [option, setOption] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -43,11 +43,19 @@ export default function User(props: UserProps) {
   ];
   const items2: MenuProps['items'] = [
     {
-      label: <div >Profile</div>,
+      label: <div>Profile</div>,
       key: '0',
     },
     {
-      label: <div onClick={()=>{setLogIn(false)}}>Log out</div>,
+      label: (
+        <div
+          onClick={() => {
+            setLogIn(false);
+          }}
+        >
+          Log out
+        </div>
+      ),
       key: '1',
     },
   ];
@@ -66,13 +74,13 @@ export default function User(props: UserProps) {
       >
         {logIn ? (
           <div
-          className={`border-solid rounded-full  border-[1px]  w-6 text-center bg-transparent text-white h-6 ${props.user} `}
-        >
-          <UserOutlined />
-        </div>
+            className={`border-solid rounded-full  border-[1px]  w-6 text-center bg-transparent text-white h-6 ${user} `}
+          >
+            <UserOutlined />
+          </div>
         ) : (
           <div
-            className={`border-solid rounded-full  border-[1px]  w-6 text-center bg-transparent text-white h-6 ${props.user} `}
+            className={`border-solid rounded-full  border-[1px]  w-6 text-center bg-transparent text-white h-6 ${user} `}
           >
             <UserOutlined />
           </div>
@@ -87,7 +95,7 @@ export default function User(props: UserProps) {
         closable={false}
       >
         {option ? (
-          <Login SignUp={showModalSignUp} SignIn={handleOk} />
+          <Login signUp={showModalSignUp} signIn={handleOk} />
         ) : (
           <Register />
         )}

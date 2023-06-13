@@ -6,11 +6,11 @@
   cursor: pointer;
   color: hsl(27, 98%, 56%) !important;
 }
-.item-menu {
+.item-inactive {
   cursor: pointer;
   color: black !important;
 }
-.arrow-menu {
+.arrow-inactive {
   font-size: 10px;
   color: black;
   stroke: #000000;
@@ -32,12 +32,12 @@
 .ant-dropdown {
   padding-top: 42.4px;
 }
-.custom-menu {
+.custom-menu1 {
   display: grid;
   grid-template-columns: 250px 250px;
   padding: 40px !important;
 }
-.custom {
+.custom-menu2 {
   display: grid;
   grid-template-columns: 250px;
 

@@ -19,7 +19,7 @@ export const menuItems = [
       {
         key: '1',
         label: (
-          <a href="#">
+          <a href="/product/drm">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma DRM/Multi DRM
@@ -34,7 +34,7 @@ export const menuItems = [
       {
         key: '2',
         label: (
-          <a href="#">
+          <a href="/product/transcoder">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Transcoder
@@ -49,7 +49,7 @@ export const menuItems = [
       {
         key: '3',
         label: (
-          <a href="#">
+          <a href="/product/origin/packager">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Origin/Packager
@@ -65,7 +65,7 @@ export const menuItems = [
       {
         key: '4',
         label: (
-          <a href="#">
+          <a href="/product/livestreaming">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Live streaming
@@ -80,7 +80,7 @@ export const menuItems = [
       {
         key: '5',
         label: (
-          <a href="#">
+          <a href="/product/interactive">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Interactive
@@ -110,7 +110,7 @@ export const menuItems = [
       {
         key: '7',
         label: (
-          <a href="#">
+          <a href="/product/awm">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Audio Water Marking
@@ -125,7 +125,7 @@ export const menuItems = [
       {
         key: '8',
         label: (
-          <a href="#">
+          <a href="/product/dai">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Dynamic Ads Insert
@@ -141,7 +141,7 @@ export const menuItems = [
       {
         key: '9',
         label: (
-          <a href="#">
+          <a href="/product/dns">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">NS53</p>
               <p className="font-medium m-0 content">
@@ -170,7 +170,7 @@ export const menuItems = [
       {
         key: '1',
         label: (
-          <a href="#">
+          <a href="/service">
             <div className="">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 OTT Service{' '}
@@ -186,15 +186,17 @@ export const menuItems = [
   },
   {
     name: (
-      <div
-        className={`${
-          window.location.pathname.split('/')[1] === 'solution'
-            ? 'text-main'
-            : null
-        }`}
-      >
-        Solution
-      </div>
+      <a href='/solution'>
+        <div
+          className={`${
+            window.location.pathname.split('/')[1] === 'solution'
+              ? 'text-main'
+              : null
+          }`}
+        >
+          Solution
+        </div>
+      </a>
     ),
     item: [],
   },

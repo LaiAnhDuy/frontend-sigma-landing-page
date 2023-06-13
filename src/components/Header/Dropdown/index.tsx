@@ -13,7 +13,13 @@ interface DropDownProps {
   path: string;
 }
 
-function DropDown(props: DropDownProps) {
+function DropDown({
+  activeHeader,
+  menuItems,
+  hoverText,
+  clickHeader,
+  path,
+}: DropDownProps) {
   const [active, setActive] = useState(true);
   const onClick: MenuProps['onClick'] = ({ key }) => {
     setActive(true);
@@ -23,40 +29,40 @@ function DropDown(props: DropDownProps) {
     <div>
       <Dropdown
         menu={{
-          items: props.menuItems,
+          items: menuItems,
           onClick,
           className: `${
-            props.menuItems?.length === 0
+            menuItems?.length === 0
               ? 'hidden'
-              : props.menuItems?.length === 1
-              ? 'custom'
-              : 'custom-menu'
+              : menuItems?.length === 1
+              ? 'custom-menu2'
+              : 'custom-menu1'
           } `,
         }}
         className={`mx-6 font-medium ${
-          props.activeHeader && props.path === '/'
+          activeHeader && path === '/'
             ? ' item-header '
             : active
-            ? ' item-menu '
+            ? ' item-inactive '
             : ' item-active '
         }
            `}
         trigger={['click']}
         onOpenChange={() => {
-          props.clickHeader();
+          clickHeader();
           setActive(!active);
         }}
       >
         <Space>
-        {props.hoverText}
+          {hoverText}
           <DownOutlined
             className={`${
-              props.menuItems?.length === 0
+              menuItems?.length === 0
                 ? 'hidden'
-                : props.activeHeader && props.path === '/'
+                : activeHeader && path === '/'
                 ? ' arrow-header '
                 : active
-                ? ' arrow-menu '
+                ? ' arrow-inactive '
                 : ' arrow-active '
             }
                ml-1`}

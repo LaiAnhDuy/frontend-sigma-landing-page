@@ -8,8 +8,8 @@ interface ItemProps {
   option: string;
   id: string;
 }
-export default function Item(props: ItemProps) {
-  const location = useLocation()
+export default function Item({ title, image, option, id }: ItemProps) {
+  const location = useLocation();
   return (
     <div
       className={`bg-white rounded-xl ${
@@ -20,7 +20,7 @@ export default function Item(props: ItemProps) {
         className="absolute"
         alt="#"
         src={(() => {
-          switch (props.option) {
+          switch (option) {
             case 'new':
               return IMAGE_PATH.NEWS;
             case 'blog':
@@ -34,13 +34,10 @@ export default function Item(props: ItemProps) {
           }
         })()}
       />
-      <img alt="#" className="w-full" src={props.image} />
+      <img alt="#" className="w-full" src={image} />
       <div className="mx-8 pb-10  flex flex-col justify-between">
-        <h1 className="text-2xl h-36">{props.title}</h1>
-        <Link
-          to={`/resources/${props.option}/${props.id}`}
-          className="no-underline w-fit"
-        >
+        <h1 className="text-2xl h-36">{title}</h1>
+        <Link to={`/resources/${option}/${id}`} className="no-underline w-fit">
           <div className="flex  cursor-pointer w-fit">
             <p className="text-[#4D4D4D] m-0 pr-2 font-medium"> Learn more</p>
             <img alt="#" src={IMAGE_PATH.ARROW} />

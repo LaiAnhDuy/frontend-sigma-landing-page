@@ -35,9 +35,7 @@ export default function Header() {
             <img
               id="img"
               alt="#"
-              onClick={() => {
-                handleClickHeader();
-              }}
+              onClick={handleClickHeader}
               src={
                 activeHeader && path === '/'
                   ? IMAGE_PATH.LOGO_WHITE
@@ -122,7 +120,9 @@ export default function Header() {
               },
             ]}
           />
-          <User user={activeHeader && path === '/' ? ' support ' : ' support1 '}/>
+          <User
+            user={activeHeader && path === '/' ? ' support ' : ' support1 '}
+          />
         </div>
       </div>
     </div>
