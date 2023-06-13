@@ -10,7 +10,6 @@ export default function Comment() {
     // const handleOk = () => {
     //     setIsModalOpen(false);
     // };
-
     const handleCancel = () => {
         setValue('');
     };
