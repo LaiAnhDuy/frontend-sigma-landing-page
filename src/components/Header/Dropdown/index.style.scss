@@ -10,10 +10,20 @@
   cursor: pointer;
   color: black !important;
 }
+.item-inactive1 {
+  cursor: pointer;
+  color: hsl(27, 98%, 56%) !important;
+}
 .arrow-inactive {
   font-size: 10px;
   color: black;
   stroke: #000000;
+  stroke-width: 30;
+}
+.arrow-inactive1 {
+  font-size: 10px;
+  color: #fd8421;
+  stroke: #fd8421;
   stroke-width: 30;
 }
 .arrow-active {

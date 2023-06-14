@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DownOutlined } from '@ant-design/icons';
 import { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
 import './index.style.scss';
+import { useLocation } from 'react-router-dom';
 
 interface DropDownProps {
   menuItems: MenuProps['items'];
@@ -11,6 +12,7 @@ interface DropDownProps {
   clickHeader: () => void;
   activeHeader: boolean;
   path: string;
+  route: string | undefined;
 }
 
 function DropDown({
@@ -19,11 +21,19 @@ function DropDown({
   hoverText,
   clickHeader,
   path,
+  route,
 }: DropDownProps) {
-  const [active, setActive] = useState(true);
+  const [itemActive, setItemActive] = useState(true);
+  const [active, setActive] = useState(false);
   const onClick: MenuProps['onClick'] = ({ key }) => {
-    setActive(true);
+    setItemActive(true);
   };
+  const location = useLocation();
+  useEffect(() => {
+    location.pathname.split('/')[1] === route
+      ? setActive(true)
+      : setActive(false);
+  }, [location.pathname, route]);
 
   return (
     <div>
@@ -43,6 +53,10 @@ function DropDown({
           activeHeader && path === '/'
             ? ' item-header '
             : active
+            ? itemActive
+              ? ' item-inactive1 '
+              : ' item-active '
+            : itemActive
             ? ' item-inactive '
             : ' item-active '
         }
@@ -50,7 +64,7 @@ function DropDown({
         trigger={['click']}
         onOpenChange={() => {
           clickHeader();
-          setActive(!active);
+          setItemActive(!itemActive);
         }}
       >
         <Space>
@@ -62,6 +76,10 @@ function DropDown({
                 : activeHeader && path === '/'
                 ? ' arrow-header '
                 : active
+                ? itemActive
+                  ? ' arrow-inactive1 '
+                  : ' arrow-active '
+                : itemActive
                 ? ' arrow-inactive '
                 : ' arrow-active '
             }

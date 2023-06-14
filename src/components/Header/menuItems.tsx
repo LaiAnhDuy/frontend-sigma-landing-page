@@ -4,22 +4,12 @@ import './index.style.scss';
 
 export const menuItems = [
   {
-    name: (
-      <div
-        className={`${
-          window.location.pathname.split('/')[1] === 'product'
-            ? 'text-main'
-            : null
-        }`}
-      >
-        Product
-      </div>
-    ),
+    name: 'Product',
     item: [
       {
         key: '1',
         label: (
-          <a href="/product/drm">
+          <Link to="/product/drm">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma DRM/Multi DRM
@@ -28,13 +18,13 @@ export const menuItems = [
                 Sigma-Digital Rights Management - exclusive research by TDM
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '2',
         label: (
-          <a href="/product/transcoder">
+          <Link to="/product/transcoder">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Transcoder
@@ -43,13 +33,13 @@ export const menuItems = [
                 Encode and convert video files to many other formats
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '3',
         label: (
-          <a href="/product/origin/packager">
+          <Link to="/product/origin/packager">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Origin/Packager
@@ -59,13 +49,13 @@ export const menuItems = [
                 and devices
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '4',
         label: (
-          <a href="/product/livestreaming">
+          <Link to="/product/livestreaming">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Live streaming
@@ -74,13 +64,13 @@ export const menuItems = [
                 Go live with recorded content and broadcast in real time.
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '5',
         label: (
-          <a href="/product/interactive">
+          <Link to="/product/interactive">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Interactive
@@ -89,13 +79,13 @@ export const menuItems = [
                 Enable audience engagement, impact on the streaming experience
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '6',
         label: (
-          <a href="/product/sigma">
+          <Link to="/product/sigma">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Multi CDN
@@ -104,13 +94,13 @@ export const menuItems = [
                 Optimizing CDN network usage
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '7',
         label: (
-          <a href="/product/awm">
+          <Link to="/product/awm">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Audio Water Marking
@@ -119,13 +109,13 @@ export const menuItems = [
                 Audio signal processing to determine copyright
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '8',
         label: (
-          <a href="/product/dai">
+          <Link to="/product/dai">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Sigma Dynamic Ads Insert
@@ -135,13 +125,13 @@ export const menuItems = [
                 Live streaming Event and VOD
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '9',
         label: (
-          <a href="/product/dns">
+          <Link to="/product/dns">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">NS53</p>
               <p className="font-medium m-0 content">
@@ -149,28 +139,19 @@ export const menuItems = [
                 optimize server access navigation{' '}
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
     ],
+    route: 'product',
   },
   {
-    name: (
-      <div
-        className={`${
-          window.location.pathname.split('/')[1] === 'service'
-            ? 'text-main'
-            : null
-        }`}
-      >
-        Service
-      </div>
-    ),
+    name: 'Service',
     item: [
       {
         key: '1',
         label: (
-          <a href="/service">
+          <Link to="/service">
             <div className="">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 OTT Service{' '}
@@ -179,55 +160,37 @@ export const menuItems = [
                 Add on every feature for your OTT product
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
     ],
+    route: 'service',
   },
   {
-    name: (
-      <div
-        className={`${
-          window.location.pathname.split('/')[1] === 'solution'
-            ? 'text-main'
-            : null
-        }`}
-      >
-        Solution
-      </div>
-    ),
+    name: "Solution",
     item: [],
+    route: 'solution',
   },
   {
-    name: (
-      <div
-        className={`${
-          window.location.pathname.split('/')[1] === 'resources'
-            ? 'text-main'
-            : null
-        }`}
-      >
-        Resource
-      </div>
-    ),
+    name: 'Resource',
     item: [
       {
         key: '1',
         label: (
-          <a href="/resources/new">
+          <Link to="/resources/new">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">News</p>
               <p className="font-medium m-0 content">
                 Let's see the latest information of the market{' '}
               </p>
             </div>
-          </a>
+          </Link>
         ),
       },
       {
         key: '2',
         label: (
-          <Link to="/resources/blog" reloadDocument>
+          <Link to="/resources/blog">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">Blogs</p>
               <p className="font-medium m-0 content">
@@ -240,7 +203,7 @@ export const menuItems = [
       {
         key: '3',
         label: (
-          <Link to="/resources/casestudy" reloadDocument>
+          <Link to="/resources/casestudy">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Casestudy
@@ -255,7 +218,7 @@ export const menuItems = [
       {
         key: '4',
         label: (
-          <Link to="/resources/document" reloadDocument>
+          <Link to="/resources/document">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">
                 Documents
@@ -270,7 +233,7 @@ export const menuItems = [
       {
         key: '5',
         label: (
-          <Link to="/resources/video" reloadDocument>
+          <Link to="/resources/video">
             <div className="w-50">
               <p className="m-0 text-base font-medium mb-2 text-main">Video</p>
               <p className="font-medium m-0 content">Maybe you want to watch</p>
@@ -279,5 +242,6 @@ export const menuItems = [
         ),
       },
     ],
+    route: 'resources',
   },
 ];
