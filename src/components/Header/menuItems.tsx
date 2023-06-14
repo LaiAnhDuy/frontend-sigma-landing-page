@@ -186,17 +186,15 @@ export const menuItems = [
   },
   {
     name: (
-      <a href='/solution'>
-        <div
-          className={`${
-            window.location.pathname.split('/')[1] === 'solution'
-              ? 'text-main'
-              : null
-          }`}
-        >
-          Solution
-        </div>
-      </a>
+      <div
+        className={`${
+          window.location.pathname.split('/')[1] === 'solution'
+            ? 'text-main'
+            : null
+        }`}
+      >
+        Solution
+      </div>
     ),
     item: [],
   },

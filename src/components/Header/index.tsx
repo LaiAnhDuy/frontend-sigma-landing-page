@@ -31,7 +31,7 @@ export default function Header() {
       <div className=" lg:container  items-center flex justify-around  ">
         {/*eslint-disable-next-line jsx-a11y/alt-text */}
         <div className="header-item ">
-          <Link to={'/'}>
+          <Link to={'/'} reloadDocument>
             <img
               id="img"
               alt="#"
