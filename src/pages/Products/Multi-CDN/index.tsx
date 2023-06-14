@@ -1,13 +1,11 @@
 import React from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
-import { cdns } from './config';
-import { items } from './item';
-import { frames } from './frame';
+import { cdns, items, frames } from './config';
 import Item from 'src/components/Item';
 import Frame from 'src/components/Frame';
 
-const Product = () => {
+const Multi = () => {
   return (
     <div>
       <div className="container m-auto grid grid-cols-2 justify-between h-auto">
@@ -23,7 +21,7 @@ const Product = () => {
             CDN provider that offers a cost-to-performance ratio best for your
             business.
           </p>
-          <button className="bg-orange-400 text-gray-50 border-none w-50 h-10 rounded text-2xl">
+          <button className="bg-orange-400 text-gray-50 border-none w-32 h-11 rounded text-2xl">
             Get demo
           </button>
         </div>
@@ -63,16 +61,10 @@ const Product = () => {
             flexible and powerful DNS traffic management enable our customers to
             achieve significant performance gains and cost reductions.
           </p>
-          <div className='grid grid-cols-3 text-white text-xl'>
-              {
-                frames.map((frame, index) => (
-                  <Frame 
-                      key={index}
-                      image={frame.image}
-                      title={frame.title}
-                  />
-                ))
-              }
+          <div className="grid grid-cols-3 text-white text-xl">
+            {frames.map((frame, index) => (
+              <Frame key={index} image={frame.image} title={frame.title} />
+            ))}
           </div>
         </div>
       </div>
@@ -99,17 +91,15 @@ const Product = () => {
       <div className="bg-gray-50">
         <div className="container m-auto py-10">
           <div className="grid grid-cols-3 gap-x-10">
-              {
-                items.map((item, index) => (
-                  <Item 
-                      key={index}
-                      option={item.option}
-                      title={item.title}
-                      image={item.image}
-                      id={item.id}
-                  />
-                ))
-              }
+            {items.map((item, index) => (
+              <Item
+                key={index}
+                option={item.option}
+                title={item.title}
+                image={item.image}
+                id={item.id}
+              />
+            ))}
           </div>
         </div>
       </div>
@@ -118,7 +108,7 @@ const Product = () => {
         <h1 className="text-4xl">
           Multi-CDN Made Easy-Plan, Implement and Test
         </h1>
-        <button className="bg-orange-400 text-white border-none rounded-xl w-36 h-10 text-base">
+        <button className="bg-orange-400 text-white border-none rounded-xl w-64 h-10 text-base">
           Request a demo
         </button>
       </div>
@@ -126,4 +116,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default Multi;
