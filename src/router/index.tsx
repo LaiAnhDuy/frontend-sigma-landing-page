@@ -13,6 +13,7 @@ import Blog from 'src/pages/Resources/Blog';
 import SigmaN53Page from 'src/pages/Products/SigmaN53';
 import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
+import Streaming from 'src/pages/Products/Streaming';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -33,6 +34,7 @@ const routes: RouteType[] = [
     title: 'Audio Watermarking',
     element: Audio,
   },
+  { path: ROUTE.STREAMING, title: 'Sigma Streaming', element: Streaming },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',

@@ -21,7 +21,7 @@ const Multi = () => {
             CDN provider that offers a cost-to-performance ratio best for your
             business.
           </p>
-          <button className="bg-orange-400 text-gray-50 border-none w-32 h-11 rounded text-2xl">
+          <button className="bg-orange-400 text-gray-50 border-none w-32 h-11 rounded text-2xl cursor-pointer active:bg-main/60">
             Get demo
           </button>
         </div>
@@ -108,7 +108,7 @@ const Multi = () => {
         <h1 className="text-4xl">
           Multi-CDN Made Easy-Plan, Implement and Test
         </h1>
-        <button className="bg-orange-400 text-white border-none rounded-xl w-64 h-10 text-base">
+        <button className="bg-orange-400 text-white border-none rounded-xl w-64 h-10 text-base cursor-pointer active:bg-main/60">
           Request a demo
         </button>
       </div>
