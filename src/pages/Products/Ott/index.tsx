@@ -22,7 +22,7 @@ function Ott() {
             </button>
           </div>
           <div className="">
-            <img className="w-[900px]" src={IMAGE_PATH.TV_OTT} alt="TV_N53" />
+            <img className="w-[900px]" src={IMAGE_PATH.TV_OTT} alt="TV_OTT" />
           </div>
         </div>
 
