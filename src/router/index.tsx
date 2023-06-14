@@ -10,7 +10,7 @@ import Audio from 'src/pages/Products/Audio';
 import ResourcePage from 'src/pages/Resources';
 import SigmaDAIPage from 'src/pages/Products/SigmaDai';
 import Blog from 'src/pages/Resources/Blog';
-import SigmaN53Page from 'src/pages/Products/SigmaN53';
+import SigmaNS53Page from 'src/pages/Products/SigmaNS53';
 import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import OttPage from 'src/pages/Products/Ott';
@@ -43,7 +43,7 @@ const routes: RouteType[] = [
   {
     path: ROUTE.PRODUCT_SIGMA_NS53,
     title: 'Product Sigma NS53',
-    element: SigmaN53Page,
+    element: SigmaNS53Page,
   },
   {
     path: ROUTE.PRODUCT_SIGMA_DAI,
