@@ -54,9 +54,9 @@ export default function Login() {
     return (
         <div className="login-page my-4">
             <div className="" style={{ display: 'flex', width: 600, margin: 'auto' }} >
-                {/* login */}
+                {/* sign in */}
                 <div style={{ width: '60%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
-                    <h1 className=''>Login</h1>
+                    <h1 className=''>Sign In</h1>
                     <div className="flex justify-center">
                         <GoogleOutlined className="google mx-2" />
                         <FontAwesomeIcon icon={faFacebookF} className="mx-2 rounded-[100%] border-solid p-1 px-2" />
@@ -72,15 +72,12 @@ export default function Login() {
                         <div className="mb-4">
                             <input
                                 type="text"
-                                className="border-solid rounded-sm border-blue-200 border-2 h-7 w-60 focus:outline-none focus:border-blue-200"
+                                className={`border-solid rounded-sm border-blue-200 border-2 h-7 w-60 focus:outline-none focus:border-blue-200 ${formError.email ? "border-red-400" : "border-blue-200"}`}
                                 id="email"
                                 name="email"
                                 value={formValue.email}
                                 onChange={handleChange}
                             />
-                            {/* {formError.email && (
-                               <div className="error-feedback">{formError.email}</div>
-                            )}  */}
                             <div className="h-3 text-red-700 text-sm font-semibold">{formError.email}</div>
                         </div>
                         <label htmlFor="passWord" className="text-lg">
@@ -91,7 +88,7 @@ export default function Login() {
                                 type={`${active1 ? "password" : "text"}`} // điều kiện active hiện lên số, chữ 
                                 id="password"
                                 name="password"
-                                className="border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200"
+                                className={`border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200 ${formError.email ? "border-red-400" : "border-blue-200"}`}
                                 value={formValue.password}
                                 onChange={handleChange}
                             />
@@ -99,14 +96,15 @@ export default function Login() {
                         </div>
                         <div className="h-3 text-red-700 text-sm font-semibold mb-4">{formError.password}</div>
                         <Checkbox onChange={() => { }} className="flex justify-start text-sm mb-4">Remember password</Checkbox>
+                        <div className='flex justify-center mb-2'>
+                            <input type="submit" className="w-28 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" value="Sign In"/>
+                        </div>
                         <div className='flex justify-center'>
-                            <input type="submit" className="w-24 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" value="Sign In" />
-                            <Link to="/register" className="">
-                                <input type="submit" className="h-9 w-24 ml-4 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" value="Sign Up" />
+                            <Link to="/register" className="text-base no-underline">
+                                I have not an account 
                             </Link>
                         </div>
-                        <p className="flex justify-center text-pink-500 text-sm">Forgot Password</p>
-
+                        <p className="flex justify-center font-bold text-gray-500 text-sm mt-2 cursor-pointer">Forgot your password?</p>
                     </form>
                 </div>
                 {/* Đây là ảnh */}
