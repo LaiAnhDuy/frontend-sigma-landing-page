@@ -141,10 +141,10 @@ const Streaming = () => {
           Start streaming today with our integrated video platform.
         </p>
         <div>
-          <button className="bg-orange-400 mr-10 text-white rounded border-none w-36 h-8 text-sm cursor-pointer  active:bg-main/60">
+          <button className="bg-white mr-10 rounded border-orange-400 w-36 h-8 text-sm cursor-pointer  active:bg-main/90 active:text-white">
             Free Trial
           </button>
-          <button className="bg-white rounded border-orange-400 border  w-52 h-8 text-sm cursor-pointer active:text-main/60">
+          <button className="bg-white rounded border-orange-400 border  w-52 h-8 text-sm cursor-pointer active:bg-main/90 active:text-white">
             Talk to a Streaming Expert
           </button>
         </div>
