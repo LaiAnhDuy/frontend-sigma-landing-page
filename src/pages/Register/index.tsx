@@ -17,7 +17,10 @@ const initFormValue = {
 interface FormValues {
   [key: string]: string;
 }
-export default function Login() {
+interface RegisterProps {
+  onClick: () => void
+}
+export default function Register({ onClick }: RegisterProps) {
   const [formValue, setFormValue] = useState<FormValues>(initFormValue);
   const [formError, setFormError] = useState<FormValues>({});
   const [activePassword, setActivePassword] = useState(true);
@@ -70,13 +73,12 @@ export default function Login() {
         {/* register */}
         <div style={{ width: '60%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
           <h1 className=''>Sign Up</h1>
-          <div className="flex justify-center">
+          <div className="flex justify-center -mt-2">
             <GoogleOutlined className="google mx-2" />
             <FontAwesomeIcon icon={faFacebookF} className="mx-2 rounded-[100%] border-solid p-1 px-2" />
             <FontAwesomeIcon icon={faTwitter} className="mx-2 rounded-[100%] border-solid p-1" />
             <FontAwesomeIcon icon={faInstagram} className="mx-2 rounded-[100%] border-solid p-1 px-1" />
           </div>
-          <p className="text-sm">or sign in with:</p>
           {/*Đây là form Sign Up */}
           <form onSubmit={handleSubmit}>
             <label htmlFor="email" className="text-base">
@@ -86,7 +88,7 @@ export default function Login() {
             <div className="mb-4">
               <input
                 type="text"
-                className={`border-solid rounded-sm border-blue-200 border-2 h-7 w-60 focus:outline-none focus:border-blue-200 ${formError.email?"border-red-400":"border-blue-200"}`}
+                className={`border-solid rounded-sm border-blue-200 border-2 h-7 w-60 focus:outline-none focus:border-blue-200 ${formError.email ? "border-red-400" : "border-blue-200"}`}
                 id="email"
                 name="email"
                 value={formValue.email}
@@ -147,15 +149,13 @@ export default function Login() {
             <div className='flex justify-center mb-2'>
               <input type="submit" className="w-28 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" value="Sign Up" />
             </div>
-            <div className='flex justify-center'>
-              <Link to="/login" className="text-base no-underline">
-                I have an account 
-              </Link>
+            <div className='flex justify-center mb-3 cursor-pointer text-blue-400' onClick={onClick}>
+              I have an account
             </div>
           </form>
         </div>
         {/* Đây là ảnh */}
-        <div className="" style={{ width: '40%', backgroundImage: `url(${IMAGE_PATH.LOGIN})` }}>
+        <div className=" rounded-lg" style={{ width: '40%', backgroundImage: `url(${IMAGE_PATH.LOGIN})` }}>
         </div>
       </div>
     </div>

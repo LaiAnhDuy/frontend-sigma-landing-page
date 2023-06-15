@@ -15,7 +15,11 @@ const initFormValue = {
 interface FormValues {
     [key: string]: string;
 }
-export default function Login() {
+interface LoginProps {
+    signIn: () => void,
+    onClick: () => void
+}
+export default function Login({ signIn, onClick }: LoginProps) {
     const [formValue, setFormValue] = useState<FormValues>(initFormValue);
     const [formError, setFormError] = useState<FormValues>({});
     const [active1, setActive1] = useState(true);
@@ -68,6 +72,7 @@ export default function Login() {
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="email" className="text-lg ">
                             Email
+                            <span className="text-red-600">*</span>
                         </label>
                         <div className="mb-4">
                             <input
@@ -82,6 +87,7 @@ export default function Login() {
                         </div>
                         <label htmlFor="passWord" className="text-lg">
                             Password
+                            <span className="text-red-600">*</span>
                         </label>
                         <div className=''>
                             <input
@@ -97,18 +103,16 @@ export default function Login() {
                         <div className="h-3 text-red-700 text-sm font-semibold mb-4">{formError.password}</div>
                         <Checkbox onChange={() => { }} className="flex justify-start text-sm mb-4">Remember password</Checkbox>
                         <div className='flex justify-center mb-2'>
-                            <input type="submit" className="w-28 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" value="Sign In"/>
+                            <input type="submit" className="w-28 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" onClick={signIn} value="Sign In" />
                         </div>
-                        <div className='flex justify-center'>
-                            <Link to="/register" className="text-base no-underline">
-                                I have not an account 
-                            </Link>
+                        <div className='flex justify-center cursor-pointer text-blue-400' onClick={onClick}>
+                            I have not an account
                         </div>
                         <p className="flex justify-center font-bold text-gray-500 text-sm mt-2 cursor-pointer">Forgot your password?</p>
                     </form>
                 </div>
                 {/* Đây là ảnh */}
-                <div className="" style={{ width: '40%', backgroundImage: `url(${IMAGE_PATH.LOGIN})` }}>
+                <div className=" rounded-lg" style={{ width: '40%', backgroundImage: `url(${IMAGE_PATH.LOGIN})` }}>
                 </div>
             </div>
         </div>

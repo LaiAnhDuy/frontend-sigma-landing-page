@@ -15,7 +15,7 @@ export default function Selection() {
                 />
             }
             defaultValue="vn"
-            className={`bg-transparent w-[60px] -mr-[60px] ${path === '/' ? ' select' : 'select1'}`}
+            className={`bg-transparent w-[60px] -mr-[60px]`}
             options={[
                 {
                     value: 'Usa',

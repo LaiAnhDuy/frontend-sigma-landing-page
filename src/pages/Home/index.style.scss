@@ -41,7 +41,7 @@ input.input::-ms-input-placeholder {
   transition: all 0.5s cubic-bezier(0, 0.105, 0.035, 1.57);
 }
 .wrapper .input-holder .input {
-  width: 70%;
+  width: 75%;
   height: 38px;
   padding: 0px 70px 0 20px;
   opacity: 0;
@@ -66,12 +66,12 @@ input.input::-ms-input-placeholder {
   transform: translate(0, 0px);
 }
 .wrapper .input-holder .icon {
-  width: 180px;
   height: 38px;
   border: none;
   border-radius: 3px;
   background: #ffffff;
-  padding: 0px;
+  padding-left: 6px;
+  padding-right: 6px;
   outline: none;
   position: relative;
   z-index: 2;
@@ -80,7 +80,6 @@ input.input::-ms-input-placeholder {
   transition: all 0.3s ease-in-out;
 }
 .wrapper.active .input-holder .icon {
-  width: 180px;
   height: 38px;
   border-radius: 3px;
 }
@@ -89,7 +88,7 @@ input.input::-ms-input-placeholder {
   position: relative;
   z-index: 1;
   top: 5px;
-  right: 50px;
+  right: 80px;
   width: 25px;
   height: 25px;
   cursor: pointer;
@@ -141,3 +140,6 @@ input.input::-ms-input-placeholder {
   stroke-width: 70px;
 }
 
+.icon{
+  right: 0 !important;
+}
