@@ -3,8 +3,6 @@ import PrivateRoute from 'src/components/PrivateRoute';
 import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
-import Register from 'src/pages/Register';
-import Login from 'src/pages/Login';
 import Multi from 'src/pages/Products/Multi-CDN';
 import Audio from 'src/pages/Products/Audio';
 import ResourcePage from 'src/pages/Resources';
@@ -23,13 +21,11 @@ export type RouteType = {
 
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
-  { path: ROUTE.REGISTER, title: 'Register', element: Register },
-  { path: ROUTE.LOGIN, title: 'Login', element: Login },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
-  { path: ROUTE.MULTI, title: 'Multi CDN', element: Multi },
+  { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
   {
-    path: ROUTE.AUDIO_WATERMARKING,
+    path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
     title: 'Audio Watermarking',
     element: Audio,
   },

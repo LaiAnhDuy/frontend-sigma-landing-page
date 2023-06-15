@@ -1,242 +1,183 @@
-import { Link } from 'react-router-dom';
 import './index.style.scss';
+import Label from './Label';
+import ROUTE from 'src/constants/route';
 /* eslint-disable jsx-a11y/anchor-is-valid */
+
 export const menuItems = [
   {
-    name: (<Link to={"/product"} className='no-underline'>Product</Link>),
+    name: 'Product',
     item: [
       {
         key: '1',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma DRM/Multi DRM
-              </p>
-              <p className="font-medium m-0 content">
-                Sigma-Digital Rights Management - exclusive research by TDM
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_SIGMA_DRM}
+            title="Sigma DRM/Multi DRM"
+            content="Sigma-Digital Rights Management - exclusive research by TDM"
+          />
         ),
       },
       {
         key: '2',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Transcoder
-              </p>
-              <p className="font-medium m-0 content">
-                Encode and convert video files to many other formats
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_SIGMA_TRANSCODER}
+            title="Sigma Transcoder"
+            content="Encode and convert video files to many other formats"
+          />
         ),
       },
       {
         key: '3',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Origin/Packager
-              </p>
-              <p className="font-medium m-0 content">
-                Pack videos and make them compatible with many operating systems
-                and devices
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_SIGMA_PACKAGE}
+            title="Sigma Origin/Packager"
+            content="Pack videos and make them compatible with many operating systems
+          and devices"
+          />
         ),
       },
       {
         key: '4',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Livestreaming
-              </p>
-              <p className="font-medium m-0 content">
-                Go live with recorded content and broadcast in real time.
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_SIGMA_LIVESTREAMING}
+            title=" Sigma Live streaming "
+            content=" Go live with recorded content and broadcast in real time. "
+          />
         ),
       },
       {
         key: '5',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Interactive
-              </p>
-              <p className="font-medium m-0 content">
-                Enable audience engagement, impact on the streaming experience
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_SIGMA_INTERACTIVE}
+            title="Sigma Interactive"
+            content="Enable audience engagement, impact on the streaming experience"
+          />
         ),
       },
       {
         key: '6',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Multi CDN
-              </p>
-              <p className="font-medium m-0 content">
-                Optimizing CDN network usage
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_MULTI_CDN}
+            title="Sigma Multi CDN"
+            content="Optimizing CDN network usage"
+          />
         ),
       },
       {
         key: '7',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Audio Warter Marking
-              </p>
-              <p className="font-medium m-0 content">
-                Audio signal processing to determine copyright
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_AUDIO_WATERMARKING}
+            title="Sigma Audio Water Marking"
+            content="Audio signal processing to determine copyright"
+          />
         ),
       },
       {
         key: '8',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Sigma Dynamic Ads Insert
-              </p>
-              <p className="font-medium m-0 content">
-                Server-Side Ad Insertion Solution exclusively for Television,
-                Livestreaming Event and VOD
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_SIGMA_DAI}
+            title="Sigma Dynamic Ads Insert"
+            content="Server-Side Ad Insertion Solution exclusively for Television,
+          Live streaming Event and VOD"
+          />
         ),
       },
       {
         key: '9',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">NS53</p>
-              <p className="font-medium m-0 content">
-                DNS domain name resolution system helps balance load and
-                optimize server access navigation{' '}
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.PRODUCT_SIGMA_NS53}
+            title="NS53"
+            content="DNS domain name resolution system helps balance load and
+          optimize server access navigation"
+          />
         ),
       },
     ],
+    route: 'product',
   },
   {
-    name: (<Link to={"/service"} className='no-underline'>Service</Link>),
+    name: 'Service',
     item: [
       {
         key: '1',
         label: (
-          <a href="#">
-            <div className="">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                OTT Service{' '}
-              </p>
-              <p className="font-medium m-0 content">
-                Add on every feature for your OTT product
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.SERVICE}
+            title="OTT Service"
+            content="Add on every feature for your OTT product"
+          />
         ),
       },
     ],
+    route: 'service',
   },
   {
-    name: (<Link to={"/solution"} className='no-underline'>Solution</Link>),
+    name: 'Solution',
     item: [],
+    route: 'solution',
   },
   {
-    name: (<Link to={"/resources"} className='no-underline'>Resources</Link>),
+    name: 'Resource',
     item: [
       {
         key: '1',
         label: (
-          <Link to="/resources/blog/1">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">Blog</p>
-              <p className="font-medium m-0 content">
-                Lets see more infor about our solution{' '}
-              </p>
-            </div>
-          </Link>
+          <Label
+            url={ROUTE.RESOURCES.replace(':tab', 'new')}
+            title="News"
+            content="Let's see the latest information of the market"
+          />
         ),
       },
       {
         key: '2',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">News</p>
-              <p className="font-medium m-0 content">
-                Let's see the latest information of the market{' '}
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.RESOURCES.replace(':tab', 'blog')}
+            title="Blogs"
+            content="Let's see more info about our solution"
+          />
         ),
       },
       {
         key: '3',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">Video</p>
-              <p className="font-medium m-0 content">Maybe you want to watch</p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.RESOURCES.replace(':tab', 'casestudy')}
+            title="Casestudy"
+            content="Understand the customer"
+          />
         ),
       },
       {
         key: '4',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Casestudy
-              </p>
-              <p className="font-medium m-0 content">
-                Understand the customer{' '}
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.RESOURCES.replace(':tab', 'document')}
+            title="Documents"
+            content="Let's see the latest information of the market"
+          />
         ),
       },
       {
         key: '5',
         label: (
-          <a href="#">
-            <div className="w-50">
-              <p className="m-0 text-base font-medium mb-2 text-main">
-                Document
-              </p>
-              <p className="font-medium m-0 content">
-                Let's see the latest information of the market{' '}
-              </p>
-            </div>
-          </a>
+          <Label
+            url={ROUTE.RESOURCES.replace(':tab', 'video')}
+            title="Video"
+            content="Maybe you want to watch"
+          />
         ),
       },
     ],
+    route: 'resources',
   },
 ];

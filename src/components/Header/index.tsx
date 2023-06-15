@@ -6,6 +6,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { DownOutlined, SearchOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
 import { IMAGE_PATH } from 'src/constants/images';
+import User from './User';
+import ROUTE from 'src/constants/route';
 
 export default function Header() {
   const location = useLocation();
@@ -30,13 +32,11 @@ export default function Header() {
       <div className=" lg:container  items-center flex justify-around  ">
         {/*eslint-disable-next-line jsx-a11y/alt-text */}
         <div className="header-item ">
-          <Link to={'/'}>
+          <Link to={ROUTE.HOME} >
             <img
               id="img"
               alt="#"
-              onClick={() => {
-                handleClickHeader();
-              }}
+              onClick={handleClickHeader}
               src={
                 activeHeader && path === '/'
                   ? IMAGE_PATH.LOGO_WHITE
@@ -49,6 +49,7 @@ export default function Header() {
         <div className="flex header-item ">
           {menuItems.map((val, index) => (
             <DropDown
+            route={val.route}
               path={path}
               hoverText={val.name}
               menuItems={val.item}
@@ -120,6 +121,9 @@ export default function Header() {
                 ),
               },
             ]}
+          />
+          <User
+            user={activeHeader && path === '/' ? ' support ' : ' support1 '}
           />
         </div>
       </div>

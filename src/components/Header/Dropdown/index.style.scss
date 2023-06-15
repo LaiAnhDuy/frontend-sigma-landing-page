@@ -1,32 +1,36 @@
 .item-header {
   cursor: pointer;
-  a {
-    color: white !important;
-  }
+  color: white !important;
 }
 .item-active {
   cursor: pointer;
-  a {
-    color: hsl(27, 98%, 56%) !important;
-  }
+  color: hsl(27, 98%, 56%) !important;
 }
-.item-menu {
+.item-inactive {
   cursor: pointer;
-  a {
-    color: black !important;
-  }
+  color: black !important;
 }
-.arrow-menu {
+.item-inactive1 {
+  cursor: pointer;
+  color: hsl(27, 98%, 56%) !important;
+}
+.arrow-inactive {
   font-size: 10px;
   color: black;
   stroke: #000000;
+  stroke-width: 30;
+}
+.arrow-inactive1 {
+  font-size: 10px;
+  color: #fd8421;
+  stroke: #fd8421;
   stroke-width: 30;
 }
 .arrow-active {
   stroke: #fd8421;
   stroke-width: 30;
   font-size: 10px;
-  rotate: 180deg;
+  transform: rotate(180deg);
   color: #fd8421;
 }
 .arrow-header {
@@ -37,14 +41,13 @@
 }
 .ant-dropdown {
   padding-top: 42.4px;
-  /* CSS tùy chỉnh cho Dropdown */
 }
-.custom-menu {
+.custom-menu1 {
   display: grid;
   grid-template-columns: 250px 250px;
   padding: 40px !important;
 }
-.custom {
+.custom-menu2 {
   display: grid;
   grid-template-columns: 250px;
 
