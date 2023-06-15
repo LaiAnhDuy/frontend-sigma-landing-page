@@ -7,6 +7,7 @@ import { DownOutlined, SearchOutlined } from '@ant-design/icons';
 import { Select } from 'antd';
 import { IMAGE_PATH } from 'src/constants/images';
 import User from './User';
+import ROUTE from 'src/constants/route';
 
 export default function Header() {
   const location = useLocation();
@@ -31,7 +32,7 @@ export default function Header() {
       <div className=" lg:container  items-center flex justify-around  ">
         {/*eslint-disable-next-line jsx-a11y/alt-text */}
         <div className="header-item ">
-          <Link to={'/'} >
+          <Link to={ROUTE.HOME} >
             <img
               id="img"
               alt="#"

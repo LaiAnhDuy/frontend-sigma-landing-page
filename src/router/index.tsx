@@ -3,9 +3,14 @@ import PrivateRoute from 'src/components/PrivateRoute';
 import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
 import HomePage from 'src/pages/Home';
-import Product from 'src/pages/Product';
+import Multi from 'src/pages/Products/Multi-CDN';
+import Audio from 'src/pages/Products/Audio';
 import ResourcePage from 'src/pages/Resources';
+import SigmaDAIPage from 'src/pages/Products/SigmaDai';
 import Blog from 'src/pages/Resources/Blog';
+import SigmaN53Page from 'src/pages/Products/SigmaN53';
+import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
+import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -18,11 +23,37 @@ const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Home', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
-  { path: ROUTE.PRODUCT, title: 'Product', element: Product },
+  { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
+  {
+    path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
+    title: 'Audio Watermarking',
+    element: Audio,
+  },
   {
     path: ROUTE.RESOURCES,
     title: 'Resources',
     element: ResourcePage,
+    isPrivate: true,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_NS53,
+    title: 'Product Sigma NS53',
+    element: SigmaN53Page,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_DAI,
+    title: 'Product Sigma DAI',
+    element: SigmaDAIPage,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_PACKAGE,
+    title: 'Product Sigma Package',
+    element: SigmaPackagePage,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_TRANSCODER,
+    title: 'Product Sigma Transcoder',
+    element: SigmaTranscoderPage,
     isPrivate: true,
   },
 ];
