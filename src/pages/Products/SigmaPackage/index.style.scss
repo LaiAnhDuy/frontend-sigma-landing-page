@@ -6,7 +6,7 @@
   transform: translateY(-5px);
 }
 
-.circle {
+.circle1 {
   left: -612px;
   top: -108px;
   position: relative;
@@ -16,7 +16,7 @@
   overflow: hidden;
 }
 
-.circle::before {
+.circle1::before {
   content: '';
   position: absolute;
   bottom: 0;
