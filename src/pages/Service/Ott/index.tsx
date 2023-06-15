@@ -1,7 +1,7 @@
 import './index.style.scss';
 import { SIGMA_OTT_PLATFORM } from './configs';
 import { IMAGE_PATH } from 'src/constants/images';
-import Carousel from './carousel';
+import Carousel from './CarouselOtt';
 
 function Ott() {
   return (

@@ -13,7 +13,7 @@ import Blog from 'src/pages/Resources/Blog';
 import SigmaNS53Page from 'src/pages/Products/SigmaNS53';
 import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
-import OttPage from 'src/pages/Products/Ott';
+import OttPage from 'src/pages/Service/Ott';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -62,7 +62,7 @@ const routes: RouteType[] = [
     isPrivate: true,
   },
   {
-    path: ROUTE.PRODUCT_OTT,
+    path: ROUTE.OTT,
     title: 'Product OTT',
     element: OttPage,
     isPrivate: true,
