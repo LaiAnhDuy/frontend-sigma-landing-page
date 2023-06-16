@@ -1,13 +1,16 @@
-import React from 'react'
-import BaseLayout from '../BaseLayout'
+import React from 'react';
+import BaseLayout from '../BaseLayout';
+import useDocumentTitle from 'src/hooks';
 
 type PublicRouteProps = {
-  title?: string
-  children: React.ReactNode
-}
+  title?: string;
+  children: React.ReactNode;
+};
 
 const PublicRoute = (props: PublicRouteProps) => {
-  return <BaseLayout>{props.children}</BaseLayout>
-}
+  useDocumentTitle(props.title);
 
-export default PublicRoute
+  return <BaseLayout>{props.children}</BaseLayout>;
+};
+
+export default PublicRoute;

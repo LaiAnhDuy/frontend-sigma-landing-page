@@ -11,6 +11,7 @@ import Blog from 'src/pages/Resources/Blog';
 import SigmaN53Page from 'src/pages/Products/SigmaN53';
 import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
+import { Button, Result } from 'antd';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -20,7 +21,7 @@ export type RouteType = {
 };
 
 const routes: RouteType[] = [
-  { path: ROUTE.HOME, title: 'Home', element: HomePage },
+  { path: ROUTE.HOME, title: 'Sigma DRM', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
@@ -56,27 +57,33 @@ const routes: RouteType[] = [
     element: SigmaTranscoderPage,
     isPrivate: true,
   },
+  {
+    path: '*',
+    title: 'Not Found',
+    element: () => (
+      <Result
+        status="404"
+        title="404"
+        subTitle="Sorry, the page you visited does not exist."
+        extra={<Button type="primary">Back Home</Button>}
+      />
+    ),
+  },
 ];
-
 export default function AppRouter() {
   return (
     <Routes>
       {routes.map((route) => {
         const { isPrivate, element: Component } = route;
+        const RouteWrapper = isPrivate ? PrivateRoute : PublicRoute;
         return (
           <Route
             key={route.path}
             {...route}
             element={
-              isPrivate ? (
-                <PrivateRoute>
-                  <Component />
-                </PrivateRoute>
-              ) : (
-                <PublicRoute>
-                  <Component />
-                </PublicRoute>
-              )
+              <RouteWrapper title={route.title}>
+                <Component />
+              </RouteWrapper>
             }
           ></Route>
         );
