@@ -1,7 +1,6 @@
 import './index.style.scss';
-import { SIGMA_TRANSCODER1, SIGMA_TRANSCODER2 } from 'src/constants/products';
 import { IMAGE_PATH } from 'src/constants/images';
-import { list1 } from './config';
+import { SIGMA_TRANSCODER1, SIGMA_TRANSCODER2, LIST_CHOOSE } from './config';
 
 function SigmaTranscoder() {
   return (
@@ -71,7 +70,7 @@ function SigmaTranscoder() {
             <div className="grid grid-cols-2 mt-32">
               <img alt="#" src={IMAGE_PATH.TRANS_W} />
               <div className="grid grid-rows-[70px, 70px, 70px, 70px, 70px]  text-left w-[500px] ">
-                {list1.map((val, index) => (
+                {LIST_CHOOSE.map((val, index) => (
                   <div key={index} className="flex items-center">
                     <hr className="hr" />
                     <p className="text-xl leading-5 m-0 font-medium">

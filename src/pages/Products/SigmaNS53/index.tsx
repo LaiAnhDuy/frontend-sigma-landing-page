@@ -1,8 +1,8 @@
 import './index.style.scss';
-import { SIGMA_N53D, SIGMA_N53F } from 'src/constants/products';
+import { SIGMA_N53D, SIGMA_N53F } from './configs';
 import { IMAGE_PATH } from 'src/constants/images';
 
-function SigmaN53() {
+function SigmaNS53() {
   return (
     <div className="text-black">
       <div className="flex flex-col">
@@ -140,4 +140,4 @@ function SigmaN53() {
   );
 }
 
-export default SigmaN53;
+export default SigmaNS53;
