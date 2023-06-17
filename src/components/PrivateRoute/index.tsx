@@ -1,15 +1,16 @@
-import React from 'react'
-import BaseLayout from '../BaseLayout'
+import React, { useEffect } from 'react';
+import BaseLayout from '../BaseLayout';
+import useDocumentTitle from 'src/hooks';
 
 type PrivateRouteProps = {
-  title?: string
-  children: React.ReactNode
-}
+  title?: string;
+  children: React.ReactNode;
+};
 
 const PrivateRoute = (props: PrivateRouteProps) => {
   // FIXME: check authorization
+  useDocumentTitle(props.title);
+  return <BaseLayout>{props.children}</BaseLayout>;
+};
 
-  return <BaseLayout>{props.children}</BaseLayout>
-}
-
-export default PrivateRoute
+export default PrivateRoute;
