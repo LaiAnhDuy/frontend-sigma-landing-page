@@ -76,7 +76,6 @@ export default function Resources() {
     }
     return originalElement;
   };
-  console.log(dataLength()?.length);
 
   return (
     <div className="container m-auto ">
