@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { EyeInvisibleOutlined, EyeOutlined, GoogleOutlined } from '@ant-design/icons';
 import { isEmailValid, isEmptyValue } from 'src/utils';
-import { Link } from 'react-router-dom';
 import Select from './Select'
 const initFormValue = {
   email: "",
@@ -43,7 +42,7 @@ export default function Register({ onClick }: RegisterProps) {
     }
     if (isEmptyValue(formValue.phone)) {
       error.phone = "Phone is required!";
-    } else if (formValue.phone.length < 10 || formValue.phone.length >= 11 || formValue.phone.charAt(0) !== "0") {
+    } else if (formValue.phone.length < 9 || formValue.phone.length >= 10) {
       error.phone = "Phone number is invalid!"
     }
     if (isEmptyValue(formValue.password)) {

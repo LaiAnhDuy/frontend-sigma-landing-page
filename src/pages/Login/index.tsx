@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { EyeInvisibleOutlined, EyeOutlined, GoogleOutlined } from '@ant-design/icons';
 import { isEmailValid, isEmptyValue } from 'src/utils';
-import { Link } from 'react-router-dom';
 const initFormValue = {
     email: "",
     password: ""
