@@ -65,10 +65,9 @@ export default function Register({ onClick }: RegisterProps) {
       console.log("Form invalid")
     }
   };
-  console.log(formError);
   return (
-    <div className="login-page my-4">
-      <div className="" style={{ display: 'flex', width: 600, margin: 'auto' }} >
+    <div className="">
+      <div className="flex w-[600px] m-auto">
         {/* register */}
         <div style={{ width: '60%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
           <h1 className=''>Sign Up</h1>
@@ -92,6 +91,7 @@ export default function Register({ onClick }: RegisterProps) {
                 name="email"
                 value={formValue.email}
                 onChange={handleChange}
+                placeholder="Enter your email"
               />
             </div>
             <div className="-mt-3 h-3 mb-2 text-red-700 text-sm font-semibold">{formError.email}</div>
@@ -109,6 +109,7 @@ export default function Register({ onClick }: RegisterProps) {
                 value={formValue.phone}
                 onChange={handleChange}
                 className={`border-solid rounded-sm border-blue-200 border-2 h-7 w-[180px] focus:outline-none focus:border-blue-200 pl-[60px] ${formError.phone ? "border-red-400" : "border-blue-200"}`}
+                placeholder="Enter your phone number"
               />
             </div>
             <div className="-mt-3 mb-2 h-3 text-red-700 text-sm font-semibold">{formError.phone}</div>
@@ -124,6 +125,7 @@ export default function Register({ onClick }: RegisterProps) {
                 className={`border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200 ${formError.password ? "border-red-400" : "border-blue-200"}`}
                 value={formValue.password}
                 onChange={handleChange}
+                placeholder="Enter your password"
               />
               {activePassword ? <EyeOutlined className="-ml-[30px]" onClick={() => setActivePassword(!activePassword)} /> : <EyeInvisibleOutlined className="-ml-[30px]" onClick={() => setActivePassword(!activePassword)} />}
             </div>
@@ -140,6 +142,7 @@ export default function Register({ onClick }: RegisterProps) {
                 className={`border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200 ${formError.confirmPassword ? "border-red-400" : "border-blue-200"}`}
                 value={formValue.confirmPassword}
                 onChange={handleChange}
+                placeholder="Enter your password"
               />
               {activeConfirmPassword ? <EyeOutlined className="-ml-[30px]" onClick={() => setActiveConfirmPassword(!activeConfirmPassword)} /> : <EyeInvisibleOutlined className="-ml-[30px]" onClick={() => setActiveConfirmPassword(!activeConfirmPassword)} />}
             </div>

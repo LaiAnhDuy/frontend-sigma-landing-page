@@ -53,10 +53,9 @@ export default function Login({ signIn, onClick }: LoginProps) {
             console.log("Form invalid")
         }
     };
-    console.log(formError);
     return (
         <div className="login-page my-4">
-            <div className="" style={{ display: 'flex', width: 600, margin: 'auto' }} >
+            <div className="flex w-[600px] m-auto">
                 {/* sign in */}
                 <div style={{ width: '60%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
                     <h1 className=''>Sign In</h1>
@@ -81,6 +80,7 @@ export default function Login({ signIn, onClick }: LoginProps) {
                                 name="email"
                                 value={formValue.email}
                                 onChange={handleChange}
+                                placeholder="Enter your email"
                             />
                             <div className="h-3 text-red-700 text-sm font-semibold">{formError.email}</div>
                         </div>
@@ -93,9 +93,10 @@ export default function Login({ signIn, onClick }: LoginProps) {
                                 type={`${active1 ? "password" : "text"}`} // điều kiện active hiện lên số, chữ 
                                 id="password"
                                 name="password"
-                                className={`border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200 ${formError.email ? "border-red-400" : "border-blue-200"}`}
+                                className={`border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200 ${formError.password ? "border-red-400" : "border-blue-200"}`}
                                 value={formValue.password}
                                 onChange={handleChange}
+                                placeholder="Enter your password"
                             />
                             {active1 ? <EyeOutlined className="-ml-[30px]" onClick={() => setActive1(!active1)} /> : <EyeInvisibleOutlined className="-ml-[30px]" onClick={() => setActive1(!active1)} />}
                         </div>
