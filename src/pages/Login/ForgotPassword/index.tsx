@@ -26,44 +26,50 @@ export default function ForgotPassword() {
     };
     const validateForm = () => {
         const error: { [key: string]: string } = {};
-        if (isEmptyValue(formValue.email)) {
-            error.email = "Email is required!";
-        } else {
-            if (!isEmailValid(formValue.email)) {
-                error.email = "Email is invalid!";
+        if (selection === 1) {
+            if (isEmptyValue(formValue.email)) {
+                error.email = "Email is required!";
+            } else {
+                if (!isEmailValid(formValue.email)) {
+                    error.email = "Email is invalid!";
+                }
             }
-        }
-        if (isEmptyValue(formValue.code)) {
-            error.code = "Code is required!"
-        }
-        if (isEmptyValue(formValue.newPassword)) {
-            error.newPassword = "New password is required!"
-        }
-        if (isEmptyValue(formValue.confirmPassword)) {
-            error.confirmPassword = "Confirm password is required!"
-        } else if (formValue.newPassword !== formValue.confirmPassword) {
-            error.confirmPassword = "Confirm password does not match!"
+        } else if (selection === 2) {
+            if (isEmptyValue(formValue.code)) {
+                error.code = "Code is required!"
+            } else if (formValue.code.length<=0 || formValue.code.length>4){
+                error.code = "Code is invalid!"
+            }
+            if (isEmptyValue(formValue.newPassword)) {
+                error.newPassword = "New password is required!"
+            }
+            if (isEmptyValue(formValue.confirmPassword)) {
+                error.confirmPassword = "Confirm password is required!"
+            } else if (formValue.newPassword !== formValue.confirmPassword) {
+                error.confirmPassword = "Confirm password does not match!"
+            }
         }
         setFormError(error);
         return Object.keys(error).length === 0;
     };
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmitContinue = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (validateForm()) {
             console.log("Form value : ", formValue);
+            setSelect(2);
         } else {
             console.log("Form invalid")
         }
     };
-    const handleContinue = () => {
-        if(formError.email===""){
-            setSelect(2)
+    const handleSubmitPassword = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (validateForm()) {
+            console.log("Form value : ", formValue);
+            setSelect(3);
+        } else {
+            console.log("Form invalid")
         }
     };
-    console.log(selection)
-    const handleResetPassword = () => {
-        setSelect(3)
-    }
     return (
         <div className="parent text-center w-[320px] m-auto px-9 mt-3 rounded-md">
             <div className="">
@@ -76,7 +82,7 @@ export default function ForgotPassword() {
                                 <div>
                                     <h3 className="text-white text-xl">It's okay. Reset your password</h3>
                                     {/* Form enter email */}
-                                    <form onSubmit={handleSubmit} className="text-center">
+                                    <form onSubmit={handleSubmitContinue} className="text-center">
                                         {/* <label htmlFor="email" className="">Email</label> */}
                                         <input
                                             type="text"
@@ -88,7 +94,7 @@ export default function ForgotPassword() {
                                             className={`w-[280px] h-10 border-solid rounded-sm mt-2 focus:outline-none focus:border-white ${formError.email ? "border-red-400" : "border-white"}`}
                                         />
                                         <div className="h-5 -ml-44 font-semibold text-sm text-red-700 mt-2">{formError.email}</div>
-                                        <input type="submit" value="Continue" onClick={handleContinue} className="mt-10 mb-40 w-[280px] h-10 rounded-full border-solid border-white bg-white text-base text-green-700 font-bold cursor-pointer active:bg-slate-300 active:border-none" />
+                                        <input type="submit" value="Continue" className="mt-10 mb-40 w-[280px] h-10 rounded-full border-solid border-white bg-white text-base text-green-700 font-bold cursor-pointer active:bg-slate-300 active:border-none" />
                                     </form>
                                 </div>
                             )
@@ -98,7 +104,7 @@ export default function ForgotPassword() {
                                 <div>
                                     <h3 className="text-white text-xl">Reset your password</h3>
                                     <p className="text-white text-base">We have sent a four digit code on your email</p>
-                                    <form onSubmit={handleSubmit} className="text-center">
+                                    <form onSubmit={handleSubmitPassword} className="text-center">
                                         {/* <label htmlFor="email" className="">Four digit code</label> */}
                                         <input
                                             type="text"
@@ -110,9 +116,6 @@ export default function ForgotPassword() {
                                             className={`w-[280px] h-10 border-solid rounded-sm mt-2 focus:outline-none focus:border-white ${formError.code ? "border-red-400" : "border-white"}`}
                                         />
                                         <div className="h-5 -ml-44 font-semibold text-sm text-red-700 mt-2">{formError.code}</div>
-                                    </form>
-                                    <form onSubmit={handleSubmit} className="text-center">
-                                        {/* <label htmlFor="email" className="">New password</label> */}
                                         <input
                                             type="text"
                                             id="newPassword"
@@ -123,9 +126,6 @@ export default function ForgotPassword() {
                                             className={`w-[280px] h-10 border-solid rounded-sm mt-2 focus:outline-none focus:border-white ${formError.newPassword ? "border-red-400" : "border-white"}`}
                                         />
                                         <div className="h-5 -ml-28 font-semibold text-sm text-red-700 mt-2">{formError.newPassword}</div>
-                                    </form>
-                                    <form onSubmit={handleSubmit} className="text-center">
-                                        {/* <label htmlFor="email" className="">Confirm password</label> */}
                                         <input
                                             type="text"
                                             id="confirmPassword"
@@ -136,7 +136,7 @@ export default function ForgotPassword() {
                                             className={`w-[280px] h-10 border-solid rounded-sm mt-2 focus:outline-none focus:border-white ${formError.confirmPassword ? "border-red-400" : "border-white"}`}
                                         />
                                         <div className="h-5 -ml-24 font-semibold text-sm text-red-700 mt-2">{formError.confirmPassword}</div>
-                                        <input type="submit" value="Reset password" onClick={handleResetPassword} className="mt-10 mb-20 w-[280px] h-10 rounded-full border-solid border-white bg-white text-base text-green-700 font-bold cursor-pointer active:bg-slate-300 active:border-none" />
+                                        <input type="submit" value="Reset password" className="mt-10 mb-20 w-[280px] h-10 rounded-full border-solid border-white bg-white text-base text-green-700 font-bold cursor-pointer active:bg-slate-300 active:border-none" />
                                     </form>
                                 </div>
                             )
