@@ -3,6 +3,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
 import { isEmailValid, isEmptyValue } from 'src/utils';
 import { IMAGE_PATH } from 'src/constants/images';
+import { NULL } from 'sass';
 const initFormValue = {
     email: "",
     code: "",
@@ -26,10 +27,10 @@ export default function ForgotPassword() {
     const validateForm = () => {
         const error: { [key: string]: string } = {};
         if (isEmptyValue(formValue.email)) {
-            error.email = "Code is required!";
+            error.email = "Email is required!";
         } else {
             if (!isEmailValid(formValue.email)) {
-                error.email = "Code is invalid!";
+                error.email = "Email is invalid!";
             }
         }
         if (isEmptyValue(formValue.code)) {
@@ -55,8 +56,14 @@ export default function ForgotPassword() {
         }
     };
     const handleContinue = () => {
-        setSelect(3)
+        if(formError.email===""){
+            setSelect(2)
+        }
     };
+    console.log(selection)
+    const handleResetPassword = () => {
+        setSelect(3)
+    }
     return (
         <div className="parent text-center w-[320px] m-auto px-9 mt-3 rounded-md">
             <div className="">
@@ -129,7 +136,7 @@ export default function ForgotPassword() {
                                             className={`w-[280px] h-10 border-solid rounded-sm mt-2 focus:outline-none focus:border-white ${formError.confirmPassword ? "border-red-400" : "border-white"}`}
                                         />
                                         <div className="h-5 -ml-24 font-semibold text-sm text-red-700 mt-2">{formError.confirmPassword}</div>
-                                        <input type="submit" value="Reset password" onClick={handleContinue} className="mt-10 mb-20 w-[280px] h-10 rounded-full border-solid border-white bg-white text-base text-green-700 font-bold cursor-pointer active:bg-slate-300 active:border-none" />
+                                        <input type="submit" value="Reset password" onClick={handleResetPassword} className="mt-10 mb-20 w-[280px] h-10 rounded-full border-solid border-white bg-white text-base text-green-700 font-bold cursor-pointer active:bg-slate-300 active:border-none" />
                                     </form>
                                 </div>
                             )
@@ -138,7 +145,7 @@ export default function ForgotPassword() {
                                 <div>
                                     <p className="text-white text-xl">Whoo Whoo!</p>
                                     <p className="text-white text-base">Your password has been reset successfully! Now login with your new password</p>
-                                    <input type="submit" value="Sign in" onClick={handleContinue} className="mt-10 mb-20 w-[280px] h-10 rounded-full border-solid border-white bg-white text-base text-green-700 font-bold cursor-pointer active:bg-slate-300 active:border-none" />
+                                    <input type="submit" value="Sign in" className="mt-10 mb-20 w-[280px] h-10 rounded-full border-solid border-white bg-white text-base text-green-700 font-bold cursor-pointer active:bg-slate-300 active:border-none" />
                                 </div>
                             )
                         default:
