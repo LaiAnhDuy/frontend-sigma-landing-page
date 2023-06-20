@@ -3,6 +3,7 @@ import './index.style.scss';
 import { Select } from 'antd';
 import { DownOutlined } from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
+import ROUTE from "src/constants/route";
 export default function Selection() {
     const location = useLocation();
     const path = location.pathname;
@@ -11,7 +12,7 @@ export default function Selection() {
             suffixIcon={
                 <DownOutlined
                     style={{ pointerEvents: 'none' }}
-                    className={`right-9 ${path === '/' ? 'arrow1' : 'arrow2'}`}
+                    className={`right-9 ${path === `${ROUTE.HOME}` ? 'arrow1' : 'arrow2'}`}
                 />
             }
             defaultValue="vn"

@@ -52,7 +52,7 @@ export default function Register({ onClick }: RegisterProps) {
     if (isEmptyValue(formValue.confirmPassword)) {
       error.confirmPassword = "Confirm password is required!";
     } else if (formValue.confirmPassword !== formValue.password) {
-      error.confirmPassword = "Confirm password not match!"
+      error.confirmPassword = "Confirm password does not match!"
     }
     setFormError(error);
     return Object.keys(error).length === 0;
