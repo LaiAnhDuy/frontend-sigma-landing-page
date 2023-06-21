@@ -11,7 +11,10 @@ const initFormValue = {
   email: "",
   password: "",
   phone: "",
-  confirmPassword: ""
+  confirmPassword: "",
+  firstName: "",
+  lastName: "",
+  country: ""
 }
 interface FormValues {
   [key: string]: string;
@@ -33,6 +36,12 @@ export default function Register({ onClick }: RegisterProps) {
   };
   const validateForm = () => {
     const error: { [key: string]: string } = {};
+    if (isEmptyValue(formValue.firstName)) {
+      error.firstName = "First name is required!"
+    }
+    if (isEmptyValue(formValue.lastName)) {
+      error.lastName = "Last name is required!"
+    }
     if (isEmptyValue(formValue.email)) {
       error.email = "Email is required!";
     } else {
@@ -67,11 +76,11 @@ export default function Register({ onClick }: RegisterProps) {
   };
   return (
     <div className="">
-      <div className="flex w-[600px] m-auto">
+      <div className="flex w-[600px] m-auto -mt-24">
         {/* register */}
         <div style={{ width: '60%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
           <h1 className=''>Sign Up</h1>
-          <div className="flex justify-center -mt-2">
+          <div className="flex justify-center -mt-3">
             <GoogleOutlined className="google mx-2" />
             <FontAwesomeIcon icon={faFacebookF} className="mx-2 rounded-[100%] border-solid p-1 px-2" />
             <FontAwesomeIcon icon={faTwitter} className="mx-2 rounded-[100%] border-solid p-1" />
@@ -79,6 +88,38 @@ export default function Register({ onClick }: RegisterProps) {
           </div>
           {/*Đây là form Sign Up */}
           <form onSubmit={handleSubmit}>
+            <label htmlFor="firstName" className="text-base">
+              FirstName
+              <span className="text-red-600">*</span>
+            </label>
+            <div className="mb-4">
+              <input
+                type="text"
+                className={`border-solid rounded-sm border-blue-200 border-2 h-7 w-60 focus:outline-none focus:border-blue-200 ${formError.firstName ? "border-red-400" : "border-blue-200"}`}
+                id="firstName"
+                name="firstName"
+                value={formValue.firstName}
+                onChange={handleChange}
+                placeholder="Enter your firstName"
+              />
+            </div>
+            <div className="-mt-3 h-3 mb-2 text-red-700 text-sm font-semibold">{formError.firstName}</div>
+            <label htmlFor="lastName" className="text-base">
+              LastName
+              <span className="text-red-600">*</span>
+            </label>
+            <div className="mb-4">
+              <input
+                type="text"
+                className={`border-solid rounded-sm border-blue-200 border-2 h-7 w-60 focus:outline-none focus:border-blue-200 ${formError.lastName ? "border-red-400" : "border-blue-200"}`}
+                id="lastName"
+                name="lastName"
+                value={formValue.lastName}
+                onChange={handleChange}
+                placeholder="Enter your lastName"
+              />
+            </div>
+            <div className="-mt-3 h-3 mb-2 text-red-700 text-sm font-semibold">{formError.lastName}</div>
             <label htmlFor="email" className="text-base">
               Email
               <span className="text-red-600">*</span>
