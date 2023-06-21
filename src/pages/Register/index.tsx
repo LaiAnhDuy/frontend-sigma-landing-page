@@ -80,12 +80,6 @@ export default function Register({ onClick }: RegisterProps) {
         {/* register */}
         <div style={{ width: '60%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
           <h1 className=''>Sign Up</h1>
-          <div className="flex justify-center -mt-3">
-            <GoogleOutlined className="google mx-2" />
-            <FontAwesomeIcon icon={faFacebookF} className="mx-2 rounded-[100%] border-solid p-1 px-2" />
-            <FontAwesomeIcon icon={faTwitter} className="mx-2 rounded-[100%] border-solid p-1" />
-            <FontAwesomeIcon icon={faInstagram} className="mx-2 rounded-[100%] border-solid p-1 px-1" />
-          </div>
           {/*Đây là form Sign Up */}
           <form onSubmit={handleSubmit}>
             <label htmlFor="firstName" className="text-base">
@@ -188,7 +182,6 @@ export default function Register({ onClick }: RegisterProps) {
               {activeConfirmPassword ? <EyeOutlined className="-ml-[30px]" onClick={() => setActiveConfirmPassword(!activeConfirmPassword)} /> : <EyeInvisibleOutlined className="-ml-[30px]" onClick={() => setActiveConfirmPassword(!activeConfirmPassword)} />}
             </div>
             <div className="-mt-3 mb-3 h-3 text-red-700 text-sm font-semibold">{formError.confirmPassword}</div>
-            <Checkbox onChange={() => { }} className="flex justify-start text-sm mb-4">Remember password</Checkbox>
             <div className='flex justify-center mb-2'>
               <input type="submit" className="w-28 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" value="Sign Up" />
             </div>
