@@ -3,10 +3,8 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
 import { isEmailValid, isEmptyValue } from 'src/utils';
 import { IMAGE_PATH } from 'src/constants/images';
-import { NULL } from 'sass';
 const initFormValue = {
     email: "",
-    code: "",
     newPassword: "",
     confirmPassword: ""
 }
@@ -35,11 +33,6 @@ export default function ForgotPassword() {
                 }
             }
         } else if (selection === 2) {
-            if (isEmptyValue(formValue.code)) {
-                error.code = "Code is required!"
-            } else if (formValue.code.length<=0 || formValue.code.length>4){
-                error.code = "Code is invalid!"
-            }
             if (isEmptyValue(formValue.newPassword)) {
                 error.newPassword = "New password is required!"
             }
@@ -103,19 +96,7 @@ export default function ForgotPassword() {
                             return (
                                 <div>
                                     <h3 className="text-white text-xl">Reset your password</h3>
-                                    <p className="text-white text-base">We have sent a four digit code on your email</p>
                                     <form onSubmit={handleSubmitPassword} className="text-center">
-                                        {/* <label htmlFor="email" className="">Four digit code</label> */}
-                                        <input
-                                            type="text"
-                                            id="code"
-                                            name="code"
-                                            value={formValue.code}
-                                            onChange={handleChange}
-                                            placeholder="Four digit code"
-                                            className={`w-[280px] h-10 border-solid rounded-sm mt-2 focus:outline-none focus:border-white ${formError.code ? "border-red-400" : "border-white"}`}
-                                        />
-                                        <div className="h-5 -ml-44 font-semibold text-sm text-red-700 mt-2">{formError.code}</div>
                                         <input
                                             type="text"
                                             id="newPassword"

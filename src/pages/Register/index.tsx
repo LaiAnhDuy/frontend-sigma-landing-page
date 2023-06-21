@@ -1,10 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss'
 import { IMAGE_PATH } from 'src/constants/images';
-import { Checkbox } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { EyeInvisibleOutlined, EyeOutlined, GoogleOutlined } from '@ant-design/icons';
+import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { isEmailValid, isEmptyValue } from 'src/utils';
 import Select from './Select'
 const initFormValue = {
