@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { EyeInvisibleOutlined, EyeOutlined, GoogleOutlined } from '@ant-design/icons';
 import { isEmailValid, isEmptyValue } from 'src/utils';
+import { authApi } from 'src/api/auth-api';
 const initFormValue = {
     email: "",
     password: ""
@@ -30,6 +31,13 @@ export default function Login({ signIn, onClick }: LoginProps) {
             [name]: value,
         }));
     };
+    // const loginRequest = () => {
+    //     const data = {
+    //         email: formValue.email,
+    //         password: formValue.password
+    //     }
+    //     authApi.login(data).then((res) => { }).catch((error) => { })
+    // }
     const validateForm = () => {
         const error: { [key: string]: string } = {};
         if (isEmptyValue(formValue.email)) {
@@ -54,8 +62,9 @@ export default function Login({ signIn, onClick }: LoginProps) {
         }
     };
     return (
-        <div className="login-page my-4">
+        <div className="login-page my-4" >
             <div className="flex w-[600px] m-auto">
+                {/* <CloseCircleFilled className="fixed right-40" />   */}
                 {/* sign in */}
                 <div style={{ width: '60%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
                     <h1 className=''>Sign In</h1>
@@ -116,5 +125,6 @@ export default function Login({ signIn, onClick }: LoginProps) {
                 </div>
             </div>
         </div>
+
     );
 }

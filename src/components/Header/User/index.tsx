@@ -1,4 +1,4 @@
-import { UserOutlined } from '@ant-design/icons';
+import { CloseOutlined, UserOutlined } from '@ant-design/icons';
 import { Dropdown, MenuProps, Modal } from 'antd';
 import React, { useState } from 'react';
 import Login from 'src/pages/Login';
@@ -90,9 +90,10 @@ export default function User({ user }: UserProps) {
         footer={false}
         open={isModalOpen}
         onOk={handleOk}
+        closable = {false}
         onCancel={handleCancel}
         width={'fit-content'}
-        closable={false}
+        // closable={false}
       >
         {option ? (
           <Login signIn={handleOk} onClick={showModalSignUp}/>
