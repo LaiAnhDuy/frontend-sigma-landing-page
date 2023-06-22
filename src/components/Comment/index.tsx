@@ -5,19 +5,23 @@ export default function Comment() {
     return (
         <>
             <div className="container mt-5 mb-5">
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center ">
                     <div className="">
-                        <div className="card">
-                            <div className="p-3">
+                        <div className="border-none bg-[#fff] ml-auto">
+                            <div className="p-2 text-lg">
                                 <h6>Comments</h6>
                             </div>
-                            <div className="mt-3 flex flex-row items-center p-3 form-color">
+                            <div className="mt-2 flex items-center p-3 bg-[#fafafa]">
                                 <img src="https://i.imgur.com/zQZSWrt.jpg" width="44" className="rounded-full mr-2" />
                                 <input
                                     type="text"
-                                    className="h-12 w-full rounded-3xl border-solid border focus:!bg-gray-50  focus:!outline-none focus:!border-solid focus:!border-gray-500 focus:border-2"
+                                    className="h-12 w-full rounded-3xl border-solid border focus:!bg-gray-50  focus:!outline-none focus:!border-solid focus:!border-gray-300 focus:border-2"
                                     placeholder="Enter your comment..."
                                 />
+                            </div>
+                            <div className="flex justify-end">
+                                <button type="button" className="font-bold text-sm h-8 w-20 rounded-full mr-8 border-none bg-white hover:bg-gray-200">Cancel</button>
+                                <button type="button" className="font-bold text-sm h-8 w-24 rounded-full mr-8 border-none bg-white hover:bg-gray-200">Comment</button> 
                             </div>
                             <div className="mt-2">
                                 <div className="flex flex-row p-3">
@@ -26,7 +30,7 @@ export default function Comment() {
                                         <div className="flex justify-between items-center">
                                             <div className="flex flex-row items-center">
                                                 <span className="mr-2">Brian selter</span>
-                                                <small className="bg-[#35b69f] text-white h-5 w-[92px] text-xs rounded-[5px] text-center mt- ">Top Comment</small>
+                                                <small className="bg-[#35b69f] text-white h-5 w-[92px] text-xs rounded-[5px] text-center mt-2">Top Comment</small>
                                             </div>
                                             <small>12h ago</small>
                                         </div>
@@ -45,7 +49,7 @@ export default function Comment() {
                                         <div className="flex justify-between items-center">
                                             <div className="flex flex-row items-center">
                                                 <span className="mr-2">Seltos Majito</span>
-                                                <small className="c-badge">Top Comment</small>
+                                                <small className="bg-[#35b69f] text-white h-5 w-[92px] text-xs rounded-[5px] text-center mt-2">Top Comment</small>
                                             </div>
                                             <small>2h ago</small>
                                         </div>
@@ -64,7 +68,7 @@ export default function Comment() {
                                         <div className="flex justify-between items-center">
                                             <div className="flex flex-row items-center">
                                                 <span className="mr-2">Maria Santola</span>
-                                                <small className="c-badge">Top Comment</small>
+                                                <small className="bg-[#35b69f] text-white h-5 w-[92px] text-xs rounded-[5px] text-center mt-2">Top Comment</small>
                                             </div>
                                             <small className="">12h ago</small>
                                         </div>
