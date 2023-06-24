@@ -13,6 +13,7 @@ import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
+import SigmaDRM from 'src/pages/Products/Sigma-DRM';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -35,6 +36,11 @@ const routes: RouteType[] = [
     path: ROUTE.PRODUCT_SIGMA_LIVESTREAMING,
     title: 'Sigma Live Streaming',
     element: SigmaLiveStreaming,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_DRM,
+    title: 'Sigma Dynamic Ads Insert',
+    element: SigmaDRM,
   },
   {
     path: ROUTE.RESOURCES,

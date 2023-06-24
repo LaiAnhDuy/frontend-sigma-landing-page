@@ -19,10 +19,6 @@ enum ROUTE {
   PRODUCT_SIGMA_DRM = '/product/sigma-drm',
   PRODUCT_SIGMA_LIVESTREAMING='/product/sigma-livestreaming',
   PRODUCT_SIGMA_INTERACTIVE='/product/sigma-interactive',
-  MULTI = '/product/multi',
-  AUDIO_WATERMARKING = '/product/audio-wartermarking',
-  STREAMING = '/product/streaming',
-  PRODUCT_SIGMADAI = '/product/sigmadai',
 }
 
 export default ROUTE;
