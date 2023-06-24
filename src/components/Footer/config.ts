@@ -29,7 +29,7 @@ export const listItem = [
     content: [
       {
         subtitle: 'About us',
-        url: '#',
+        url: '/about-us',
       },
       {
         subtitle: 'Contact Us',

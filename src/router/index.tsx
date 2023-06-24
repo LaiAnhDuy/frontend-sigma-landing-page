@@ -14,7 +14,7 @@ import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import { Button, Result } from 'antd';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
-
+import AboutUs from 'src/pages/About_us';
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -27,6 +27,7 @@ const routes: RouteType[] = [
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
+  { path: ROUTE.ABOUT_US, title: 'About us', element: AboutUs },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
     title: 'Audio Watermarking',

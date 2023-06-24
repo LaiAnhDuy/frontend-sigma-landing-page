@@ -1,4 +1,5 @@
 enum ROUTE {
+  ABOUT_US = '/about-us',
   HOME = '/',
   RESOURCES = '/resources/:tab',
   PAGE_NOT_FOUND = '/404',
@@ -23,6 +24,7 @@ enum ROUTE {
   AUDIO_WATERMARKING = '/product/audio-wartermarking',
   STREAMING = '/product/streaming',
   PRODUCT_SIGMADAI = '/product/sigmadai',
+
 }
 
 export default ROUTE;
