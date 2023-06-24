@@ -27,7 +27,7 @@ export default function AboutUs() {
                     <p className="color-p text-[16px] font-medium">Our total Sigma Solution suite includes:</p>
 
                 </div>
-                <div className="flex">
+                <div className="flex -mt-4">
                     <div>
                         <div className="flex">
                             <p className="main-color font-medium text-[16px]">+</p>
@@ -74,8 +74,8 @@ export default function AboutUs() {
                         <h1 className="main-color text-[30px] font-bold">Ready to Get Start?</h1>
                         <p className="color-p text-[21px] font-medium -mt-4 w-[563px]">Start streaming today with our integrated video platform.</p>
                     </div>
-                    <div className="mt-[11px] ml-[975px]">
-                        <button className=" rounded-[4px] h-10 w-[135px] border-none bg-[#fd841f] text-[16px] font-medium text-[#FFFFFF]" type="button">Free trial</button>
+                    <div className="">
+                        <button className="mt-[11px] ml-[975px] rounded-[4px] h-10 w-[135px] border-none bg-[#fd841f] text-[16px] font-medium text-[#FFFFFF]" type="button">Free trial</button>
                     </div>
                 </div>
             </div>
