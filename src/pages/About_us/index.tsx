@@ -6,7 +6,7 @@ export default function AboutUs() {
         <div className="container m-auto">
             <div className="">
                 <h1 className="text-[50px] text-[#4D4D4D]">About us</h1>
-                <p className="main-color text-[21px] font-medium ">We are proud of over 10 years of experience in developing technology solutions for content providers and telecom businesses in Vietnam and international market. Our goal is to provide best-in-class solutions with the highest quality services for customers</p>
+                <p className="main-color text-[21px] font-medium -mt-5">We are proud of over 10 years of experience in developing technology solutions for content providers and telecom businesses in Vietnam and international market. Our goal is to provide best-in-class solutions with the highest quality services for customers</p>
                 <img className="w-full" src={IMAGE_PATH.ABOUT_US} alt=""></img>
                 <p className="text-[21px] text-[#4D4D4D] font-normal">Thu Do Multimedia is Vietnam's leading company in digital TV solutions for content providers, service providers and streaming platforms. We are confident to bring the "Make in Vietnam" business solution chain completely built by ourself.</p>
                 <p className="text-[21px] text-[#4D4D4D] font-normal">Leveraging a unique R&D team in the video industry, Thu Do Multimedia develops solutions that power sustainable TV services, protect the content digital rights, improve viewers’ quality of experience, optimize the total cost of ownership of TV/VOD services, and generate new revenue streams based on personalization and ad insertion. Beyond technological agility, Thu Do Multimedia’s value proposition is to partner with its customers by offering highly flexible engagement and business models that match their financial priorities. </p>
@@ -74,9 +74,9 @@ export default function AboutUs() {
                         <h1 className="main-color text-[30px] font-bold">Ready to Get Start?</h1>
                         <p className="color-p text-[21px] font-medium -mt-4 w-[563px]">Start streaming today with our integrated video platform.</p>
                     </div>
-                    <div className="">
-                        <button className="mt-[11px] ml-[975px] rounded-[4px] h-10 w-[135px] border-none bg-[#fd841f] text-[16px] font-medium text-[#FFFFFF]" type="button">Free trial</button>
-                    </div>
+                    <div>
+                        <button className="mt-7 ml-[812px] rounded-[4px] h-10 w-[135px] border-none bg-[#fd841f] text-[16px] font-medium text-[#FFFFFF]" type="button">Free trial</button>
+                    </div> 
                 </div>
             </div>
 
