@@ -23,6 +23,7 @@ enum ROUTE {
   AUDIO_WATERMARKING = '/product/audio-wartermarking',
   STREAMING = '/product/streaming',
   PRODUCT_SIGMADAI = '/product/sigmadai',
+  SUPPORT = '/support',
 }
 
 export default ROUTE;

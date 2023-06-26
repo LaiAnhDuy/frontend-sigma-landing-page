@@ -14,7 +14,7 @@ import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import { Button, Result } from 'antd';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
-
+import Support from 'src/pages/Support';
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -26,6 +26,7 @@ const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Sigma DRM', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
+  { path: ROUTE.SUPPORT, title: 'New', element: Support },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
