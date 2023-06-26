@@ -31,13 +31,18 @@ export default function Login({ signIn, onClick }: LoginProps) {
             [name]: value,
         }));
     };
-    // const loginRequest = () => {
-    //     const data = {
-    //         email: formValue.email,
-    //         password: formValue.password
-    //     }
-    //     authApi.login(data).then((res) => { }).catch((error) => { })
-    // }
+    const loginRequest = () => {
+        const data = {
+            email: formValue.email,
+            password: formValue.password
+        }
+        authApi.login(data).then((res) => {
+            console.log("Success", res);
+        })
+            .catch((error) => {
+                console.log("Fail: ", error);
+            })
+    }
     const validateForm = () => {
         const error: { [key: string]: string } = {};
         if (isEmptyValue(formValue.email)) {
@@ -112,7 +117,7 @@ export default function Login({ signIn, onClick }: LoginProps) {
                         <div className="h-3 text-red-700 text-sm font-semibold mb-4">{formError.password}</div>
                         <Checkbox onChange={() => { }} className="flex justify-start text-sm mb-4">Remember password</Checkbox>
                         <div className='flex justify-center mb-2'>
-                            <input type="submit" className="w-28 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" onClick={signIn} value="Sign In" />
+                            <input type="submit" className="w-28 h-9 border-solid border-pink-200 rounded-md bg-white font-bold text-pink-500 text-base hover:bg-pink-600 hover:text-white hover:cursor-pointer" onClick={loginRequest} value="Sign In" />
                         </div>
                         <div className='flex justify-center cursor-pointer text-blue-400' onClick={onClick}>
                             I have not an account
