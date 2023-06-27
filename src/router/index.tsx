@@ -14,6 +14,7 @@ import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import { Button, Result } from 'antd';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
+import SigmaInteractive from 'src/pages/Products/Interactive';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -36,6 +37,11 @@ const routes: RouteType[] = [
     path: ROUTE.PRODUCT_SIGMA_LIVESTREAMING,
     title: 'Sigma Live Streaming',
     element: SigmaLiveStreaming,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_INTERACTIVE,
+    title: 'Sigma Interactive',
+    element: SigmaInteractive,
   },
   {
     path: ROUTE.RESOURCES,
