@@ -1,6 +1,8 @@
 import { PUBLIC_URL } from 'src/configs';
 
 export const IMAGE_PATH = {
+  SUPPORT_ELEMENT: `${PUBLIC_URL}/images/element-support.png`,
+  SUPPORT: `${PUBLIC_URL}/images/bg-support.svg`,
   LOGO_FOOTER: `${PUBLIC_URL}/images/logo-footer.svg`,
   LOGO_ORANGE: `${PUBLIC_URL}/images/logo-orange.svg`,
   LOGO_WHITE: `${PUBLIC_URL}/images/logo-white.svg`,
