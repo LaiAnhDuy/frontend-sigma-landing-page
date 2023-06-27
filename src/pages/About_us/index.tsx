@@ -13,13 +13,13 @@ export default function AboutUs() {
                 <div className="">
                     <p className=" text-[50px] text-main font-bold">2019</p>
                     <hr className="color-hr w-[300px] h-[17px] rounded-[20px] -mt-12"></hr>
-                    <p className='text-lg text-[#4D4D4D] mt-6 font-normal'>Sigma DRM, No.1st enterprise in Vietnam and the 20th enterprise in the world that met international security standards and received certification from Cartesian Organization</p>
+                    <p className='text-base text-[#4D4D4D] mt-6 font-normal'>Sigma DRM, No.1st enterprise in Vietnam and the 20th enterprise in the world that met international security standards and received certification from Cartesian Organization</p>
 
                 </div>
                 <div>
                     <p className="text-main text-[50px] font-bold">2020</p>
                     <hr className="color-hr w-[300px] h-[17px] rounded-[20px] -mt-12"></hr>
-                    <p className='text-lg text-[#4D4D4D] font-normal'>Vietnam’s Leading and No.1st enterprise as one of the largest OTT technical solution providers in Vietnam</p>
+                    <p className='text-base text-[#4D4D4D] font-normal'>Vietnam’s Leading and No.1st enterprise as one of the largest OTT technical solution providers in Vietnam</p>
                 </div>
                 <div>
                     <p className="text-[50px] text-main font-bold">2020</p>
@@ -30,42 +30,42 @@ export default function AboutUs() {
                 <div className="flex -mt-4">
                     <div>
                         <div className="flex">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma DRM/ Multi DRM</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma DRM/ Multi DRM</p>
                         </div>
                         <div className="flex -mt-6">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma Origin Packager</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma Origin Packager</p>
                         </div>
                         <div className="flex -mt-6">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma Interactive</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma Interactive</p>
                         </div>
                         <div className="flex -mt-6">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma Transcoder</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma Transcoder</p>
                         </div>
                         <div className="flex -mt-6">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma Livestreaming</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma Livestreaming</p>
                         </div>
                     </div>
                     <div className="ml-40">
                         <div className="flex">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma Multi CDN</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma Multi CDN</p>
                         </div>
                         <div className="flex -mt-6">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma Dynamic Ads Insert</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma Dynamic Ads Insert</p>
                         </div>
                         <div className="flex -mt-6">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma Audio Water Marking</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma Audio Water Marking</p>
                         </div>
                         <div className="flex -mt-6">
-                            <p className="text-main font-medium text-lg">+</p>
-                            <p className="ml-1 color-p font-normal text-lg">Sigma NS53</p>
+                            <p className="text-main font-medium text-base">+</p>
+                            <p className="ml-1 color-p font-normal text-base">Sigma NS53</p>
                         </div>
                     </div>
                 </div>
@@ -74,9 +74,9 @@ export default function AboutUs() {
                         <h1 className="text-main text-[30px] font-bold">Ready to Get Start?</h1>
                         <p className="color-p text-[21px] font-medium -mt-4 w-[563px]">Start streaming today with our integrated video platform.</p>
                     </div>
-                    <div>
-                        <button className="mt-7 ml-[812px] rounded-[4px] h-10 w-[135px] border-none bg-[#fd841f] text-lg font-medium text-[#FFFFFF] cursor-pointer active:bg-orange-300" type="button">Free trial</button>
-                    </div> 
+                    
+                        <button className="mt-7 ml-[565px] rounded-[4px] h-10 w-[135px] border-none bg-[#fd841f] text-lg font-medium text-[#FFFFFF] cursor-pointer active:bg-orange-300" type="button">Free trial</button>
+                    
                 </div>
             </div>
 
