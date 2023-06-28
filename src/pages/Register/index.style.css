@@ -59,12 +59,6 @@
     background: linear-gradient(90deg, #0b1aa1 22.49%, rgba(130, 8, 8, 0.5) 102.96%);
     cursor: pointer; 
 }
-input[type='number']:focus {
-    background-color:#f2dede;   
-}
-input[type='text']:focus {
-    background-color:#f2dede;   
-}
-input[type='password']:focus {
+.form_control:focus {
     background-color:#f2dede;   
 }

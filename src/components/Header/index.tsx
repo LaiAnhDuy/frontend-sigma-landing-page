@@ -89,16 +89,17 @@ export default function Header() {
             className="text-xl mr-2"
           />
           <Select
+            bordered={false}
             suffixIcon={
               <DownOutlined
                 style={{ pointerEvents: 'none' }}
-                className={`right-9 ${
+                className={`right-9   ${
                   activeHeader && path === '/' ? 'arrow1' : 'arrow2'
                 }`}
               />
             }
             defaultValue="vn"
-            className={`bg-transparent w-[100px] ${
+            className={` w-[110px] ${
               activeHeader && path === '/' ? ' select' : 'select1'
             }`}
             options={[
