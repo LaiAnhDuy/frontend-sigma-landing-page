@@ -1,4 +1,5 @@
 enum ROUTE {
+  CONTACT_US = '/contact_us',
   HOME = '/',
   RESOURCES = '/resources/:tab',
   PAGE_NOT_FOUND = '/404',

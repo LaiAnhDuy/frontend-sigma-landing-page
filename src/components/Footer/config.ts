@@ -33,7 +33,7 @@ export const listItem = [
       },
       {
         subtitle: 'Contact Us',
-        url: '#',
+        url: '/contac_us',
       },
     ],
   },
