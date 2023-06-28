@@ -10,9 +10,8 @@ interface CarouselProps {
   list: string[];
 }
 
-function CarouselShow(props: CarouselProps) {
-    const carouselRef = useRef<CarouselRef>(null);
-
+function CarouselShow({ list }: CarouselProps) {
+  const carouselRef = useRef<CarouselRef>(null);
 
   return (
     <>
@@ -24,7 +23,7 @@ function CarouselShow(props: CarouselProps) {
       />
       <div className="max-w-[1110px]  min-w-0">
         <Carousel draggable dots={false} slidesToShow={4} ref={carouselRef}>
-          {props.list.map((val, index) => (
+          {list.map((val, index) => (
             <div key={index} className="outline-none border-none ">
               <img className="w-[262.5px] h-[268px] " alt="#" src={val} />
             </div>

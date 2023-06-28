@@ -1,8 +1,12 @@
 import './index.style.scss';
-import { SIGMA_PACKAGE1, SIGMA_PACKAGE2 } from 'src/constants/products';
 import { IMAGE_PATH } from 'src/constants/images';
 import { Carousel } from 'antd';
-import { list1, list2 } from './configs';
+import {
+  LIST_CAROUSEL,
+  LIST_SPECIFICATION,
+  SIGMA_PACKAGE1,
+  SIGMA_PACKAGE2,
+} from './configs';
 import { useState, useEffect } from 'react';
 
 function SigmaPackage() {
@@ -40,7 +44,7 @@ function SigmaPackage() {
             <img
               className="w-[900px]"
               src={IMAGE_PATH.TV_PACKAGE}
-              alt="TV_N53"
+              alt="TV_PACKAGE"
             />
           </div>
         </div>
@@ -104,7 +108,7 @@ function SigmaPackage() {
             draggable={true}
             className="custom-dots"
           >
-            {list1.map((e, index) => (
+            {LIST_CAROUSEL.map((e, index) => (
               <div key={index}>
                 <div className="flex justify-center">
                   <img src={IMAGE_PATH.PACKAGE_W} alt="" />
@@ -148,7 +152,7 @@ function SigmaPackage() {
       </div>
       <div className="bg-[#F9F9F9] h-[1150px]">
         <div className="relative overflow-hidden">
-          <div className="circle"></div>
+          <div className="circle1"></div>
         </div>
         <div className="flex justify-center flex-col">
           <div className="relative top-[-950px]">
@@ -285,7 +289,7 @@ function SigmaPackage() {
                 <span className="text-main">specification</span>
               </div>
               <div>
-                {list2.map((e, index) => (
+                {LIST_SPECIFICATION.map((e, index) => (
                   <div key={index} className="flex justify-between mb-[30px]">
                     <div className="text-main font-medium">{e.title}</div>
                     <div className="w-[360px] text-right">{e.content}</div>

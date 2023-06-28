@@ -1,5 +1,5 @@
+import { SIGMA_DAI } from './configs';
 import './index.style.scss';
-import { SIGMA_DAI } from 'src/constants/products';
 import { IMAGE_PATH } from 'src/constants/images';
 
 function SigmaDai() {
@@ -26,7 +26,7 @@ function SigmaDai() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col px-[184px]">
+        <div className="flex justify-center flex-col px-[184px] mt-[90px]">
           <div className="font-bold text-[30px] leading-[30px] text-center pb-[22px]">
             <span className="text-main">Key</span> Feature
           </div>

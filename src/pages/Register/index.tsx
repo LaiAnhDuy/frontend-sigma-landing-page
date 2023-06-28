@@ -71,7 +71,7 @@ export default function Register() {
           <div className="form-1">
             <img
               className="form-picture"
-              src="./images/pic_register.svg"
+              src="../images/pic_register.svg"
               alt=""
             />
           </div>

@@ -1,22 +1,34 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import Item from 'src/components/Item';
 import { Pagination, PaginationProps } from 'antd';
 import { blogs, casestudy, documents, news, videos } from './item';
 import ScrollToTopButton from 'src/components/ScrollToTop';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function Resources() {
-  const [title, setTitle] = useState('news');
+  const [currentPage, setCurrentPage] = useState(1);
+  const location = useLocation();
+  const pathname = location.pathname.substring(
+    location.pathname.lastIndexOf('/') + 1,
+  );
+  useEffect(() => {
+    setTitle(pathname);
+  });
+  const navigate = useNavigate();
+  const [title, setTitle] = useState('new');
   const listTitle = [
     {
       title: 'News',
-      value: 'news',
+      value: 'new',
     },
     {
       title: 'Blogs',
-      value: 'blogs',
+      value: 'blog',
     },
     {
       title: 'Casestudy',
@@ -24,13 +36,27 @@ export default function Resources() {
     },
     {
       title: 'Documents',
-      value: 'documents',
+      value: 'document',
     },
     {
       title: 'Video',
       value: 'video',
     },
   ];
+  const dataLength = () => {
+    switch (title) {
+      case 'new':
+        return news;
+      case 'blog':
+        return blogs;
+      case 'document':
+        return documents;
+      case 'video':
+        return videos;
+      case 'casestudy':
+        return casestudy;
+    }
+  };
 
   const itemRender: PaginationProps['itemRender'] = (
     _,
@@ -44,26 +70,12 @@ export default function Resources() {
     }
     if (type === 'next') {
       return currentPage ===
-        Math.ceil(
-          (title === 'news'
-            ? news
-            : title === 'blogs'
-            ? blogs
-            : title === 'documents'
-            ? documents
-            : title === 'video'
-            ? videos
-            : casestudy
-          ).length / 6,
-        ) ? null : (
+        Math.ceil((dataLength()?.length ?? 0) / 6) ? null : (
         <a className="text-black hover:text-black">Next</a>
       );
     }
     return originalElement;
   };
-
-  const [currentPage, setCurrentPage] = useState(1);
-  console.log(currentPage);
 
   return (
     <div className="container m-auto ">
@@ -87,6 +99,7 @@ export default function Resources() {
               } `}
               onClick={() => {
                 setTitle(`${val.value}`);
+                navigate(`/resources/${val.value}`);
               }}
             >
               <h1 className="px-4 text-xl  ">{val.title}</h1>
@@ -100,17 +113,8 @@ export default function Resources() {
             <span className="text-main">news from us</span>
           </h1>
           <div className="grid grid-cols-3 gap-x-10 gap-y-14 text-left">
-            {(title === 'news'
-              ? news
-              : title === 'blogs'
-              ? blogs
-              : title === 'documents'
-              ? documents
-              : title === 'video'
-              ? videos
-              : casestudy
-            )
-              .slice((currentPage - 1) * 6, currentPage * 6)
+            {dataLength()
+              ?.slice((currentPage - 1) * 6, currentPage * 6)
               .map((val, index) => (
                 <Item
                   key={index}
@@ -124,18 +128,7 @@ export default function Resources() {
           <Pagination
             className="my-16"
             itemRender={itemRender}
-            total={
-              (title === 'news'
-                ? news
-                : title === 'blogs'
-                ? blogs
-                : title === 'documents'
-                ? documents
-                : title === 'video'
-                ? videos
-                : casestudy
-              ).length
-            }
+            total={dataLength()?.length}
             current={currentPage}
             onChange={(page) => {
               setCurrentPage(page);
@@ -146,7 +139,7 @@ export default function Resources() {
           />
         </div>
       </div>
-      <ScrollToTopButton/>
+      <ScrollToTopButton />
     </div>
   );
 }

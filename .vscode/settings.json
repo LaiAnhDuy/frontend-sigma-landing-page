@@ -1,18 +1,47 @@
 {
   "cSpell.words": [
+<<<<<<< HEAD
+    "Amagi",
+    "antd",
+=======
+    "antd",
     "Casestudy",
+    "fontawesome",
+    "fortawesome",
+    "freetrial",
+    "livestreaming",
+    "tailwindcss",
+>>>>>>> c101d714d6fe167b96fea1b2277cf5b1b173cb86
+    "Casestudy",
+    "CASS",
+    "CENC",
+    "ceph",
     "CMAF",
     "datasheet",
     "DNSCS",
     "DNSLB",
+    "Farncombe",
     "fontawesome",
+    "forr",
     "fortawesome",
+    "IPTV",
+    "JITE",
+    "kbps",
+    "Livestreaming",
+    "Mbps",
+    "Mpbs",
+    "Playready",
     "SCTE",
     "sigmadai",
     "SMPTE",
     "tailwindcss",
+    "Timeshifting",
+    "TSTV",
+    "Viet",
     "viettel",
     "vinaphone",
-    "vtvcab"
+    "vtvcab",
+    "WEBM",
+    "Winevine"
   ]
 }
