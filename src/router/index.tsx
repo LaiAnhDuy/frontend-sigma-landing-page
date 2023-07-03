@@ -26,7 +26,7 @@ const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Sigma DRM', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
-  { path: ROUTE.SUPPORT, title: 'New', element: Support },
+  { path: ROUTE.SUPPORT, title: 'Support', element: Support },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
