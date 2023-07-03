@@ -14,7 +14,7 @@ import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import { Button, Result } from 'antd';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
-import ContactUs from 'src/pages/Contact_us';
+import ContactUs from 'src/pages/ContactUs';
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
