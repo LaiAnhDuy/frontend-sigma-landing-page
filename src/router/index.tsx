@@ -61,7 +61,7 @@ const routes: RouteType[] = [
     path: ROUTE.SERVICE,
     title: 'Service OTT',
     element: OttPage,
-    isPrivate: true,
+    isPrivate: false,
   },
 ];
 
