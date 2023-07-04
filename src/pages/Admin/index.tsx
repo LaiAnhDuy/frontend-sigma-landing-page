@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
-import { Button, Input } from 'antd';
+import { Button, Input, Select } from 'antd';
 import ImageUploader from './ImageUploader';
 
 const mdParser = new MarkdownIt();
@@ -31,6 +31,9 @@ const Admin = () => {
   const handleSubmit = () => {
     console.log(article);
   };
+  const handleChange = (value: string) => {
+    setArticle((prevArticle) => ({ ...prevArticle, option: value }));
+  };
   return (
     <div className="container mx-auto ">
       <h1 className="text-3xl">
@@ -57,6 +60,21 @@ const Admin = () => {
           }))
         }
       />
+      <h2 className="text-xl">
+        Category<span className="text-red-600">*</span>
+      </h2>
+      <Select
+        placeholder="Category"
+        style={{ width: 120 }}
+        onChange={handleChange}
+        options={[
+          { value: 'new', label: 'News' },
+          { value: 'blog', label: 'Blogs' },
+          { value: 'casestudy', label: 'Casestudy' },
+          { value: 'document', label: 'Documents' },
+          { value: 'video', label: 'Video' },
+        ]}
+      />
       <ImageUploader onImageChange={handleImageChange} />
       <MdEditor
         value={article.markdown}
@@ -65,11 +83,13 @@ const Admin = () => {
         onChange={handleEditorChange}
       />
       <div>
-        <h2>Preview</h2>
+        <h2 className="underline">Preview</h2>
         <h1>{article.title}</h1>
-        <h2>
-          By <span className="text-main">{article.author}</span>
-        </h2>
+        {article.author && (
+          <h2>
+            By <span className="text-main">{article.author}</span>
+          </h2>
+        )}
         <img src={article.image} alt="" className="w-full rounded-xl" />
         <div
           dangerouslySetInnerHTML={{
@@ -77,7 +97,17 @@ const Admin = () => {
           }}
         />
       </div>
-      <Button onClick={handleSubmit}> Submit </Button>
+      <Button
+        disabled={
+          !article.title ||
+          !article.image ||
+          !article.markdown ||
+          !article.option
+        }
+        onClick={handleSubmit}
+      >
+        Submit
+      </Button>
     </div>
   );
 };
