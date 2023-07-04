@@ -23,7 +23,7 @@ export default function Login({ signIn, onClick }: LoginProps) {
     const [formValue, setFormValue] = useState<FormValues>(initFormValue);
     const [formError, setFormError] = useState<FormValues>({});
     const [active1, setActive1] = useState(true);
-
+    console.log(process.env.REACT_APP_BASE_URL);
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const { value, name } = event.target;
         setFormValue((prevFormValue) => ({
@@ -36,12 +36,14 @@ export default function Login({ signIn, onClick }: LoginProps) {
             email: formValue.email,
             password: formValue.password
         }
-        authApi.login(data).then((res) => {
-            console.log("Success", res);
-        })
+        authApi
+            .login(data)
+            .then((res) => {
+                console.log("Success: ", res);
+            })
             .catch((error) => {
                 console.log("Fail: ", error);
-            })
+            });
     }
     const validateForm = () => {
         const error: { [key: string]: string } = {};
