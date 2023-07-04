@@ -3,7 +3,9 @@ import './index.style.css';
 export default function FreeTrial(){
     return (
         <div>
-           <h1>Hello Word!</h1>
+           <div className="container m-auto">
+
+           </div>
         </div>
     )
 };
