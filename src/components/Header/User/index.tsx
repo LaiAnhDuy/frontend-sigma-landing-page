@@ -24,8 +24,8 @@ export default function User({ user }: UserProps) {
   };
 
   const handleOk = () => {
-    setIsModalOpen(false);
-    setLogIn(true);
+    // setIsModalOpen(false);
+    // setLogIn(true);
   };
 
   const handleCancel = () => {
@@ -90,14 +90,15 @@ export default function User({ user }: UserProps) {
         footer={false}
         open={isModalOpen}
         onOk={handleOk}
+        closable={false}
         onCancel={handleCancel}
         width={'fit-content'}
-        closable={false}
+        // closable={false}
       >
         {option ? (
-          <Login signUp={showModalSignUp} signIn={handleOk} />
+          <Login signIn={handleOk} onClick={showModalSignUp} />
         ) : (
-          <Register />
+          <Register onClick={showModalSignIn} />
         )}
       </Modal>
     </div>

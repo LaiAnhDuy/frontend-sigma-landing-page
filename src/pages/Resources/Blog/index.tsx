@@ -3,7 +3,7 @@ import React from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import ScrollToTopButton from 'src/components/ScrollToTop';
-
+import Comment from 'src/components/Comment';
 export default function Blog() {
   return (
     <div className="lg:container m-auto">
@@ -95,7 +95,7 @@ export default function Blog() {
               HDR10+, these haven’t gained much traction in the broadcast
               industry as of now.
               <span className="block my-4"></span>
-              <span className="text-main">Exciting roadmap</span>
+              <span className="text-main">Exiting roadmap</span>
             </p>
           </div>
         </div>
@@ -196,7 +196,7 @@ export default function Blog() {
         </div>
       </div>
       <ScrollToTopButton />
+      <Comment />
     </div>
   );
 }
-  
