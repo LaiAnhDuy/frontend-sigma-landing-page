@@ -15,6 +15,7 @@ import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
 import ForgotPassword from 'src/pages/Login/ForgotPassword';
 import NotFoundPage from 'src/pages/NotFound';
+import FreeTrial from 'src/pages/FreeTrial';
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -26,6 +27,7 @@ const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Sigma DRM', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
+  { path: ROUTE.FREE_TRIAL, title: 'Free Trial', element: FreeTrial },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,

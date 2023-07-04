@@ -1,5 +1,6 @@
 enum ROUTE {
   HOME = '/',
+  FREE_TRIAL = '/free_trial',
   RESOURCES = '/resources/:tab',
   PAGE_NOT_FOUND = '/404',
   BLOG = '/resources/blog/:id',
