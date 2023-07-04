@@ -9,6 +9,7 @@ interface FormValue {
   count: number;
 }
 export default function Comment() {
+  // eslint-disable-next-line
   const [reply, setReply] = useState(false);
   const [value, setValue] = useState('');
   // const [listComment,setListComment]=useState([])
@@ -136,7 +137,9 @@ export default function Comment() {
                             {item.content}
                           </p>
                           <div className="flex items-center text-sm mt-3 text-center">
-                            <p className="text-[#35b69f]">{countArray[index]}</p>
+                            <p className="text-[#35b69f]">
+                              {countArray[index]}
+                            </p>
                             <HeartFilled
                               onClick={() => handleCount(index)}
                               className=" ml-3 text-red-600 hover:cursor-pointer "

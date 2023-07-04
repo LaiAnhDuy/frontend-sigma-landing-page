@@ -95,7 +95,7 @@ export default function Blog() {
               HDR10+, these haven’t gained much traction in the broadcast
               industry as of now.
               <span className="block my-4"></span>
-              <span className="text-main">Exciting roadmap</span>
+              <span className="text-main">Exiting roadmap</span>
             </p>
           </div>
         </div>
@@ -196,8 +196,7 @@ export default function Blog() {
         </div>
       </div>
       <ScrollToTopButton />
-      <Comment/>
+      <Comment />
     </div>
   );
 }
-  
