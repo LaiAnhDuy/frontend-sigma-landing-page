@@ -13,7 +13,7 @@ import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
-import SigmaDRM from 'src/pages/Products/Sigma-DRM';
+import SigmaDRM from 'src/pages/Products/SigmaDRM';
 
 export type RouteType = {
   path: ROUTE | string;
