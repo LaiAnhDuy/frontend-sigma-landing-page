@@ -11,10 +11,10 @@ import Blog from 'src/pages/Resources/Blog';
 import SigmaNS53Page from 'src/pages/Products/SigmaNS53';
 import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
-import { Button, Result } from 'antd';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
 import ForgotPassword from 'src/pages/Login/ForgotPassword';
+import NotFoundPage from 'src/pages/NotFound';
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -23,7 +23,7 @@ export type RouteType = {
 };
 
 const routes: RouteType[] = [
-  { path: ROUTE.HOME, title: 'Sigma DRM', element: ForgotPassword },
+  { path: ROUTE.HOME, title: 'Sigma DRM', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
@@ -65,22 +65,20 @@ const routes: RouteType[] = [
     isPrivate: true,
   },
   {
-    path: '*',
-    title: 'Not Found',
-    element: () => (
-      <Result
-        status="404"
-        title="404"
-        subTitle="Sorry, the page you visited does not exist."
-        extra={<Button type="primary">Back Home</Button>}
-      />
-    ),
-  },
-  {
     path: ROUTE.SERVICE,
     title: 'Service OTT',
     element: OttPage,
     isPrivate: true,
+  },
+  {
+    path: ROUTE.FORGOT_PASSWORD,
+    title: 'Forgot Password',
+    element: ForgotPassword,
+  },
+  {
+    path: '*',
+    title: 'Not Found',
+    element: NotFoundPage,
   },
 ];
 export default function AppRouter() {
