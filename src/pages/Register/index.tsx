@@ -73,7 +73,7 @@ export default function Register({ onClick }: RegisterProps) {
   };
   return (
     <div className="">
-      <div className="flex w-[600px] m-auto -mt-24">
+      <div className="flex w-[600px] m-auto -mt-10">
         {/* register */}
         <div style={{ width: '60%', flexDirection: 'column', alignItems: 'center', display: 'flex' }}>
           <h1 className=''>Sign Up</h1>
