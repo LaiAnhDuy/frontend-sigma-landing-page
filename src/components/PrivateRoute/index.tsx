@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import BaseLayout from '../BaseLayout';
 import useDocumentTitle from 'src/hooks';
 
