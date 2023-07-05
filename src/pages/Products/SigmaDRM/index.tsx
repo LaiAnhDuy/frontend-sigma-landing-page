@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
 import Frame from 'src/components/Frame1';
 import { IMAGE_PATH } from 'src/constants/images';
 import {
   firstList,
   fourthList,
   frames,
+  images,
   items,
   secondList,
   thirdList,
@@ -13,32 +13,12 @@ import './index.style.scss';
 import Checkbox from 'src/components/Checkbox';
 
 const SigmaDRM = () => {
-  const [isChecked, setIsChecked] = useState<number[]>([]);
-
-  useEffect(() => {
-    const userData = localStorage.getItem('userData');
-    if (userData) {
-      setIsChecked(JSON.parse(userData));
-    } else {
-      setIsChecked([]);
-    }
-  }, []);
-
-  const handleCheckboxChange = (id: number) => {
-    const checked: boolean = isChecked.includes(id);
-    const newState = checked
-      ? isChecked.filter((item) => item !== id)
-      : [...isChecked, id];
-    setIsChecked(newState);
-    localStorage.setItem('userData', JSON.stringify(newState));
-  };
-
   return (
     <div>
       <div className="container m-auto grid grid-cols-2 justify-between">
         <div>
           <h1 className="text-6xl">
-            <span className="text-orange-400">Protecting</span>all content in
+            <span className="text-orange-400">Protecting </span> all content in
             Digital World
           </h1>
           <p className="bg-orange-300 w-auto h-8 rounded-xl -mt-16"></p>
@@ -73,7 +53,10 @@ const SigmaDRM = () => {
         </div>
       </div>
 
-      <div className="images_drm p-24 mt-16">
+      <div
+        className="images_drm p-24 mt-16"
+        style={{ backgroundImage: `url(${IMAGE_PATH.IMAGE_DRM})` }}
+      >
         <div className="container m-auto text-center text-white">
           <h1>
             DRM - <span className="text-orange-400">Trend</span> of the digital
@@ -113,10 +96,7 @@ const SigmaDRM = () => {
                 }`}
               >
                 {item.title}
-                <Checkbox
-                  handleCheckboxChange={() => handleCheckboxChange(item.id)}
-                  checked={isChecked.includes(item.id)}
-                />
+                <Checkbox checked={item.state} />
               </div>
             ))}
           </div>
@@ -132,10 +112,7 @@ const SigmaDRM = () => {
                 }`}
               >
                 {item.title}
-                <Checkbox
-                  handleCheckboxChange={() => handleCheckboxChange(item.id)}
-                  checked={isChecked.includes(item.id)}
-                />
+                <Checkbox checked={item.state} />
               </div>
             ))}
           </div>
@@ -153,10 +130,7 @@ const SigmaDRM = () => {
                 }`}
               >
                 {item.title}
-                <Checkbox
-                  handleCheckboxChange={() => handleCheckboxChange(item.id)}
-                  checked={isChecked.includes(item.id)}
-                />
+                <Checkbox checked={item.state} />
               </div>
             ))}
           </div>
@@ -172,36 +146,22 @@ const SigmaDRM = () => {
                 }`}
               >
                 {item.title}
-                <Checkbox
-                  handleCheckboxChange={() => handleCheckboxChange(item.id)}
-                  checked={isChecked.includes(item.id)}
-                />
+                <Checkbox checked={item.state} />
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="container m-auto text-center border-dashed border border-slate-400 rounded-[40px] mt-24 py-10">
-        <h1>
-          <span className="text-orange-400">Sigma DRM'S</span> Diagram
-        </h1>
-        <img src={IMAGE_PATH.IMAGE_DRM3} alt="" className="my-10" />
-      </div>
-
-      <div className="container m-auto text-center border-dashed border border-slate-400 rounded-[40px] mt-24 py-10">
-        <h1>
-          <span className="text-orange-400">Sigma DRM'S</span> Packing Model
-        </h1>
-        <img src={IMAGE_PATH.IMAGE_DRM4} alt="" className="my-10" />
-      </div>
-
-      <div className="container m-auto text-center border-dashed border border-slate-400 rounded-[40px] mt-24 py-10">
-        <h1>
-          <span className="text-orange-400">Sigma DRM'S</span> Authentication
-          Model
-        </h1>
-        <img src={IMAGE_PATH.IMAGE_DRM5} alt="" className="my-10" />
+      <div className="container m-auto text-center">
+        {images.map((item, index) => (
+          <div key={index} className='border-dashed border border-slate-400 rounded-[40px] my-24 py-10'>
+            <h1>
+              <span className="text-orange-400">{item.title} </span> {item.content}
+            </h1>
+            <img src={item.image} alt=''/>
+          </div>
+        ))}
       </div>
 
       <div className="bg-slate-50 mt-24">

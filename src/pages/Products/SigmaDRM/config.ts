@@ -51,92 +51,129 @@ export const items = [
 export const firstList = [
     {
         id: 1,
-        title: 'Server infrastructure'
+        title: 'Server infrastructure',
+        state: true
     },
     {
         id: 2,
-        title: 'Multi-zone server'
+        title: 'Multi-zone server',
+        state: true
     },
     {
         id: 3,
-        title: 'Error redundancy / server redundancy'
+        title: 'Error redundancy / server redundancy',
+        state: true
     },
     {
         id: 4,
-        title: 'Low latency'
+        title: 'Low latency',
+        state: true
     },
     {
         id: 5,
-        title: 'High Availability'
+        title: 'High Availability',
+        state: true
     },
     {
         id: 6,
-        title: 'Can be expanded'
+        title: 'Can be expanded',
+        state: true
     },
 ]
 
 export const secondList = [
     {
         id: 101,
-        title: 'VoD playback'
+        title: 'VoD playback',
+        state: true
     },
     {
         id: 102,
-        title: 'Live replay'
+        title: 'Live replay',
+        state: true
     },
     {
         id: 103,
-        title: 'Offline playback (continuous sessions)'
+        title: 'Offline playback (continuous sessions)',
+        state: true
     },
     {
         id: 104,
-        title: 'Content rental'
+        title: 'Content rental',
+        state: true
     },
     {
         id: 105,
-        title: 'Subscribe content'
+        title: 'Subscribe content',
+        state: true
     },
     {
         id: 6,
-        title: 'Multi-zone server'
+        title: 'Multi-zone server',
+        state: true
     },
 ]
 
 export const thirdList = [
     {
         id: 201,
-        title: 'Callback authentication'
+        title: 'Callback authentication',
+        state: true
     },
     {
         id: 202,
-        title: 'Prepaid Token Validation'
+        title: 'Prepaid Token Validation',
+        state: true
     },
     {
         id: 203,
-        title: 'Proxy authentication'
+        title: 'Proxy authentication',
+        state: true
     },
     {
         id: 204,
-        title: 'Multi-zone server'
+        title: 'Multi-zone server',
+        state: false
     },
 ]
 
 export const fourthList = [
     {
         id: 301,
-        title: 'Widewine (module)'
+        title: 'Widewine (module)',
+        state: true
     },
     {
         id: 302,
-        title: 'PlayReady'
+        title: 'PlayReady',
+        state: true
     },
     {
         id: 303,
-        title: 'FairPlay Streaming'
+        title: 'FairPlay Streaming',
+        state: true
     },
     {
         id: 304,
-        title: 'Widewine'
+        title: 'Widewine',
+        state: false
     },
 ]
 
+export const images = [
+    {
+        title: "Sigma DRM'S",
+        content: 'Diagram',
+        image: IMAGE_PATH.IMAGE_DRM3
+    },
+    {
+        title: "Sigma DRM'S",
+        content: 'Packing Model',
+        image: IMAGE_PATH.IMAGE_DRM4
+    },
+    {
+        title: "Sigma DRM'S",
+        content: 'Authentication Model',
+        image: IMAGE_PATH.IMAGE_DRM5
+    },
+]

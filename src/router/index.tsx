@@ -39,7 +39,7 @@ const routes: RouteType[] = [
   },
   {
     path: ROUTE.PRODUCT_SIGMA_DRM,
-    title: 'Sigma Dynamic Ads Insert',
+    title: 'Sigma Digital Rights Management',
     element: SigmaDRM,
   },
   {

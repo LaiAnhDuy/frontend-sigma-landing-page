@@ -157,7 +157,7 @@ export const IMAGE_PATH = {
   FRAME_DRM8: `${PUBLIC_URL}/images/products/sigma_drm/frame_drm8.png`,
   FRAME_DRM9: `${PUBLIC_URL}/images/products/sigma_drm/frame_drm9.png`,
   FRAME_DRM10: `${PUBLIC_URL}/images/products/sigma_drm/frame_drm10.png`,
-  IMAGE_DRM: `${PUBLIC_URL}/images/products/sigma_drm/image_drm.png`,
+  IMAGE_DRM: `${PUBLIC_URL}/images/products/sigma_drm/image-drm.svg`,
   IMAGE_DRM1: `${PUBLIC_URL}/images/products/sigma_drm/image1.png`,
   IMAGE_DRM2: `${PUBLIC_URL}/images/products/sigma_drm/image2.png`,
   IMAGE_DRM3: `${PUBLIC_URL}/images/products/sigma_drm/image3.png`,
