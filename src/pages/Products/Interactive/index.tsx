@@ -86,7 +86,10 @@ const SigmaInteractive = () => {
           Say Hello To The <span className="text-orange-400">Next-Gen OTT</span>{' '}
           Solution
         </h1>
-        <div className="bg_image p-10 px-24 rounded-xl">
+        <div
+          className="bg_image p-10 px-24 rounded-xl"
+          style={{ backgroundImage: `url(${IMAGE_PATH.IMAGE_INTERACTIVE1})` }}
+        >
           {items.map((item) => (
             <div key={item.order}>
               <h1 className="text-white">
