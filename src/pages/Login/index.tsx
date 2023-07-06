@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-redeclare */
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
@@ -18,6 +19,7 @@ import { isEmailValid, isEmptyValue } from 'src/utils';
 import { authApi } from 'src/api/auth-api';
 import ROUTE from 'src/constants/route';
 import { Link } from 'react-router-dom';
+
 const initFormValue = {
   email: '',
   password: '',
@@ -29,12 +31,17 @@ interface LoginProps {
   signIn: () => void;
   onClick: () => void;
   handleForgot: () => void;
+  setFirstName: (firstName: string) => void;
 }
-export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
+export default function Login({
+  signIn,
+  onClick,
+  handleForgot,
+  setFirstName,
+}: LoginProps) {
   const [formValue, setFormValue] = useState<FormValues>(initFormValue);
   const [formError, setFormError] = useState<FormValues>({});
   const [active1, setActive1] = useState(true);
-  console.log(process.env.REACT_APP_BASE_URL);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setFormValue((prevFormValue) => ({
@@ -48,9 +55,15 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
       email: formValue.email,
       password: formValue.password,
     };
+    const errorHandler = (error: any) => {
+      console.log('Fail: ', error);
+    };
     authApi
-      .login(data)
+      .login(data, errorHandler)
       .then((res) => {
+        signIn();
+        localStorage.setItem('token', res.data.token);
+        setFirstName(res.data.user.firstName);
         console.log('Success', res);
       })
       .catch((error) => {
@@ -84,8 +97,6 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
   return (
     <div className="login-page my-4">
       <div className="flex w-[600px] m-auto">
-        {/* <CloseCircleFilled className="fixed right-40" />   */}
-        {/* sign in */}
         <div
           style={{
             width: '60%',
@@ -120,8 +131,9 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
             <div className="mb-4">
               <input
                 type="text"
-                className={`border-solid rounded-sm border-blue-200 border-2 h-7 w-60 focus:outline-none focus:border-blue-200 ${formError.email ? 'border-red-400' : 'border-blue-200'
-                  }`}
+                className={`border-solid rounded-sm border-blue-200 border-2 h-7 w-60 focus:outline-none focus:border-blue-200 ${
+                  formError.email ? 'border-red-400' : 'border-blue-200'
+                }`}
                 id="email"
                 name="email"
                 value={formValue.email}
@@ -141,8 +153,9 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
                 type={`${active1 ? 'password' : 'text'}`} // điều kiện active hiện lên số, chữ
                 id="password"
                 name="password"
-                className={`border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200 ${formError.password ? 'border-red-400' : 'border-blue-200'
-                  }`}
+                className={`border-solid rounded-sm border-blue-200 border-2 h-7 pr-8 w-52 focus:outline-none focus:border-blue-200 ${
+                  formError.password ? 'border-red-400' : 'border-blue-200'
+                }`}
                 value={formValue.password}
                 onChange={handleChange}
                 placeholder="Enter your password"
@@ -163,7 +176,7 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
               {formError.password}
             </div>
             <Checkbox
-              onChange={() => { }}
+              onChange={() => {}}
               className="flex justify-start text-sm mb-4"
             >
               Remember password

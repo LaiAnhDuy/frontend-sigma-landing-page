@@ -1,7 +1,7 @@
 // reducer1.ts
 
 import { Reducer } from 'redux';
-import { AddProductProps, ProductActionTypes } from './actions';
+import { AddProductProps, ProductActionTypes } from './auth-action';
 
 interface State1 {
   // Trạng thái của reducer 1

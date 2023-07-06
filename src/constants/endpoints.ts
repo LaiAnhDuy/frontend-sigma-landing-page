@@ -1,5 +1,7 @@
 enum ENDPOINTS {
-  LOGIN = '/login',
+  LOGIN = '/users/login',
+  REGISTER = '/users/register',
+  GETUSER='/users'
 }
 
 export default ENDPOINTS;
