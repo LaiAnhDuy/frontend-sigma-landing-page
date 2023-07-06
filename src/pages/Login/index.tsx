@@ -15,7 +15,7 @@ import {
   EyeOutlined,
   GoogleOutlined,
 } from '@ant-design/icons';
-import { isEmailValid, isEmptyValue } from 'src/utils';
+import { isEmailValid, isEmptyValue, isPasswordValid } from 'src/utils';
 import { authApi } from 'src/api/auth-api';
 import ROUTE from 'src/constants/route';
 import { Link } from 'react-router-dom';
@@ -81,8 +81,9 @@ export default function Login({
     }
     if (isEmptyValue(formValue.password)) {
       error.password = 'Password is required!';
-    } else {
-    } // check password valid or invalid
+    } else if (!isPasswordValid(formValue.password)) {
+      error.password = 'Password is not correct!';
+    } else {} // check password valid or invalid
     setFormError(error);
     return Object.keys(error).length === 0;
   };
