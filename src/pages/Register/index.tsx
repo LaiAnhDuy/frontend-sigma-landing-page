@@ -2,7 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss'
 import { IMAGE_PATH } from 'src/constants/images';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { isEmailValid, isEmptyValue } from 'src/utils';
+import { isEmailValid, isEmptyValue, isPasswordValid } from 'src/utils';
 import Select from './Select'
 const initFormValue = {
   email: "",
@@ -53,7 +53,8 @@ export default function Register({ onClick }: RegisterProps) {
     }
     if (isEmptyValue(formValue.password)) {
       error.password = "Password is required!";
-    } else {
+    } else if (!isPasswordValid(formValue.password)) {
+      error.password = "Password is not correct!"
     }
     if (isEmptyValue(formValue.confirmPassword)) {
       error.confirmPassword = "Confirm password is required!";

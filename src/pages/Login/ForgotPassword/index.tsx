@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
-import { isEmailValid, isEmptyValue } from 'src/utils';
+import { isEmailValid, isEmptyValue, isPasswordValid } from 'src/utils';
 import { IMAGE_PATH } from 'src/constants/images';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 const initFormValue = {
@@ -37,7 +37,9 @@ export default function ForgotPassword() {
             }
         } else if (selection === 2) {
             if (isEmptyValue(formValue.newPassword)) {
-                error.newPassword = "New password is required!"
+              error.newPassword = 'New password is required!';
+            } else if (!isPasswordValid(formValue.newPassword)) {
+              error.newPassword = 'New Password is not correct!';
             }
             if (isEmptyValue(formValue.confirmPassword)) {
                 error.confirmPassword = "Confirm password is required!"
