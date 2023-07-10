@@ -12,8 +12,10 @@ export default function FreeTrial() {
           </h1>
           <p className="text-[21px] font-medium text-black -mt-3">
             Our team would love the opportunity to talk to you about your
-            project and business case. We’ll then demonstrate how the solution
-            could be of benefit to you.
+            project and business
+            <br />
+            case. We’ll then demonstrate how the solutioncould be of benefit to
+            you.
           </p>
         </div>
         <div
@@ -31,61 +33,75 @@ export default function FreeTrial() {
                 layout="vertical"
               >
                 <Form.Item
+                  className="setFont"
                   label="First name"
                   name="firstName"
                   rules={[
-                    { required: true, message: 'Please input your username!' },
+                    { required: true, message: 'Please input your firstName!' },
                   ]}
                 >
-                  <Input />
+                  <Input className="setInput" />
                 </Form.Item>
-
                 <Form.Item
+                  className="setFont"
                   label="Last name"
                   name="lastName"
                   rules={[
-                    { required: true, message: 'Please input your password!' },
+                    { required: true, message: 'Please input your lastName!' },
                   ]}
                 >
-                  <Input />
+                  <Input className="setInput" />
                 </Form.Item>
                 <Form.Item
+                  className="setFont"
                   label="Work email"
                   name="workEmail"
                   rules={[
-                    { required: true, message: 'Please input your username!' },
+                    {
+                      required: true,
+                      message: 'Please input your Work email!',
+                    },
                   ]}
                 >
-                  <Input />
+                  <Input className="setInput" />
                 </Form.Item>
                 <Form.Item
+                  className="setFont"
                   label="Phone number"
                   name="phoneNumber"
                   rules={[
-                    { required: true, message: 'Please input your username!' },
+                    {
+                      required: true,
+                      message: 'Please input your phone number!',
+                    },
                   ]}
                 >
-                  <Input />
+                  <Input className="setInput" />
                 </Form.Item>
                 <Form.Item
+                  className="setFont"
                   label="Country/Region"
                   name="countryRegion"
                   rules={[
-                    { required: true, message: 'Please input your username!' },
+                    {
+                      required: true,
+                      message: 'Please input your Country/Region!',
+                    },
                   ]}
                 >
-                  <Input />
+                  <Input className="setInput" placeholder="Please select" />
                 </Form.Item>
                 <Form.Item
+                  className="setFont"
                   label="Tell us about your project"
                   name="project"
                   rules={[
-                    { required: true, message: 'Please input your username!' },
+                    { required: true, message: 'Please input your project!' },
                   ]}
                 >
-                  <Input />
+                  <Input className="h-40" />
                 </Form.Item>
-                <p className="text-left">
+                <p className="text-left font-normal text-[17px]">
                   By submitting this form, I agree to the processing of my
                   personal data for the purpose of responding to my request, in
                   compliance with ThuDo Multimedia’s Privacy Notice.
@@ -93,7 +109,7 @@ export default function FreeTrial() {
                 <Form.Item
                   name="checkbox"
                   valuePropName="checked"
-                  className="text-left"
+                  className="text-left setFont"
                 >
                   <Checkbox>
                     I would like to opt-in to receive updates from ThuDo
@@ -104,7 +120,7 @@ export default function FreeTrial() {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="font-light text-xl text-white bg-main cursor-pointer "
+                    className="font-light text-xl text-white bg-main cursor-pointer"
                   >
                     Free trial
                   </Button>
@@ -112,7 +128,7 @@ export default function FreeTrial() {
               </Form>
             </div>
             <div className="col-span-2 text-left">
-              <p className="font-normal text-base text-white text-center border-solid w-[252px] py-3 rounded-[3px] border-main bg-main mt-[50px] cursor-pointer">
+              <p className="font-normal text-[17px] text-white text-center border-solid w-[252px] py-3 rounded-[3px] border-main bg-main mt-[50px] cursor-pointer">
                 Call us on (+84) 24 3668 7038
               </p>
               <div className="grid-cols-4 grid mt-16">

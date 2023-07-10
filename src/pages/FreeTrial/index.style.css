@@ -1,6 +1,13 @@
-.ant-form-item-required{
+.ant-form-item-required {
     flex-direction: row-reverse;
 }
 .shadow {
     box-shadow: 0px 5px 15px 10px rgba(0, 0, 0, 0.10);
+}
+.setFont div div label {
+   font-size: 17px !important; 
+   font-weight: 400 !important; 
+}
+.setInput {
+   height: 40px; 
 }
