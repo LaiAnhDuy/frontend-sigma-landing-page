@@ -1,7 +1,8 @@
 import React from 'react';
 import './index.style.css';
 import { IMAGE_PATH } from 'src/constants/images';
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input, Select } from 'antd';
+import { DIAL_CODES } from 'src/constants/dialCode';
 export default function FreeTrial() {
   return (
     <div>
@@ -89,7 +90,18 @@ export default function FreeTrial() {
                     },
                   ]}
                 >
-                  <Input className="setInput" placeholder="Please select" />
+                  <Select
+                    
+                    placeholder="Please select"
+                    options={ 
+                      DIAL_CODES.map((val,index)=>{
+                         return {
+                          value: val.code,
+                          label: val.name
+                         }
+                      })
+                    }
+                  />
                 </Form.Item>
                 <Form.Item
                   className="setFont"
