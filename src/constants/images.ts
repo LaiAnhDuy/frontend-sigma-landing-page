@@ -2,6 +2,8 @@ import { PUBLIC_URL } from 'src/configs';
 
 export const IMAGE_PATH = {
   IMAGE_BIRD: `${PUBLIC_URL}/images/bird.jpg`,
+  SUPPORT_ELEMENT: `${PUBLIC_URL}/images/element-support.png`,
+  SUPPORT: `${PUBLIC_URL}/images/bg-support.svg`,
   LOGO_FOOTER: `${PUBLIC_URL}/images/logo-footer.svg`,
   LOGO_ORANGE: `${PUBLIC_URL}/images/logo-orange.svg`,
   LOGO_WHITE: `${PUBLIC_URL}/images/logo-white.svg`,
@@ -127,10 +129,10 @@ export const IMAGE_PATH = {
   IMAGE_AUDIO1: `${PUBLIC_URL}/images/products/audio/image1.png`,
   IMAGE_AUDIO2: `${PUBLIC_URL}/images/products/audio/image2.png`,
   IMAGE_AUDIO3: `${PUBLIC_URL}/images/products/audio/image3.png`,
-  OTT_P1 : `${PUBLIC_URL}/images/service/ott/sigma-ott-p1.png`,
-  OTT_P2 : `${PUBLIC_URL}/images/service/ott/sigma-ott-p2.png`,
-  OTT_P3 : `${PUBLIC_URL}/images/service/ott/sigma-ott-p3.png`,
-  OTT_P4 : `${PUBLIC_URL}/images/service/ott/sigma-ott-p4.png`,
+  OTT_P1: `${PUBLIC_URL}/images/service/ott/sigma-ott-p1.png`,
+  OTT_P2: `${PUBLIC_URL}/images/service/ott/sigma-ott-p2.png`,
+  OTT_P3: `${PUBLIC_URL}/images/service/ott/sigma-ott-p3.png`,
+  OTT_P4: `${PUBLIC_URL}/images/service/ott/sigma-ott-p4.png`,
   OTT_PROVIDES_1: `${PUBLIC_URL}/images/service/ott/ott-provides1.png`,
   OTT_PROVIDES_2: `${PUBLIC_URL}/images/service/ott/ott-provides2.png`,
   OTT_PROVIDES_3: `${PUBLIC_URL}/images/service/ott/ott-provides3.png`,

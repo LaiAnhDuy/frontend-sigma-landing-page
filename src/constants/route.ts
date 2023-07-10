@@ -24,6 +24,7 @@ enum ROUTE {
   STREAMING = '/product/streaming',
   PRODUCT_SIGMADAI = '/product/sigmadai',
   FORGOT_PASSWORD = '/forgot-password',
+  SUPPORT = '/support',
 }
 
 export default ROUTE;
