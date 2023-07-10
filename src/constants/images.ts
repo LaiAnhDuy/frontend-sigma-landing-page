@@ -4,6 +4,7 @@ export const IMAGE_PATH = {
   IMAGE_BIRD: `${PUBLIC_URL}/images/bird.jpg`,
   SUPPORT_ELEMENT: `${PUBLIC_URL}/images/element-support.png`,
   SUPPORT: `${PUBLIC_URL}/images/bg-support.svg`,
+  ABOUT_US: `${PUBLIC_URL}/images/about_us.svg`,
   LOGO_FOOTER: `${PUBLIC_URL}/images/logo-footer.svg`,
   LOGO_ORANGE: `${PUBLIC_URL}/images/logo-orange.svg`,
   LOGO_WHITE: `${PUBLIC_URL}/images/logo-white.svg`,

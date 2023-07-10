@@ -18,6 +18,7 @@ import NotFoundPage from 'src/pages/NotFound';
 import SigmaDRM from 'src/pages/Products/SigmaDRM';
 import SigmaInteractive from 'src/pages/Products/Interactive';
 import Support from 'src/pages/Support';
+import AboutUs from 'src/pages/AboutUs';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -32,6 +33,7 @@ const routes: RouteType[] = [
   { path: ROUTE.NEW, title: 'New', element: Blog },
   { path: ROUTE.SUPPORT, title: 'Support', element: Support },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
+  { path: ROUTE.ABOUT_US, title: 'About us', element: AboutUs },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
     title: 'Audio Watermarking',

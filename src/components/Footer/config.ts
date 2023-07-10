@@ -1,6 +1,7 @@
+import ROUTE from 'src/constants/route';
 export const listItem = [
   {
-    title: 'Develope',
+    title: 'Develop',
     content: [
       {
         subtitle: 'Blog',
@@ -29,7 +30,7 @@ export const listItem = [
     content: [
       {
         subtitle: 'About us',
-        url: '#',
+        url: ROUTE.ABOUT_US,
       },
       {
         subtitle: 'Contact Us',

@@ -1,4 +1,5 @@
 enum ROUTE {
+  ABOUT_US = '/about-us',
   HOME = '/',
   RESOURCES = '/resources/:tab',
   PAGE_NOT_FOUND = '/404',
@@ -25,6 +26,6 @@ enum ROUTE {
   PRODUCT_SIGMADAI = '/product/sigmadai',
   FORGOT_PASSWORD = '/forgot-password',
   SUPPORT = '/support',
+  FREE_TRIAL = '/free-trial',
 }
-
 export default ROUTE;

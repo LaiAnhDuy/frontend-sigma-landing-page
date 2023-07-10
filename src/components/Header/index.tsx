@@ -23,10 +23,11 @@ export default function Header() {
 
   return (
     <div
-      className={`flex ${activeHeader && path === '/'
+      className={`flex ${
+        activeHeader && path === '/'
           ? 'header'
           : `header2 relative ${path === '/' ? ' shadow-lg' : null}`
-        } justify-center `}
+      } justify-center `}
     >
       <div className=" lg:container  items-center flex justify-around  ">
         {/*eslint-disable-next-line jsx-a11y/alt-text */}
@@ -66,8 +67,9 @@ export default function Header() {
               onClick={() => {
                 setActiveHeader(false);
               }}
-              className={`cursor-pointer h-7 w-24 rounded mr-5 ${activeHeader && path === '/' ? ' support ' : ' support1 '
-                } `}
+              className={`cursor-pointer h-7 w-24 rounded mr-5 ${
+                activeHeader && path === '/' ? ' support ' : ' support1 '
+              } `}
             >
               Support
             </button>
@@ -76,8 +78,9 @@ export default function Header() {
             onClick={() => {
               setActiveHeader(false);
             }}
-            className={`cursor-pointer h-7 w-24 rounded mr-5 ${activeHeader && path === '/' ? ' freetrial ' : ' freetrial1 '
-              } `}
+            className={`cursor-pointer h-7 w-24 rounded mr-5 ${
+              activeHeader && path === '/' ? ' freetrial ' : ' freetrial1 '
+            } `}
           >
             Free trial
           </button>
@@ -91,13 +94,15 @@ export default function Header() {
             suffixIcon={
               <DownOutlined
                 style={{ pointerEvents: 'none' }}
-                className={`right-9 ${activeHeader && path === '/' ? 'arrow1' : 'arrow2'
-                  }`}
+                className={`right-9 ${
+                  activeHeader && path === '/' ? 'arrow1' : 'arrow2'
+                }`}
               />
             }
             defaultValue="vn"
-            className={`bg-transparent w-[100px] ${activeHeader && path === '/' ? ' select' : 'select1'
-              }`}
+            className={`bg-transparent w-[100px] ${
+              activeHeader && path === '/' ? ' select' : 'select1'
+            }`}
             options={[
               {
                 value: 'usa',
