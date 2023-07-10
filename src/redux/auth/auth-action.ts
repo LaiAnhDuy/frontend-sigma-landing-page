@@ -1,22 +1,38 @@
 // actions2.ts
 
-import { ProductTypes } from 'src/types/Product'
+import { AuthTypes } from "src/types/Auth"
+
 
 // Action types for product reducer 2
-export enum ProductActionTypes {
-  ADD_PRODUCT = 'ADD_PRODUCT',
+export enum AuthActionTypes {
+  REMOVE_TOKEN='REMOVE_TOKEN',
+  ADD_TOKEN='ADD_TOKEN',
+
 }
 
 // Action interfaces for reducer 2
-export interface AddProductProps {
-  type: ProductActionTypes.ADD_PRODUCT
-  payload: ProductTypes
+export interface RemoveTokenProps {
+  type: AuthActionTypes.REMOVE_TOKEN
+  payload: AuthTypes
+}
+export interface AddTokenProps {
+  type: AuthActionTypes.ADD_TOKEN
+  payload: AuthTypes
 }
 
+
 // Action creators for reducer 2
-export const addProduct = (
-  payload: AddProductProps['payload'],
-): AddProductProps => ({
-  type: ProductActionTypes.ADD_PRODUCT,
+export const removeToken = (
+  payload: RemoveTokenProps['payload'],
+): RemoveTokenProps => ({
+  type: AuthActionTypes.REMOVE_TOKEN,
   payload,
 })
+
+export const addToken = (
+  payload: AddTokenProps['payload'],
+): AddTokenProps => ({
+  type: AuthActionTypes.ADD_TOKEN,
+  payload,
+})
+

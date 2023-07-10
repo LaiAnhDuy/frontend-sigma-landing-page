@@ -3,7 +3,7 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { isEmailValid, isEmptyValue ,isPasswordValid} from 'src/utils';
+import { isEmailValid, isEmptyValue ,isPasswordValid }  from 'src/utils';
 import Select from './Select';
 import { authApi } from 'src/api/auth-api';
 const initFormValue = {

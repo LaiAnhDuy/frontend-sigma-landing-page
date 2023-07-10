@@ -1,24 +1,40 @@
+import {
+  AddTokenProps,
+  AuthActionTypes,
+  RemoveTokenProps,
+} from './auth-action';
 // reducer1.ts
 
 import { Reducer } from 'redux';
-import { AddProductProps, ProductActionTypes } from './auth-action';
 
 interface State1 {
-  // Trạng thái của reducer 1
+  token: string;
+  firstName: string;
 }
 
-const initialState: State1 = {};
+const initialState: State1 = {
+  token: '',
+  firstName: '',
+};
 
-const productReducer: Reducer<State1, AddProductProps> = (
+const productReducer: Reducer<State1, AddTokenProps | RemoveTokenProps> = (
   // eslint-disable-next-line @typescript-eslint/default-param-last
   state = initialState,
   action,
 ) => {
   switch (action.type) {
-    case ProductActionTypes.ADD_PRODUCT:
-      // Xử lý action 1 và cập nhật trạng thái
-      return state;
-    // Xử lý các action khác nếu có
+    case AuthActionTypes.ADD_TOKEN:
+      return {
+        ...state,
+        token: action.payload.token,
+        firstName: action.payload.firstName,
+      };
+    case AuthActionTypes.REMOVE_TOKEN:
+      return {
+        ...state,
+        token: '',
+        firstName: '',
+      };
     default:
       return state;
   }
