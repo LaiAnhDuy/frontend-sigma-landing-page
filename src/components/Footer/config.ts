@@ -1,4 +1,5 @@
 import ROUTE from 'src/constants/route';
+
 export const listItem = [
   {
     title: 'Develop',
@@ -34,7 +35,7 @@ export const listItem = [
       },
       {
         subtitle: 'Contact Us',
-        url: '#',
+        url: ROUTE.CONTACT_US,
       },
     ],
   },

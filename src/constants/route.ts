@@ -1,5 +1,6 @@
 enum ROUTE {
   ABOUT_US = '/about-us',
+  CONTACT_US = '/contact-us',
   HOME = '/',
   RESOURCES = '/resources/:tab',
   PAGE_NOT_FOUND = '/404',
