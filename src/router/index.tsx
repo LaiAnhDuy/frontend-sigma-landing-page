@@ -15,6 +15,8 @@ import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
 import ForgotPassword from 'src/pages/Login/ForgotPassword';
 import NotFoundPage from 'src/pages/NotFound';
+import SigmaDRM from 'src/pages/Products/SigmaDRM';
+
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -36,6 +38,11 @@ const routes: RouteType[] = [
     path: ROUTE.PRODUCT_SIGMA_LIVESTREAMING,
     title: 'Sigma Live Streaming',
     element: SigmaLiveStreaming,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_DRM,
+    title: 'Sigma Digital Rights Management',
+    element: SigmaDRM,
   },
   {
     path: ROUTE.RESOURCES,
