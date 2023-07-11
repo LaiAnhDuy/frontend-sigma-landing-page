@@ -1,8 +1,8 @@
 import { PUBLIC_URL } from 'src/configs';
 
 export const IMAGE_PATH = {
-  FREETRIAL: `${PUBLIC_URL}/images/FreeTrial.png`,
-  FREETRIAL_ELEMENT: `${PUBLIC_URL}/images/FreeTrial_element.svg`,
+  FREE_TRIAL: `${PUBLIC_URL}/images/FreeTrial.png`,
+  FREE_TRIAL_ELEMENT: `${PUBLIC_URL}/images/FreeTrial_element.svg`,
   IMAGE_BIRD: `${PUBLIC_URL}/images/bird.jpg`,
   SUPPORT_ELEMENT: `${PUBLIC_URL}/images/element-support.png`,
   SUPPORT: `${PUBLIC_URL}/images/bg-support.svg`,
