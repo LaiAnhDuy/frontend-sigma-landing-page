@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.style.css';
 import { IMAGE_PATH } from 'src/constants/images';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { DIAL_CODES } from 'src/constants/dialCode';
+import { isEmailValid } from 'src/utils';
+const { Option } = Select;
 export default function FreeTrial() {
+  const [selectedPrefix, setSelectedPrefix] = useState('+84');
   return (
     <div>
       <div className="m-auto text-center">
@@ -34,7 +37,7 @@ export default function FreeTrial() {
                 layout="vertical"
               >
                 <Form.Item
-                  className="setFont"
+                  className="setSize text-left "
                   label="First name"
                   name="firstName"
                   rules={[
@@ -44,7 +47,7 @@ export default function FreeTrial() {
                   <Input className="setInput" />
                 </Form.Item>
                 <Form.Item
-                  className="setFont"
+                  className="setSize text-left"
                   label="Last name"
                   name="lastName"
                   rules={[
@@ -54,22 +57,26 @@ export default function FreeTrial() {
                   <Input className="setInput" />
                 </Form.Item>
                 <Form.Item
-                  className="setFont"
+                  className="setSize text-left"
                   label="Work email"
                   name="workEmail"
                   rules={[
                     {
                       required: true,
-                      message: 'Please input your Work email!',
+                      message: 'Please input your work email!',
+                    },
+                    {
+                      type: 'email',
+                      message: 'Email is invalid!',
                     },
                   ]}
                 >
                   <Input className="setInput" />
                 </Form.Item>
                 <Form.Item
-                  className="setFont"
-                  label="Phone number"
-                  name="phoneNumber"
+                  className="setSize text-center"
+                  name="phone"
+                  label="Phone Number"
                   rules={[
                     {
                       required: true,
@@ -77,10 +84,35 @@ export default function FreeTrial() {
                     },
                   ]}
                 >
-                  <Input className="setInput" />
+                  <div className="flex text-center">
+                    <Select
+                      className="!w-64 h-10 mr-8 setSelect"
+                      showSearch
+                      optionFilterProp="children"
+                      defaultValue={
+                        DIAL_CODES.find(
+                          (val) => val.dial_code === selectedPrefix,
+                        )?.name
+                      }
+                      onChange={(value) => setSelectedPrefix(value)}
+                    >
+                      {DIAL_CODES.map((val, index) => {
+                        return (
+                          <Option key={index} value={val.dial_code}>
+                            {val.name}
+                          </Option>
+                        );
+                      })}
+                    </Select>
+                    <Input
+                      className="h-10 text-lg"
+                      value={selectedPrefix}
+                      onChange={(e) => setSelectedPrefix(e.target.value)}
+                    />
+                  </div>
                 </Form.Item>
                 <Form.Item
-                  className="setFont"
+                  className="setSize text-left"
                   label="Country/Region"
                   name="countryRegion"
                   rules={[
@@ -92,18 +124,17 @@ export default function FreeTrial() {
                 >
                   <Select
                     placeholder="Please select"
-                    options={ 
-                      DIAL_CODES.map((val,index)=>{
-                         return {
-                          value: val.code,
-                          label: val.name
-                         }
-                      })
-                    }
-                  />
+                    className="text-left setSelect "
+                  >
+                    {DIAL_CODES.map((val, index) => (
+                      <Option key={index} value={val.code}>
+                        {val.name}
+                      </Option>
+                    ))}
+                  </Select>
                 </Form.Item>
                 <Form.Item
-                  className="setFont"
+                  className="setSize text-left"
                   label="Tell us about your project"
                   name="project"
                   rules={[
@@ -120,7 +151,7 @@ export default function FreeTrial() {
                 <Form.Item
                   name="checkbox"
                   valuePropName="checked"
-                  className="text-left setFont"
+                  className="text-left setSize"
                 >
                   <Checkbox>
                     I would like to opt-in to receive updates from ThuDo
@@ -131,7 +162,7 @@ export default function FreeTrial() {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="font-light text-xl text-white bg-main cursor-pointer"
+                    className="font-light text-xl text-white bg-main cursor-pointer" 
                   >
                     Free trial
                   </Button>
