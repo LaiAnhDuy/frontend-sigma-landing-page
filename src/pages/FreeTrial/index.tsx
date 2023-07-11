@@ -3,7 +3,6 @@ import './index.style.css';
 import { IMAGE_PATH } from 'src/constants/images';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { DIAL_CODES } from 'src/constants/dialCode';
-import { isEmailValid } from 'src/utils';
 const { Option } = Select;
 export default function FreeTrial() {
   const [selectedPrefix, setSelectedPrefix] = useState('+84');

@@ -62,16 +62,18 @@ export default function Header() {
           ))}
         </div>
         <div className="header-item flex justify-end">
-          <button
-            onClick={() => {
-              setActiveHeader(false);
-            }}
-            className={`cursor-pointer h-7 w-24 rounded mr-5 ${
-              activeHeader && path === '/' ? ' support ' : ' support1 '
-            } `}
-          >
-            Support
-          </button>
+          <Link to={ROUTE.SUPPORT}>
+            <button
+              onClick={() => {
+                setActiveHeader(false);
+              }}
+              className={`cursor-pointer h-7 w-24 rounded mr-5 ${
+                activeHeader && path === '/' ? ' support ' : ' support1 '
+              } `}
+            >
+              Support
+            </button>
+          </Link>
           <Link to={ROUTE.FREE_TRIAL}>
             <button
               onClick={() => {
