@@ -17,7 +17,7 @@ export default function FreeTrial() {
             Our team would love the opportunity to talk to you about your
             project and business
             <br />
-            case. We’ll then demonstrate how the solutioncould be of benefit to
+            case. We’ll then demonstrate how the solution could be of benefit to
             you.
           </p>
         </div>
