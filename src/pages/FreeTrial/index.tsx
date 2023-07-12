@@ -5,7 +5,6 @@ import { IMAGE_PATH } from 'src/constants/images';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { DIAL_CODES } from 'src/constants/dialCode';
 import { authApi } from 'src/api/auth-api';
-import ROUTE from 'src/constants/route';
 const { Option } = Select;
 export default function FreeTrial() {
   const [form] = Form.useForm();
@@ -59,31 +58,34 @@ export default function FreeTrial() {
                 form={form}
                 onFinish={freeTrialRequest}
                 name="basic"
-                className="bg-white px-5 py-3 h-[927px] -mt-[20px] setShadow"
+                className="bg-white px-5 py-3 h-[927px] -mt-[20px] box-shadow"
                 layout="vertical"
               >
                 <Form.Item
-                  className="setSize text-left "
+                  className="label text-left "
                   label="First name"
                   name="firstName"
                   rules={[
-                    { required: true, message: 'Please input your firstName!' },
+                    {
+                      required: true,
+                      message: 'Please input your first name!',
+                    },
                   ]}
                 >
-                  <Input className="setInput" />
+                  <Input className="input" />
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-left"
+                  className="label text-left"
                   label="Last name"
                   name="lastName"
                   rules={[
-                    { required: true, message: 'Please input your lastName!' },
+                    { required: true, message: 'Please input your last name!' },
                   ]}
                 >
-                  <Input className="setInput" />
+                  <Input className="input" />
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-left"
+                  className="label text-left"
                   label="Work email"
                   name="workEmail"
                   rules={[
@@ -97,10 +99,10 @@ export default function FreeTrial() {
                     },
                   ]}
                 >
-                  <Input className="setInput" />
+                  <Input className="input" />
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-center"
+                  className="label text-center"
                   name="phone"
                   label="Phone Number"
                   rules={[
@@ -112,8 +114,7 @@ export default function FreeTrial() {
                 >
                   <div className="flex text-center">
                     <Select
-                      className="!w-64 h-10 mr-8 setSelect"
-                      showSearch
+                      className="!w-64 h-10 mr-8 name-country"
                       optionFilterProp="children"
                       defaultValue={
                         DIAL_CODES.find(
@@ -138,7 +139,7 @@ export default function FreeTrial() {
                   </div>
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-left"
+                  className="label text-left"
                   label="Country/Region"
                   name="countryRegion"
                   rules={[
@@ -150,7 +151,7 @@ export default function FreeTrial() {
                 >
                   <Select
                     placeholder="Please select"
-                    className="text-left setSelect "
+                    className="text-left name-country"
                   >
                     {DIAL_CODES.map((val, index) => (
                       <Option key={index} value={val.code}>
@@ -160,7 +161,7 @@ export default function FreeTrial() {
                   </Select>
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-left"
+                  className="label text-left"
                   label="Tell us about your project"
                   name="project"
                   rules={[
@@ -177,9 +178,9 @@ export default function FreeTrial() {
                 <Form.Item
                   name="checkbox"
                   valuePropName="checked"
-                  className="text-left setSize"
+                  className="text-left checkbox !p-0"
                 >
-                  <Checkbox>
+                  <Checkbox >
                     I would like to opt-in to receive updates from ThuDo
                     Multimedia about products, news, webinars, and events.
                   </Checkbox>
@@ -188,7 +189,7 @@ export default function FreeTrial() {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="font-light text-xl text-white bg-main cursor-pointer setButton"
+                    className="font-light text-xl text-white bg-main cursor-pointer button"
                   >
                     Free trial
                   </Button>
