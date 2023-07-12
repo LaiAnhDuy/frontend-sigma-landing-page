@@ -1,10 +1,35 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import './index.style.css';
 import { IMAGE_PATH } from 'src/constants/images';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { DIAL_CODES } from 'src/constants/dialCode';
+import { authApi } from 'src/api/auth-api';
+import ROUTE from 'src/constants/route';
 const { Option } = Select;
 export default function FreeTrial() {
+  const [form] = Form.useForm();
+  const freeTrialRequest = (value: any) => {
+    console.log(
+      
+    );
+    
+    const data = {
+      firstName: value.firstName,
+      lastName: value.lastName,
+      email: value.workEmail,
+      phone: value.phone,
+      country: value.countryRegion,
+    };
+    authApi
+      .freeTrial(data)
+      .then((res) => {
+        console.log('Success', res);
+      })
+      .catch((error) => {
+        console.log('Fail: ', error);
+      });
+  };
   const [selectedPrefix, setSelectedPrefix] = useState('+84');
   return (
     <div>
@@ -31,6 +56,8 @@ export default function FreeTrial() {
           <div className="container m-auto grid grid-cols-5 gap-x-16 mt-24 mb-24">
             <div className="col-span-3 ">
               <Form
+                form={form}
+                onFinish={freeTrialRequest}
                 name="basic"
                 className="bg-white px-5 py-3 h-[927px] -mt-[20px] setShadow"
                 layout="vertical"
@@ -161,7 +188,7 @@ export default function FreeTrial() {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="font-light text-xl text-white bg-main cursor-pointer setButton" 
+                    className="font-light text-xl text-white bg-main cursor-pointer setButton"
                   >
                     Free trial
                   </Button>
