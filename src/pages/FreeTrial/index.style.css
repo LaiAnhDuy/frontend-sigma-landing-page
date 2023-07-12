@@ -1,7 +1,7 @@
-.ant-form-item-required {
+/* .ant-form-item-required {
   flex-direction: row-reverse;
-}
-.shadow {
+} */
+.setShadow {
   box-shadow: 0px 5px 15px 10px rgba(0, 0, 0, 0.1);
 }
 .setSize div div label {
@@ -17,6 +17,6 @@
   font-size: 18px !important;
   height: 40px !important;
 }
-.ant-btn-primary {
-  padding: 9px 27px 37px 27px !important;
+.setButton {
+    padding: 6px 18px 34px 19px !important;
 }

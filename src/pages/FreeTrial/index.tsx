@@ -32,7 +32,7 @@ export default function FreeTrial() {
             <div className="col-span-3 ">
               <Form
                 name="basic"
-                className="bg-white px-5 py-3 h-[927px] -mt-[20px] shadow"
+                className="bg-white px-5 py-3 h-[927px] -mt-[20px] setShadow"
                 layout="vertical"
               >
                 <Form.Item
@@ -161,7 +161,7 @@ export default function FreeTrial() {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="font-light text-xl text-white bg-main cursor-pointer" 
+                    className="font-light text-xl text-white bg-main cursor-pointer setButton" 
                   >
                     Free trial
                   </Button>
