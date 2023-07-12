@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
-import './index.style.css';
+import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { DIAL_CODES } from 'src/constants/dialCode';
