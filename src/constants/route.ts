@@ -28,5 +28,6 @@ enum ROUTE {
   FORGOT_PASSWORD = '/forgot-password',
   SUPPORT = '/support',
   FREE_TRIAL = '/free-trial',
+  TALK_TO_EXPERT = '/talk-to-expert',
 }
 export default ROUTE;

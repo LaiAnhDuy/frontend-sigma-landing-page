@@ -25,7 +25,7 @@ export default function FreeTrial() {
           className="bg-repeat-round bg-cover w-full "
           style={{
             width: '100%',
-            backgroundImage: `url(${IMAGE_PATH.FREETRIAL})`,
+            backgroundImage: `url(${IMAGE_PATH.FREE_TRIAL})`,
           }}
         >
           <div className="container m-auto grid grid-cols-5 gap-x-16 mt-24 mb-24">
@@ -201,7 +201,7 @@ export default function FreeTrial() {
               <img
                 className="mt-8 mb-8"
                 alt=""
-                src={IMAGE_PATH.FREETRIAL_ELEMENT}
+                src={IMAGE_PATH.FREE_TRIAL_ELEMENT}
               ></img>
             </div>
           </div>
