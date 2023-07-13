@@ -26,19 +26,5 @@ export const authApi = {
     }
   },
 
-  getUser: (
-    data: any,
-    errorHandler: (error: any) => void,
-  ): Promise<AxiosResponse<any, any>> => {
-    try {
-      return axiosClient.post(ENDPOINTS.GETUSER, data, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      });
-    } catch (error) {
-      errorHandler && errorHandler(error);
-      return Promise.reject(error);
-    }
-  },
+
 };

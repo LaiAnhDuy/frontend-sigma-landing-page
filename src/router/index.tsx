@@ -15,6 +15,13 @@ import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
 import ForgotPassword from 'src/pages/Login/ForgotPassword';
 import NotFoundPage from 'src/pages/NotFound';
+import FreeTrial from 'src/pages/FreeTrial';
+import SigmaDRM from 'src/pages/Products/SigmaDRM';
+import SigmaInteractive from 'src/pages/Products/Interactive';
+import Support from 'src/pages/Support';
+import AboutUs from 'src/pages/AboutUs';
+import ContactUs from 'src/pages/ContactUs';
+
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -26,7 +33,11 @@ const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Sigma DRM', element: HomePage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
+  { path: ROUTE.FREE_TRIAL, title: 'Free Trial', element: FreeTrial },
+  { path: ROUTE.SUPPORT, title: 'Support', element: Support },
+  { path: ROUTE.CONTACT_US, title: 'Contact us', element: ContactUs },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
+  { path: ROUTE.ABOUT_US, title: 'About us', element: AboutUs },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
     title: 'Audio Watermarking',
@@ -36,6 +47,16 @@ const routes: RouteType[] = [
     path: ROUTE.PRODUCT_SIGMA_LIVESTREAMING,
     title: 'Sigma Live Streaming',
     element: SigmaLiveStreaming,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_DRM,
+    title: 'Sigma Digital Rights Management',
+    element: SigmaDRM,
+  },
+  {
+    path: ROUTE.PRODUCT_SIGMA_INTERACTIVE,
+    title: 'Sigma Interactive',
+    element: SigmaInteractive,
   },
   {
     path: ROUTE.RESOURCES,
@@ -68,7 +89,7 @@ const routes: RouteType[] = [
     path: ROUTE.SERVICE,
     title: 'Service OTT',
     element: OttPage,
-    isPrivate: true,
+    isPrivate: false,
   },
   {
     path: ROUTE.FORGOT_PASSWORD,
