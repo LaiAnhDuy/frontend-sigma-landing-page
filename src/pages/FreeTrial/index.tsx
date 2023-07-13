@@ -174,14 +174,15 @@ export default function FreeTrial() {
                 <p className="text-left font-normal text-[17px]">
                   By submitting this form, I agree to the processing of my
                   personal data for the purpose of responding to my request, in
-                  compliance with ThuDo Multimedia’s Privacy Notice.
+                  compliance with ThuDo Multimedia’s{' '}
+                  <span className='text-[#47B5FF]'>Privacy Notice.</span>
                 </p>
                 <Form.Item
                   name="checkbox"
                   valuePropName="checked"
                   className="text-left checkbox !p-0"
                 >
-                  <Checkbox >
+                  <Checkbox>
                     I would like to opt-in to receive updates from ThuDo
                     Multimedia about products, news, webinars, and events.
                   </Checkbox>

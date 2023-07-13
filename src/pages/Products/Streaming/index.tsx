@@ -5,6 +5,8 @@ import { codes, frames, items } from './config';
 import Frame from 'src/components/Frame1';
 import './index.style.scss';
 import Item from 'src/components/Item';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 const Streaming = () => {
   return (
@@ -141,9 +143,11 @@ const Streaming = () => {
           Start streaming today with our integrated video platform.
         </p>
         <div>
-          <button className="bg-white text-orange-400 mr-10 rounded free_trial_border w-36 h-8 text-sm cursor-pointer  active:bg-main/90 active:text-white">
-            Free Trial
-          </button>
+          <Link to={ROUTE.FREE_TRIAL}>
+            <button className="bg-white text-orange-400 mr-10 rounded free_trial_border w-36 h-8 text-sm cursor-pointer  active:bg-main/90 active:text-white">
+              Free Trial
+            </button>
+          </Link>
           <button className="bg-white text-orange-400 rounded free_trial_border w-52 h-8 text-sm cursor-pointer active:bg-main/90 active:text-white">
             Talk to a Streaming Expert
           </button>
