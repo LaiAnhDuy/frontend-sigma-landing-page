@@ -87,21 +87,7 @@
   stroke: #ffffff;
   stroke-width: 30;
 }
-.ant-select-selector {
-  border: none !important;
-  background: transparent !important;
-}
-.ant-select-focused .ant-select-selector,
-.ant-select-selector:focus,
-.ant-select-selector:active,
-.ant-select-open .ant-select-selector {
-  border-color: #d9d9d9 !important;
-  box-shadow: none !important;
-}
-.ant-select-arrow {
-  color: white !important;
-  margin-right: 5px;
-}
+
 .select {
   span {
     color: white !important;
@@ -111,11 +97,4 @@
   span {
     color: black !important;
   }
-}
-.ant-select-selection-item{
-  padding-right: 7.5px !important;
-  padding-left: 4px !important;
-}
-.ant-select-arrow{
-  right: -3px !important;
 }
