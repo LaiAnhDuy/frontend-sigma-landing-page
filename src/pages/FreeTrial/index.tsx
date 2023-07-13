@@ -4,7 +4,8 @@ import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { DIAL_CODES } from 'src/constants/dialCode';
-import { authApi } from 'src/api/auth-api';
+import { freeTrialApi } from 'src/api/freeTrial';
+
 const { Option } = Select;
 export default function FreeTrial() {
   const [form] = Form.useForm();
@@ -20,7 +21,7 @@ export default function FreeTrial() {
       phone: value.phone,
       country: value.countryRegion,
     };
-    authApi
+    freeTrialApi
       .freeTrial(data)
       .then((res) => {
         console.log('Success', res);
