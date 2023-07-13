@@ -2,10 +2,15 @@ import React, { useRef, useState } from 'react';
 
 interface ImageUploaderProps {
   onImageChange: (imageUrl: string) => void;
+  handleImage: (imageName: string) => void;
+  imageName: string;
 }
-const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageChange }) => {
+const ImageUploader: React.FC<ImageUploaderProps> = ({
+  onImageChange,
+  handleImage,
+  imageName,
+}) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [imageName, setImageName] = useState('');
   const handleButtonClick = () => {
     if (fileInputRef.current) {
       fileInputRef.current.click();
@@ -17,7 +22,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageChange }) => {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       onImageChange(imageUrl);
-      setImageName(file.name);
+      handleImage(file.name);
     }
   };
 
@@ -31,7 +36,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageChange }) => {
         onChange={handleFileChange}
       />
       <button onClick={handleButtonClick}>Chọn ảnh</button>
-      <div className='ml-4'>{imageName}</div>
+      <div className="ml-4">{imageName}</div>
     </div>
   );
 };

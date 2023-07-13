@@ -74,16 +74,18 @@ export default function Header() {
               Support
             </button>
           </Link>
-          <button
-            onClick={() => {
-              setActiveHeader(false);
-            }}
-            className={`cursor-pointer h-7 w-24 rounded mr-5 ${
-              activeHeader && path === '/' ? ' freetrial ' : ' freetrial1 '
-            } `}
-          >
-            Free trial
-          </button>
+          <Link to={ROUTE.FREE_TRIAL}>
+            <button
+              onClick={() => {
+                setActiveHeader(false);
+              }}
+              className={`cursor-pointer h-7 w-24 rounded mr-5 ${
+                activeHeader && path === '/' ? ' freetrial ' : ' freetrial1 '
+              } `}
+            >
+              Free trial
+            </button>
+          </Link>
           <SearchOutlined
             style={{
               color: `${activeHeader && path === '/' ? 'white' : 'black'}`,

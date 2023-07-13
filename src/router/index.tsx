@@ -17,6 +17,7 @@ import PostPage from 'src/pages/Post';
 
 import ForgotPassword from 'src/pages/Login/ForgotPassword';
 import NotFoundPage from 'src/pages/NotFound';
+import FreeTrial from 'src/pages/FreeTrial';
 import SigmaDRM from 'src/pages/Products/SigmaDRM';
 import SigmaInteractive from 'src/pages/Products/Interactive';
 import Support from 'src/pages/Support';
@@ -35,6 +36,7 @@ const routes: RouteType[] = [
   { path: ROUTE.POST, title: 'Sigma DRM', element: PostPage },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
+  { path: ROUTE.FREE_TRIAL, title: 'Free Trial', element: FreeTrial },
   { path: ROUTE.SUPPORT, title: 'Support', element: Support },
   { path: ROUTE.CONTACT_US, title: 'Contact us', element: ContactUs },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
