@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom';
 import { SIGMA_DAI } from './configs';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
+import ROUTE from 'src/constants/route';
 
 function SigmaDai() {
   return (
@@ -86,9 +88,11 @@ function SigmaDai() {
             <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
               Free Trial
             </button>
-            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
-              Talk to a Streaming Expert
-            </button>
+            <Link to={ROUTE.TALK_TO_EXPERT}>
+              <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
+                Talk to a Streaming Expert
+              </button>
+            </Link>
           </div>
         </div>
       </div>

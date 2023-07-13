@@ -11,6 +11,8 @@ import {
 } from './config';
 import './index.style.scss';
 import Checkbox from 'src/components/Checkbox';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 const SigmaDRM = () => {
   return (
@@ -155,11 +157,15 @@ const SigmaDRM = () => {
 
       <div className="container m-auto text-center">
         {images.map((item, index) => (
-          <div key={index} className='border-dashed border border-slate-400 rounded-[40px] my-24 py-10'>
+          <div
+            key={index}
+            className="border-dashed border border-slate-400 rounded-[40px] my-24 py-10"
+          >
             <h1>
-              <span className="text-orange-400">{item.title} </span> {item.content}
+              <span className="text-orange-400">{item.title} </span>{' '}
+              {item.content}
             </h1>
-            <img src={item.image} alt=''/>
+            <img src={item.image} alt="" />
           </div>
         ))}
       </div>
@@ -190,9 +196,11 @@ const SigmaDRM = () => {
           <button className="bg-white text-orange-400 mr-10 rounded free_trial_border w-36 h-8 text-sm cursor-pointer  active:bg-main/90 active:text-white">
             Free Trial
           </button>
-          <button className="bg-white text-orange-400 rounded free_trial_border w-52 h-8 text-sm cursor-pointer active:bg-main/90 active:text-white">
-            Talk to a Streaming Expert
-          </button>
+          <Link to={ROUTE.TALK_TO_EXPERT}>
+            <button className="bg-white text-orange-400 rounded free_trial_border w-52 h-8 text-sm cursor-pointer active:bg-main/90 active:text-white">
+              Talk to a Streaming Expert
+            </button>
+          </Link>
         </div>
       </div>
     </div>

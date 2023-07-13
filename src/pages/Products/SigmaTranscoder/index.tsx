@@ -1,6 +1,8 @@
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { SIGMA_TRANSCODER1, SIGMA_TRANSCODER2, LIST_CHOOSE } from './config';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 function SigmaTranscoder() {
   return (
@@ -264,9 +266,11 @@ function SigmaTranscoder() {
             <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
               Free Trial
             </button>
-            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
-              Talk to a Streaming Expert
-            </button>
+            <Link to={ROUTE.TALK_TO_EXPERT}>
+              <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
+                Talk to a Streaming Expert
+              </button>
+            </Link>
           </div>
         </div>
       </div>

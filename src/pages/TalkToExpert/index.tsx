@@ -40,7 +40,10 @@ export default function TalkToExpert() {
                   label="First name"
                   name="firstName"
                   rules={[
-                    { required: true, message: 'Please input your first name!' },
+                    {
+                      required: true,
+                      message: 'Please input your first name!',
+                    },
                   ]}
                 >
                   <Input className="input" />
@@ -144,7 +147,8 @@ export default function TalkToExpert() {
                 <p className="text-left font-normal text-[17px]">
                   By submitting this form, I agree to the processing of my
                   personal data for the purpose of responding to my request, in
-                  compliance with ThuDo Multimedia’s Privacy Notice.
+                  compliance with ThuDo Multimedia’s{' '}
+                  <span className='text-[#47B5FF]'>Privacy Notice.</span>
                 </p>
                 <Form.Item
                   name="checkbox"
@@ -162,7 +166,7 @@ export default function TalkToExpert() {
                     htmlType="submit"
                     className="font-light text-xl text-white bg-main cursor-pointer button"
                   >
-                    Sending to us 
+                    Sending to us
                   </Button>
                 </Form.Item>
               </Form>

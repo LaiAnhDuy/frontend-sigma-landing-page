@@ -4,6 +4,8 @@ import './index.style.scss';
 import { firstItem, frames, items, sigmaInteractiveSteps } from './config';
 import Frame2 from 'src/components/Frame2';
 import Frame from 'src/components/Frame1';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 type InteractiveStepProps = {
   img: string;
@@ -135,9 +137,11 @@ const SigmaInteractive = () => {
           <button className="bg-main text-white mr-10 rounded free_trial_border w-36 h-8 text-sm cursor-pointer  active:bg-main/90 active:text-white">
             Free Trial
           </button>
-          <button className="bg-white text-orange-400 rounded free_trial_border w-52 h-8 text-sm cursor-pointer active:bg-main/90 active:text-white">
-            Talk to a Streaming Expert
-          </button>
+          <Link to={ROUTE.TALK_TO_EXPERT}>
+            <button className="bg-white text-orange-400 rounded free_trial_border w-52 h-8 text-sm cursor-pointer active:bg-main/90 active:text-white">
+              Talk to a Streaming Expert
+            </button>
+          </Link>
         </div>
       </div>
     </div>

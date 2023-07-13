@@ -8,6 +8,8 @@ import { list } from './configs';
 import Item from 'src/components/Item';
 import CarouselShow from './CarouselShow';
 import ScrollToTopButton from 'src/components/ScrollToTop';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 export default function HomePage() {
   const arr = [
@@ -37,7 +39,7 @@ export default function HomePage() {
       url: '#',
       id: '1',
       image: IMAGE_PATH.IMAGE2,
-      option: "new",
+      option: 'new',
     },
     {
       title:
@@ -45,7 +47,7 @@ export default function HomePage() {
       url: '#',
       id: '2',
       image: IMAGE_PATH.IMAGE3,
-      option: "new",
+      option: 'new',
     },
     {
       title:
@@ -53,7 +55,7 @@ export default function HomePage() {
       url: '#',
       id: '3',
       image: IMAGE_PATH.IMAGE4,
-      option: "new",
+      option: 'new',
     },
   ];
   const carouselRef = useRef<CarouselRef>(null);
@@ -276,9 +278,11 @@ export default function HomePage() {
         <button className="bg-main w-[135px] h-10 rounded border-none active:bg-main/90 cursor-pointer">
           <span className="text-white font-medium">Free trial</span>
         </button>
-        <p className="text-main font-medium cursor-pointer">
-          Talk to a Streaming Expert
-        </p>
+        <Link to={ROUTE.TALK_TO_EXPERT} className='no-underline'>
+          <p className="text-main font-medium cursor-pointer">
+            Talk to a Streaming Expert
+          </p>
+        </Link>
       </div>
       <ScrollToTopButton />
     </div>

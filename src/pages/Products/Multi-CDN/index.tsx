@@ -4,6 +4,8 @@ import { IMAGE_PATH } from 'src/constants/images';
 import { cdns, items, frames } from './config';
 import Item from 'src/components/Item';
 import Frame from 'src/components/Frame';
+import ROUTE from 'src/constants/route';
+import { Link } from 'react-router-dom';
 
 const Multi = () => {
   return (
@@ -108,9 +110,11 @@ const Multi = () => {
         <h1 className="text-4xl">
           Multi-CDN Made Easy-Plan, Implement and Test
         </h1>
-        <button className="bg-orange-400 text-white border-none rounded-xl w-64 h-10 text-base cursor-pointer active:bg-main/60">
-          Request a demo
-        </button>
+        <Link to={ROUTE.TALK_TO_EXPERT}>
+          <button className="bg-orange-400 text-white border-none rounded-xl w-64 h-10 text-base cursor-pointer active:bg-main/60">
+            Request a demo
+          </button>
+        </Link>
       </div>
     </div>
   );
