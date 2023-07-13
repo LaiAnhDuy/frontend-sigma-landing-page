@@ -3,13 +3,13 @@
 import { Reducer } from 'redux';
 import { AddProductProps, ProductActionTypes } from './actions';
 
-interface State1 {
+interface ProductState {
   // Trạng thái của reducer 1
 }
 
-const initialState: State1 = {};
+const initialState: ProductState = {};
 
-const productReducer: Reducer<State1, AddProductProps> = (
+const productReducer: Reducer<ProductState, AddProductProps> = (
   // eslint-disable-next-line @typescript-eslint/default-param-last
   state = initialState,
   action,

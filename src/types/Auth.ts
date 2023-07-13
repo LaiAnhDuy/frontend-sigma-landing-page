@@ -1,4 +1,4 @@
-export interface AuthTypes{
-    token: string,
-    firstName: string  
-  }
+export interface AuthTypes {
+  token: string;
+  user: string[];
+}

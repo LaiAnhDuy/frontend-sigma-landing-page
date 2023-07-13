@@ -3,7 +3,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
-import { Checkbox } from 'antd';
+import { Checkbox, message } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookF,
@@ -19,6 +19,8 @@ import { isEmailValid, isEmptyValue, isPasswordValid } from 'src/utils';
 import { authApi } from 'src/api/auth-api';
 import ROUTE from 'src/constants/route';
 import { Link } from 'react-router-dom';
+import { addUser } from 'src/redux/auth/action';
+import { useDispatch } from 'react-redux';
 
 const initFormValue = {
   email: '',
@@ -31,15 +33,14 @@ interface LoginProps {
   signIn: () => void;
   onClick: () => void;
   handleForgot: () => void;
-  setFirstName: (firstName: string) => void;
 }
 export default function Login({
   signIn,
   onClick,
   handleForgot,
-  setFirstName,
 }: LoginProps) {
   const [formValue, setFormValue] = useState<FormValues>(initFormValue);
+  const dispatch = useDispatch();
   const [formError, setFormError] = useState<FormValues>({});
   const [active1, setActive1] = useState(true);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -58,12 +59,15 @@ export default function Login({
     const errorHandler = (error: any) => {
       console.log('Fail: ', error);
     };
+
     authApi
       .login(data, errorHandler)
       .then((res) => {
         signIn();
+        message.success('Login successfully');
         localStorage.setItem('token', res.data.token);
-        setFirstName(res.data.user.firstName);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        dispatch(addUser(res.data));
         console.log('Success', res);
       })
       .catch((error) => {
@@ -83,7 +87,8 @@ export default function Login({
       error.password = 'Password is required!';
     } else if (!isPasswordValid(formValue.password)) {
       error.password = 'Password is not correct!';
-    } else {} // check password valid or invalid
+    } else {
+    } // check password valid or invalid
     setFormError(error);
     return Object.keys(error).length === 0;
   };

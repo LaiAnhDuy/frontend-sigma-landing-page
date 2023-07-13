@@ -6,6 +6,7 @@ import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
 import { isEmailValid, isEmptyValue ,isPasswordValid }  from 'src/utils';
 import Select from './Select';
 import { authApi } from 'src/api/auth-api';
+import { message } from 'antd';
 const initFormValue = {
   email: '',
   password: '',
@@ -88,6 +89,10 @@ export default function Register({ onClick, signUp }: RegisterProps) {
       phone: formValue.phone,
       country: formValue.country,
     };
+    console.log(data); 
+    
+
+    
     const errorHandler = (error: any) => {
       console.log('Fail: ', error);
     };
@@ -96,6 +101,7 @@ export default function Register({ onClick, signUp }: RegisterProps) {
       .then((res) => {
         signUp();
         console.log('Success', res);
+        message.success('Register Successfully! Please check your email to activate your account');
       })
       .catch((error) => {
         console.log('Fail: ', error);
