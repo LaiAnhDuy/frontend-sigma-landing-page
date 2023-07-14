@@ -93,6 +93,7 @@ export default function Header() {
             className="text-xl mr-2"
           />
           <Select
+          bordered={false}
             suffixIcon={
               <DownOutlined
                 style={{ pointerEvents: 'none' }}

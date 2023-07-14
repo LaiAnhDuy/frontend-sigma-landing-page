@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import Login from 'src/pages/Login';
 import './index.style.scss';
 import Register from 'src/pages/Register';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 interface UserProps {
   user: string;
@@ -43,7 +45,11 @@ export default function User({ user }: UserProps) {
   ];
   const items2: MenuProps['items'] = [
     {
-      label: <div>Profile</div>,
+      label: (
+        <Link to={ROUTE.ADMIN} className="no-underline">
+          Admin
+        </Link>
+      ),
       key: '0',
     },
     {
@@ -66,7 +72,7 @@ export default function User({ user }: UserProps) {
   return (
     <div className="ml-3 cursor-pointer">
       <Dropdown
-        menu={{ items: logIn ? items2 : items1 }}
+        menu={{ items: !logIn ? items2 : items1 }}
         trigger={['click']}
         overlayStyle={overlayStyle}
         className="user"

@@ -21,6 +21,7 @@ import SigmaInteractive from 'src/pages/Products/Interactive';
 import Support from 'src/pages/Support';
 import AboutUs from 'src/pages/AboutUs';
 import ContactUs from 'src/pages/ContactUs';
+import Admin from 'src/pages/Admin';
 
 export type RouteType = {
   path: ROUTE | string;
@@ -38,6 +39,7 @@ const routes: RouteType[] = [
   { path: ROUTE.CONTACT_US, title: 'Contact us', element: ContactUs },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
   { path: ROUTE.ABOUT_US, title: 'About us', element: AboutUs },
+  { path: ROUTE.ADMIN, title: 'Admin', element: Admin },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
     title: 'Audio Watermarking',
