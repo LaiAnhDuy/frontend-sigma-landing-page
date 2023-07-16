@@ -1,16 +1,15 @@
 // reducer1.ts
 
-import { Reducer } from 'redux'
-import { AddProductProps, ProductActionTypes } from './actions'
+import { Reducer } from 'redux';
+import { AddProductProps, ProductActionTypes } from './actions';
 
-interface State1 {
+interface ProductState {
   // Trạng thái của reducer 1
 }
 
-const initialState: State1 = {
-}
+const initialState: ProductState = {};
 
-const productReducer: Reducer<State1, AddProductProps> = (
+const productReducer: Reducer<ProductState, AddProductProps> = (
   // eslint-disable-next-line @typescript-eslint/default-param-last
   state = initialState,
   action,
@@ -18,11 +17,11 @@ const productReducer: Reducer<State1, AddProductProps> = (
   switch (action.type) {
     case ProductActionTypes.ADD_PRODUCT:
       // Xử lý action 1 và cập nhật trạng thái
-      return state
+      return state;
     // Xử lý các action khác nếu có
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default productReducer
+export default productReducer;
