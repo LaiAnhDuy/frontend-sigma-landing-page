@@ -27,6 +27,7 @@ enum ROUTE {
   PRODUCT_SIGMADAI = '/product/sigmadai',
   FORGOT_PASSWORD = '/forgot-password',
   SUPPORT = '/support',
+  POST='/admin/post',
   FREE_TRIAL = '/free-trial',
 }
 export default ROUTE;
