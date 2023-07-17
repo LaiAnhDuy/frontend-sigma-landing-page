@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-redeclare */
 import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
-import { Checkbox } from 'antd';
+import { Checkbox, message } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookF,
@@ -14,8 +15,13 @@ import {
   EyeOutlined,
   GoogleOutlined,
 } from '@ant-design/icons';
-import { isEmailValid, isEmptyValue } from 'src/utils';
+import { isEmailValid, isEmptyValue, isPasswordValid } from 'src/utils';
 import { authApi } from 'src/api/auth-api';
+import ROUTE from 'src/constants/route';
+import { Link } from 'react-router-dom';
+import { addUser } from 'src/redux/auth/action';
+import { useDispatch } from 'react-redux';
+
 const initFormValue = {
   email: '',
   password: '',
@@ -26,12 +32,17 @@ interface FormValues {
 interface LoginProps {
   signIn: () => void;
   onClick: () => void;
+  handleForgot: () => void;
 }
-export default function Login({ signIn, onClick }: LoginProps) {
+export default function Login({
+  signIn,
+  onClick,
+  handleForgot,
+}: LoginProps) {
   const [formValue, setFormValue] = useState<FormValues>(initFormValue);
+  const dispatch = useDispatch();
   const [formError, setFormError] = useState<FormValues>({});
   const [active1, setActive1] = useState(true);
-  console.log(process.env.REACT_APP_BASE_URL);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
     setFormValue((prevFormValue) => ({
@@ -45,9 +56,18 @@ export default function Login({ signIn, onClick }: LoginProps) {
       email: formValue.email,
       password: formValue.password,
     };
+    const errorHandler = (error: any) => {
+      console.log('Fail: ', error);
+    };
+
     authApi
-      .login(data)
+      .login(data, errorHandler)
       .then((res) => {
+        signIn();
+        message.success('Login successfully');
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        dispatch(addUser(res.data));
         console.log('Success', res);
       })
       .catch((error) => {
@@ -65,6 +85,8 @@ export default function Login({ signIn, onClick }: LoginProps) {
     }
     if (isEmptyValue(formValue.password)) {
       error.password = 'Password is required!';
+    } else if (!isPasswordValid(formValue.password)) {
+      error.password = 'Password is not correct!';
     } else {
     } // check password valid or invalid
     setFormError(error);
@@ -81,8 +103,6 @@ export default function Login({ signIn, onClick }: LoginProps) {
   return (
     <div className="login-page my-4">
       <div className="flex w-[600px] m-auto">
-        {/* <CloseCircleFilled className="fixed right-40" />   */}
-        {/* sign in */}
         <div
           style={{
             width: '60%',
@@ -181,9 +201,11 @@ export default function Login({ signIn, onClick }: LoginProps) {
             >
               I have not an account
             </div>
-            <p className="flex justify-center font-bold text-gray-500 text-sm mt-2 cursor-pointer">
-              Forgot your password?
-            </p>
+            <Link to={ROUTE.FORGOT_PASSWORD} onClick={handleForgot}>
+              <p className="flex justify-center font-bold text-gray-500 text-sm mt-2 cursor-pointer">
+                Forgot your password?
+              </p>
+            </Link>
           </form>
         </div>
         {/* Đây là ảnh */}

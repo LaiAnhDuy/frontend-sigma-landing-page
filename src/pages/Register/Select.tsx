@@ -17,7 +17,7 @@ export default function Selection() {
                     className={`right-9 ${path === `${ROUTE.HOME}` ? 'arrow1' : 'arrow2'}`}
                 />
             }
-            defaultValue="vn"
+            defaultValue={"+84"}
             className={`bg-transparent w-[66px] -mr-[66px]`}
         >{DIAL_CODES.map((val, index) => {
             return (
