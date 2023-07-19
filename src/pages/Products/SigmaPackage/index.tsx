@@ -19,9 +19,9 @@ function SigmaPackage() {
     setClickedIndex(index);
   };
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold h-[100px] leading-[55px] pb-6 pr-[168px] break-words">
               Sigma <span className="text-main">Packager</span> & Origin
@@ -40,7 +40,7 @@ function SigmaPackage() {
             <img
               className="w-[900px]"
               src={IMAGE_PATH.TV_PACKAGE}
-              alt="TV_N53"
+              alt="TV"
             />
           </div>
         </div>
@@ -123,7 +123,7 @@ function SigmaPackage() {
         </div>
       </div>
       <div className="flex flex-col pb-[100px]">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="font-bold text-[30px] leading-[30px] text-center pb-[58px] pt-[100px]">
             Sigma <span className="text-main">Packager</span> Key Feature
           </div>
@@ -252,7 +252,7 @@ function SigmaPackage() {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="mx-[184px]">
+        <div className="">
           <div>
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[105px] pb-[20px]">
               Sigma <span className="text-main">Origin</span> Key Feature
