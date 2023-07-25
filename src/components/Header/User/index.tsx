@@ -1,11 +1,15 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { UserOutlined } from '@ant-design/icons';
 import { Dropdown, MenuProps, Modal } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Login from 'src/pages/Login';
 import './index.style.scss';
 import Register from 'src/pages/Register';
-import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import ROUTE from 'src/constants/route';
+import randomColor from 'randomcolor';
+import { AuthTypes } from 'src/types/Auth';
 
 interface UserProps {
   user: string;
@@ -24,14 +28,28 @@ export default function User({ user }: UserProps) {
     setIsModalOpen(true);
     setOption(false);
   };
+  const auth: any = useSelector(
+    (state: { authReducer: AuthTypes }) => state.authReducer.user,
+  );
+  console.log(auth,"auth");
 
   const handleOk = () => {
-    // setIsModalOpen(false);
-    // setLogIn(true);
+    setIsModalOpen(false);
+    setLogIn(true);
+  };
+  const logOut = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+
+    setLogIn(false);
   };
 
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+  const navigate = useNavigate();
+  const postPage = () => {
+    navigate(ROUTE.ADMIN);
   };
   const items1: MenuProps['items'] = [
     {
@@ -44,41 +62,40 @@ export default function User({ user }: UserProps) {
     },
   ];
   const items2: MenuProps['items'] = [
+    auth.role === 'admin'
+      ? {
+          label: <div onClick={postPage}>Admin</div>,
+          key: '0',
+        }
+      : null,
     {
-      label: (
-        <Link to={ROUTE.ADMIN} className="no-underline">
-          Admin
-        </Link>
-      ),
-      key: '0',
-    },
-    {
-      label: (
-        <div
-          onClick={() => {
-            setLogIn(false);
-          }}
-        >
-          Log out
-        </div>
-      ),
+      label: <div onClick={logOut}>Log out</div>,
       key: '1',
     },
   ];
+
   const overlayStyle = {
     paddingTop: '8px',
   };
-
+  const userName = auth.firstName;
+  const avatar = userName?.charAt(0).toUpperCase();
+  const bgColor = randomColor({ luminosity: 'light' });
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setLogIn(true);
+    }
+  }, []);
   return (
     <div className="ml-3 cursor-pointer">
       <Dropdown
-        menu={{ items: !logIn ? items2 : items1 }}
+        menu={{ items: logIn ? items2 : items1 }}
         trigger={['click']}
         overlayStyle={overlayStyle}
         className="user"
         placement="bottomRight"
       >
-        {logIn ? (
+        {!logIn ? (
           <div
             className={`border-solid rounded-full  border-[1px]  w-6 text-center bg-transparent text-white h-6 ${user} `}
           >
@@ -87,8 +104,9 @@ export default function User({ user }: UserProps) {
         ) : (
           <div
             className={`border-solid rounded-full  border-[1px]  w-6 text-center bg-transparent text-white h-6 ${user} `}
+            style={{ backgroundColor: bgColor }}
           >
-            <UserOutlined />
+            {avatar}
           </div>
         )}
       </Dropdown>
@@ -99,12 +117,15 @@ export default function User({ user }: UserProps) {
         closable={false}
         onCancel={handleCancel}
         width={'fit-content'}
-        // closable={false}
       >
         {option ? (
-          <Login signIn={handleOk} onClick={showModalSignUp} />
+          <Login
+            signIn={handleOk}
+            onClick={showModalSignUp}
+            handleForgot={handleCancel}
+          />
         ) : (
-          <Register onClick={showModalSignIn} />
+          <Register onClick={showModalSignIn} signUp={handleCancel} />
         )}
       </Modal>
     </div>

@@ -1,8 +1,11 @@
-import { Card, Layout, Menu, message } from 'antd';
+import { Button, Card, Layout, Menu, message } from 'antd';
 import React, { useState } from 'react';
 import type { MenuProps } from 'antd';
 import { resource } from './listResource';
 import './index.style.scss';
+import { FormOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 export default function Admin() {
   const { Meta } = Card;
@@ -40,21 +43,6 @@ export default function Admin() {
         },
       ],
     },
-    {
-      key: '2',
-      label: 'Product',
-
-      children: [
-        {
-          key: 'testtt',
-          label: `News`,
-        },
-        {
-          key: 'test',
-          label: `Blogs`,
-        },
-      ],
-    },
   ];
   return (
     <div className="container m-auto ">
@@ -71,7 +59,29 @@ export default function Admin() {
           />
         </Sider>
         <Content style={{ paddingLeft: '24px', minHeight: 280 }}>
-          <h1 className="mt-0">Admin</h1>
+          <div className="flex justify-between">
+            <h1 className="mt-0">
+              {(() => {
+                switch (selectedMenuItem) {
+                  case 'new':
+                    return 'News';
+                  case 'blog':
+                    return 'Blogs';
+                  case 'casestudy':
+                    return 'Case Study';
+                  case 'document':
+                    return 'Documents';
+                  case 'video':
+                    return 'Videos';
+                  default:
+                    return 'Admin';
+                }
+              })()}
+            </h1>
+            <Link to={ROUTE.POST}>
+              <Button icon={<FormOutlined />}>Post</Button>
+            </Link>
+          </div>
           <div className="grid grid-cols-4 gap-4">
             {resource
               .filter((item) => item.category === selectedMenuItem)
@@ -83,15 +93,29 @@ export default function Admin() {
                   style={{ width: 240 }}
                   cover={<img alt="example" src={val.thumbnail} />}
                   actions={[
-                    <div key="clear" onClick={()=>{message.success("Clear");}} className="text-red-600 font-medium">
+                    <div
+                      key="clear"
+                      onClick={() => {
+                        message.success('Clear');
+                      }}
+                      className="text-red-600 font-medium"
+                    >
                       Clear
                     </div>,
-                    <div key="edit" onClick={()=>{message.success("Edit");}} className="text-blue-600 font-medium">
+                    <div
+                      key="edit"
+                      onClick={() => {
+                        message.success('Edit');
+                      }}
+                      className="text-blue-600 font-medium"
+                    >
                       Edit
                     </div>,
                   ]}
                 >
-                  <Meta title={val.title} description={val.description} />
+                  <Link to={ROUTE.BLOG.replace(':id', val.id)}>
+                    <Meta title={val.title} description={val.description} />
+                  </Link>
                 </Card>
               ))}
           </div>
