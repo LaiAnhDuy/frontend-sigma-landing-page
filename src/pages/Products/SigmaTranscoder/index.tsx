@@ -6,9 +6,9 @@ import ROUTE from 'src/constants/route';
 
 function SigmaTranscoder() {
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold h-[100px] leading-[55px] pb-6 pr-14 break-words">
               Sigma <span className="text-main">Transcoder</span> Safe and
@@ -36,7 +36,7 @@ function SigmaTranscoder() {
       </div>
 
       <div className="flex justify-center flex-col bg-[#F9F9F9] mt-[80px] pb-1">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="font-bold text-[30px] leading-[30px] text-center pb-[22px] pt-[50px]">
             How it <span className="text-main">works</span> ?
           </div>
@@ -66,7 +66,7 @@ function SigmaTranscoder() {
         </div>
       </div>
       <div className="flex flex-col pb-[70px]">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="flex flex-col h-[804px]">
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[100px] pb-[20px]">
               <span className="text-main">Why</span> choose Sigma Transcoder ?
@@ -229,7 +229,7 @@ function SigmaTranscoder() {
       </div>
       {/*  */}
       <div className="flex flex-col">
-        <div className="mx-[184px]">
+        <div className="">
           <div>
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[105px] pb-[20px]">
               <span className="text-main">Protect & Maximize</span> Your Revenue
