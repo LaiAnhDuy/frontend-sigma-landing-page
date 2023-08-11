@@ -88,7 +88,7 @@ const SigmaDRM = () => {
         <div className="grid grid-cols-2 gap-x-10 my-10">
           <div>
             <div className="border_table h-8 flex items-center pl-5 bg-orange-400 text-white">
-              Lisence Delivery Network
+              License Delivery Network
             </div>
             {firstList.map((item, index) => (
               <div

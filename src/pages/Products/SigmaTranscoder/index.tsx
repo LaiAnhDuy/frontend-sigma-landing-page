@@ -210,7 +210,7 @@ function SigmaTranscoder() {
                   <div className="text-[21px] leading-[28px] pt-[20px]">
                     <div>
                       <span className="text-main">+</span> Common encryption
-                      using multi-DRM (widevine, playready, fairplay), Sigma DRM{' '}
+                      using multi-DRM (Widevine, Playready, FairPlay), Sigma DRM{' '}
                     </div>
                     <div>
                       <span className="text-main">+</span> Encrypted with key
