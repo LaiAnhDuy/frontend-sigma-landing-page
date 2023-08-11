@@ -1,10 +1,35 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
-import './index.style.css';
+import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { DIAL_CODES } from 'src/constants/dialCode';
+import { freeTrialApi } from 'src/api/freeTrial';
+
+const { TextArea } = Input;
+
 const { Option } = Select;
 export default function FreeTrial() {
+  const [form] = Form.useForm();
+  const freeTrialRequest = (value: any) => {
+    console.log();
+
+    const data = {
+      firstName: value.firstName,
+      lastName: value.lastName,
+      email: value.workEmail,
+      phone: value.phone,
+      country: value.countryRegion,
+    };
+    freeTrialApi
+      .freeTrial(data)
+      .then((res) => {
+        console.log('Success', res);
+      })
+      .catch((error) => {
+        console.log('Fail: ', error);
+      });
+  };
   const [selectedPrefix, setSelectedPrefix] = useState('+84');
   return (
     <div>
@@ -31,32 +56,37 @@ export default function FreeTrial() {
           <div className="container m-auto grid grid-cols-5 gap-x-16 mt-24 mb-24">
             <div className="col-span-3 ">
               <Form
+                form={form}
+                onFinish={freeTrialRequest}
                 name="basic"
-                className="bg-white px-5 py-3 h-[927px] -mt-[20px] setShadow"
+                className="bg-white px-5 py-3 h-[927px] -mt-[20px] box-shadow"
                 layout="vertical"
               >
                 <Form.Item
-                  className="setSize text-left "
+                  className="label text-left "
                   label="First name"
                   name="firstName"
                   rules={[
-                    { required: true, message: 'Please input your firstName!' },
+                    {
+                      required: true,
+                      message: 'Please input your first name!',
+                    },
                   ]}
                 >
-                  <Input className="setInput" />
+                  <Input className="input" />
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-left"
+                  className="label text-left"
                   label="Last name"
                   name="lastName"
                   rules={[
-                    { required: true, message: 'Please input your lastName!' },
+                    { required: true, message: 'Please input your last name!' },
                   ]}
                 >
-                  <Input className="setInput" />
+                  <Input className="input" />
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-left"
+                  className="label text-left"
                   label="Work email"
                   name="workEmail"
                   rules={[
@@ -70,10 +100,10 @@ export default function FreeTrial() {
                     },
                   ]}
                 >
-                  <Input className="setInput" />
+                  <Input className="input" />
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-center"
+                  className="label text-center"
                   name="phone"
                   label="Phone Number"
                   rules={[
@@ -85,8 +115,7 @@ export default function FreeTrial() {
                 >
                   <div className="flex text-center">
                     <Select
-                      className="!w-64 h-10 mr-8 setSelect"
-                      showSearch
+                      className="!w-64 h-10 mr-8 name-country"
                       optionFilterProp="children"
                       defaultValue={
                         DIAL_CODES.find(
@@ -111,7 +140,7 @@ export default function FreeTrial() {
                   </div>
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-left"
+                  className="label text-left"
                   label="Country/Region"
                   name="countryRegion"
                   rules={[
@@ -123,7 +152,7 @@ export default function FreeTrial() {
                 >
                   <Select
                     placeholder="Please select"
-                    className="text-left setSelect "
+                    className="text-left name-country"
                   >
                     {DIAL_CODES.map((val, index) => (
                       <Option key={index} value={val.code}>
@@ -133,24 +162,29 @@ export default function FreeTrial() {
                   </Select>
                 </Form.Item>
                 <Form.Item
-                  className="setSize text-left"
-                  label="Tell us about your project"
+                  className="label text-left"
+                  label="About your project"
                   name="project"
                   rules={[
                     { required: true, message: 'Please input your project!' },
                   ]}
                 >
-                  <Input className="h-40" />
+                  <TextArea
+                    rows={3}
+                    className="h-40"
+                    placeholder="Tell us about your project "
+                  />
                 </Form.Item>
                 <p className="text-left font-normal text-[17px]">
                   By submitting this form, I agree to the processing of my
                   personal data for the purpose of responding to my request, in
-                  compliance with ThuDo Multimedia’s Privacy Notice.
+                  compliance with ThuDo Multimedia’s{' '}
+                  <span className="text-[#47B5FF]">Privacy Notice.</span>
                 </p>
                 <Form.Item
                   name="checkbox"
                   valuePropName="checked"
-                  className="text-left setSize"
+                  className="text-left checkbox !p-0"
                 >
                   <Checkbox>
                     I would like to opt-in to receive updates from ThuDo
@@ -161,7 +195,7 @@ export default function FreeTrial() {
                   <Button
                     type="primary"
                     htmlType="submit"
-                    className="font-light text-xl text-white bg-main cursor-pointer setButton" 
+                    className="font-light text-xl text-white bg-main cursor-pointer button"
                   >
                     Free trial
                   </Button>

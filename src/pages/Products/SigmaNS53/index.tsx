@@ -1,6 +1,8 @@
 import './index.style.scss';
 import { SIGMA_N53D, SIGMA_N53F } from './configs';
 import { IMAGE_PATH } from 'src/constants/images';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 function SigmaNS53() {
   return (
@@ -17,9 +19,11 @@ function SigmaNS53() {
               Scale your applications and improve availability, security, and
               performance across your infrastructure in a few clicks.
             </div>
-            <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
-              Start your free trial
-            </button>
+            <Link to={ROUTE.FREE_TRIAL}>
+              <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
+                Start your free trial
+              </button>
+            </Link>
           </div>
           <div className="">
             <img className="w-[900px]" src={IMAGE_PATH.TV_N53} alt="TV_N53" />
@@ -127,9 +131,11 @@ function SigmaNS53() {
             </div>
           </div>
           <div className="flex justify-center mb-24">
-            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
-              Free Trial
-            </button>
+            <Link to={ROUTE.FREE_TRIAL}>
+              <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
+                Free Trial
+              </button>
+            </Link>
             <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
               Talk to a Streaming Expert
             </button>

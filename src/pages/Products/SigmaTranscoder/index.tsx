@@ -1,6 +1,8 @@
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { SIGMA_TRANSCODER1, SIGMA_TRANSCODER2, LIST_CHOOSE } from './config';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 function SigmaTranscoder() {
   return (
@@ -17,9 +19,11 @@ function SigmaTranscoder() {
               Enable you to easily create, ingest, transcode, caption, inspect,
               deliver and play any type of video.
             </div>
-            <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
-              Start your free trial
-            </button>
+            <Link to={ROUTE.FREE_TRIAL}>
+              <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
+                Start your free trial
+              </button>
+            </Link>
           </div>
           <div className="">
             <img
@@ -261,9 +265,11 @@ function SigmaTranscoder() {
             Let share your <span className="text-main">project</span> with Us
           </div>
           <div className="flex justify-center mb-24">
-            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
-              Free Trial
-            </button>
+            <Link to={ROUTE.FREE_TRIAL}>
+              <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
+                Free Trial
+              </button>
+            </Link>
             <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
               Talk to a Streaming Expert
             </button>

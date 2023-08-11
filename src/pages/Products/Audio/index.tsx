@@ -2,6 +2,8 @@ import React from 'react';
 import { IMAGE_PATH } from 'src/constants/images';
 import { frames, items } from './config';
 import Frame from 'src/components/Frame';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 const Audio = () => {
   return (
@@ -18,9 +20,11 @@ const Audio = () => {
             broadcasters and others to be tracked, measured and can be used to
             engage audiences.
           </p>
-          <button className="bg-orange-400 text-white rounded border-none w-32 h-10 text-2xl cursor-pointer active:bg-main/60">
-            Free trial
-          </button>
+          <Link to={ROUTE.FREE_TRIAL}>
+            <button className="bg-orange-400 text-white rounded border-none w-32 h-10 text-2xl cursor-pointer active:bg-main/60">
+              Free trial
+            </button>
+          </Link>
         </div>
         <img src={IMAGE_PATH.TV_AUDIO} alt="" className="w-full" />
       </div>
@@ -74,8 +78,10 @@ const Audio = () => {
                 alt=""
                 className="w-full"
               />
-              <div style={{ order: item.id % 2 === 1 ? 2 : 1 }}
-              className='m-16'>
+              <div
+                style={{ order: item.id % 2 === 1 ? 2 : 1 }}
+                className="m-16"
+              >
                 <h1>{item.title}</h1>
                 <p>{item.content}</p>
               </div>
