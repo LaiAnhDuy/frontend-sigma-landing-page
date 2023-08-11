@@ -6,9 +6,9 @@ import ROUTE from 'src/constants/route';
 
 function SigmaDai() {
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold h-[100px] leading-[50px] pb-2 pr-8">
               Enable <span className="text-main">ADS Insertion</span> Everywhere
@@ -28,8 +28,8 @@ function SigmaDai() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col px-[184px] mt-[90px]">
-          <div className="font-bold text-[30px] leading-[30px] text-center pb-[22px]">
+        <div className="flex justify-center flex-col">
+          <div className="font-bold text-[30px] leading-[30px] text-center pb-[22px] pt-16">
             <span className="text-main">Key</span> Feature
           </div>
           <div className="grid grid-rows-2 grid-cols-3">
