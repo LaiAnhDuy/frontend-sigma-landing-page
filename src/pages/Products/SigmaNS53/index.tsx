@@ -6,9 +6,9 @@ import ROUTE from 'src/constants/route';
 
 function SigmaNS53() {
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold h-[150px] leading-[50px] pb-2 break-words">
               Sigma <span className="text-main">NS53</span> load balancing,
@@ -30,7 +30,7 @@ function SigmaNS53() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col mx-[184px]">
+        <div className="flex justify-center flex-col">
           <div className="w-full h-[254px] bg-main rounded-[20px] flex justify-center flex-col mb-28 mt-20">
             <div className="flex justify-center font-bold text-[30px] text-white h-[42px] mb-5">
               What is a NS53 ?
@@ -65,7 +65,7 @@ function SigmaNS53() {
         </div>
       </div>
       <div className="flex flex-col bg-[#F9F9F9]">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="flex flex-col h-[804px]">
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[50px] pb-[20px]">
               The advantages of{' '}
@@ -103,7 +103,7 @@ function SigmaNS53() {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="mx-[184px]">
+        <div className="">
           <div>
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[105px] pb-[20px]">
               The advantages of{' '}
