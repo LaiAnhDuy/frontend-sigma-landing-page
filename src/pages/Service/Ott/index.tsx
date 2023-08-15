@@ -5,9 +5,9 @@ import Carousel from './CarouselOtt';
 
 function Ott() {
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold leading-[50px] pb-2 break-words pt-[38px] h-[50px]">
               <span className="text-main">Sigma</span> OTT
@@ -26,7 +26,7 @@ function Ott() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col mx-[184px]">
+        <div className="flex justify-center flex-col">
           <div className="flex flex-col h-[804px]">
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[50px] pb-[42px]">
               Sigma <span className="text-main">OTT</span> Platform
@@ -62,7 +62,7 @@ function Ott() {
         </div>
       </div>
       <div className="flex flex-col bg-[#F9F9F9]">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="flex flex-col h-[544px]">
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[50px] pb-[20px]">
               Our IPTV / OTT <span className="text-main">Platform</span>{' '}
@@ -75,7 +75,7 @@ function Ott() {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="mx-[184px]">
+        <div className="">
           <div>
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[105px] pb-[20px]">
               Our <span className="text-main">Client</span> Benefits

@@ -3,93 +3,32 @@ import './index.style.scss';
 import { Select } from 'antd';
 import { DownOutlined } from "@ant-design/icons";
 import { useLocation } from "react-router-dom";
+import ROUTE from "src/constants/route";
+import { DIAL_CODES } from "src/constants/dialCode";
 export default function Selection() {
     const location = useLocation();
     const path = location.pathname;
+    const { Option } = Select;
     return (
         <Select
             suffixIcon={
                 <DownOutlined
                     style={{ pointerEvents: 'none' }}
-                    className={`right-9 ${path === '/' ? 'arrow1' : 'arrow2'}`}
+                    className={`right-9 ${path === `${ROUTE.HOME}` ? 'arrow1' : 'arrow2'}`}
                 />
             }
-            defaultValue="vn"
-            className={`bg-transparent w-[60px] -mr-[60px]`}
-            options={[
-                {
-                    value: 'Usa',
-                    label: (
+            defaultValue={"+84"}
+            className={`bg-transparent w-[66px] -mr-[66px]`}
+        >{DIAL_CODES.map((val, index) => {
+            return (
+                <Option key={index} value={val.name}>
+                    {
                         <div className=" flex items-center ">
-                            +44
+                            {val.dial_code}
                         </div>
-                    ),
-                },
-                {
-                    value: 'vn',
-                    label: (
-                        <div className=" flex items-center ">
-                            +84
-                        </div>
-                    ),
-                },
-                {
-                    value: 'Japan',
-                    label: (
-                        <div className=" flex items-center ">
-                            +81
-                        </div>
-                    ),
-                },
-                {
-                    value: 'Korean',
-                    label: (
-                        <div className=" flex items-center ">
-                            +82
-                        </div>
-                    ),
-                },
-                {
-                    value: 'Trung Quốc',
-                    label: (
-                        <div className=" flex items-center ">
-                            +86
-                        </div>
-                    ),
-                },
-                {
-                    value: 'German',
-                    label: (
-                        <div className=" flex items-center ">
-                            +49
-                        </div>
-                    ),
-                },
-                {
-                    value: 'Đài Loan',
-                    label: (
-                        <div className=" flex items-center ">
-                            +02
-                        </div>
-                    ),
-                },
-                {
-                    value: 'Australia',
-                    label: (
-                        <div className=" flex items-center ">
-                            +03
-                        </div>
-                    ),
-                },
-                {
-                    value: 'Singapore',
-                    label: (
-                        <div className=" flex items-center ">
-                            +04
-                        </div>
-                    ),
-                }
-            ]}
-        />
+                    }
+                </Option>
+            );
+        })}</Select>
     )
 }

@@ -1,12 +1,14 @@
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { SIGMA_TRANSCODER1, SIGMA_TRANSCODER2, LIST_CHOOSE } from './config';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
 
 function SigmaTranscoder() {
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold h-[100px] leading-[55px] pb-6 pr-14 break-words">
               Sigma <span className="text-main">Transcoder</span> Safe and
@@ -17,9 +19,11 @@ function SigmaTranscoder() {
               Enable you to easily create, ingest, transcode, caption, inspect,
               deliver and play any type of video.
             </div>
-            <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
-              Start your free trial
-            </button>
+            <Link to={ROUTE.FREE_TRIAL}>
+              <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
+                Start your free trial
+              </button>
+            </Link>
           </div>
           <div className="">
             <img
@@ -32,7 +36,7 @@ function SigmaTranscoder() {
       </div>
 
       <div className="flex justify-center flex-col bg-[#F9F9F9] mt-[80px] pb-1">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="font-bold text-[30px] leading-[30px] text-center pb-[22px] pt-[50px]">
             How it <span className="text-main">works</span> ?
           </div>
@@ -62,7 +66,7 @@ function SigmaTranscoder() {
         </div>
       </div>
       <div className="flex flex-col pb-[70px]">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="flex flex-col h-[804px]">
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[100px] pb-[20px]">
               <span className="text-main">Why</span> choose Sigma Transcoder ?
@@ -206,7 +210,7 @@ function SigmaTranscoder() {
                   <div className="text-[21px] leading-[28px] pt-[20px]">
                     <div>
                       <span className="text-main">+</span> Common encryption
-                      using multi-DRM (widevine, playready, fairplay), Sigma DRM{' '}
+                      using multi-DRM (Widevine, Playready, FairPlay), Sigma DRM{' '}
                     </div>
                     <div>
                       <span className="text-main">+</span> Encrypted with key
@@ -225,7 +229,7 @@ function SigmaTranscoder() {
       </div>
       {/*  */}
       <div className="flex flex-col">
-        <div className="mx-[184px]">
+        <div className="">
           <div>
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[105px] pb-[20px]">
               <span className="text-main">Protect & Maximize</span> Your Revenue
@@ -261,9 +265,11 @@ function SigmaTranscoder() {
             Let share your <span className="text-main">project</span> with Us
           </div>
           <div className="flex justify-center mb-24">
-            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
-              Free Trial
-            </button>
+            <Link to={ROUTE.FREE_TRIAL}>
+              <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
+                Free Trial
+              </button>
+            </Link>
             <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
               Talk to a Streaming Expert
             </button>

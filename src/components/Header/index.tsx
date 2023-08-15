@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './index.style.scss';
 import DropDown from './Dropdown';
 import { menuItems } from './menuItems';
@@ -8,6 +8,8 @@ import { Select } from 'antd';
 import { IMAGE_PATH } from 'src/constants/images';
 import User from './User';
 import ROUTE from 'src/constants/route';
+import { useDispatch } from 'react-redux';
+import { addUser } from 'src/redux/auth/action';
 
 export default function Header() {
   const location = useLocation();
@@ -20,7 +22,15 @@ export default function Header() {
   const handleClickHeader = () => {
     setActiveHeader(true);
   };
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const auth = localStorage.getItem('user');
+    if (token && auth) {
+      const authData: string[] = JSON.parse(auth);
+      dispatch(addUser({ token, user: authData }));
+    }
+  });
   return (
     <div
       className={`flex ${
@@ -62,26 +72,30 @@ export default function Header() {
           ))}
         </div>
         <div className="header-item flex justify-end">
-          <button
-            onClick={() => {
-              setActiveHeader(false);
-            }}
-            className={`cursor-pointer h-7 w-24 rounded mr-5 ${
-              activeHeader && path === '/' ? ' support ' : ' support1 '
-            } `}
-          >
-            Support
-          </button>
-          <button
-            onClick={() => {
-              setActiveHeader(false);
-            }}
-            className={`cursor-pointer h-7 w-24 rounded mr-5 ${
-              activeHeader && path === '/' ? ' freetrial ' : ' freetrial1 '
-            } `}
-          >
-            Free trial
-          </button>
+          <Link to={ROUTE.SUPPORT}>
+            <button
+              onClick={() => {
+                setActiveHeader(false);
+              }}
+              className={`cursor-pointer h-7 w-24 rounded mr-5 ${
+                activeHeader && path === '/' ? ' support ' : ' support1 '
+              } `}
+            >
+              Support
+            </button>
+          </Link>
+          <Link to={ROUTE.FREE_TRIAL}>
+            <button
+              onClick={() => {
+                setActiveHeader(false);
+              }}
+              className={`cursor-pointer h-7 w-24 rounded mr-5 ${
+                activeHeader && path === '/' ? ' freetrial ' : ' freetrial1 '
+              } `}
+            >
+              Free trial
+            </button>
+          </Link>
           <SearchOutlined
             style={{
               color: `${activeHeader && path === '/' ? 'white' : 'black'}`,
@@ -89,16 +103,17 @@ export default function Header() {
             className="text-xl mr-2"
           />
           <Select
+            bordered={false}
             suffixIcon={
               <DownOutlined
                 style={{ pointerEvents: 'none' }}
-                className={`right-9 ${
+                className={`right-9   ${
                   activeHeader && path === '/' ? 'arrow1' : 'arrow2'
                 }`}
               />
             }
             defaultValue="vn"
-            className={`bg-transparent w-[100px] ${
+            className={` w-[110px] ${
               activeHeader && path === '/' ? ' select' : 'select1'
             }`}
             options={[

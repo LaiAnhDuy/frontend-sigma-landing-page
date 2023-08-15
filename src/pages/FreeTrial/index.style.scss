@@ -1,0 +1,24 @@
+.box-shadow {
+  box-shadow: 0px 5px 15px 10px rgba(0, 0, 0, 0.1);
+}
+.label div div label{
+  font-size: 17px !important;
+  font-weight: 400 !important;
+  flex-direction: row-reverse;
+}
+.checkbox div div label {
+  font-size: 17px !important;
+  font-weight: 400 !important;
+}
+.input {
+  height: 40px;
+  font-size: 18px;
+}
+.name-country div {
+  padding: 4px 11px !important;
+  font-size: 18px !important;
+  height: 40px !important;
+} 
+.button {
+    padding: 6px 18px 34px 19px !important;
+}

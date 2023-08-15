@@ -1,9 +1,13 @@
 import axios from 'axios';
-
+import { REACT_APP_BASE_URL } from 'src/configs';
+const token = localStorage.getItem('token');
 const axiosClient = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: REACT_APP_BASE_URL,
   headers: {
     'content-type': 'application/json',
+    common: {
+      Authorization: `Bearer ${token}`,
+    },
   },
 });
 
@@ -11,5 +15,16 @@ const axiosClient = axios.create({
 //     // Handle token here ...
 //     return config;
 // });
-
+axiosClient.interceptors.response.use(
+  (response) => {
+    if (response && response.data) {
+      return response.data;
+    }
+    return response;
+  },
+  (error) => {
+    // Handle errors
+    throw error;
+  },
+);
 export default axiosClient;
