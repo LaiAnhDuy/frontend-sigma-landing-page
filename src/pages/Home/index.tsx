@@ -8,6 +8,8 @@ import { list } from './configs';
 import Item from 'src/components/Item';
 import CarouselShow from './CarouselShow';
 import ScrollToTopButton from 'src/components/ScrollToTop';
+import ROUTE from 'src/constants/route';
+import ButtonGeneral from 'src/components/Product/ButtonGeneral';
 
 export default function HomePage() {
   const arr = [
@@ -37,7 +39,7 @@ export default function HomePage() {
       url: '#',
       id: '1',
       image: IMAGE_PATH.IMAGE2,
-      option: "new",
+      option: 'new',
     },
     {
       title:
@@ -45,7 +47,7 @@ export default function HomePage() {
       url: '#',
       id: '2',
       image: IMAGE_PATH.IMAGE3,
-      option: "new",
+      option: 'new',
     },
     {
       title:
@@ -53,7 +55,7 @@ export default function HomePage() {
       url: '#',
       id: '3',
       image: IMAGE_PATH.IMAGE4,
-      option: "new",
+      option: 'new',
     },
   ];
   const carouselRef = useRef<CarouselRef>(null);
@@ -273,12 +275,18 @@ export default function HomePage() {
         <p className="text-xl font-medium">
           Start streaming today with our integrated video platform.
         </p>
-        <button className="bg-main w-[135px] h-10 rounded border-none active:bg-main/90 cursor-pointer">
-          <span className="text-white font-medium">Free trial</span>
-        </button>
-        <p className="text-main font-medium cursor-pointer">
-          Talk to a Streaming Expert
-        </p>
+        <div className="flex justify-center mb-24">
+          <ButtonGeneral
+            link={ROUTE.FREE_TRIAL}
+            name="Free Trial"
+            css="bg-main text-white w-[241px] active:bg-main/90"
+          />
+          <ButtonGeneral
+            link={ROUTE.TALK_TO_EXPERT}
+            name="Talk to expert"
+            css="bg-white text-main w-[307px] active:bg-[#fafafa] "
+          />
+        </div>
       </div>
       <ScrollToTopButton />
     </div>

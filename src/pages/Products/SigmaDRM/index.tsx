@@ -11,8 +11,8 @@ import {
 } from './config';
 import './index.style.scss';
 import Checkbox from 'src/components/Checkbox';
-import { Link } from 'react-router-dom';
 import ROUTE from 'src/constants/route';
+import ButtonGeneral from 'src/components/Product/ButtonGeneral';
 
 const SigmaDRM = () => {
   return (
@@ -192,15 +192,17 @@ const SigmaDRM = () => {
         <p className="font-bold text-xl mb-14">
           Start streaming today with our integrated video platform.
         </p>
-        <div>
-          <Link to={ROUTE.FREE_TRIAL}>
-            <button className="bg-white text-orange-400 mr-10 rounded free_trial_border w-36 h-8 text-sm cursor-pointer  active:bg-main/90 active:text-white">
-              Free Trial
-            </button>
-          </Link>
-          <button className="bg-white text-orange-400 rounded free_trial_border w-52 h-8 text-sm cursor-pointer active:bg-main/90 active:text-white">
-            Talk to a Streaming Expert
-          </button>
+        <div className="flex justify-center mb-24">
+          <ButtonGeneral
+            link={ROUTE.FREE_TRIAL}
+            name="Free Trial"
+            css="bg-main text-white w-[241px] active:bg-main/90"
+          />
+          <ButtonGeneral
+            link={ROUTE.TALK_TO_EXPERT}
+            name="Talk to expert"
+            css="bg-white text-main w-[307px] active:bg-[#fafafa] "
+          />
         </div>
       </div>
     </div>
