@@ -1,6 +1,8 @@
 enum ENDPOINTS {
   REGISTER = '/users/register',
-  LOGIN = '/login',
+  RESOURCE = '/resources',
+  BLOG='/resources/:id',
+  LOGIN = '/users/login',
   FREE_TRIAL = '/free-trial/',
 
 }
