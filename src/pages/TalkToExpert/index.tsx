@@ -1,35 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { Button, Checkbox, Form, Input, Select } from 'antd';
 import { DIAL_CODES } from 'src/constants/dialCode';
-import { freeTrialApi } from 'src/api/freeTrial';
-
-const { TextArea } = Input;
-
 const { Option } = Select;
-export default function FreeTrial() {
-  const [form] = Form.useForm();
-  const freeTrialRequest = (value: any) => {
-    console.log();
-
-    const data = {
-      firstName: value.firstName,
-      lastName: value.lastName,
-      email: value.workEmail,
-      phone: value.phone,
-      country: value.countryRegion,
-    };
-    freeTrialApi
-      .freeTrial(data)
-      .then((res) => {
-        console.log('Success', res);
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
-  };
+export default function TalkToExpert() {
   const [selectedPrefix, setSelectedPrefix] = useState('+84');
   return (
     <div>
@@ -42,7 +17,7 @@ export default function FreeTrial() {
             Our team would love the opportunity to talk to you about your
             project and business
             <br />
-            case. We’ll then demonstrate how the solution could be of benefit to
+            case. We’ll then demonstrate how the solutioncould be of benefit to
             you.
           </p>
         </div>
@@ -56,14 +31,12 @@ export default function FreeTrial() {
           <div className="container m-auto grid grid-cols-5 gap-x-16 mt-24 mb-24">
             <div className="col-span-3 ">
               <Form
-                form={form}
-                onFinish={freeTrialRequest}
                 name="basic"
                 className="bg-white px-5 py-3 h-[927px] -mt-[20px] box-shadow"
                 layout="vertical"
               >
                 <Form.Item
-                  className="label text-left "
+                  className="label text-left"
                   label="First name"
                   name="firstName"
                   rules={[
@@ -115,7 +88,7 @@ export default function FreeTrial() {
                 >
                   <div className="flex text-center">
                     <Select
-                      className="!w-64 h-10 mr-8 name-country"
+                      className="!w-64 h-10 mr-8 name-country "
                       optionFilterProp="children"
                       defaultValue={
                         DIAL_CODES.find(
@@ -163,23 +136,19 @@ export default function FreeTrial() {
                 </Form.Item>
                 <Form.Item
                   className="label text-left"
-                  label="About your project"
+                  label="Tell us about your project"
                   name="project"
                   rules={[
                     { required: true, message: 'Please input your project!' },
                   ]}
                 >
-                  <TextArea
-                    rows={3}
-                    className="h-40"
-                    placeholder="Tell us about your project "
-                  />
+                  <Input className="h-40" />
                 </Form.Item>
                 <p className="text-left font-normal text-[17px]">
                   By submitting this form, I agree to the processing of my
                   personal data for the purpose of responding to my request, in
                   compliance with ThuDo Multimedia’s{' '}
-                  <span className="text-[#47B5FF]">Privacy Notice.</span>
+                  <span className='text-[#47B5FF]'>Privacy Notice.</span>
                 </p>
                 <Form.Item
                   name="checkbox"
@@ -197,7 +166,7 @@ export default function FreeTrial() {
                     htmlType="submit"
                     className="font-light text-xl text-white bg-main cursor-pointer button"
                   >
-                    Free trial
+                    Sending to us
                   </Button>
                 </Form.Item>
               </Form>
@@ -216,19 +185,6 @@ export default function FreeTrial() {
                   <p className="text-base font-normal text-[#000000]">
                     Floor 10, No. 48 Le Van Luong, N2 New Urban Area, Nhan Chinh
                     Ward, Thanh Xuan District, City. Hanoi
-                  </p>
-                </div>
-              </div>
-              <div className="grid-cols-4 grid mt-8">
-                <div className="col-span-1">
-                  <h1 className="text-base font-bold text-[#000000]">
-                    Contact
-                  </h1>
-                </div>
-                <div className="col-span-3 -mt-1">
-                  <p className="text-base font-normal text-[#000000]">
-                    24/7 Call center: 1900 585868 Sale team: (+84) 925111991
-                    E-mail: thudojsc@gviet.vn
                   </p>
                 </div>
               </div>

@@ -29,5 +29,6 @@ enum ROUTE {
   SUPPORT = '/support',
   POST='/admin/post',
   FREE_TRIAL = '/free-trial',
+  TALK_TO_EXPERT = '/talk-to-expert',
 }
 export default ROUTE;

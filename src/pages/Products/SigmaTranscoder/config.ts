@@ -36,7 +36,7 @@ export const SIGMA_TRANSCODER1 = [
     img: IMAGE_PATH.W3,
     title: 'Every major DRM system',
     description:
-      'FairPlay, PlayReady, Widevine, Sigma DRM. Key provisioning interface to leadind CAS & DRM vendor',
+      'FairPlay, PlayReady, Widevine, Sigma DRM. Key provisioning interface to leading CAS & DRM vendor',
   },
   {
     img: IMAGE_PATH.W4,
@@ -63,7 +63,7 @@ export const SIGMA_TRANSCODER2 = [
     img: IMAGE_PATH.PM1,
     title: 'Offer a premium viewing experience',
     description:
-      'Deliver the highest quality content at the lowest bitrate to delight your audiences with all kinds of content – including UHD, 4K, and HDR. Ensure low latency on all platforms and broadcast-level latency on streaming platforms, with reduced rebuffering.',
+      'Deliver the highest quality content at the lowest bitrate to delight your audiences with all kinds of content – including UHD, 4K, and HDR. Ensure low latency on all platforms and broadcast-level latency on streaming platforms, with reduced ReBuffering.',
   },
   {
     id: 1,

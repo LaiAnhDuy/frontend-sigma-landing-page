@@ -1,12 +1,15 @@
 import './index.style.scss';
 import { SIGMA_N53D, SIGMA_N53F } from './configs';
 import { IMAGE_PATH } from 'src/constants/images';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
+import ButtonGeneral from 'src/components/Product/ButtonGeneral';
 
 function SigmaNS53() {
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold h-[150px] leading-[50px] pb-2 break-words">
               Sigma <span className="text-main">NS53</span> load balancing,
@@ -17,16 +20,18 @@ function SigmaNS53() {
               Scale your applications and improve availability, security, and
               performance across your infrastructure in a few clicks.
             </div>
-            <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
-              Start your free trial
-            </button>
+            <Link to={ROUTE.FREE_TRIAL}>
+              <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
+                Start your free trial
+              </button>
+            </Link>
           </div>
           <div className="">
             <img className="w-[900px]" src={IMAGE_PATH.TV_N53} alt="TV_N53" />
           </div>
         </div>
 
-        <div className="flex justify-center flex-col mx-[184px]">
+        <div className="flex justify-center flex-col">
           <div className="w-full h-[254px] bg-main rounded-[20px] flex justify-center flex-col mb-28 mt-20">
             <div className="flex justify-center font-bold text-[30px] text-white h-[42px] mb-5">
               What is a NS53 ?
@@ -61,7 +66,7 @@ function SigmaNS53() {
         </div>
       </div>
       <div className="flex flex-col bg-[#F9F9F9]">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="flex flex-col h-[804px]">
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[50px] pb-[20px]">
               The advantages of{' '}
@@ -99,7 +104,7 @@ function SigmaNS53() {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="mx-[184px]">
+        <div className="">
           <div>
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[105px] pb-[20px]">
               The advantages of{' '}
@@ -127,12 +132,16 @@ function SigmaNS53() {
             </div>
           </div>
           <div className="flex justify-center mb-24">
-            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
-              Free Trial
-            </button>
-            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
-              Talk to a Streaming Expert
-            </button>
+            <ButtonGeneral
+              link={ROUTE.FREE_TRIAL}
+              name="Free Trial"
+              css="bg-main text-white w-[241px] active:bg-main/90"
+            />
+            <ButtonGeneral
+              link={ROUTE.TALK_TO_EXPERT}
+              name="Talk to expert"
+              css="bg-white text-main w-[307px] active:bg-[#fafafa] "
+            />
           </div>
         </div>
       </div>

@@ -8,6 +8,9 @@ import {
   SIGMA_PACKAGE2,
 } from './configs';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import ROUTE from 'src/constants/route';
+import ButtonGeneral from 'src/components/Product/ButtonGeneral';
 
 function SigmaPackage() {
   const numbers = [1, 2, 3, 4];
@@ -23,9 +26,9 @@ function SigmaPackage() {
     setClickedIndex(index);
   };
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold h-[100px] leading-[55px] pb-6 pr-[168px] break-words">
               Sigma <span className="text-main">Packager</span> & Origin
@@ -36,9 +39,11 @@ function SigmaPackage() {
               content for streaming & Pack the output source into a
               user-friendly format
             </div>
-            <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
-              Start your free trial
-            </button>
+            <Link to={ROUTE.FREE_TRIAL}>
+              <button className="bg-main rounded-[4px] border-none text-white w-[177px] h-[46px] font-medium text-[16px] leading-4 cursor-pointer active:bg-main/90">
+                Start your free trial
+              </button>
+            </Link>
           </div>
           <div className="">
             <img
@@ -127,7 +132,7 @@ function SigmaPackage() {
         </div>
       </div>
       <div className="flex flex-col pb-[100px]">
-        <div className="mx-[184px]">
+        <div className="">
           <div className="font-bold text-[30px] leading-[30px] text-center pb-[58px] pt-[100px]">
             Sigma <span className="text-main">Packager</span> Key Feature
           </div>
@@ -256,7 +261,7 @@ function SigmaPackage() {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="mx-[184px]">
+        <div className="">
           <div>
             <div className="w-full h-[43px] font-bold text-[30px] leading-[30px] text-center pt-[105px] pb-[20px]">
               Sigma <span className="text-main">Origin</span> Key Feature
@@ -308,12 +313,16 @@ function SigmaPackage() {
             Let share your <span className="text-main">project</span> with Us
           </div>
           <div className="flex justify-center mb-24">
-            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
-              Free Trial
-            </button>
-            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
-              Talk to a Streaming Expert
-            </button>
+            <ButtonGeneral
+              link={ROUTE.FREE_TRIAL}
+              name="Free Trial"
+              css="bg-main text-white w-[241px] active:bg-main/90"
+            />
+            <ButtonGeneral
+              link={ROUTE.TALK_TO_EXPERT}
+              name="Talk to expert"
+              css="bg-white text-main w-[307px] active:bg-[#fafafa] "
+            />
           </div>
         </div>
       </div>

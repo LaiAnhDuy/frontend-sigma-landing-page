@@ -31,8 +31,6 @@ export default function User({ user }: UserProps) {
   const auth: any = useSelector(
     (state: { authReducer: AuthTypes }) => state.authReducer.user,
   );
-  console.log(auth,"auth");
-
   const handleOk = () => {
     setIsModalOpen(false);
     setLogIn(true);

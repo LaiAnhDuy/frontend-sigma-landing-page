@@ -1,12 +1,14 @@
 import { SIGMA_DAI } from './configs';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
+import ROUTE from 'src/constants/route';
+import ButtonGeneral from 'src/components/Product/ButtonGeneral';
 
 function SigmaDai() {
   return (
-    <div className="text-black">
+    <div className="container m-auto text-black">
       <div className="flex flex-col">
-        <div className="flex justify-between h-[540px] mx-[184px]">
+        <div className="flex justify-between h-[540px]">
           <div className="pt-9">
             <div className="relative z-[1] text-[55px] font-bold h-[100px] leading-[50px] pb-2 pr-8">
               Enable <span className="text-main">ADS Insertion</span> Everywhere
@@ -26,8 +28,8 @@ function SigmaDai() {
           </div>
         </div>
 
-        <div className="flex justify-center flex-col px-[184px] mt-[90px]">
-          <div className="font-bold text-[30px] leading-[30px] text-center pb-[22px]">
+        <div className="flex justify-center flex-col">
+          <div className="font-bold text-[30px] leading-[30px] text-center pb-[22px] pt-16">
             <span className="text-main">Key</span> Feature
           </div>
           <div className="grid grid-rows-2 grid-cols-3">
@@ -83,12 +85,16 @@ function SigmaDai() {
             Let share your <span className="text-main">project</span> with Us
           </div>
           <div className="flex justify-center mb-24">
-            <button className="bg-main rounded border-main border-[1px] border-solid text-white text-[21px] w-[241px] h-[50px] cursor-pointer mr-[50px] active:bg-main/90">
-              Free Trial
-            </button>
-            <button className="bg-white rounded border-main border-[1px] border-solid text-main text-[21px] w-[307px] h-[50px] cursor-pointer active:bg-[#fafafa]">
-              Talk to a Streaming Expert
-            </button>
+            <ButtonGeneral
+              link={ROUTE.FREE_TRIAL}
+              name="Free Trial"
+              css="bg-main text-white w-[241px] active:bg-main/90"
+            />
+            <ButtonGeneral
+              link={ROUTE.TALK_TO_EXPERT}
+              name="Talk to expert"
+              css="bg-white text-main w-[307px] active:bg-[#fafafa] "
+            />
           </div>
         </div>
       </div>
