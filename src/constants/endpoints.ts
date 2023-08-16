@@ -2,7 +2,7 @@ enum ENDPOINTS {
   REGISTER = '/users/register',
   RESOURCE = '/resources',
   BLOG='/resources/:id',
-  LOGIN = '/login',
+  LOGIN = '/users/login',
   FREE_TRIAL = '/free-trial/',
 
 }
