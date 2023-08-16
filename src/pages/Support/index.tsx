@@ -20,8 +20,6 @@ export default function Support() {
                         <p className="text-lg font-normal mt-2">24/7 Callcenter: 1900 585868</p>
                     </div>
                 </div>
-
-
             </div>
         </div>
     );

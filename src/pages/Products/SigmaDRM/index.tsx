@@ -11,6 +11,8 @@ import {
 } from './config';
 import './index.style.scss';
 import Checkbox from 'src/components/Checkbox';
+import ROUTE from 'src/constants/route';
+import ButtonGeneral from 'src/components/Product/ButtonGeneral';
 
 const SigmaDRM = () => {
   return (
@@ -86,7 +88,7 @@ const SigmaDRM = () => {
         <div className="grid grid-cols-2 gap-x-10 my-10">
           <div>
             <div className="border_table h-8 flex items-center pl-5 bg-orange-400 text-white">
-              Lisence Delivery Network
+              License Delivery Network
             </div>
             {firstList.map((item, index) => (
               <div
@@ -155,11 +157,15 @@ const SigmaDRM = () => {
 
       <div className="container m-auto text-center">
         {images.map((item, index) => (
-          <div key={index} className='border-dashed border border-slate-400 rounded-[40px] my-24 py-10'>
+          <div
+            key={index}
+            className="border-dashed border border-slate-400 rounded-[40px] my-24 py-10"
+          >
             <h1>
-              <span className="text-orange-400">{item.title} </span> {item.content}
+              <span className="text-orange-400">{item.title} </span>{' '}
+              {item.content}
             </h1>
-            <img src={item.image} alt=''/>
+            <img src={item.image} alt="" />
           </div>
         ))}
       </div>
@@ -186,13 +192,17 @@ const SigmaDRM = () => {
         <p className="font-bold text-xl mb-14">
           Start streaming today with our integrated video platform.
         </p>
-        <div>
-          <button className="bg-white text-orange-400 mr-10 rounded free_trial_border w-36 h-8 text-sm cursor-pointer  active:bg-main/90 active:text-white">
-            Free Trial
-          </button>
-          <button className="bg-white text-orange-400 rounded free_trial_border w-52 h-8 text-sm cursor-pointer active:bg-main/90 active:text-white">
-            Talk to a Streaming Expert
-          </button>
+        <div className="flex justify-center mb-24">
+          <ButtonGeneral
+            link={ROUTE.FREE_TRIAL}
+            name="Free Trial"
+            css="bg-main text-white w-[241px] active:bg-main/90"
+          />
+          <ButtonGeneral
+            link={ROUTE.TALK_TO_EXPERT}
+            name="Talk to expert"
+            css="bg-white text-main w-[307px] active:bg-[#fafafa] "
+          />
         </div>
       </div>
     </div>
