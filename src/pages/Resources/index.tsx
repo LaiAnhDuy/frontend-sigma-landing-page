@@ -6,21 +6,29 @@ import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import Item from 'src/components/Item';
 import { Pagination, PaginationProps } from 'antd';
-import { blogs, casestudy, documents, news, videos } from './item';
 import ScrollToTopButton from 'src/components/ScrollToTop';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { resourceApi } from 'src/api/resource-api';
+import { useDispatch, useSelector } from 'react-redux';
+import { addResource } from 'src/redux/resource/action';
 
 export default function Resources() {
+  const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
   const location = useLocation();
   const pathname = location.pathname.substring(
     location.pathname.lastIndexOf('/') + 1,
   );
+  const navigate = useNavigate();
+  const [title, setTitle] = useState('');
   useEffect(() => {
     setTitle(pathname);
-  });
-  const navigate = useNavigate();
-  const [title, setTitle] = useState('new');
+  }, [pathname]);
+  useEffect(() => {
+    if (title) {
+      resourcesRequest();
+    }
+  }, [title]);
   const listTitle = [
     {
       title: 'News',
@@ -43,20 +51,41 @@ export default function Resources() {
       value: 'video',
     },
   ];
-  const dataLength = () => {
-    switch (title) {
-      case 'new':
-        return news;
-      case 'blog':
-        return blogs;
-      case 'document':
-        return documents;
-      case 'video':
-        return videos;
-      case 'casestudy':
-        return casestudy;
-    }
+
+  const resourcesRequest = () => {
+    const data = {
+      category: (() => {
+        switch (title) {
+          case 'new':
+            return 'News';
+          case 'blog':
+            return 'Blog';
+          case 'document':
+            return 'Document';
+          case 'video':
+            return 'Video';
+          case 'casestudy':
+            return 'Casestudy';
+          default:
+            return 'Other';
+        }
+      })(),
+      limitPerPage: 100,
+    };
+    const errorHandler = (error: any) => {
+      console.log('Fail: ', error);
+    };
+
+    resourceApi
+      .getResource(data, errorHandler)
+      .then((res) => {
+        dispatch(addResource(res.data));
+      })
+      .catch((error) => {
+        console.log('Fail: ', error);
+      });
   };
+  const data = useSelector((state: any) => state.resourcesReducer.resources);
 
   const itemRender: PaginationProps['itemRender'] = (
     _,
@@ -69,8 +98,7 @@ export default function Resources() {
       );
     }
     if (type === 'next') {
-      return currentPage ===
-        Math.ceil((dataLength()?.length ?? 0) / 6) ? null : (
+      return currentPage === Math.ceil((data?.length ?? 0) / 6) ? null : (
         <a className="text-black hover:text-black">Next</a>
       );
     }
@@ -98,6 +126,7 @@ export default function Resources() {
                 title === `${val.value}` ? ' selected' : ' active'
               } `}
               onClick={() => {
+                setCurrentPage(1);
                 setTitle(`${val.value}`);
                 navigate(`/resources/${val.value}`);
               }}
@@ -113,30 +142,44 @@ export default function Resources() {
             <span className="text-main">news from us</span>
           </h1>
           <div className="grid grid-cols-3 gap-x-10 gap-y-14 text-left">
-            {dataLength()
-              ?.slice((currentPage - 1) * 6, currentPage * 6)
-              .map((val, index) => (
-                <Item
-                  key={index}
-                  image={val.image}
-                  title={val.title}
-                  option={val.option}
-                  id={val.id}
-                />
-              ))}
+            {data && data.length > 0 ? (
+              data?.slice((currentPage - 1) * 6, currentPage * 6).map(
+                (
+                  val: {
+                    thumbnail: string;
+                    title: string;
+                    category: string;
+                    id: string;
+                  },
+                  index: React.Key | null | undefined,
+                ) => (
+                  <Item
+                    key={index}
+                    image={val.thumbnail}
+                    title={val.title}
+                    option={title}
+                    id={val.id}
+                  />
+                ),
+              )
+            ) : (
+              <div> No data available</div>
+            )}
           </div>
-          <Pagination
-            className="my-16"
-            itemRender={itemRender}
-            total={dataLength()?.length}
-            current={currentPage}
-            onChange={(page) => {
-              setCurrentPage(page);
-            }}
-            pageSize={6}
-            showSizeChanger={false}
-            showQuickJumper={false}
-          />
+          {data && data.length > 0 ? (
+            <Pagination
+              className="my-16"
+              itemRender={itemRender}
+              total={data?.length}
+              current={currentPage}
+              onChange={(page) => {
+                setCurrentPage(page);
+              }}
+              pageSize={6}
+              showSizeChanger={false}
+              showQuickJumper={false}
+            />
+          ) : null}
         </div>
       </div>
       <ScrollToTopButton />
