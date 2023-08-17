@@ -50,6 +50,7 @@ export default function Admin() {
         },
       ],
     },
+    { key: '2', label: 'Users' },
   ];
 
   const resourcesRequest = () => {
@@ -138,6 +139,8 @@ export default function Admin() {
                     return 'Documents';
                   case 'video':
                     return 'Videos';
+                  case '2':
+                    return 'Users';
                   default:
                     return 'Admin';
                 }
@@ -148,69 +151,73 @@ export default function Admin() {
             </Link>
           </div>
           <div className="grid grid-cols-4 gap-4">
-            {resources && resources.length > 0 ? (
-              resources.map((val: any, index: number) => (
-                <Card
-                  className="m-auto"
-                  key={index}
-                  hoverable
-                  style={{ width: 240 }}
-                  cover={
-                    val.thumbnail ? (
-                      <img
-                        alt="#"
-                        className="max-h-[130px]"
-                        // src={val.thumbnail}
-                        src={IMAGE_PATH.ABOUT_US}
+            {selectedMenuItem !== '2' ? (
+              resources && resources.length > 0 ? (
+                resources.map((val: any, index: number) => (
+                  <Card
+                    className="m-auto"
+                    key={index}
+                    hoverable
+                    style={{ width: 240 }}
+                    cover={
+                      val.thumbnail ? (
+                        <img
+                          alt="#"
+                          className="max-h-[130px]"
+                          // src={val.thumbnail}
+                          src={IMAGE_PATH.ABOUT_US}
+                        />
+                      ) : (
+                        <img
+                          alt="#"
+                          className="max-h-[130px]"
+                          src={IMAGE_PATH.ABOUT_US}
+                        />
+                      )
+                    }
+                    actions={[
+                      <Popconfirm
+                        key="clear"
+                        title="Delete the task"
+                        description="Are you sure to delete this task?"
+                        onConfirm={() => {
+                          removeBlogRequest(val.id);
+                          setRemove(true);
+                          message.success('Delete');
+                        }}
+                        onCancel={() => {
+                          message.error('No delete');
+                        }}
+                        okText="Yes"
+                        cancelText="No"
+                      >
+                        <div className="text-red-600 font-medium">Clear</div>
+                      </Popconfirm>,
+                      <div
+                        key="edit"
+                        onClick={() => {
+                          message.success('Edit');
+                        }}
+                        className="text-blue-600 font-medium"
+                      >
+                        Edit
+                      </div>,
+                    ]}
+                  >
+                    <div onClick={() => navigate(`/resources/blog/${val.id}`)}>
+                      <Meta
+                        className="card min-h-[80px]"
+                        title={val.title}
+                        description={val.description}
                       />
-                    ) : (
-                      <img
-                        alt="#"
-                        className="max-h-[130px]"
-                        src={IMAGE_PATH.ABOUT_US}
-                      />
-                    )
-                  }
-                  actions={[
-                    <Popconfirm
-                      key="clear"
-                      title="Delete the task"
-                      description="Are you sure to delete this task?"
-                      onConfirm={() => {
-                        removeBlogRequest(val.id);
-                        setRemove(true);
-                        message.success('Delete');
-                      }}
-                      onCancel={() => {
-                        message.error('No delete');
-                      }}
-                      okText="Yes"
-                      cancelText="No"
-                    >
-                      <div className="text-red-600 font-medium">Clear</div>
-                    </Popconfirm>,
-                    <div
-                      key="edit"
-                      onClick={() => {
-                        message.success('Edit');
-                      }}
-                      className="text-blue-600 font-medium"
-                    >
-                      Edit
-                    </div>,
-                  ]}
-                >
-                  <div onClick={() => navigate(`/resources/blog/${val.id}`)}>
-                    <Meta
-                      className="card min-h-[80px]"
-                      title={val.title}
-                      description={val.description}
-                    />
-                  </div>
-                </Card>
-              ))
+                    </div>
+                  </Card>
+                ))
+              ) : (
+                <p>No blog</p>
+              )
             ) : (
-              <p>No blog</p>
+              <p>No user</p>
             )}
           </div>
         </Content>
