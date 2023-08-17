@@ -52,25 +52,17 @@ export default function Admin() {
     },
     { key: '2', label: 'Users' },
   ];
-
+  const categoryMappings: Record<string, string> = {
+    new: 'News',
+    blog: 'Blog',
+    document: 'Document',
+    video: 'Video',
+    casestudy: 'CaseStudy',
+    '2': 'Users',
+  };
   const resourcesRequest = () => {
     const data = {
-      category: (() => {
-        switch (selectedMenuItem) {
-          case 'new':
-            return 'News';
-          case 'blog':
-            return 'Blog';
-          case 'document':
-            return 'Document';
-          case 'video':
-            return 'Video';
-          case 'casestudy':
-            return 'Casestudy';
-          default:
-            return 'Other';
-        }
-      })(),
+      category: categoryMappings[selectedMenuItem],
       limitPerPage: 100,
     };
     const errorHandler = (error: any) => {
@@ -127,24 +119,7 @@ export default function Admin() {
         <Content style={{ paddingLeft: '24px', minHeight: 280 }}>
           <div className="flex justify-between">
             <h1 className="mt-0">
-              {(() => {
-                switch (selectedMenuItem) {
-                  case 'new':
-                    return 'News';
-                  case 'blog':
-                    return 'Blogs';
-                  case 'casestudy':
-                    return 'Case Study';
-                  case 'document':
-                    return 'Documents';
-                  case 'video':
-                    return 'Videos';
-                  case '2':
-                    return 'Users';
-                  default:
-                    return 'Admin';
-                }
-              })()}
+              {categoryMappings[selectedMenuItem] || 'Admin'}
             </h1>
             <Link to={ROUTE.POST}>
               <Button icon={<FormOutlined />}>Post</Button>
