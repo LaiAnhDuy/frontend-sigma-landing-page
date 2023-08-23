@@ -11,7 +11,6 @@ export enum AuthActionTypes {
 // Action interfaces for reducer 2
 export interface RemoveUserProps {
   type: AuthActionTypes.REMOVE_USER;
-  payload: AuthTypes;
 }
 export interface AddUserProps {
   type: AuthActionTypes.ADD_USER;
@@ -19,9 +18,8 @@ export interface AddUserProps {
 }
 
 // Action creators for reducer 2
-export const removeUser = (payload: AuthTypes): RemoveUserProps => ({
+export const removeUser = (): RemoveUserProps => ({
   type: AuthActionTypes.REMOVE_USER,
-  payload,
 });
 
 export const addUser = (payload: AuthTypes): AddUserProps => ({

@@ -3,10 +3,12 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import { isEmailValid, isEmptyValue ,isPasswordValid }  from 'src/utils';
+import { isEmailValid, isEmptyValue, isPasswordValid } from 'src/utils';
 import Select from './Select';
 import { authApi } from 'src/api/auth-api';
 import { message } from 'antd';
+import { RRError } from 'src/types/Api';
+import apiCaller from 'src/api/apiCaller';
 const initFormValue = {
   email: '',
   password: '',
@@ -60,9 +62,9 @@ export default function Register({ onClick, signUp }: RegisterProps) {
       error.phone = 'Phone number is invalid!';
     }
     if (isEmptyValue(formValue.password)) {
-      error.password = "Password is required!";
+      error.password = 'Password is required!';
     } else if (!isPasswordValid(formValue.password)) {
-      error.password = "Password is not correct!"
+      error.password = 'Password is not correct!';
     }
     if (isEmptyValue(formValue.confirmPassword)) {
       error.confirmPassword = 'Confirm password is required!';
@@ -80,7 +82,7 @@ export default function Register({ onClick, signUp }: RegisterProps) {
       console.log('Form invalid');
     }
   };
-  const registerRequest = () => {
+  const registerRequest = async () => {
     const data = {
       email: formValue.email,
       password: formValue.confirmPassword,
@@ -89,23 +91,19 @@ export default function Register({ onClick, signUp }: RegisterProps) {
       phone: formValue.phone,
       country: formValue.country,
     };
-    console.log(data); 
-    
-
-    
-    const errorHandler = (error: any) => {
+    const errorHandler = (error: RRError) => {
       console.log('Fail: ', error);
     };
-    authApi
-      .register(data, errorHandler)
-      .then((res) => {
-        signUp();
-        console.log('Success', res);
-        message.success('Register Successfully! Please check your email to activate your account');
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
+    const response = await apiCaller({
+      request: authApi.register(data),
+      errorHandler,
+    });
+    if (response) {
+      signUp();
+      message.success(
+        'Register Successfully! Please check your email to activate your account',
+      );
+    }
   };
   return (
     <div className="">

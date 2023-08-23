@@ -11,6 +11,8 @@ import { resourceApi } from 'src/api/resource-api';
 import { addResource } from 'src/redux/resource/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
+import { RRError } from 'src/types/Api';
+import apiCaller from 'src/api/apiCaller';
 
 export default function Blog() {
   const navigate = useNavigate();
@@ -25,37 +27,30 @@ export default function Blog() {
   const id = pathname[pathname.length - 1];
   const [recentBlogs, setRecentBlog] = useState([]);
   const [hotNews, setHotNews] = useState([]);
-  const blogRequest = () => {
-    const errorHandler = (error: any) => {
+  const blogRequest = async () => {
+    const errorHandler = (error: RRError) => {
       console.log('Fail: ', error);
     };
-    resourceApi
-      .getBlog(id, errorHandler)
-      .then((res) => {
-        dispatch(addResource({ blogs: res.data, resources: resources }));
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
 
-    resourceApi
-      .getResource({ category: 'Blog', limitPerPage: 100 }, errorHandler)
-      .then((res) => {
-        setRecentBlog(res.data.resources);
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
+    const requests = [
+      resourceApi.getResource({ category: 'Blog', limitPerPage: 100 }),
+      resourceApi.getBlog(id),
+      resourceApi.getResource({ category: 'News', limitPerPage: 100 }),
+    ];
 
-    resourceApi
-      .getResource({ category: 'News', limitPerPage: 100 }, errorHandler)
-      .then((res) => {
-        setHotNews(res.data.resources);
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
+    const [recentBlogsResponse, blogsResponse, hotNewsResponse] =
+      await Promise.all(
+        requests.map((request) => apiCaller({ request, errorHandler })),
+      );
+    if (blogsResponse && recentBlogsResponse && hotNewsResponse) {
+      dispatch(
+        addResource({ blogs: blogsResponse.data, resources: resources }),
+      );
+      setRecentBlog(recentBlogsResponse.data.resources);
+      setHotNews(hotNewsResponse.data.resources);
+    }
   };
+
   useEffect(() => {
     blogRequest();
   }, [id]);

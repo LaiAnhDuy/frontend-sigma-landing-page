@@ -43,7 +43,7 @@ const routes: RouteType[] = [
   { path: ROUTE.CONTACT_US, title: 'Contact us', element: ContactUs },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
   { path: ROUTE.ABOUT_US, title: 'About us', element: AboutUs },
-  { path: ROUTE.ADMIN, title: 'Admin', element: Admin },
+  { path: ROUTE.ADMIN, title: 'Admin', element: Admin, isPrivate: true },
   { path: ROUTE.TALK_TO_EXPERT, title: 'Talk to expert', element: TalkToExpert },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
@@ -69,7 +69,6 @@ const routes: RouteType[] = [
     path: ROUTE.RESOURCES,
     title: 'Resources',
     element: ResourcePage,
-    isPrivate: true,
   },
   {
     path: ROUTE.PRODUCT_SIGMA_NS53,

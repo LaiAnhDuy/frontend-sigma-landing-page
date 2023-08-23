@@ -21,6 +21,8 @@ import ROUTE from 'src/constants/route';
 import { Link } from 'react-router-dom';
 import { addUser } from 'src/redux/auth/action';
 import { useDispatch } from 'react-redux';
+import apiCaller from 'src/api/apiCaller';
+import { RRError } from 'src/types/Api';
 
 const initFormValue = {
   email: '',
@@ -34,11 +36,7 @@ interface LoginProps {
   onClick: () => void;
   handleForgot: () => void;
 }
-export default function Login({
-  signIn,
-  onClick,
-  handleForgot,
-}: LoginProps) {
+export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
   const [formValue, setFormValue] = useState<FormValues>(initFormValue);
   const dispatch = useDispatch();
   const [formError, setFormError] = useState<FormValues>({});
@@ -51,28 +49,27 @@ export default function Login({
     }));
   };
 
-  const loginRequest = () => {
+  const loginRequest = async () => {
     const data = {
       email: formValue.email,
       password: formValue.password,
     };
-    const errorHandler = (error: any) => {
+    const errorHandler = (error: RRError) => {
       console.log('Fail: ', error);
     };
-
-    authApi
-      .login(data, errorHandler)
-      .then((res) => {
-        signIn();
-        message.success('Login successfully');
-        localStorage.setItem('token', res.data.token);
-        localStorage.setItem('user', JSON.stringify(res.data.user));
-        dispatch(addUser(res.data));
-        console.log('Success', res);
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
+    const response = await apiCaller({
+      request: authApi.login(data),
+      errorHandler,
+    });
+    if (response) {
+      console.log('response ', response);
+      signIn();
+      message.success('Login successfully');
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+      localStorage.setItem('role', response.data.user.role);
+      dispatch(addUser(response.data));
+    }
   };
   const validateForm = () => {
     const error: { [key: string]: string } = {};

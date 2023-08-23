@@ -11,12 +11,16 @@ import { resourceApi } from 'src/api/resource-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { addResource } from 'src/redux/resource/action';
 import { IMAGE_PATH } from 'src/constants/images';
+import { RRError } from 'src/types/Api';
+import apiCaller from 'src/api/apiCaller';
+import { categoryMappings } from 'src/constants';
 
 export default function Admin() {
   const { Meta } = Card;
   const navigate = useNavigate();
   const [remove, setRemove] = useState(false);
   const dispatch = useDispatch();
+
   const { Content, Sider } = Layout;
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('new');
   const handleMenuClick = (menuItem: string) => {
@@ -52,45 +56,34 @@ export default function Admin() {
     },
     { key: '2', label: 'Users' },
   ];
-  const categoryMappings: Record<string, string> = {
-    new: 'News',
-    blog: 'Blog',
-    document: 'Document',
-    video: 'Video',
-    casestudy: 'CaseStudy',
-    '2': 'Users',
-  };
-  const resourcesRequest = () => {
+
+  const resourcesRequest = async () => {
     const data = {
       category: categoryMappings[selectedMenuItem],
       limitPerPage: 100,
     };
-    const errorHandler = (error: any) => {
+    const errorHandler = (error: RRError) => {
       console.log('Fail: ', error);
     };
-
-    resourceApi
-      .getResource(data, errorHandler)
-      .then((res) => {
-        dispatch(addResource(res.data));
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
+    const response = await apiCaller({
+      request: resourceApi.getResource(data),
+      errorHandler,
+    });
+    if (response) {
+      dispatch(addResource(response.data));
+    }
   };
-  const removeBlogRequest = (id: any) => {
+  const removeBlogRequest = async (id: any) => {
     const errorHandler = (error: any) => {
       console.log('Fail: ', error);
     };
-
-    resourceApi
-      .removeBlog(id, errorHandler)
-      .then((res) => {
-        dispatch(addResource(res.data));
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
+    const response = await apiCaller({
+      request: resourceApi.removeBlog(id),
+      errorHandler,
+    });
+    if (response) {
+      dispatch(addResource(response.data));
+    }
   };
 
   useEffect(() => {
@@ -100,7 +93,6 @@ export default function Admin() {
   const resources = useSelector(
     (state: any) => state.resourceReducer.resources,
   );
-  console.log(resources, 'resources');
 
   return (
     <div className="container m-auto ">

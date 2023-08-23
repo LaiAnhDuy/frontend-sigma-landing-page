@@ -8,6 +8,7 @@ import { Reducer } from 'redux';
 const initialState: AuthTypes = {
   token: '',
   user: [],
+  role: '',
 };
 
 const authReducer: Reducer<AuthTypes, AddUserProps | RemoveUserProps> = (
@@ -21,12 +22,14 @@ const authReducer: Reducer<AuthTypes, AddUserProps | RemoveUserProps> = (
         ...state,
         token: action.payload.token,
         user: action.payload.user,
+        role: action.payload.role,
       };
     case AuthActionTypes.REMOVE_USER:
       return {
         ...state,
         token: '',
         user: [],
+        role: '',
       };
     default:
       return state;

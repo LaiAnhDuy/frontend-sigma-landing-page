@@ -5,11 +5,12 @@ import React, { useEffect, useState } from 'react';
 import Login from 'src/pages/Login';
 import './index.style.scss';
 import Register from 'src/pages/Register';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ROUTE from 'src/constants/route';
 import randomColor from 'randomcolor';
 import { AuthTypes } from 'src/types/Auth';
+import { removeUser } from 'src/redux/auth/action';
 
 interface UserProps {
   user: string;
@@ -18,6 +19,7 @@ interface UserProps {
 export default function User({ user }: UserProps) {
   const [logIn, setLogIn] = useState(false);
   const [option, setOption] = useState(true);
+  const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModalSignIn = () => {
@@ -38,7 +40,8 @@ export default function User({ user }: UserProps) {
   const logOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-
+    localStorage.removeItem('role');
+    dispatch(removeUser());
     setLogIn(false);
   };
 
