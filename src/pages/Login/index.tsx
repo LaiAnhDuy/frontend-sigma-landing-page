@@ -92,9 +92,7 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validateForm()) {
-      console.log('Form value : ', formValue);
     } else {
-      console.log('Form invalid');
     }
   };
   return (

@@ -37,8 +37,8 @@ const resourceReducer: Reducer<
     case ResourceActionTypes.ADD_RESOURCE:
       return {
         ...state,
-        blogs: action.payload.blogs,
-        resources: action.payload.resources,
+        blogs: action.payload?.blogs,
+        resources: action.payload?.resources,
       };
     default:
       return state;

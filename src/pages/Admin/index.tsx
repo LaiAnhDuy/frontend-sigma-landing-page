@@ -14,15 +14,16 @@ import { IMAGE_PATH } from 'src/constants/images';
 import { RRError } from 'src/types/Api';
 import apiCaller from 'src/api/apiCaller';
 import { categoryMappings } from 'src/constants';
+import { removeUser, updateLoginState } from 'src/redux/auth/action';
 
 export default function Admin() {
-  const { Meta } = Card;
-  const navigate = useNavigate();
   const [remove, setRemove] = useState(false);
-  const dispatch = useDispatch();
-
-  const { Content, Sider } = Layout;
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('new');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { Meta } = Card;
+  const { Content, Sider } = Layout;
+
   const handleMenuClick = (menuItem: string) => {
     setSelectedMenuItem(menuItem);
   };
@@ -76,6 +77,14 @@ export default function Admin() {
   const removeBlogRequest = async (id: any) => {
     const errorHandler = (error: any) => {
       console.log('Fail: ', error);
+      if (error.ec === 419) {
+        navigate(ROUTE.HOME);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('role');
+        dispatch(removeUser());
+        dispatch(updateLoginState(false));
+      }
     };
     const response = await apiCaller({
       request: resourceApi.removeBlog(id),
@@ -83,6 +92,7 @@ export default function Admin() {
     });
     if (response) {
       dispatch(addResource(response.data));
+      message.success('Delete');
     }
   };
 
@@ -150,7 +160,6 @@ export default function Admin() {
                         onConfirm={() => {
                           removeBlogRequest(val.id);
                           setRemove(true);
-                          message.success('Delete');
                         }}
                         onCancel={() => {
                           message.error('No delete');

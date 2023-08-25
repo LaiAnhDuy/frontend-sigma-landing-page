@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-throw-literal */
-import { message } from 'antd';
 import axios from 'axios';
 import { REACT_APP_BASE_URL } from 'src/configs';
 import { RRError } from 'src/types/Api';
@@ -29,8 +28,8 @@ axiosClient.interceptors.response.use(
     // Handle errors
     if (error.response) {
       const { ec, msg } = error.response.data;
-      const useError: RRError = { ec, msg };
-      throw useError;
+      const userError: RRError = { ec, msg };
+      throw userError;
     } else if (error.request) {
       console.error('Request error: No response received');
     } else {

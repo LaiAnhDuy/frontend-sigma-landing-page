@@ -30,7 +30,7 @@ export default function Header() {
 
     if (token && auth && role) {
       const authData: string[] = JSON.parse(auth);
-      dispatch(addUser({ token, user: authData, role: role }));
+      dispatch(addUser({ token, user: authData, role: role, logIn: true }));
     }
   });
   return (
