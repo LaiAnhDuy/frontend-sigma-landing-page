@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-throw-literal */
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { REACT_APP_BASE_URL } from 'src/configs';
 import { RRError } from 'src/types/Api';
+import CustomError from 'src/utils/CustomError';
 const token = localStorage.getItem('token');
 const axiosClient = axios.create({
   baseURL: REACT_APP_BASE_URL,
@@ -24,16 +24,17 @@ axiosClient.interceptors.response.use(
     }
     return response;
   },
-  (error) => {
-    // Handle errors
-    if (error.response) {
-      const { ec, msg } = error.response.data;
-      const userError: RRError = { ec, msg };
-      throw userError;
-    } else if (error.request) {
-      console.error('Request error: No response received');
-    } else {
+  (error: AxiosError) => {
+    if (!error.response) {
       console.error('Unknown error:', error.message);
+      return;
+    }
+
+    const { status, data } = error.response;
+    if (status >= 500) {
+      // TODO: Show server error message
+    } else if (400 <= status && status < 500) {
+      throw new CustomError(data as RRError);
     }
   },
 );
