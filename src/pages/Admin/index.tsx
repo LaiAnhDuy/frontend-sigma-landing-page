@@ -58,6 +58,10 @@ export default function Admin() {
     { key: '2', label: 'Users' },
   ];
 
+  useEffect(() => {
+    resourcesRequest();
+  }, [selectedMenuItem, remove]);
+
   const resourcesRequest = async () => {
     const data = {
       category: categoryMappings[selectedMenuItem],
@@ -76,8 +80,7 @@ export default function Admin() {
   };
   const removeBlogRequest = async (id: any) => {
     const errorHandler = (error: any) => {
-      console.log('Fail: ', error);
-      if (error.ec === 419) {
+      if (error.ec === 419 || error.ec === 420) {
         navigate(ROUTE.HOME);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -93,16 +96,14 @@ export default function Admin() {
     if (response) {
       dispatch(addResource(response.data));
       message.success('Delete');
+      setRemove(false);
     }
   };
 
-  useEffect(() => {
-    resourcesRequest();
-    setRemove(false);
-  }, [selectedMenuItem, remove]);
   const resources = useSelector(
     (state: any) => state.resourceReducer.resources,
   );
+  console.log(resources);
 
   return (
     <div className="container m-auto ">
@@ -113,7 +114,7 @@ export default function Admin() {
             mode="inline"
             defaultSelectedKeys={['new']}
             defaultOpenKeys={['1']}
-            style={{ height: '100%' }}
+            style={{ height: '101%' }}
             items={items}
             onClick={({ key }) => handleMenuClick(key as string)}
           />
@@ -139,16 +140,19 @@ export default function Admin() {
                     cover={
                       val.thumbnail ? (
                         <img
+                          crossOrigin="anonymous"
+                          onError={({ currentTarget }) => {
+                            currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
+                          }}
                           alt="#"
-                          className="max-h-[130px]"
-                          // src={val.thumbnail}
-                          src={IMAGE_PATH.ABOUT_US}
+                          className="max-h-[120px]"
+                          src={`http://123.30.235.196:5388/api/static/${val.thumbnail}`}
                         />
                       ) : (
                         <img
                           alt="#"
-                          className="max-h-[130px]"
-                          src={IMAGE_PATH.ABOUT_US}
+                          className="max-h-[120px]"
+                          src={IMAGE_PATH.THUMBNAIL_ERROR}
                         />
                       )
                     }
@@ -163,6 +167,7 @@ export default function Admin() {
                         }}
                         onCancel={() => {
                           message.error('No delete');
+                          setRemove(false);
                         }}
                         okText="Yes"
                         cancelText="No"
@@ -172,7 +177,7 @@ export default function Admin() {
                       <div
                         key="edit"
                         onClick={() => {
-                          message.success('Edit');
+                          navigate(ROUTE.EDIT.replace(':id', val.id));
                         }}
                         className="text-blue-600 font-medium"
                       >
@@ -182,9 +187,8 @@ export default function Admin() {
                   >
                     <div onClick={() => navigate(`/resources/blog/${val.id}`)}>
                       <Meta
-                        className="card min-h-[80px]"
+                        className="card min-h-[80px] max-h-[80px]"
                         title={val.title}
-                        description={val.description}
                       />
                     </div>
                   </Card>

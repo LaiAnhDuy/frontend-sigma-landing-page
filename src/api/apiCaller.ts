@@ -3,7 +3,7 @@ import { RRError } from 'src/types/Api';
 
 export default async function apiCaller<R>({
   request,
-  errorHandler = defaultErrorHandler, 
+  errorHandler = defaultErrorHandler,
 }: {
   request: () => Promise<AxiosResponse<R>>;
   errorHandler?: (error: RRError) => void;
@@ -18,5 +18,6 @@ export default async function apiCaller<R>({
 }
 
 function defaultErrorHandler(error: RRError) {
-  console.error("An error occurred:", error);
+  console.error('An error occurred:', error);
+  
 }

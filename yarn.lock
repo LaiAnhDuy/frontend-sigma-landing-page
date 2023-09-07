@@ -7310,7 +7310,12 @@
   "resolved" "https://registry.npmjs.org/map-obj/-/map-obj-4.3.0.tgz"
   "version" "4.3.0"
 
-"markdown-it@^13.0.1":
+"markdown-it-attrs@^4.1.6":
+  "integrity" "sha512-O7PDKZlN8RFMyDX13JnctQompwrrILuz2y43pW2GagcwpIIElkAdfeek+erHfxUOlXWPsjFeWmZ8ch1xtRLWpA=="
+  "resolved" "https://registry.npmjs.org/markdown-it-attrs/-/markdown-it-attrs-4.1.6.tgz"
+  "version" "4.1.6"
+
+"markdown-it@^13.0.1", "markdown-it@>= 9.0.0":
   "integrity" "sha512-lTlxriVoy2criHP0JKRhO2VDG9c2ypWCsT237eDiLqi09rmbKoUetyGHq2uOIRoRS//kfoJckS0eUzzkDR+k2Q=="
   "resolved" "https://registry.npmjs.org/markdown-it/-/markdown-it-13.0.1.tgz"
   "version" "13.0.1"

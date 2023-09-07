@@ -54,7 +54,7 @@ export default function Resources() {
       value: 'video',
     },
   ];
- 
+
   const resourcesRequest = async () => {
     const data = {
       category: categoryMappings[title] || 'Other',
@@ -69,6 +69,7 @@ export default function Resources() {
     });
     if (response) {
       dispatch(addResource(response.data));
+      setCurrentPage(1);
     }
   };
   const data = useSelector((state: any) => state.resourceReducer.resources);

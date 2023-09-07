@@ -1,67 +1,141 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-useless-computed-key */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
-import { Button, Input, Select, Tabs, message } from 'antd';
+import { Button, Form, Input, Select, Tabs, message } from 'antd';
 import ImageUploader from './ImageUploader';
 import { EditOutlined, Html5Outlined } from '@ant-design/icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { addBlog } from 'src/redux/resource/action';
+import apiCaller from 'src/api/apiCaller';
+import { resourceApi } from 'src/api/resource-api';
+import { RRError } from 'src/types/Api';
+import { IMAGE_PATH } from 'src/constants/images';
+import ROUTE from 'src/constants/route';
+import { useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeUser, updateLoginState } from 'src/redux/auth/action';
+import './index.style.scss';
 
-const mdParser = new MarkdownIt();
+const mdParser = new MarkdownIt({
+  html: true,
+});
 interface Article {
   title: string;
   author: string;
-  markdown: string;
-  option: string;
-  imageUrl: string;
-  imageName: string;
+  content: string;
+  category: string;
+  thumbnail: string;
 }
-const PostPage = () => {
+export default function PostPage() {
+  const [form] = Form.useForm();
   const [activeTab, setActiveTab] = useState('1');
+  const [edit, setEdit] = useState(false);
   const [article, setArticle] = useState<Article>({
     title: '',
-    author: '',
-    markdown: '',
-    option: 'new',
-    imageUrl: '',
-    imageName: '',
+    author: 'Admin',
+    content: '',
+    category: 'News',
+    thumbnail: '',
   });
-
-  const [articles, setArticles] = useState<Article[]>([]);
-  const resource = useSelector((state: any) => state.resourceReducer);
-  const handleEditorChange = ({ text }: { text: string }) => {
-    setArticle((prevArticle) => ({ ...prevArticle, markdown: text }));
-  };
-  const handleImageChange = (imageUrl: string) => {
-    setArticle((prevArticle) => ({ ...prevArticle, imageUrl: imageUrl }));
-  };
-  const handleImage = (imageName: string) => {
-    setArticle((prevArticle) => ({ ...prevArticle, imageName: imageName }));
-  };
+  const { id } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const handleImageChange = (fileName: string) => {
+    setArticle((prevArticle) => ({ ...prevArticle, thumbnail: fileName }));
+    if (fileName === '') {
+      form.resetFields(['thumbnail']);
+    }
+  };
+  const handleMarkDownChange = ({ text }: { text: string }) => {
+    setArticle((prevArticle) => ({ ...prevArticle, content: text }));
+  };
+  useEffect(() => {
+    if (id) {
+      setEdit(true);
+    } else {
+      setEdit(false);
+    }
+  }, [id]);
+  useEffect(() => {
+    if (edit) {
+      handleFillForm();
+    }
+  }, [edit]);
+  const errorHandler = (error: RRError) => {
+    console.log('Fail: ', error.msg);
+    if (error.ec === 419 || error.ec === 420) {
+      navigate(ROUTE.HOME);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('role');
+      dispatch(removeUser());
+      dispatch(updateLoginState(false));
+    }
+  };
+  const handleFillForm = async () => {
+    const response = await apiCaller({
+      request: resourceApi.getBlog(id),
+      errorHandler,
+    });
+    if (response) {
+      setArticle((prevArticle) => ({
+        ...prevArticle,
+        title: response.data.title,
+        author: response.data.author,
+        content: response.data.content,
+        category: response.data.category,
+        thumbnail: response.data.thumbnail,
+      }));
+      form.setFieldsValue({
+        ['title']: response.data.title,
+        ['author']: response.data.author,
+        ['content']: response.data.content,
+        ['category']: response.data.category,
+        ['thumbnail']: response.data.thumbnail,
+      });
+    }
+  };
+
   const handleSubmit = () => {
-    message.success('Submitted!');
-    setArticles((prevArticles) => [...prevArticles, article]);
-    const newArticle = {
-      id: articles.length,
-      ...article,
-    };
-    dispatch(addBlog(newArticle));
-    setArticle((prevArticle) => ({
-      ...prevArticle,
-      title: '',
-      author: '',
-      markdown: '',
-      imageUrl: '',
-      imageName: '',
-    }));
-    setActiveTab('1');
+    form
+      .validateFields()
+      .then(async (value) => {
+        const data = {
+          title: value.title,
+          author: value.author,
+          category: value.category,
+          content: value.content,
+          thumbnail: article.thumbnail,
+        };
+
+        const response = edit
+          ? await apiCaller({
+              request: resourceApi.updateBlog(id, data),
+              errorHandler,
+            })
+          : await apiCaller({
+              request: resourceApi.createResource(data),
+              errorHandler,
+            });
+        if (response) {
+          message.success('Submitted!');
+          form.resetFields(['title', 'content', 'thumbnail', 'category']);
+          form.setFieldsValue({ ['author']: 'Admin' });
+          setArticle((prevArticle) => ({ ...prevArticle, thumbnail: '' }));
+          navigate(ROUTE.ADMIN);
+          setActiveTab('1');
+        }
+      })
+      .catch(() => {
+        setActiveTab('1');
+      });
   };
-  const handleChange = (value: string) => {
-    setArticle((prevArticle) => ({ ...prevArticle, option: value }));
-  };
+
   return (
     <div className="container mx-auto text-center">
       <Tabs
@@ -79,68 +153,112 @@ const PostPage = () => {
             key: '1',
             children: (
               <div className="text-left">
-                <h2 className="text-xl">
-                  Title<span className="text-red-600">*</span>
-                </h2>
-                <Input
-                  placeholder="Title"
-                  value={article.title}
-                  onChange={(e) =>
-                    setArticle((prevArticle) => ({
-                      ...prevArticle,
-                      title: e.target.value,
-                    }))
-                  }
-                />
-                <h2 className="text-xl">Author</h2>
-                <Input
-                  placeholder="Author"
-                  value={article.author}
-                  onChange={(e) =>
-                    setArticle((prevArticle) => ({
-                      ...prevArticle,
-                      author: e.target.value,
-                    }))
-                  }
-                />
-                <h2 className="text-xl">
-                  Category<span className="text-red-600">*</span>
-                </h2>
-                <Select
-                  placeholder="Category"
-                  style={{ width: 120, fontSize: '1.5rem' }}
-                  onChange={handleChange}
-                  defaultValue={'new'}
-                  options={[
-                    { value: 'new', label: 'News' },
-                    { value: 'blog', label: 'Blogs' },
-                    { value: 'casestudy', label: 'Casestudy' },
-                    { value: 'document', label: 'Documents' },
-                    { value: 'video', label: 'Video' },
-                  ]}
-                />
-                <h2>
-                  Chọn thumbnail<span className="text-red-600">*</span>
-                </h2>
-                <ImageUploader
-                  handleImage={handleImage}
-                  imageName={article.imageName}
-                  onImageChange={handleImageChange}
-                />
-                <h2>
-                  Content<span className="text-red-600">*</span>
-                </h2>
-                <MdEditor
-                  view={{
-                    menu: true,
-                    md: true,
-                    html: false,
-                  }}
-                  value={article.markdown}
-                  style={{ height: '500px' }}
-                  renderHTML={(text) => mdParser.render(text)}
-                  onChange={handleEditorChange}
-                />
+                <Form
+                  form={form}
+                  name="basic"
+                  layout="vertical"
+                  className="grid grid-cols-3 gap-x-8"
+                >
+                  <div className="col-span-1">
+                    <Form.Item
+                      className="label text-left "
+                      label={<h2 className="text-xl">Title</h2>}
+                      name="title"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your title!',
+                        },
+                      ]}
+                    >
+                      <Input placeholder="Title" />
+                    </Form.Item>
+                    <Form.Item
+                      className="label text-left "
+                      label={<h2 className="text-xl">Author</h2>}
+                      name="author"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your author!',
+                        },
+                      ]}
+                      initialValue={'Admin'}
+                    >
+                      <Input placeholder="Author" />
+                    </Form.Item>
+                    <Form.Item
+                      className="label text-left "
+                      label={<h2 className="text-xl">Category</h2>}
+                      name="category"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your category!',
+                        },
+                      ]}
+                      initialValue={'News'}
+                    >
+                      <Select
+                        placeholder="Category"
+                        style={{ width: 120, fontSize: '1.5rem' }}
+                        options={[
+                          { value: 'News', label: 'News' },
+                          { value: 'Blog', label: 'Blogs' },
+                          { value: 'Casestudy', label: 'Casestudy' },
+                          { value: 'Document', label: 'Documents' },
+                          { value: 'Video', label: 'Video' },
+                        ]}
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      className="label text-left "
+                      label={<h2 className="text-xl">Thumbnail</h2>}
+                      name="thumbnail"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your thumbnail!',
+                        },
+                      ]}
+                    >
+                      <div className="flex items-center w-24 h-24 justify-center">
+                        <ImageUploader
+                          handleImageChange={handleImageChange}
+                          imageThumbnail={article.thumbnail}
+                        />
+                      </div>
+                    </Form.Item>
+                  </div>
+                  <div className="col-span-2">
+                    <Form.Item
+                      className="label text-left "
+                      label={<h2 className="text-xl">Content</h2>}
+                      name="content"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input your content!',
+                        },
+                      ]}
+                    >
+                      <div>
+                        <MdEditor
+                          view={{
+                            menu: true,
+                            md: true,
+                            html: false,
+                          }}
+                          className="markdown"
+                          style={{ height: '500px' }}
+                          value={article.content}
+                          onChange={handleMarkDownChange}
+                          renderHTML={(text) => mdParser.render(text)}
+                        />
+                      </div>
+                    </Form.Item>
+                  </div>
+                </Form>
               </div>
             ),
           },
@@ -160,14 +278,20 @@ const PostPage = () => {
                     By <span className="text-main">{article.author}</span>
                   </h2>
                 )}
-                <img
-                  src={article.imageUrl}
-                  alt=""
-                  className="w-full rounded-xl"
-                />
+                {article.thumbnail && (
+                  <img
+                    crossOrigin="anonymous"
+                    src={`http://123.30.235.196:5388/api/static/${article.thumbnail}`}
+                    alt="#"
+                    className="w-full rounded-xl"
+                    onError={({ currentTarget }) => {
+                      currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
+                    }}
+                  />
+                )}
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: mdParser.render(article.markdown),
+                    __html: mdParser.render(article.content),
                   }}
                 />
               </div>
@@ -176,26 +300,13 @@ const PostPage = () => {
         ]}
       />
       <Button
-        className="mt-8"
-        disabled={
-          !article.title ||
-          !article.imageUrl ||
-          !article.markdown ||
-          !article.option
-        }
+        type="primary"
+        htmlType="submit"
         onClick={handleSubmit}
+        className="mt-8"
       >
         Submit
       </Button>
-      <button
-        onClick={() => {
-          console.log(resource);
-        }}
-      >
-        testst
-      </button>
     </div>
   );
-};
-
-export default PostPage;
+}
