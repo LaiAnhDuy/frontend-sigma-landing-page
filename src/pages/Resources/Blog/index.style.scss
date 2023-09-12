@@ -12,4 +12,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+.img-content img {
+  width: -webkit-fill-available;
+}

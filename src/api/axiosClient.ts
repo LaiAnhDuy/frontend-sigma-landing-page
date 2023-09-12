@@ -28,7 +28,6 @@ axiosClient.interceptors.response.use(
   (error: AxiosError) => {
     if (!error.response) {
       console.error('Unknown error:', error.message);
-      message.error('Disconnected network !');
       return;
     }
 

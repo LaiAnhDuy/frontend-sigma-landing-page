@@ -133,7 +133,7 @@ export default function Admin() {
               resources && resources.length > 0 ? (
                 resources.map((val: any, index: number) => (
                   <Card
-                    className="m-auto"
+                    className="m-auto shadow-"
                     key={index}
                     hoverable
                     style={{ width: 240 }}
@@ -144,14 +144,18 @@ export default function Admin() {
                           onError={({ currentTarget }) => {
                             currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
                           }}
+                          onClick={(e) => {
+                            navigate(`/resources/blog/${val.id}`);
+                            e.stopPropagation();
+                          }}
                           alt="#"
-                          className="max-h-[120px]"
+                          className="h-[120px]"
                           src={`http://123.30.235.196:5388/api/static/${val.thumbnail}`}
                         />
                       ) : (
                         <img
                           alt="#"
-                          className="max-h-[120px]"
+                          className="h-[120px]"
                           src={IMAGE_PATH.THUMBNAIL_ERROR}
                         />
                       )
@@ -161,9 +165,10 @@ export default function Admin() {
                         key="clear"
                         title="Delete the task"
                         description="Are you sure to delete this task?"
-                        onConfirm={() => {
+                        onConfirm={(e) => {
                           removeBlogRequest(val.id);
                           setRemove(true);
+                          e?.stopPropagation();
                         }}
                         onCancel={() => {
                           message.error('No delete');
@@ -176,8 +181,9 @@ export default function Admin() {
                       </Popconfirm>,
                       <div
                         key="edit"
-                        onClick={() => {
+                        onClick={(e) => {
                           navigate(ROUTE.EDIT.replace(':id', val.id));
+                          e.stopPropagation();
                         }}
                         className="text-blue-600 font-medium"
                       >
@@ -185,7 +191,12 @@ export default function Admin() {
                       </div>,
                     ]}
                   >
-                    <div onClick={() => navigate(`/resources/blog/${val.id}`)}>
+                    <div
+                      onClick={(e) => {
+                        navigate(`/resources/blog/${val.id}`);
+                        e.stopPropagation();
+                      }}
+                    >
                       <Meta
                         className="card min-h-[80px] max-h-[80px]"
                         title={val.title}

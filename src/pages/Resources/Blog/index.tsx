@@ -97,7 +97,10 @@ export default function Blog() {
             )}
             <p className="font-normal text-lg">
               {' '}
-              <div dangerouslySetInnerHTML={renderMarkdown(blogs?.content)} />
+              <div
+                dangerouslySetInnerHTML={renderMarkdown(blogs?.content)}
+                className="img-content"
+              />
             </p>
           </div>
         </div>
