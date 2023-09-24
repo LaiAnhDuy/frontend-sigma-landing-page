@@ -11,14 +11,20 @@ import { resourceApi } from 'src/api/resource-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { addResource } from 'src/redux/resource/action';
 import { IMAGE_PATH } from 'src/constants/images';
-import { RRError } from 'src/types/Api';
 import apiCaller from 'src/api/apiCaller';
 import { categoryMappings } from 'src/constants';
 import { removeUser, updateLoginState } from 'src/redux/auth/action';
+import { REACT_APP_IMAGE_URL } from 'src/configs/index';
+import { resourcesRequest } from 'src/components/Resource';
+import { ResourceProps } from 'src/types/Resource';
+import Paginations from 'src/components/Pagination';
 
 export default function Admin() {
   const [remove, setRemove] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('new');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState();
+  const user: string | any[] = [];
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { Meta } = Card;
@@ -57,27 +63,30 @@ export default function Admin() {
     },
     { key: '2', label: 'Users' },
   ];
-
   useEffect(() => {
-    resourcesRequest();
-  }, [selectedMenuItem, remove]);
-
-  const resourcesRequest = async () => {
-    const data = {
-      category: categoryMappings[selectedMenuItem],
-      limitPerPage: 100,
-    };
-    const errorHandler = (error: RRError) => {
-      console.log('Fail: ', error);
-    };
-    const response = await apiCaller({
-      request: resourceApi.getResource(data),
-      errorHandler,
-    });
-    if (response) {
-      dispatch(addResource(response.data));
+    setCurrentPage(1);
+  }, [selectedMenuItem]);
+  useEffect(() => {
+    if (selectedMenuItem) {
+      resourcesRequests(currentPage);
     }
+  }, [selectedMenuItem, remove, currentPage]);
+
+  const resourcesRequests = (page: number) => {
+    resourcesRequest({
+      page: page,
+      value: selectedMenuItem,
+      limitPerPage: 8,
+      setTotalPages: (data) => {
+        setTotalPages(data);
+      },
+      dispatchAddResource(data) {
+        dispatch(addResource(data));
+      },
+    } as ResourceProps);
   };
+  console.log(currentPage);
+
   const removeBlogRequest = async (id: any) => {
     const errorHandler = (error: any) => {
       if (error.ec === 419 || error.ec === 420) {
@@ -103,8 +112,10 @@ export default function Admin() {
   const resources = useSelector(
     (state: any) => state.resourceReducer.resources,
   );
-  console.log(resources);
-
+  const handleOnChange = (value: number) => {
+    setCurrentPage(value);
+    resourcesRequests(value);
+  };
   return (
     <div className="container m-auto ">
       <Layout className="bg-white mt-5">
@@ -150,7 +161,7 @@ export default function Admin() {
                           }}
                           alt="#"
                           className="h-[120px]"
-                          src={`http://123.30.235.196:5388/api/static/${val.thumbnail}`}
+                          src={`${REACT_APP_IMAGE_URL}/${val.thumbnail}`}
                         />
                       ) : (
                         <img
@@ -177,7 +188,7 @@ export default function Admin() {
                         okText="Yes"
                         cancelText="No"
                       >
-                        <div className="text-red-600 font-medium">Clear</div>
+                        <div className="text-red-600 font-medium">Delete</div>
                       </Popconfirm>,
                       <div
                         key="edit"
@@ -211,6 +222,25 @@ export default function Admin() {
               <p>No user</p>
             )}
           </div>
+          {selectedMenuItem !== '2' ? (
+            resources && resources.length > 0 ? (
+              <div className="flex justify-center">
+                <Paginations
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onChange={handleOnChange}
+                />
+              </div>
+            ) : null
+          ) : user && user.length > 0 ? (
+            <div className="flex justify-center">
+              <Paginations
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onChange={handleOnChange}
+              />
+            </div>
+          ) : null}
         </Content>
       </Layout>
     </div>

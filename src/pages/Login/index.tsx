@@ -62,7 +62,6 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
       errorHandler,
     });
     if (response) {
-      console.log('response ', response);
       signIn();
       message.success('Login successfully');
       localStorage.setItem('token', response.data.token);

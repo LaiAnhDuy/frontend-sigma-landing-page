@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { message } from 'antd';
 import axios, { AxiosError } from 'axios';
 import { REACT_APP_BASE_URL } from 'src/configs';
 import { RRError } from 'src/types/Api';

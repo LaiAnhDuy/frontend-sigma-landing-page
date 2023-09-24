@@ -19,6 +19,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeUser, updateLoginState } from 'src/redux/auth/action';
 import './index.style.scss';
+import { REACT_APP_IMAGE_URL } from 'src/configs';
 
 const mdParser = new MarkdownIt({
   html: true,
@@ -30,7 +31,10 @@ interface Article {
   category: string;
   thumbnail: string;
 }
-export default function PostPage() {
+interface PostPageProps {
+  mode: 'edit' | 'post';
+}
+export default function PostPage({ mode }: PostPageProps) {
   const [form] = Form.useForm();
   const [activeTab, setActiveTab] = useState('1');
   const [edit, setEdit] = useState(false);
@@ -54,18 +58,16 @@ export default function PostPage() {
   const handleMarkDownChange = ({ text }: { text: string }) => {
     setArticle((prevArticle) => ({ ...prevArticle, content: text }));
   };
+
   useEffect(() => {
-    if (id) {
+    if (mode === 'edit') {
+      handleFillForm();
       setEdit(true);
-    } else {
+    } else if (mode === 'post') {
       setEdit(false);
     }
-  }, [id]);
-  useEffect(() => {
-    if (edit) {
-      handleFillForm();
-    }
-  }, [edit]);
+  }, [mode]);
+
   const errorHandler = (error: RRError) => {
     console.log('Fail: ', error.msg);
     if (error.ec === 419 || error.ec === 420) {
@@ -85,18 +87,10 @@ export default function PostPage() {
     if (response) {
       setArticle((prevArticle) => ({
         ...prevArticle,
-        title: response.data.title,
-        author: response.data.author,
-        content: response.data.content,
-        category: response.data.category,
-        thumbnail: response.data.thumbnail,
+        ...response.data,
       }));
       form.setFieldsValue({
-        ['title']: response.data.title,
-        ['author']: response.data.author,
-        ['content']: response.data.content,
-        ['category']: response.data.category,
-        ['thumbnail']: response.data.thumbnail,
+        ...response.data,
       });
     }
   };
@@ -281,7 +275,7 @@ export default function PostPage() {
                 {article.thumbnail && (
                   <img
                     crossOrigin="anonymous"
-                    src={`http://123.30.235.196:5388/api/static/${article.thumbnail}`}
+                    src={`${REACT_APP_IMAGE_URL}/${article.thumbnail}`}
                     alt="#"
                     className="w-full rounded-xl"
                     onError={({ currentTarget }) => {

@@ -13,7 +13,6 @@ import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
-import PostPage from 'src/pages/Post';
 
 import ForgotPassword from 'src/pages/Login/ForgotPassword';
 import NotFoundPage from 'src/pages/NotFound';
@@ -26,6 +25,7 @@ import ContactUs from 'src/pages/ContactUs';
 import Admin from 'src/pages/Admin';
 
 import TalkToExpert from 'src/pages/TalkToExpert';
+import { Post, PostEdit } from 'src/pages/Posts';
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -35,8 +35,8 @@ export type RouteType = {
 
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Sigma DRM', element: HomePage },
-  { path: ROUTE.POST, title: 'Sigma DRM', element: PostPage },
-  { path: ROUTE.EDIT, title: 'Edit', element: PostPage },
+  { path: ROUTE.POST, title: 'Sigma DRM', element: Post },
+  { path: ROUTE.EDIT, title: 'Edit', element: PostEdit },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
   { path: ROUTE.CASESTUDY, title: 'Casestudy', element: Blog },

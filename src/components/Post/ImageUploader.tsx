@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import ROUTE from 'src/constants/route';
 import { removeUser, updateLoginState } from 'src/redux/auth/action';
-import { IMAGE_PATH } from 'src/constants/images';
+import { REACT_APP_IMAGE_URL } from 'src/configs';
 interface ImageUploaderProps {
   handleImageChange: (fileName: string) => void;
   imageThumbnail: string;
@@ -20,6 +20,7 @@ export default function ImageUploader({
 }: ImageUploaderProps) {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [image, setImage] = useState('');
+  const [filetesst, setFiletesst] = useState<string>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -31,45 +32,37 @@ export default function ImageUploader({
   const handleCancel = () => {
     setPreviewOpen(false);
   };
-  const deleteImage = async () => {
-    const errorHandler = (error: RRError) => {
-      console.log('Fail: ', error);
-      if (error.ec === 419 || error.ec === 420) {
-        navigate(ROUTE.HOME);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        localStorage.removeItem('role');
-        dispatch(removeUser());
-        dispatch(updateLoginState(false));
-      }
-    };
-    const response = await apiCaller({
-      request: resourceApi.deleteFile(image),
-      errorHandler,
-    });
-    if (response) {
-      handleImageChange('');
-      setImage('');
+  const errorHandler = (error: RRError) => {
+    console.log('Fail: ', error);
+    if (error.ec === 419 || error.ec === 420) {
+      navigate(ROUTE.HOME);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      localStorage.removeItem('role');
+      dispatch(removeUser());
+      dispatch(updateLoginState(false));
     }
+  };
+  const deleteImage = () => {
+    handleImageChange('');
+    setImage('');
   };
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-
-    const errorHandler = (error: RRError) => {
-      console.log('Fail: ', error);
-    };
     if (file) {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await apiCaller({
-        request: resourceApi.upFile(formData),
-        errorHandler,
-      });
-      if (response) {
-        setImage(response.data.fileName);
-        handleImageChange(response.data.fileName);
-      }
+      // const formData = new FormData();
+      // formData.append('file', file);
+      // const response = await apiCaller({
+      //   request: resourceApi.upFile(formData),
+      //   errorHandler,
+      // });
+      // if (response) {
+      //   setImage(response.data.fileName);
+      //   handleImageChange(response.data.fileName);
+      // }
+      const objectURL = URL.createObjectURL(file);
+      setImage(objectURL);
     }
   };
 
@@ -83,9 +76,7 @@ export default function ImageUploader({
           />
           <img
             crossOrigin="anonymous"
-            src={`http://123.30.235.196:5388/api/static/${
-              imageThumbnail ? imageThumbnail : image
-            }`}
+            src={`${imageThumbnail ? imageThumbnail : image}`}
             alt="#"
             onClick={handleImagePreview}
             className=" w-full h-full cursor-pointer rounded-md "
@@ -107,7 +98,6 @@ export default function ImageUploader({
         onChange={handleFileChange}
         className="hidden"
       />
-
       <Modal
         open={previewOpen}
         footer={null}
@@ -117,12 +107,9 @@ export default function ImageUploader({
       >
         <img
           crossOrigin="anonymous"
-          src={`http://123.30.235.196:5388/api/static/${image}`}
+          src={`${image}`}
           alt="#"
           className=" w-[70%] "
-          onError={({ currentTarget }) => {
-            currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
-          }}
         />
       </Modal>
     </div>

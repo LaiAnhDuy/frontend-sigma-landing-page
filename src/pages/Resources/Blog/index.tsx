@@ -15,6 +15,7 @@ import { RRError } from 'src/types/Api';
 import apiCaller from 'src/api/apiCaller';
 import MarkdownIt from 'markdown-it';
 import { IMAGE_PATH } from 'src/constants/images';
+import { REACT_APP_IMAGE_URL } from 'src/configs';
 
 const mdParser = new MarkdownIt({ html: true });
 
@@ -91,7 +92,7 @@ export default function Blog() {
                     currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
                   }}
                   className="max-w-[800px] mt-6 rounded-xl max-h-[600px]"
-                  src={`http://123.30.235.196:5388/api/static/${blogs?.thumbnail}`}
+                  src={`${REACT_APP_IMAGE_URL}/${blogs?.thumbnail}`}
                 />
               </div>
             )}

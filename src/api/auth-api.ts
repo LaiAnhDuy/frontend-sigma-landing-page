@@ -9,4 +9,5 @@ export const authApi = {
   register: (data: any) => (): Promise<AxiosResponse<any, any>> => {
     return axiosClient.post(ENDPOINTS.REGISTER, data);
   },
+  
 };
