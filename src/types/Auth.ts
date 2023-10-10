@@ -1,6 +1,10 @@
 export interface AuthTypes {
   token: string;
   user: string[];
-  role: string;
   logIn: boolean;
+}
+
+export interface User {
+  listUser: string[];
+  modalOpen: boolean;
 }

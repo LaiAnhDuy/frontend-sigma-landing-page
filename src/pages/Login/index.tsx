@@ -62,13 +62,17 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
       errorHandler,
     });
     if (response) {
-      console.log('response ', response);
       signIn();
       message.success('Login successfully');
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      localStorage.setItem('role', response.data.user.role);
-      dispatch(addUser(response.data));
+      dispatch(
+        addUser({
+          token: response.data.token,
+          user: response.data.user,
+          logIn: true,
+        }),
+      );
     }
   };
   const validateForm = () => {

@@ -16,8 +16,10 @@ type PrivateRouteProps = {
 const PrivateRoute = (props: PrivateRouteProps) => {
   useDocumentTitle(props.title);
   const navigate = useNavigate();
-  const token = useSelector((state: any) => state.authReducer.token);
-  const role = useSelector((state: any) => state.authReducer.role);
+  const token = useSelector((state: any) => state.authReducer.authData.token);
+  const role = useSelector(
+    (state: any) => state.authReducer.authData.user.role,
+  );
 
   return (
     <BaseLayout>

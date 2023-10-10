@@ -20,10 +20,7 @@ export default function User({ user }: UserProps) {
   const [option, setOption] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const auth: any = useSelector(
-    (state: { authReducer: AuthTypes }) => state.authReducer.user,
-  );
-  const logIn: boolean = useSelector(
-    (state: { authReducer: AuthTypes }) => state.authReducer.logIn,
+    (state: { authReducer: AuthTypes }) => state.authReducer,
   );
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,7 +40,6 @@ export default function User({ user }: UserProps) {
   const logOut = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    localStorage.removeItem('role');
     dispatch(removeUser());
     dispatch(updateLoginState(false));
     navigate(ROUTE.HOME);
@@ -66,7 +62,7 @@ export default function User({ user }: UserProps) {
     },
   ];
   const items2: MenuProps['items'] = [
-    auth.role === 'admin'
+    auth.authData.user.role === 'admin'
       ? {
           label: <div onClick={postPage}>Admin</div>,
           key: '0',
@@ -81,7 +77,7 @@ export default function User({ user }: UserProps) {
   const overlayStyle = {
     paddingTop: '8px',
   };
-  const userName = auth.firstName;
+  const userName = auth.authData.user.firstName;
   const avatar = userName?.charAt(0).toUpperCase();
   const bgColor = randomColor({ luminosity: 'light' });
   useEffect(() => {
@@ -93,13 +89,13 @@ export default function User({ user }: UserProps) {
   return (
     <div className="ml-3 cursor-pointer">
       <Dropdown
-        menu={{ items: logIn ? items2 : items1 }}
+        menu={{ items: auth.authData.logIn ? items2 : items1 }}
         trigger={['click']}
         overlayStyle={overlayStyle}
         className="user"
         placement="bottomRight"
       >
-        {!logIn ? (
+        {!auth.authData.logIn ? (
           <div
             className={`border-solid rounded-full  border-[1px]  w-6 text-center bg-transparent text-white h-6 ${user} `}
           >

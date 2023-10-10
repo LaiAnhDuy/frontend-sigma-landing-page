@@ -14,10 +14,19 @@ import { IMAGE_PATH } from 'src/constants/images';
 import { RRError } from 'src/types/Api';
 import apiCaller from 'src/api/apiCaller';
 import { categoryMappings } from 'src/constants';
-import { removeUser, updateLoginState } from 'src/redux/auth/action';
+import {
+  addListUser,
+  modalState,
+  removeUser,
+  updateLoginState,
+} from 'src/redux/auth/action';
+import { authApi } from 'src/api/auth-api';
+import { Space, Table } from 'antd';
+import FormUser from 'src/components/FormUser';
 
 export default function Admin() {
   const [remove, setRemove] = useState(false);
+  const [delUser, setDelUser] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('new');
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -58,6 +67,44 @@ export default function Admin() {
     { key: '2', label: 'Users' },
   ];
 
+  useEffect(() => {
+    if (selectedMenuItem !== '2') {
+      resourcesRequest();
+    } else {
+      userRequest();
+    }
+    setRemove(false);
+    setDelUser(false);
+  }, [selectedMenuItem, remove, delUser]);
+
+  const userRequest = async () => {
+    const errorHandler = (error: RRError) => {
+      console.log('Fail: ', error);
+    };
+    const response = await apiCaller({
+      request: authApi.getListUser(),
+      errorHandler,
+    });
+    if (response) {
+      dispatch(addListUser(response.data));
+    }
+  };
+
+  const deleteUser = async (id: number) => {
+    const errorHandler = (error: RRError) => {
+      console.log('Fail: ', error);
+    };
+    const response = await apiCaller({
+      request: authApi.deleteUser(id),
+      errorHandler,
+    });
+    if (response) {
+      dispatch(addListUser(response.data));
+    }
+  };
+
+  const user = useSelector((state: any) => state.authReducer.userData.listUser);
+
   const resourcesRequest = async () => {
     const data = {
       category: categoryMappings[selectedMenuItem],
@@ -96,13 +143,11 @@ export default function Admin() {
     }
   };
 
-  useEffect(() => {
-    resourcesRequest();
-    setRemove(false);
-  }, [selectedMenuItem, remove]);
   const resources = useSelector(
     (state: any) => state.resourceReducer.resources,
   );
+
+  const { Column, ColumnGroup } = Table;
 
   return (
     <div className="container m-auto ">
@@ -123,9 +168,18 @@ export default function Admin() {
             <h1 className="mt-0">
               {categoryMappings[selectedMenuItem] || 'Admin'}
             </h1>
-            <Link to={ROUTE.POST}>
-              <Button icon={<FormOutlined />}>Post</Button>
-            </Link>
+            {selectedMenuItem !== '2' ? (
+              <Link to={ROUTE.POST}>
+                <Button icon={<FormOutlined />}>Post</Button>
+              </Link>
+            ) : (
+              <Button
+                icon={<FormOutlined />}
+                onClick={() => dispatch(modalState(true))}
+              >
+                Create User
+              </Button>
+            )}
           </div>
           <div className="grid grid-cols-4 gap-4">
             {selectedMenuItem !== '2' ? (
@@ -193,7 +247,43 @@ export default function Admin() {
                 <p>No blog</p>
               )
             ) : (
-              <p>No user</p>
+              <div>
+                <FormUser />
+                <Table dataSource={user}>
+                  <ColumnGroup title="Name">
+                    <Column
+                      title="First Name"
+                      dataIndex="firstName"
+                      key="firstName"
+                    />
+                    <Column
+                      title="Last Name"
+                      dataIndex="lastName"
+                      key="lastName"
+                    />
+                  </ColumnGroup>
+                  <Column title="Phone" dataIndex="phone" key="phone" />
+                  <Column title="Email" dataIndex="email" key="email" />
+                  <Column title="Role" dataIndex="role" key="role" />
+                  <Column
+                    title="Action"
+                    key="action"
+                    render={(_, record: any) => (
+                      <Space size="middle">
+                        <button
+                          className="bg-orange-400 text-white border-none rounded-xl w-max h-7 text-xs cursor-pointer active:bg-main/60"
+                          onClick={() => {
+                            deleteUser(record.id);
+                            setDelUser(true);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </Space>
+                    )}
+                  />
+                </Table>
+              </div>
             )}
           </div>
         </Content>
