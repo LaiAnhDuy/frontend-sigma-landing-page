@@ -1,30 +1,23 @@
 import { CloseCircleFilled, PlusOutlined } from '@ant-design/icons';
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import apiCaller from 'src/api/apiCaller';
-import { resourceApi } from 'src/api/resource-api';
-import { RRError } from 'src/types/Api';
 import './index.style.scss';
 import { Modal } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import ROUTE from 'src/constants/route';
-import { removeUser, updateLoginState } from 'src/redux/auth/action';
-import { REACT_APP_IMAGE_URL } from 'src/configs';
 interface ImageUploaderProps {
-  handleImageChange: (fileName: string) => void;
-  imageThumbnail: string;
+  handleImageChange: (fileName: File) => void;
+  handleImgPreview: (value: string) => void;
+  imageThumbnail?: string;
 }
 export default function ImageUploader({
   handleImageChange,
+  handleImgPreview,
   imageThumbnail,
 }: ImageUploaderProps) {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [image, setImage] = useState('');
-  const [filetesst, setFiletesst] = useState<string>();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   useEffect(() => {
-    setImage(imageThumbnail);
+    if (imageThumbnail) {
+      setImage(imageThumbnail);
+    }
   }, [imageThumbnail]);
   const handleImagePreview = () => {
     setPreviewOpen(true);
@@ -32,44 +25,25 @@ export default function ImageUploader({
   const handleCancel = () => {
     setPreviewOpen(false);
   };
-  const errorHandler = (error: RRError) => {
-    console.log('Fail: ', error);
-    if (error.ec === 419 || error.ec === 420) {
-      navigate(ROUTE.HOME);
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      localStorage.removeItem('role');
-      dispatch(removeUser());
-      dispatch(updateLoginState(false));
-    }
-  };
   const deleteImage = () => {
-    handleImageChange('');
     setImage('');
+    handleImageChange({} as File);
   };
 
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      // const formData = new FormData();
-      // formData.append('file', file);
-      // const response = await apiCaller({
-      //   request: resourceApi.upFile(formData),
-      //   errorHandler,
-      // });
-      // if (response) {
-      //   setImage(response.data.fileName);
-      //   handleImageChange(response.data.fileName);
-      // }
       const objectURL = URL.createObjectURL(file);
       setImage(objectURL);
+      handleImageChange(file);
+      handleImgPreview(objectURL);
     }
   };
 
   return (
     <div>
       {image ? (
-        <div className=" !w-24 h-24 text-right rounded-md  border-1  border-solid border-gray-300  ">
+        <div className=" text-left !w-24 h-24 rounded-md  border-1  border-solid border-gray-300  ">
           <CloseCircleFilled
             onClick={deleteImage}
             className="absolute text-red-500"
@@ -77,7 +51,7 @@ export default function ImageUploader({
           <img
             crossOrigin="anonymous"
             src={`${imageThumbnail ? imageThumbnail : image}`}
-            alt="#"
+            alt="test"
             onClick={handleImagePreview}
             className=" w-full h-full cursor-pointer rounded-md "
           />

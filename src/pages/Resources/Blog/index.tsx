@@ -92,7 +92,7 @@ export default function Blog() {
                     currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
                   }}
                   className="max-w-[800px] mt-6 rounded-xl max-h-[600px]"
-                  src={`${REACT_APP_IMAGE_URL}/${blogs?.thumbnail}`}
+                  src={`${REACT_APP_IMAGE_URL}${blogs?.thumbnail}`}
                 />
               </div>
             )}

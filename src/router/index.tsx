@@ -1,4 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import PrivateRoute from 'src/components/PrivateRoute';
 import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
@@ -26,6 +28,9 @@ import Admin from 'src/pages/Admin';
 
 import TalkToExpert from 'src/pages/TalkToExpert';
 import { Post, PostEdit } from 'src/pages/Posts';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { message } from 'antd';
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -117,6 +122,16 @@ const routes: RouteType[] = [
   },
 ];
 export default function AppRouter() {
+  const navigate = useNavigate();
+  const tokenHandle = useSelector(
+    (state: any) => state.authReducer.authData.tokenExpired,
+  );
+  useEffect(() => {
+    if (tokenHandle === true) {
+      navigate(ROUTE.HOME);
+      message.error('Login expired');
+    }
+  }, [tokenHandle]);
   return (
     <Routes>
       {routes.map((route) => {

@@ -35,7 +35,7 @@ export default function Item({ title, image, option, id }: ItemProps) {
         onError={({ currentTarget }) => {
           currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
         }}
-        src={image ? `${REACT_APP_IMAGE_URL}/${image}` : IMAGE_PATH.IMAGE}
+        src={image ? `${REACT_APP_IMAGE_URL}${image}` : IMAGE_PATH.IMAGE}
       />
       <div className="mx-8 pb-10  flex flex-col justify-between">
         <h1 className="text-2xl min-h-[96px] break-words title ">{title}</h1>

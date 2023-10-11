@@ -9,15 +9,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import ROUTE from 'src/constants/route';
 import { resourceApi } from 'src/api/resource-api';
 import { useDispatch, useSelector } from 'react-redux';
-import { addResource } from 'src/redux/resource/action';
+import { addResource, addResponse } from 'src/redux/resource/action';
 import { IMAGE_PATH } from 'src/constants/images';
 import apiCaller from 'src/api/apiCaller';
 import { categoryMappings } from 'src/constants';
-import { removeUser, updateLoginState } from 'src/redux/auth/action';
 import { REACT_APP_IMAGE_URL } from 'src/configs/index';
 import { resourcesRequest } from 'src/components/Resource';
 import { ResourceProps } from 'src/types/Resource';
 import Paginations from 'src/components/Pagination';
+import { authApi } from 'src/api/auth-api';
+import { addListUser } from 'src/redux/auth/action';
 
 export default function Admin() {
   const [remove, setRemove] = useState(false);
@@ -66,12 +67,27 @@ export default function Admin() {
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedMenuItem]);
+
   useEffect(() => {
-    if (selectedMenuItem) {
+    if (selectedMenuItem !== '2') {
       resourcesRequests(currentPage);
+    } else {
+      userRequest();
     }
   }, [selectedMenuItem, remove, currentPage]);
 
+  const userRequest = async () => {
+    const errorHandler = (error: any) => {
+      console.log(error);
+    };
+    const response = await apiCaller({
+      request: authApi.getListUser(),
+      errorHandler,
+    });
+    if (response) {
+      dispatch(addListUser(response.data));
+    }
+  };
   const resourcesRequests = (page: number) => {
     resourcesRequest({
       page: page,
@@ -85,18 +101,10 @@ export default function Admin() {
       },
     } as ResourceProps);
   };
-  console.log(currentPage);
 
   const removeBlogRequest = async (id: any) => {
     const errorHandler = (error: any) => {
-      if (error.ec === 419 || error.ec === 420) {
-        navigate(ROUTE.HOME);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        localStorage.removeItem('role');
-        dispatch(removeUser());
-        dispatch(updateLoginState(false));
-      }
+      console.log(error);
     };
     const response = await apiCaller({
       request: resourceApi.removeBlog(id),
@@ -116,6 +124,7 @@ export default function Admin() {
     setCurrentPage(value);
     resourcesRequests(value);
   };
+
   return (
     <div className="container m-auto ">
       <Layout className="bg-white mt-5">
@@ -136,7 +145,12 @@ export default function Admin() {
               {categoryMappings[selectedMenuItem] || 'Admin'}
             </h1>
             <Link to={ROUTE.POST}>
-              <Button icon={<FormOutlined />}>Post</Button>
+              <Button
+                icon={<FormOutlined />}
+                onClick={() => dispatch(addResponse(false))}
+              >
+                Post
+              </Button>
             </Link>
           </div>
           <div className="grid grid-cols-4 gap-4">
@@ -161,7 +175,7 @@ export default function Admin() {
                           }}
                           alt="#"
                           className="h-[120px]"
-                          src={`${REACT_APP_IMAGE_URL}/${val.thumbnail}`}
+                          src={`${REACT_APP_IMAGE_URL}${val.thumbnail}`}
                         />
                       ) : (
                         <img
@@ -193,6 +207,7 @@ export default function Admin() {
                       <div
                         key="edit"
                         onClick={(e) => {
+                          dispatch(addResponse(false));
                           navigate(ROUTE.EDIT.replace(':id', val.id));
                           e.stopPropagation();
                         }}
@@ -219,7 +234,7 @@ export default function Admin() {
                 <p>No blog</p>
               )
             ) : (
-              <p>No user</p>
+              <button>Go to Page 1</button>
             )}
           </div>
           {selectedMenuItem !== '2' ? (

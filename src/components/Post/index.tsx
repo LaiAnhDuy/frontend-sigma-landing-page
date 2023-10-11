@@ -12,14 +12,12 @@ import { EditOutlined, Html5Outlined } from '@ant-design/icons';
 import apiCaller from 'src/api/apiCaller';
 import { resourceApi } from 'src/api/resource-api';
 import { RRError } from 'src/types/Api';
-import { IMAGE_PATH } from 'src/constants/images';
 import ROUTE from 'src/constants/route';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { removeUser, updateLoginState } from 'src/redux/auth/action';
 import './index.style.scss';
 import { REACT_APP_IMAGE_URL } from 'src/configs';
+import { useSelector } from 'react-redux';
 
 const mdParser = new MarkdownIt({
   html: true,
@@ -33,11 +31,11 @@ interface Article {
 }
 interface PostPageProps {
   mode: 'edit' | 'post';
+  handleData: (data: any, id?: any) => void;
 }
-export default function PostPage({ mode }: PostPageProps) {
+export default function PostPage({ mode, handleData }: PostPageProps) {
   const [form] = Form.useForm();
   const [activeTab, setActiveTab] = useState('1');
-  const [edit, setEdit] = useState(false);
   const [article, setArticle] = useState<Article>({
     title: '',
     author: 'Admin',
@@ -45,15 +43,34 @@ export default function PostPage({ mode }: PostPageProps) {
     category: 'News',
     thumbnail: '',
   });
+  const [imagePreview, setImagePreview] = useState<File>();
   const { id } = useParams();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const handleImageChange = (fileName: string) => {
-    setArticle((prevArticle) => ({ ...prevArticle, thumbnail: fileName }));
-    if (fileName === '') {
+  const handleImageChange = (fileName: File) => {
+    if (fileName.name === '') {
       form.resetFields(['thumbnail']);
     }
+    setImagePreview(fileName);
+  };
+
+  const response = useSelector((state: any) => state.resourceReducer.response);
+  useEffect(() => {
+    if (response === true) {
+      message.success('Submitted!');
+      form.resetFields(['title', 'content', 'thumbnail', 'category']);
+      form.setFieldsValue({ ['author']: 'Admin' });
+      setArticle((prevArticle) => ({ ...prevArticle, thumbnail: '' }));
+      navigate(ROUTE.ADMIN);
+      setActiveTab('1');
+    }
+  }, [response]);
+
+  const handleImgPreview = (value: string) => {
+    setArticle((prevArticle) => ({
+      ...prevArticle,
+      thumbnail: value,
+    }));
   };
   const handleMarkDownChange = ({ text }: { text: string }) => {
     setArticle((prevArticle) => ({ ...prevArticle, content: text }));
@@ -62,22 +79,11 @@ export default function PostPage({ mode }: PostPageProps) {
   useEffect(() => {
     if (mode === 'edit') {
       handleFillForm();
-      setEdit(true);
-    } else if (mode === 'post') {
-      setEdit(false);
     }
   }, [mode]);
 
   const errorHandler = (error: RRError) => {
     console.log('Fail: ', error.msg);
-    if (error.ec === 419 || error.ec === 420) {
-      navigate(ROUTE.HOME);
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      localStorage.removeItem('role');
-      dispatch(removeUser());
-      dispatch(updateLoginState(false));
-    }
   };
   const handleFillForm = async () => {
     const response = await apiCaller({
@@ -85,12 +91,15 @@ export default function PostPage({ mode }: PostPageProps) {
       errorHandler,
     });
     if (response) {
+      setImagePreview(response.data.thumbnail);
       setArticle((prevArticle) => ({
         ...prevArticle,
         ...response.data,
+        thumbnail: REACT_APP_IMAGE_URL + response.data.thumbnail,
       }));
       form.setFieldsValue({
         ...response.data,
+        thumbnail: response.data.thumbnail,
       });
     }
   };
@@ -99,30 +108,23 @@ export default function PostPage({ mode }: PostPageProps) {
     form
       .validateFields()
       .then(async (value) => {
-        const data = {
-          title: value.title,
-          author: value.author,
-          category: value.category,
-          content: value.content,
-          thumbnail: article.thumbnail,
-        };
-
-        const response = edit
-          ? await apiCaller({
-              request: resourceApi.updateBlog(id, data),
-              errorHandler,
-            })
-          : await apiCaller({
-              request: resourceApi.createResource(data),
-              errorHandler,
-            });
-        if (response) {
-          message.success('Submitted!');
-          form.resetFields(['title', 'content', 'thumbnail', 'category']);
-          form.setFieldsValue({ ['author']: 'Admin' });
-          setArticle((prevArticle) => ({ ...prevArticle, thumbnail: '' }));
-          navigate(ROUTE.ADMIN);
-          setActiveTab('1');
+        if (imagePreview) {
+          const formData = new FormData();
+          formData.append('file', imagePreview);
+          const res = await apiCaller({
+            request: resourceApi.upFile(formData),
+            errorHandler,
+          });
+          if (res) {
+            const data = {
+              title: value.title,
+              author: value.author,
+              category: value.category,
+              content: value.content,
+              thumbnail: res.data.fileName,
+            };
+            handleData(data, id);
+          }
         }
       })
       .catch(() => {
@@ -220,6 +222,7 @@ export default function PostPage({ mode }: PostPageProps) {
                         <ImageUploader
                           handleImageChange={handleImageChange}
                           imageThumbnail={article.thumbnail}
+                          handleImgPreview={handleImgPreview}
                         />
                       </div>
                     </Form.Item>
@@ -275,12 +278,9 @@ export default function PostPage({ mode }: PostPageProps) {
                 {article.thumbnail && (
                   <img
                     crossOrigin="anonymous"
-                    src={`${REACT_APP_IMAGE_URL}/${article.thumbnail}`}
+                    src={`${article.thumbnail}`}
                     alt="#"
                     className="w-full rounded-xl"
-                    onError={({ currentTarget }) => {
-                      currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
-                    }}
                   />
                 )}
                 <div
