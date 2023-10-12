@@ -12,9 +12,6 @@ export const authApi = {
   createUser: (data: any) => (): Promise<AxiosResponse<any, any>> => {
     return axiosClient.post(ENDPOINTS.CREATE_USER, data);
   },
-  updateUser: (id: any) => (): Promise<AxiosResponse<any, any>> => {
-    return axiosClient.put(ENDPOINTS.UPDATE_USER, id);
-  },
   deleteUser: (id: any) => (): Promise<AxiosResponse<any, any>> => {
     return axiosClient.delete(ENDPOINTS.DELETE_USER.replace(":userId", id));
   },

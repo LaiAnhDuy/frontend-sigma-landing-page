@@ -48,7 +48,6 @@ const FormUser = () => {
       userRequest();
       dispatch(modalState(false));
     }
-    console.log(data);
   };
 
   const open = useSelector(

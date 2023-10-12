@@ -1,8 +1,9 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Card, Layout, Menu, Popconfirm, message } from 'antd';
 import React, { useEffect, useState } from 'react';
-import type { MenuProps } from 'antd';
+import type { MenuProps, PaginationProps } from 'antd';
 import './index.style.scss';
 import { FormOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
@@ -28,6 +29,8 @@ export default function Admin() {
   const [remove, setRemove] = useState(false);
   const [delUser, setDelUser] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('new');
+
+  const [currentPage, setCurrentPage] = useState<number>(1)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { Meta } = Card;
@@ -149,6 +152,23 @@ export default function Admin() {
 
   const { Column, ColumnGroup } = Table;
 
+  const itemRender: PaginationProps['itemRender'] = (
+    _,
+    type,
+    originalElement,
+  ) => {
+    if (type === 'prev') {
+      return currentPage === 1 ? null : (
+        <a className="text-black hover:text-black !h-8 ">Prev</a>
+      );
+    }
+    if (type === 'next') {
+      return currentPage === Math.ceil(user.length/5) ? null : (
+        <a className="text-black hover:text-black !h-8">Next</a>
+      );
+    }
+    return originalElement;
+  };
   return (
     <div className="container m-auto ">
       <Layout className="bg-white mt-5">
@@ -195,7 +215,6 @@ export default function Admin() {
                         <img
                           alt="#"
                           className="max-h-[130px]"
-                          // src={val.thumbnail}
                           src={IMAGE_PATH.ABOUT_US}
                         />
                       ) : (
@@ -247,9 +266,20 @@ export default function Admin() {
                 <p>No blog</p>
               )
             ) : (
-              <div>
+              <div className="col-span-4">
                 <FormUser />
-                <Table dataSource={user}>
+                <Table
+                  dataSource={user}
+                  pagination={{
+                    itemRender:itemRender,
+                    onChange:(page)=>{
+                      setCurrentPage(page);
+                    },
+                    pageSize: 5,
+                    total: user.length,
+                    position: ['bottomCenter'],
+                  }}
+                >
                   <ColumnGroup title="Name">
                     <Column
                       title="First Name"
