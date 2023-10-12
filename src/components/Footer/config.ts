@@ -5,24 +5,24 @@ export const listItem = [
     title: 'Develop',
     content: [
       {
-        subtitle: 'Blog',
-        url: '#',
+        subtitle: 'News',
+        url: ROUTE.RESOURCES.replace(':tab', 'new'),
       },
       {
-        subtitle: 'Case Study',
-        url: '#',
+        subtitle: 'Blog',
+        url: ROUTE.RESOURCES.replace(':tab', 'blog'),
+      },
+      {
+        subtitle: 'CaseStudy',
+        url: ROUTE.RESOURCES.replace(':tab', 'casestudy'),
       },
       {
         subtitle: 'Document',
-        url: '#',
+        url: ROUTE.RESOURCES.replace(':tab', 'document'),
       },
       {
         subtitle: 'Video',
-        url: '#',
-      },
-      {
-        subtitle: 'News',
-        url: '#',
+        url: ROUTE.RESOURCES.replace(':tab', 'video'),
       },
     ],
   },
@@ -44,39 +44,43 @@ export const listItem = [
     content: [
       {
         subtitle: 'Multi DRM',
-        url: '#',
+        url: ROUTE.PRODUCT_SIGMA_DRM,
       },
       {
         subtitle: 'Livestreaming',
-        url: '#',
+        url: ROUTE.PRODUCT_SIGMA_LIVESTREAMING,
       },
       {
         subtitle: 'OTT',
-        url: '#',
+        url: ROUTE.SERVICE,
       },
       {
-        subtitle: 'Packager/ Transcoder',
-        url: '#',
+        subtitle: 'Transcoder',
+        url: ROUTE.PRODUCT_SIGMA_TRANSCODER,
+      },
+      {
+        subtitle: 'Package/Origin',
+        url: ROUTE.PRODUCT_SIGMA_PACKAGE,
       },
       {
         subtitle: 'Audio water marking',
-        url: '#',
+        url: ROUTE.PRODUCT_AUDIO_WATERMARKING,
       },
       {
         subtitle: 'Multi CDN',
-        url: '#',
+        url: ROUTE.PRODUCT_MULTI_CDN,
       },
       {
         subtitle: 'NS53',
-        url: '#',
+        url: ROUTE.PRODUCT_SIGMA_NS53,
       },
       {
         subtitle: 'Dynamic Ads Insert',
-        url: '#',
+        url: ROUTE.PRODUCT_SIGMA_DAI,
       },
       {
         subtitle: 'Interactive',
-        url: '#',
+        url: ROUTE.PRODUCT_SIGMA_INTERACTIVE,
       },
     ],
   },

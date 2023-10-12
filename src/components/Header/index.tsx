@@ -26,9 +26,11 @@ export default function Header() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const auth = localStorage.getItem('user');
-    if (token && auth) {
+    const role = localStorage.getItem('role');
+
+    if (token && auth && role) {
       const authData: string[] = JSON.parse(auth);
-      dispatch(addUser({ token, user: authData }));
+      dispatch(addUser({ token, user: authData, role: role, logIn: true }));
     }
   });
   return (

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
@@ -5,16 +6,18 @@ import 'react-markdown-editor-lite/lib/index.css';
 import { Button, Input, Select, Tabs, message } from 'antd';
 import ImageUploader from './ImageUploader';
 import { EditOutlined, Html5Outlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBlog } from 'src/redux/resource/action';
 
 const mdParser = new MarkdownIt();
-type Article = {
+interface Article {
   title: string;
   author: string;
   markdown: string;
   option: string;
   imageUrl: string;
   imageName: string;
-};
+}
 const PostPage = () => {
   const [activeTab, setActiveTab] = useState('1');
   const [article, setArticle] = useState<Article>({
@@ -26,6 +29,8 @@ const PostPage = () => {
     imageName: '',
   });
 
+  const [articles, setArticles] = useState<Article[]>([]);
+  const resource = useSelector((state: any) => state.resourceReducer);
   const handleEditorChange = ({ text }: { text: string }) => {
     setArticle((prevArticle) => ({ ...prevArticle, markdown: text }));
   };
@@ -35,8 +40,15 @@ const PostPage = () => {
   const handleImage = (imageName: string) => {
     setArticle((prevArticle) => ({ ...prevArticle, imageName: imageName }));
   };
+  const dispatch = useDispatch();
   const handleSubmit = () => {
     message.success('Submitted!');
+    setArticles((prevArticles) => [...prevArticles, article]);
+    const newArticle = {
+      id: articles.length,
+      ...article,
+    };
+    dispatch(addBlog(newArticle));
     setArticle((prevArticle) => ({
       ...prevArticle,
       title: '',
@@ -46,7 +58,6 @@ const PostPage = () => {
       imageName: '',
     }));
     setActiveTab('1');
-    console.log(article);
   };
   const handleChange = (value: string) => {
     setArticle((prevArticle) => ({ ...prevArticle, option: value }));
@@ -108,11 +119,17 @@ const PostPage = () => {
                     { value: 'video', label: 'Video' },
                   ]}
                 />
+                <h2>
+                  Chọn thumbnail<span className="text-red-600">*</span>
+                </h2>
                 <ImageUploader
                   handleImage={handleImage}
                   imageName={article.imageName}
                   onImageChange={handleImageChange}
                 />
+                <h2>
+                  Content<span className="text-red-600">*</span>
+                </h2>
                 <MdEditor
                   view={{
                     menu: true,
@@ -170,6 +187,13 @@ const PostPage = () => {
       >
         Submit
       </Button>
+      <button
+        onClick={() => {
+          console.log(resource);
+        }}
+      >
+        testst
+      </button>
     </div>
   );
 };

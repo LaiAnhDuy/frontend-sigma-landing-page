@@ -11,6 +11,9 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { resourceApi } from 'src/api/resource-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { addResource } from 'src/redux/resource/action';
+import { RRError } from 'src/types/Api';
+import apiCaller from 'src/api/apiCaller';
+import { categoryMappings } from 'src/constants';
 
 export default function Resources() {
   const dispatch = useDispatch();
@@ -51,41 +54,24 @@ export default function Resources() {
       value: 'video',
     },
   ];
-
-  const resourcesRequest = () => {
+ 
+  const resourcesRequest = async () => {
     const data = {
-      category: (() => {
-        switch (title) {
-          case 'new':
-            return 'News';
-          case 'blog':
-            return 'Blog';
-          case 'document':
-            return 'Document';
-          case 'video':
-            return 'Video';
-          case 'casestudy':
-            return 'Casestudy';
-          default:
-            return 'Other';
-        }
-      })(),
+      category: categoryMappings[title] || 'Other',
       limitPerPage: 100,
     };
-    const errorHandler = (error: any) => {
+    const errorHandler = (error: RRError) => {
       console.log('Fail: ', error);
     };
-
-    resourceApi
-      .getResource(data, errorHandler)
-      .then((res) => {
-        dispatch(addResource(res.data));
-      })
-      .catch((error) => {
-        console.log('Fail: ', error);
-      });
+    const response = await apiCaller({
+      request: resourceApi.getResource(data),
+      errorHandler,
+    });
+    if (response) {
+      dispatch(addResource(response.data));
+    }
   };
-  const data = useSelector((state: any) => state.resourcesReducer.resources);
+  const data = useSelector((state: any) => state.resourceReducer.resources);
 
   const itemRender: PaginationProps['itemRender'] = (
     _,

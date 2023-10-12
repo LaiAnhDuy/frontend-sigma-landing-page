@@ -1,41 +1,44 @@
+/* eslint-disable @typescript-eslint/default-param-last */
+import { Reducer } from 'redux';
+import { BlogTypes } from 'src/types/Resource';
 import {
+  AddBlogProps,
   AddResourceProps,
+  RemoveBlogProps,
   ResourceActionTypes,
-  RemoveResourceProps,
 } from './action';
 
-import { Reducer } from 'redux';
-
 export interface ResourceState {
-  resources: string[];
+  data: BlogTypes[];
   blogs: string[];
+  resources: string[];
 }
 
 const initialState: ResourceState = {
   resources: [],
   blogs: [],
+  data: [],
 };
 
 const resourceReducer: Reducer<
   ResourceState,
-  AddResourceProps | RemoveResourceProps
-> = (
-  // eslint-disable-next-line @typescript-eslint/default-param-last
-  state = initialState,
-  action,
-) => {
+  AddBlogProps | RemoveBlogProps | AddResourceProps
+> = (state = initialState, action) => {
   switch (action.type) {
+    case ResourceActionTypes.ADD_BLOG:
+      return {
+        ...state,
+        data: [...state.data, action.payload],
+      };
+    case ResourceActionTypes.REMOVE_BLOG:
+      return {
+        ...state,
+      };
     case ResourceActionTypes.ADD_RESOURCE:
       return {
         ...state,
-        blogs: action.payload.blogs,
-        resources: action.payload.resources,
-      };
-    case ResourceActionTypes.REMOVE_RESOURCE:
-      return {
-        ...state,
-        blogs: [],
-        resources: [],
+        blogs: action.payload?.blogs,
+        resources: action.payload?.resources,
       };
     default:
       return state;

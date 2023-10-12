@@ -1,5 +1,7 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { REACT_APP_BASE_URL } from 'src/configs';
+import { RRError } from 'src/types/Api';
+import CustomError from 'src/utils/CustomError';
 const token = localStorage.getItem('token');
 const axiosClient = axios.create({
   baseURL: REACT_APP_BASE_URL,
@@ -11,10 +13,10 @@ const axiosClient = axios.create({
   },
 });
 
-// axiosClient.interceptors.request.use(async (config) => {
-//     // Handle token here ...
-//     return config;
-// });
+axiosClient.interceptors.request.use(async (config) => {
+  // Handle token here ...
+  return config;
+});
 axiosClient.interceptors.response.use(
   (response) => {
     if (response && response.data) {
@@ -22,9 +24,18 @@ axiosClient.interceptors.response.use(
     }
     return response;
   },
-  (error) => {
-    // Handle errors
-    throw error;
+  (error: AxiosError) => {
+    if (!error.response) {
+      console.error('Unknown error:', error.message);
+      return;
+    }
+
+    const { status, data } = error.response;
+    if (status >= 500) {
+      // TODO: Show server error message
+    } else if (400 <= status && status < 500) {
+      throw new CustomError(data as RRError);
+    }
   },
 );
 export default axiosClient;

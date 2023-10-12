@@ -4,37 +4,16 @@ import axiosClient from './axiosClient';
 import { AxiosResponse } from 'axios';
 
 export const resourceApi = {
-  getResource: (
-    data: any,
-    errorHandler: (error: any) => void,
-  ): Promise<AxiosResponse<any, any>> => {
-    try {
-      return axiosClient.get(ENDPOINTS.RESOURCE, { params: data });
-    } catch (error) {
-      errorHandler && errorHandler(error);
-      return Promise.reject(error);
-    }
+  getResource: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.get(ENDPOINTS.RESOURCE, { params: data });
   },
-  getBlog: (
-    id:any,
-    errorHandler: (error: any) => void,
-  ): Promise<AxiosResponse<any, any>> => {
-    try {
-      return axiosClient.get(ENDPOINTS.BLOG.replace(':id', id));
-    } catch (error) {
-      errorHandler && errorHandler(error);
-      return Promise.reject(error);
-    }
+  getBlog: (id: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.get(ENDPOINTS.BLOG.replace(':id', id));
   },
-  postResource: (
-    data: any,
-    errorHandler: (error: any) => void,
-  ): Promise<AxiosResponse<any, any>> => {
-    try {
-      return axiosClient.post(ENDPOINTS.RESOURCE, data);
-    } catch (error) {
-      errorHandler && errorHandler(error);
-      return Promise.reject(error);
-    }
+  removeBlog: (id: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.delete(ENDPOINTS.BLOG.replace(':id', id));
+  },
+  postResource: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.post(ENDPOINTS.RESOURCE, data);
   },
 };

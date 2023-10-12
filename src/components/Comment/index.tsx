@@ -15,7 +15,6 @@ export default function Comment() {
   // const [listComment,setListComment]=useState([])
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
-    console.log(value);
   };
   const initFormValue: FormValue = {
     img: 'https://i.imgur.com/3J8lTLm.jpg',
