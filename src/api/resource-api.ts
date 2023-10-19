@@ -16,4 +16,10 @@ export const resourceApi = {
   postResource: (data: any) => (): Promise<AxiosResponse<any, any>> => {
     return axiosClient.post(ENDPOINTS.RESOURCE, data);
   },
+  createComment: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.post(ENDPOINTS.COMMENT, data);
+  },
+  getComment: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.get(ENDPOINTS.COMMENT, { params: data });
+  },
 };

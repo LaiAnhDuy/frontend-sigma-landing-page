@@ -57,7 +57,6 @@ export default function Admin() {
     },
     { key: '2', label: 'Users' },
   ];
-
   const resourcesRequest = async () => {
     const data = {
       category: categoryMappings[selectedMenuItem],
