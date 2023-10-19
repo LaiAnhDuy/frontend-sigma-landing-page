@@ -33,9 +33,9 @@ export default function Blog() {
     };
 
     const requests = [
-      resourceApi.getResource({ category: 'Blog', limitPerPage: 100 }),
+      resourceApi.getResource({ category: 'Blog', limitPerPage: 7, page: 1 }),
       resourceApi.getBlog(id),
-      resourceApi.getResource({ category: 'News', limitPerPage: 100 }),
+      resourceApi.getResource({ category: 'News', limitPerPage: 7, page: 1 }),
     ];
 
     const [recentBlogsResponse, blogsResponse, hotNewsResponse] =
@@ -110,7 +110,7 @@ export default function Blog() {
                   onClick={() => navigate(`/resources/blog`)}
                   className="h-7 w-24 rounded-md border-solid bg-transparent cursor-pointer active:bg-transparent/5"
                 >
-                  See all
+                  See more
                 </button>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function Blog() {
                   onClick={() => navigate(`/resources/new`)}
                   className="h-7 w-24 rounded-md border-solid bg-transparent cursor-pointer active:bg-transparent/5"
                 >
-                  See all
+                  See more
                 </button>
               </div>
             </div>
