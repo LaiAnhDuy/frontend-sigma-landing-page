@@ -5,7 +5,8 @@ import {
   RemoveUserProps,
   UpdateLoginStateProps,
   AddListUserProps,
-  ModalStateProps,
+  HideStateProps,
+  ShowStateProps,
 } from './action';
 
 import { Reducer } from 'redux';
@@ -33,7 +34,8 @@ const authReducer: Reducer<
   | RemoveUserProps
   | UpdateLoginStateProps
   | AddListUserProps
-  | ModalStateProps
+  | HideStateProps
+  | ShowStateProps
 > = (
   // eslint-disable-next-line @typescript-eslint/default-param-last
   state = initialState,
@@ -75,17 +77,26 @@ const authReducer: Reducer<
           listUser: action.payload,
         },
       };
-    case AuthActionTypes.MODAL_OPEN:
+    case AuthActionTypes.SHOW_MODAL:
       return {
         ...state,
         userData: {
           ...state.userData,
-          modalOpen: action.payload,
+          modalOpen: true,
         },
       };
+      case AuthActionTypes.HIDE_MODAL:
+        return {
+          ...state,
+          userData: {
+            ...state.userData,
+            modalOpen: false,
+          },
+        };
     default:
       return state;
-  }
+  };
+  
 };
 
 export default authReducer;

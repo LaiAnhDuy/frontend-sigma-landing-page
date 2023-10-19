@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import apiCaller from 'src/api/apiCaller';
 import { authApi } from 'src/api/auth-api';
 import { IMAGE_PATH } from 'src/constants/images';
-import { addListUser, modalState } from 'src/redux/auth/action';
+import { addListUser, hideModal } from 'src/redux/auth/action';
 import { RRError } from 'src/types/Api';
 
 const FormUser = () => {
   const handleCancel = () => {
-    dispatch(modalState(false));
+    dispatch(hideModal());
+
   };
   const dispatch = useDispatch();
   const userRequest = async () => {
@@ -46,7 +47,7 @@ const FormUser = () => {
         'Create Successfully! Please check your email to activate your account',
       );
       userRequest();
-      dispatch(modalState(false));
+      dispatch(hideModal());
     }
   };
 

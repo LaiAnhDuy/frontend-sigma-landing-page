@@ -8,7 +8,8 @@ export enum AuthActionTypes {
   ADD_USER = 'ADD_USER',
   UPDATE_LOGIN_STATE = 'UPDATE_LOGIN_STATE',
   ADD_LIST_USER = 'ADD_LIST_USER',
-  MODAL_OPEN = 'MODAL_OPEN',
+  HIDE_MODAL = 'HIDE_MODAL',
+  SHOW_MODAL = 'SHOW_MODAL',
 }
 
 // Action interfaces for reducer 2
@@ -29,11 +30,13 @@ export interface UpdateLoginStateProps {
   payload: boolean;
 }
 
-export interface ModalStateProps {
-  type: AuthActionTypes.MODAL_OPEN;
-  payload: boolean;
+export interface HideStateProps {
+  type: AuthActionTypes.HIDE_MODAL;
 }
 
+export interface ShowStateProps {
+  type: AuthActionTypes.SHOW_MODAL;
+}
 // Action creators for reducer 2
 export const removeUser = (): RemoveUserProps => ({
   type: AuthActionTypes.REMOVE_USER,
@@ -51,7 +54,9 @@ export const updateLoginState = (payload: boolean): UpdateLoginStateProps => ({
   type: AuthActionTypes.UPDATE_LOGIN_STATE,
   payload,
 });
-export const modalState = (payload: boolean): ModalStateProps => ({
-  type: AuthActionTypes.MODAL_OPEN,
-  payload,
+export const hideModal = (): HideStateProps => ({
+  type: AuthActionTypes.HIDE_MODAL
+});
+export const showModal = (): ShowStateProps => ({
+  type: AuthActionTypes.SHOW_MODAL
 });

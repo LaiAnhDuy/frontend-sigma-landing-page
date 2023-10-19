@@ -17,8 +17,8 @@ import apiCaller from 'src/api/apiCaller';
 import { categoryMappings } from 'src/constants';
 import {
   addListUser,
-  modalState,
   removeUser,
+  showModal,
   updateLoginState,
 } from 'src/redux/auth/action';
 import { authApi } from 'src/api/auth-api';
@@ -195,7 +195,7 @@ export default function Admin() {
             ) : (
               <Button
                 icon={<FormOutlined />}
-                onClick={() => dispatch(modalState(true))}
+                onClick={() => dispatch(showModal())}
               >
                 Create User
               </Button>
