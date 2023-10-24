@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import MarkdownIt from 'markdown-it';
 import MdEditor from 'react-markdown-editor-lite';
 import 'react-markdown-editor-lite/lib/index.css';
-import { Button, Form, Input, Select, Tabs, message } from 'antd';
+import { Button, Form, Input, Select, Spin, Tabs, message } from 'antd';
 import ImageUploader from './ImageUploader';
 import { EditOutlined, Html5Outlined } from '@ant-design/icons';
 import apiCaller from 'src/api/apiCaller';
@@ -104,6 +104,13 @@ export default function PostPage({ mode, handleData }: PostPageProps) {
     }
   };
 
+  const handleTest = (value: any, allValues: any) => {
+    setArticle((prevArticle) => ({
+      ...prevArticle,
+      author: allValues.author,
+      title: allValues.title,
+    }));
+  };
   const handleSubmit = () => {
     form
       .validateFields()
@@ -131,7 +138,11 @@ export default function PostPage({ mode, handleData }: PostPageProps) {
         setActiveTab('1');
       });
   };
-
+  console.log(
+    useSelector((state: any) => state.authReducer.loading),
+    'tesstst',
+  );
+  const loading = useSelector((state: any) => state.authReducer.loading);
   return (
     <div className="container mx-auto text-center">
       <Tabs
@@ -154,6 +165,7 @@ export default function PostPage({ mode, handleData }: PostPageProps) {
                   name="basic"
                   layout="vertical"
                   className="grid grid-cols-3 gap-x-8"
+                  onValuesChange={handleTest}
                 >
                   <div className="col-span-1">
                     <Form.Item
@@ -293,14 +305,19 @@ export default function PostPage({ mode, handleData }: PostPageProps) {
           },
         ]}
       />
-      <Button
-        type="primary"
-        htmlType="submit"
-        onClick={handleSubmit}
-        className="mt-8"
-      >
-        Submit
-      </Button>
+
+      {loading ? (
+        <Spin></Spin>
+      ) : (
+        <Button
+          type="primary"
+          htmlType="submit"
+          onClick={handleSubmit}
+          className="mt-8"
+        >
+          Submit
+        </Button>
+      )}
     </div>
   );
 }

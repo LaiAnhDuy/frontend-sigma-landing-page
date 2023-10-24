@@ -9,6 +9,7 @@ export enum AuthActionTypes {
   UPDATE_LOGIN_STATE = 'UPDATE_LOGIN_STATE',
   ADD_LIST_USER = 'ADD_LIST_USER',
   TOKEN = 'TOKEN',
+  LOADING = 'LOADING',
 }
 
 // Action interfaces for reducer 2
@@ -33,6 +34,11 @@ export interface UpdateLoginStateProps {
   payload: boolean;
 }
 
+export interface LoadingProps {
+  type: AuthActionTypes.LOADING;
+  payload: boolean;
+}
+
 // Action creators for reducer 2
 export const removeUser = (): RemoveUserProps => ({
   type: AuthActionTypes.REMOVE_USER,
@@ -54,3 +60,8 @@ export const tokenHandler = (payload: boolean): TokenProps => ({
   type: AuthActionTypes.TOKEN,
   payload,
 });
+
+export const loadingHandler = (payload: boolean): LoadingProps => ({
+  type: AuthActionTypes.LOADING,
+  payload,
+})

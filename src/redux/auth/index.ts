@@ -6,6 +6,7 @@ import {
   UpdateLoginStateProps,
   AddListUserProps,
   TokenProps,
+  LoadingProps,
 } from './action';
 
 import { Reducer } from 'redux';
@@ -13,6 +14,7 @@ import { Reducer } from 'redux';
 interface AuthState {
   authData: AuthTypes;
   userData: User;
+  loading: boolean
 }
 
 const initialState: AuthState = {
@@ -25,6 +27,7 @@ const initialState: AuthState = {
   userData: {
     listUser: [],
   },
+  loading: false,
 };
 
 const authReducer: Reducer<
@@ -34,6 +37,7 @@ const authReducer: Reducer<
   | UpdateLoginStateProps
   | AddListUserProps
   | TokenProps
+  | LoadingProps
 > = (
   // eslint-disable-next-line @typescript-eslint/default-param-last
   state = initialState,
@@ -83,6 +87,11 @@ const authReducer: Reducer<
           tokenExpired: action.payload,
         },
       };
+    case AuthActionTypes.LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+      }
     default:
       return state;
   }

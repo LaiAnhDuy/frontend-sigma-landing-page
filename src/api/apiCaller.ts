@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosResponse } from 'axios';
 import {
+  loadingHandler,
   removeUser,
   tokenHandler,
   updateLoginState,
@@ -16,6 +17,7 @@ export default async function apiCaller<R>({
   errorHandler?: (error: RRError) => void;
 }) {
   try {
+    store.dispatch(loadingHandler(true));
     const response = await request();
     return response;
   } catch (error: RRError | any) {
@@ -28,6 +30,8 @@ export default async function apiCaller<R>({
       store.dispatch(tokenHandler(true));
     }
     errorHandler(error as RRError);
+  } finally {
+    store.dispatch(loadingHandler(false));
   }
   return null;
 }
