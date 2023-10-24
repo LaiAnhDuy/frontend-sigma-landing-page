@@ -5,19 +5,18 @@ import React, { useEffect, useState } from 'react';
 import './index.style.scss';
 import { IMAGE_PATH } from 'src/constants/images';
 import Item from 'src/components/Item';
-import { Pagination, PaginationProps } from 'antd';
 import ScrollToTopButton from 'src/components/ScrollToTop';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { resourceApi } from 'src/api/resource-api';
 import { useDispatch, useSelector } from 'react-redux';
 import { addResource } from 'src/redux/resource/action';
-import { RRError } from 'src/types/Api';
-import apiCaller from 'src/api/apiCaller';
-import { categoryMappings } from 'src/constants';
+import { resourcesRequest } from 'src/components/Resource';
+import { ResourceProps } from 'src/types/Resource';
+import Paginations from 'src/components/Pagination';
 
 export default function Resources() {
   const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState();
   const location = useLocation();
   const pathname = location.pathname.substring(
     location.pathname.lastIndexOf('/') + 1,
@@ -29,7 +28,7 @@ export default function Resources() {
   }, [pathname]);
   useEffect(() => {
     if (title) {
-      resourcesRequest();
+      resourcesRequests(currentPage);
     }
   }, [title]);
   const listTitle = [
@@ -54,41 +53,25 @@ export default function Resources() {
       value: 'video',
     },
   ];
- 
-  const resourcesRequest = async () => {
-    const data = {
-      category: categoryMappings[title] || 'Other',
-      limitPerPage: 100,
-    };
-    const errorHandler = (error: RRError) => {
-      console.log('Fail: ', error);
-    };
-    const response = await apiCaller({
-      request: resourceApi.getResource(data),
-      errorHandler,
-    });
-    if (response) {
-      dispatch(addResource(response.data));
-    }
+  const resourcesRequests = (page: number) => {
+    resourcesRequest({
+      page: page,
+      value: title,
+      limitPerPage: 6,
+      setTotalPages: (data) => {
+        setTotalPages(data);
+      },
+      dispatchAddResource(data) {
+        dispatch(addResource(data));
+      },
+    } as ResourceProps);
   };
+
   const data = useSelector((state: any) => state.resourceReducer.resources);
 
-  const itemRender: PaginationProps['itemRender'] = (
-    _,
-    type,
-    originalElement,
-  ) => {
-    if (type === 'prev') {
-      return currentPage === 1 ? null : (
-        <a className="text-black hover:text-black ">Prev</a>
-      );
-    }
-    if (type === 'next') {
-      return currentPage === Math.ceil((data?.length ?? 0) / 6) ? null : (
-        <a className="text-black hover:text-black">Next</a>
-      );
-    }
-    return originalElement;
+  const handleOnChange = (value: number) => {
+    setCurrentPage(value);
+    resourcesRequests(value);
   };
 
   return (
@@ -129,7 +112,7 @@ export default function Resources() {
           </h1>
           <div className="grid grid-cols-3 gap-x-10 gap-y-14 text-left">
             {data && data.length > 0 ? (
-              data?.slice((currentPage - 1) * 6, currentPage * 6).map(
+              data.map(
                 (
                   val: {
                     thumbnail: string;
@@ -153,17 +136,10 @@ export default function Resources() {
             )}
           </div>
           {data && data.length > 0 ? (
-            <Pagination
-              className="my-16"
-              itemRender={itemRender}
-              total={data?.length}
-              current={currentPage}
-              onChange={(page) => {
-                setCurrentPage(page);
-              }}
-              pageSize={6}
-              showSizeChanger={false}
-              showQuickJumper={false}
+            <Paginations
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onChange={handleOnChange}
             />
           ) : null}
         </div>

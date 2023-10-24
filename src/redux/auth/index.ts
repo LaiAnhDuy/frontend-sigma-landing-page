@@ -1,23 +1,43 @@
-import { AuthTypes } from 'src/types/Auth';
+import { AuthTypes, User } from 'src/types/Auth';
 import {
   AddUserProps,
   AuthActionTypes,
   RemoveUserProps,
   UpdateLoginStateProps,
+  AddListUserProps,
+  TokenProps,
+  LoadingProps,
 } from './action';
 
 import { Reducer } from 'redux';
 
-const initialState: AuthTypes = {
-  token: '',
-  user: [],
-  role: '',
-  logIn: false,
+interface AuthState {
+  authData: AuthTypes;
+  userData: User;
+  loading: boolean
+}
+
+const initialState: AuthState = {
+  authData: {
+    token: '',
+    user: [],
+    logIn: false,
+    tokenExpired: false,
+  },
+  userData: {
+    listUser: [],
+  },
+  loading: false,
 };
 
 const authReducer: Reducer<
-  AuthTypes,
-  AddUserProps | RemoveUserProps | UpdateLoginStateProps
+  AuthState,
+  | AddUserProps
+  | RemoveUserProps
+  | UpdateLoginStateProps
+  | AddListUserProps
+  | TokenProps
+  | LoadingProps
 > = (
   // eslint-disable-next-line @typescript-eslint/default-param-last
   state = initialState,
@@ -27,22 +47,51 @@ const authReducer: Reducer<
     case AuthActionTypes.ADD_USER:
       return {
         ...state,
-        token: action.payload.token,
-        user: action.payload.user,
-        role: action.payload.role,
+        authData: {
+          ...state.authData,
+          token: action.payload.token,
+          user: action.payload.user,
+        },
       };
     case AuthActionTypes.REMOVE_USER:
       return {
         ...state,
-        token: '',
-        user: [],
-        role: '',
+        authData: {
+          ...state.authData,
+          token: '',
+          user: [],
+          role: '',
+        },
       };
     case AuthActionTypes.UPDATE_LOGIN_STATE:
       return {
         ...state,
-        logIn: action.payload,
+        authData: {
+          ...state.authData,
+          logIn: action.payload,
+        },
       };
+    case AuthActionTypes.ADD_LIST_USER:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          listUser: action.payload,
+        },
+      };
+    case AuthActionTypes.TOKEN:
+      return {
+        ...state,
+        authData: {
+          ...state.authData,
+          tokenExpired: action.payload,
+        },
+      };
+    case AuthActionTypes.LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+      }
     default:
       return state;
   }

@@ -53,7 +53,6 @@ export default function ForgotPassword() {
     const handleSubmitContinue = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (validateForm()) {
-            console.log("Form value : ", formValue);
             setSelect(2);
         } else {
             console.log("Form invalid")
@@ -62,7 +61,6 @@ export default function ForgotPassword() {
     const handleSubmitPassword = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (validateForm()) {
-            console.log("Form value : ", formValue);
             setSelect(3);
         } else {
             console.log("Form invalid")

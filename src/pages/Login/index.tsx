@@ -19,7 +19,7 @@ import { isEmailValid, isEmptyValue, isPasswordValid } from 'src/utils';
 import { authApi } from 'src/api/auth-api';
 import ROUTE from 'src/constants/route';
 import { Link } from 'react-router-dom';
-import { addUser } from 'src/redux/auth/action';
+import { addUser, tokenHandler } from 'src/redux/auth/action';
 import { useDispatch } from 'react-redux';
 import apiCaller from 'src/api/apiCaller';
 import { RRError } from 'src/types/Api';
@@ -62,13 +62,19 @@ export default function Login({ signIn, onClick, handleForgot }: LoginProps) {
       errorHandler,
     });
     if (response) {
-      console.log('response ', response);
       signIn();
       message.success('Login successfully');
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.user));
-      localStorage.setItem('role', response.data.user.role);
-      dispatch(addUser(response.data));
+      dispatch(
+        addUser({
+          token: response.data.token,
+          user: response.data.user,
+          logIn: true,
+          tokenExpired: false,
+        }),
+      );
+      dispatch(tokenHandler(false));
     }
   };
   const validateForm = () => {

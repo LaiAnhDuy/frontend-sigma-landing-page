@@ -1,4 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import PrivateRoute from 'src/components/PrivateRoute';
 import PublicRoute from 'src/components/PublicRoute';
 import ROUTE from 'src/constants/route';
@@ -13,7 +15,6 @@ import SigmaPackagePage from 'src/pages/Products/SigmaPackage';
 import SigmaTranscoderPage from 'src/pages/Products/SigmaTranscoder';
 import OttPage from 'src/pages/Service/Ott';
 import SigmaLiveStreaming from 'src/pages/Products/Streaming';
-import PostPage from 'src/pages/Post';
 
 import ForgotPassword from 'src/pages/Login/ForgotPassword';
 import NotFoundPage from 'src/pages/NotFound';
@@ -26,6 +27,10 @@ import ContactUs from 'src/pages/ContactUs';
 import Admin from 'src/pages/Admin';
 
 import TalkToExpert from 'src/pages/TalkToExpert';
+import { Post, PostEdit } from 'src/pages/Posts';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { message } from 'antd';
 export type RouteType = {
   path: ROUTE | string;
   title?: string;
@@ -35,16 +40,24 @@ export type RouteType = {
 
 const routes: RouteType[] = [
   { path: ROUTE.HOME, title: 'Sigma DRM', element: HomePage },
-  { path: ROUTE.POST, title: 'Sigma DRM', element: PostPage },
+  { path: ROUTE.POST, title: 'Sigma DRM', element: Post },
+  { path: ROUTE.EDIT, title: 'Edit', element: PostEdit },
   { path: ROUTE.BLOG, title: 'Blog', element: Blog },
   { path: ROUTE.NEW, title: 'New', element: Blog },
+  { path: ROUTE.CASESTUDY, title: 'Casestudy', element: Blog },
+  { path: ROUTE.DOCUMENT, title: 'Document', element: Blog },
+  { path: ROUTE.VIDEO, title: 'Video', element: Blog },
   { path: ROUTE.FREE_TRIAL, title: 'Free Trial', element: FreeTrial },
   { path: ROUTE.SUPPORT, title: 'Support', element: Support },
   { path: ROUTE.CONTACT_US, title: 'Contact us', element: ContactUs },
   { path: ROUTE.PRODUCT_MULTI_CDN, title: 'Multi CDN', element: Multi },
   { path: ROUTE.ABOUT_US, title: 'About us', element: AboutUs },
   { path: ROUTE.ADMIN, title: 'Admin', element: Admin, isPrivate: true },
-  { path: ROUTE.TALK_TO_EXPERT, title: 'Talk to expert', element: TalkToExpert },
+  {
+    path: ROUTE.TALK_TO_EXPERT,
+    title: 'Talk to expert',
+    element: TalkToExpert,
+  },
   {
     path: ROUTE.PRODUCT_AUDIO_WATERMARKING,
     title: 'Audio Watermarking',
@@ -109,6 +122,16 @@ const routes: RouteType[] = [
   },
 ];
 export default function AppRouter() {
+  const navigate = useNavigate();
+  const tokenHandle = useSelector(
+    (state: any) => state.authReducer.authData.tokenExpired,
+  );
+  useEffect(() => {
+    if (tokenHandle === true) {
+      navigate(ROUTE.HOME);
+      message.error('Login expired');
+    }
+  }, [tokenHandle]);
   return (
     <Routes>
       {routes.map((route) => {

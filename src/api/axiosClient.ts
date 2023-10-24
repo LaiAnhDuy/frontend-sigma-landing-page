@@ -1,20 +1,20 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosError } from 'axios';
 import { REACT_APP_BASE_URL } from 'src/configs';
 import { RRError } from 'src/types/Api';
 import CustomError from 'src/utils/CustomError';
-const token = localStorage.getItem('token');
+
 const axiosClient = axios.create({
   baseURL: REACT_APP_BASE_URL,
-  headers: {
-    'content-type': 'application/json',
-    common: {
-      Authorization: `Bearer ${token}`,
-    },
-  },
 });
-
 axiosClient.interceptors.request.use(async (config) => {
-  // Handle token here ...
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
   return config;
 });
 axiosClient.interceptors.response.use(

@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { BlogTypes, ResourceTypes } from 'src/types/Resource';
 
 export enum ResourceActionTypes {
   REMOVE_BLOG = 'REMOVE_BLOG',
   ADD_BLOG = 'ADD_BLOG',
   ADD_RESOURCE = 'ADD_RESOURCE',
+  ADD_RESPONSE='ADD_RESPONSE',
 }
 
 export interface RemoveBlogProps {
@@ -15,6 +17,10 @@ export interface RemoveBlogProps {
 export interface AddBlogProps {
   type: ResourceActionTypes.ADD_BLOG;
   payload: BlogTypes;
+}
+export interface AddResponseProps {
+  type: ResourceActionTypes.ADD_RESPONSE;
+  payload: any;
 }
 
 export interface AddResourceProps {
@@ -37,3 +43,7 @@ export const addResource = (payload: ResourceTypes): AddResourceProps => ({
   type: ResourceActionTypes.ADD_RESOURCE,
   payload,
 });
+export const addResponse = (payload: boolean): AddResponseProps => ({
+  type: ResourceActionTypes.ADD_RESPONSE,
+  payload,
+})

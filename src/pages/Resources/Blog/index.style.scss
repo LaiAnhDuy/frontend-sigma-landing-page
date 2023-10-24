@@ -1,3 +1,17 @@
-.news{
-    background: linear-gradient(135deg, #FD841F 0%, rgba(220, 53, 53, 0.7) 86.46%);
+.news {
+  background: linear-gradient(
+    135deg,
+    #fd841f 0%,
+    rgba(220, 53, 53, 0.7) 86.46%
+  );
+}
+.hot-new {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.img-content img {
+  width: -webkit-fill-available;
 }

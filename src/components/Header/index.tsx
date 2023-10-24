@@ -26,11 +26,12 @@ export default function Header() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     const auth = localStorage.getItem('user');
-    const role = localStorage.getItem('role');
 
-    if (token && auth && role) {
+    if (token && auth) {
       const authData: string[] = JSON.parse(auth);
-      dispatch(addUser({ token, user: authData, role: role, logIn: true }));
+      dispatch(
+        addUser({ token, user: authData, logIn: true, tokenExpired: false }),
+      );
     }
   });
   return (

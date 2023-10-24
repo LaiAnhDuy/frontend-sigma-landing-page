@@ -9,16 +9,23 @@ import { Link, useNavigate } from 'react-router-dom';
 import ROUTE from 'src/constants/route';
 import { resourceApi } from 'src/api/resource-api';
 import { useDispatch, useSelector } from 'react-redux';
-import { addResource } from 'src/redux/resource/action';
+import { addResource, addResponse } from 'src/redux/resource/action';
 import { IMAGE_PATH } from 'src/constants/images';
-import { RRError } from 'src/types/Api';
 import apiCaller from 'src/api/apiCaller';
 import { categoryMappings } from 'src/constants';
-import { removeUser, updateLoginState } from 'src/redux/auth/action';
+import { REACT_APP_IMAGE_URL } from 'src/configs/index';
+import { resourcesRequest } from 'src/components/Resource';
+import { ResourceProps } from 'src/types/Resource';
+import Paginations from 'src/components/Pagination';
+import { authApi } from 'src/api/auth-api';
+import { addListUser } from 'src/redux/auth/action';
 
 export default function Admin() {
   const [remove, setRemove] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('new');
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [totalPages, setTotalPages] = useState();
+  const user: string | any[] = [];
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { Meta } = Card;
@@ -57,34 +64,47 @@ export default function Admin() {
     },
     { key: '2', label: 'Users' },
   ];
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedMenuItem]);
 
-  const resourcesRequest = async () => {
-    const data = {
-      category: categoryMappings[selectedMenuItem],
-      limitPerPage: 100,
-    };
-    const errorHandler = (error: RRError) => {
-      console.log('Fail: ', error);
+  useEffect(() => {
+    if (selectedMenuItem !== '2') {
+      resourcesRequests(currentPage);
+    } else {
+      userRequest();
+    }
+  }, [selectedMenuItem, remove, currentPage]);
+
+  const userRequest = async () => {
+    const errorHandler = (error: any) => {
+      console.log(error);
     };
     const response = await apiCaller({
-      request: resourceApi.getResource(data),
+      request: authApi.getListUser(),
       errorHandler,
     });
     if (response) {
-      dispatch(addResource(response.data));
+      dispatch(addListUser(response.data));
     }
   };
+  const resourcesRequests = (page: number) => {
+    resourcesRequest({
+      page: page,
+      value: selectedMenuItem,
+      limitPerPage: 8,
+      setTotalPages: (data) => {
+        setTotalPages(data);
+      },
+      dispatchAddResource(data) {
+        dispatch(addResource(data));
+      },
+    } as ResourceProps);
+  };
+
   const removeBlogRequest = async (id: any) => {
     const errorHandler = (error: any) => {
-      console.log('Fail: ', error);
-      if (error.ec === 419) {
-        navigate(ROUTE.HOME);
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        localStorage.removeItem('role');
-        dispatch(removeUser());
-        dispatch(updateLoginState(false));
-      }
+      console.log(error);
     };
     const response = await apiCaller({
       request: resourceApi.removeBlog(id),
@@ -93,16 +113,17 @@ export default function Admin() {
     if (response) {
       dispatch(addResource(response.data));
       message.success('Delete');
+      setRemove(false);
     }
   };
 
-  useEffect(() => {
-    resourcesRequest();
-    setRemove(false);
-  }, [selectedMenuItem, remove]);
   const resources = useSelector(
     (state: any) => state.resourceReducer.resources,
   );
+  const handleOnChange = (value: number) => {
+    setCurrentPage(value);
+    resourcesRequests(value);
+  };
 
   return (
     <div className="container m-auto ">
@@ -113,7 +134,7 @@ export default function Admin() {
             mode="inline"
             defaultSelectedKeys={['new']}
             defaultOpenKeys={['1']}
-            style={{ height: '100%' }}
+            style={{ height: '101%' }}
             items={items}
             onClick={({ key }) => handleMenuClick(key as string)}
           />
@@ -124,7 +145,12 @@ export default function Admin() {
               {categoryMappings[selectedMenuItem] || 'Admin'}
             </h1>
             <Link to={ROUTE.POST}>
-              <Button icon={<FormOutlined />}>Post</Button>
+              <Button
+                icon={<FormOutlined />}
+                onClick={() => dispatch(addResponse(false))}
+              >
+                Post
+              </Button>
             </Link>
           </div>
           <div className="grid grid-cols-4 gap-4">
@@ -132,23 +158,30 @@ export default function Admin() {
               resources && resources.length > 0 ? (
                 resources.map((val: any, index: number) => (
                   <Card
-                    className="m-auto"
+                    className="m-auto shadow-"
                     key={index}
                     hoverable
                     style={{ width: 240 }}
                     cover={
                       val.thumbnail ? (
                         <img
+                          crossOrigin="anonymous"
+                          onError={({ currentTarget }) => {
+                            currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
+                          }}
+                          onClick={(e) => {
+                            navigate(`/resources/blog/${val.id}`);
+                            e.stopPropagation();
+                          }}
                           alt="#"
-                          className="max-h-[130px]"
-                          // src={val.thumbnail}
-                          src={IMAGE_PATH.ABOUT_US}
+                          className="h-[120px]"
+                          src={`${REACT_APP_IMAGE_URL}${val.thumbnail}`}
                         />
                       ) : (
                         <img
                           alt="#"
-                          className="max-h-[130px]"
-                          src={IMAGE_PATH.ABOUT_US}
+                          className="h-[120px]"
+                          src={IMAGE_PATH.THUMBNAIL_ERROR}
                         />
                       )
                     }
@@ -157,22 +190,26 @@ export default function Admin() {
                         key="clear"
                         title="Delete the task"
                         description="Are you sure to delete this task?"
-                        onConfirm={() => {
+                        onConfirm={(e) => {
                           removeBlogRequest(val.id);
                           setRemove(true);
+                          e?.stopPropagation();
                         }}
                         onCancel={() => {
                           message.error('No delete');
+                          setRemove(false);
                         }}
                         okText="Yes"
                         cancelText="No"
                       >
-                        <div className="text-red-600 font-medium">Clear</div>
+                        <div className="text-red-600 font-medium">Delete</div>
                       </Popconfirm>,
                       <div
                         key="edit"
-                        onClick={() => {
-                          message.success('Edit');
+                        onClick={(e) => {
+                          dispatch(addResponse(false));
+                          navigate(ROUTE.EDIT.replace(':id', val.id));
+                          e.stopPropagation();
                         }}
                         className="text-blue-600 font-medium"
                       >
@@ -180,11 +217,15 @@ export default function Admin() {
                       </div>,
                     ]}
                   >
-                    <div onClick={() => navigate(`/resources/blog/${val.id}`)}>
+                    <div
+                      onClick={(e) => {
+                        navigate(`/resources/blog/${val.id}`);
+                        e.stopPropagation();
+                      }}
+                    >
                       <Meta
-                        className="card min-h-[80px]"
+                        className="card min-h-[80px] max-h-[80px]"
                         title={val.title}
-                        description={val.description}
                       />
                     </div>
                   </Card>
@@ -193,9 +234,28 @@ export default function Admin() {
                 <p>No blog</p>
               )
             ) : (
-              <p>No user</p>
+              <button>Go to Page 1</button>
             )}
           </div>
+          {selectedMenuItem !== '2' ? (
+            resources && resources.length > 0 ? (
+              <div className="flex justify-center">
+                <Paginations
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onChange={handleOnChange}
+                />
+              </div>
+            ) : null
+          ) : user && user.length > 0 ? (
+            <div className="flex justify-center">
+              <Paginations
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onChange={handleOnChange}
+              />
+            </div>
+          ) : null}
         </Content>
       </Layout>
     </div>
