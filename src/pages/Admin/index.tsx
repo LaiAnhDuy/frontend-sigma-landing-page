@@ -1,31 +1,36 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button, Card, Layout, Menu, Popconfirm, message } from 'antd';
 import React, { useEffect, useState } from 'react';
-import type { MenuProps } from 'antd';
+import type { MenuProps, PaginationProps } from 'antd';
 import './index.style.scss';
 import { FormOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 import ROUTE from 'src/constants/route';
 import { resourceApi } from 'src/api/resource-api';
 import { useDispatch, useSelector } from 'react-redux';
-import { addResource, addResponse } from 'src/redux/resource/action';
+import { addResource } from 'src/redux/resource/action';
 import { IMAGE_PATH } from 'src/constants/images';
+import { RRError } from 'src/types/Api';
 import apiCaller from 'src/api/apiCaller';
 import { categoryMappings } from 'src/constants';
-import { REACT_APP_IMAGE_URL } from 'src/configs/index';
-import { resourcesRequest } from 'src/components/Resource';
-import { ResourceProps } from 'src/types/Resource';
-import Paginations from 'src/components/Pagination';
+import {
+  addListUser,
+  removeUser,
+  showModal,
+  updateLoginState,
+} from 'src/redux/auth/action';
 import { authApi } from 'src/api/auth-api';
-import { addListUser } from 'src/redux/auth/action';
+import { Space, Table } from 'antd';
+import FormUser from 'src/components/FormUser';
 
 export default function Admin() {
   const [remove, setRemove] = useState(false);
+  const [delUser, setDelUser] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('new');
+
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [totalPages, setTotalPages] = useState();
-  const user: string | any[] = [];
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { Meta } = Card;
@@ -64,21 +69,20 @@ export default function Admin() {
     },
     { key: '2', label: 'Users' },
   ];
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [selectedMenuItem]);
 
   useEffect(() => {
     if (selectedMenuItem !== '2') {
-      resourcesRequests(currentPage);
+      resourcesRequest();
     } else {
       userRequest();
     }
-  }, [selectedMenuItem, remove, currentPage]);
+    setRemove(false);
+    setDelUser(false);
+  }, [selectedMenuItem, remove, delUser]);
 
   const userRequest = async () => {
-    const errorHandler = (error: any) => {
-      console.log(error);
+    const errorHandler = (error: RRError) => {
+      console.log('Fail: ', error);
     };
     const response = await apiCaller({
       request: authApi.getListUser(),
@@ -88,23 +92,49 @@ export default function Admin() {
       dispatch(addListUser(response.data));
     }
   };
-  const resourcesRequests = (page: number) => {
-    resourcesRequest({
-      page: page,
-      value: selectedMenuItem,
-      limitPerPage: 8,
-      setTotalPages: (data) => {
-        setTotalPages(data);
-      },
-      dispatchAddResource(data) {
-        dispatch(addResource(data));
-      },
-    } as ResourceProps);
+
+  const deleteUser = async (id: number) => {
+    const errorHandler = (error: RRError) => {
+      console.log('Fail: ', error);
+    };
+    const response = await apiCaller({
+      request: authApi.deleteUser(id),
+      errorHandler,
+    });
+    if (response) {
+      dispatch(addListUser(response.data));
+    }
   };
 
+  const user = useSelector((state: any) => state.authReducer.userData.listUser);
+
+  const resourcesRequest = async () => {
+    const data = {
+      category: categoryMappings[selectedMenuItem],
+      limitPerPage: 100,
+    };
+    const errorHandler = (error: RRError) => {
+      console.log('Fail: ', error);
+    };
+    const response = await apiCaller({
+      request: resourceApi.getResource(data),
+      errorHandler,
+    });
+    if (response) {
+      dispatch(addResource(response.data));
+    }
+  };
   const removeBlogRequest = async (id: any) => {
     const errorHandler = (error: any) => {
-      console.log(error);
+      console.log('Fail: ', error);
+      if (error.ec === 419) {
+        navigate(ROUTE.HOME);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('role');
+        dispatch(removeUser());
+        dispatch(updateLoginState(false));
+      }
     };
     const response = await apiCaller({
       request: resourceApi.removeBlog(id),
@@ -113,18 +143,32 @@ export default function Admin() {
     if (response) {
       dispatch(addResource(response.data));
       message.success('Delete');
-      setRemove(false);
     }
   };
 
   const resources = useSelector(
     (state: any) => state.resourceReducer.resources,
   );
-  const handleOnChange = (value: number) => {
-    setCurrentPage(value);
-    resourcesRequests(value);
-  };
 
+  const { Column, ColumnGroup } = Table;
+
+  const itemRender: PaginationProps['itemRender'] = (
+    _,
+    type,
+    originalElement,
+  ) => {
+    if (type === 'prev') {
+      return currentPage === 1 ? null : (
+        <a className="text-black hover:text-black !h-8 ">Prev</a>
+      );
+    }
+    if (type === 'next') {
+      return currentPage === Math.ceil(user.length / 5) ? null : (
+        <a className="text-black hover:text-black !h-8">Next</a>
+      );
+    }
+    return originalElement;
+  };
   return (
     <div className="container m-auto ">
       <Layout className="bg-white mt-5">
@@ -134,7 +178,7 @@ export default function Admin() {
             mode="inline"
             defaultSelectedKeys={['new']}
             defaultOpenKeys={['1']}
-            style={{ height: '101%' }}
+            style={{ height: '100%' }}
             items={items}
             onClick={({ key }) => handleMenuClick(key as string)}
           />
@@ -144,44 +188,40 @@ export default function Admin() {
             <h1 className="mt-0">
               {categoryMappings[selectedMenuItem] || 'Admin'}
             </h1>
-            <Link to={ROUTE.POST}>
+            {selectedMenuItem !== '2' ? (
+              <Link to={ROUTE.POST}>
+                <Button icon={<FormOutlined />}>Post</Button>
+              </Link>
+            ) : (
               <Button
                 icon={<FormOutlined />}
-                onClick={() => dispatch(addResponse(false))}
+                onClick={() => dispatch(showModal())}
               >
-                Post
+                Create User
               </Button>
-            </Link>
+            )}
           </div>
           <div className="grid grid-cols-4 gap-4">
             {selectedMenuItem !== '2' ? (
               resources && resources.length > 0 ? (
                 resources.map((val: any, index: number) => (
                   <Card
-                    className="m-auto shadow-"
+                    className="m-auto"
                     key={index}
                     hoverable
                     style={{ width: 240 }}
                     cover={
                       val.thumbnail ? (
                         <img
-                          crossOrigin="anonymous"
-                          onError={({ currentTarget }) => {
-                            currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
-                          }}
-                          onClick={(e) => {
-                            navigate(`/resources/blog/${val.id}`);
-                            e.stopPropagation();
-                          }}
                           alt="#"
-                          className="h-[120px]"
-                          src={`${REACT_APP_IMAGE_URL}${val.thumbnail}`}
+                          className="max-h-[130px]"
+                          src={IMAGE_PATH.ABOUT_US}
                         />
                       ) : (
                         <img
                           alt="#"
-                          className="h-[120px]"
-                          src={IMAGE_PATH.THUMBNAIL_ERROR}
+                          className="max-h-[130px]"
+                          src={IMAGE_PATH.ABOUT_US}
                         />
                       )
                     }
@@ -190,26 +230,22 @@ export default function Admin() {
                         key="clear"
                         title="Delete the task"
                         description="Are you sure to delete this task?"
-                        onConfirm={(e) => {
+                        onConfirm={() => {
                           removeBlogRequest(val.id);
                           setRemove(true);
-                          e?.stopPropagation();
                         }}
                         onCancel={() => {
                           message.error('No delete');
-                          setRemove(false);
                         }}
                         okText="Yes"
                         cancelText="No"
                       >
-                        <div className="text-red-600 font-medium">Delete</div>
+                        <div className="text-red-600 font-medium">Clear</div>
                       </Popconfirm>,
                       <div
                         key="edit"
-                        onClick={(e) => {
-                          dispatch(addResponse(false));
-                          navigate(ROUTE.EDIT.replace(':id', val.id));
-                          e.stopPropagation();
+                        onClick={() => {
+                          message.success('Edit');
                         }}
                         className="text-blue-600 font-medium"
                       >
@@ -217,15 +253,11 @@ export default function Admin() {
                       </div>,
                     ]}
                   >
-                    <div
-                      onClick={(e) => {
-                        navigate(`/resources/blog/${val.id}`);
-                        e.stopPropagation();
-                      }}
-                    >
+                    <div onClick={() => navigate(`/resources/blog/${val.id}`)}>
                       <Meta
-                        className="card min-h-[80px] max-h-[80px]"
+                        className="card min-h-[80px]"
                         title={val.title}
+                        description={val.description}
                       />
                     </div>
                   </Card>
@@ -234,28 +266,56 @@ export default function Admin() {
                 <p>No blog</p>
               )
             ) : (
-              <button>Go to Page 1</button>
+              <div className="col-span-4">
+                <FormUser />
+                <Table
+                  dataSource={user}
+                  pagination={{
+                    itemRender: itemRender,
+                    onChange: (page) => {
+                      setCurrentPage(page);
+                    },
+                    pageSize: 5,
+                    total: user.length,
+                    position: ['bottomCenter'],
+                  }}
+                >
+                  <ColumnGroup title="Name">
+                    <Column
+                      title="First Name"
+                      dataIndex="firstName"
+                      key="firstName"
+                    />
+                    <Column
+                      title="Last Name"
+                      dataIndex="lastName"
+                      key="lastName"
+                    />
+                  </ColumnGroup>
+                  <Column title="Phone" dataIndex="phone" key="phone" />
+                  <Column title="Email" dataIndex="email" key="email" />
+                  <Column title="Role" dataIndex="role" key="role" />
+                  <Column
+                    title="Action"
+                    key="action"
+                    render={(_, record: any) => (
+                      <Space size="middle">
+                        <button
+                          className="bg-orange-400 text-white border-none rounded-xl w-max h-7 text-xs cursor-pointer active:bg-main/60"
+                          onClick={() => {
+                            deleteUser(record.id);
+                            setDelUser(true);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </Space>
+                    )}
+                  />
+                </Table>
+              </div>
             )}
           </div>
-          {selectedMenuItem !== '2' ? (
-            resources && resources.length > 0 ? (
-              <div className="flex justify-center">
-                <Paginations
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onChange={handleOnChange}
-                />
-              </div>
-            ) : null
-          ) : user && user.length > 0 ? (
-            <div className="flex justify-center">
-              <Paginations
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onChange={handleOnChange}
-              />
-            </div>
-          ) : null}
         </Content>
       </Layout>
     </div>

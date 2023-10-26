@@ -8,3 +8,8 @@ export interface AuthTypes {
 export interface User {
   listUser: string[];
 }
+
+export interface User {
+  listUser: string[];
+  modalOpen: boolean;
+}

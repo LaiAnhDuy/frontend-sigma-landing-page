@@ -7,6 +7,8 @@ import {
   AddListUserProps,
   TokenProps,
   LoadingProps,
+  HideStateProps,
+  ShowStateProps,
 } from './action';
 
 import { Reducer } from 'redux';
@@ -14,7 +16,6 @@ import { Reducer } from 'redux';
 interface AuthState {
   authData: AuthTypes;
   userData: User;
-  loading: boolean
 }
 
 const initialState: AuthState = {
@@ -26,8 +27,8 @@ const initialState: AuthState = {
   },
   userData: {
     listUser: [],
+    modalOpen: false,
   },
-  loading: false,
 };
 
 const authReducer: Reducer<
@@ -38,6 +39,8 @@ const authReducer: Reducer<
   | AddListUserProps
   | TokenProps
   | LoadingProps
+  | HideStateProps
+  | ShowStateProps
 > = (
   // eslint-disable-next-line @typescript-eslint/default-param-last
   state = initialState,
@@ -91,7 +94,23 @@ const authReducer: Reducer<
       return {
         ...state,
         loading: action.payload,
-      }
+      };
+    case AuthActionTypes.SHOW_MODAL:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          modalOpen: true,
+        },
+      };
+    case AuthActionTypes.HIDE_MODAL:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          modalOpen: false,
+        },
+      };
     default:
       return state;
   }

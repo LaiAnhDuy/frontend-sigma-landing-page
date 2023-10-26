@@ -25,6 +25,7 @@ interface RegisterProps {
   onClick: () => void;
   signUp: () => void;
 }
+
 export default function Register({ onClick, signUp }: RegisterProps) {
   const [formValue, setFormValue] = useState<FormValues>(initFormValue);
   const [formError, setFormError] = useState<FormValues>({});

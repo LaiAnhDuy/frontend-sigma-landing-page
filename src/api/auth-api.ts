@@ -16,7 +16,7 @@ export const authApi = {
     return axiosClient.put(ENDPOINTS.UPDATE_USER, id);
   },
   deleteUser: (id: any) => (): Promise<AxiosResponse<any, any>> => {
-    return axiosClient.delete(ENDPOINTS.DELETE_USER, id);
+    return axiosClient.delete(ENDPOINTS.DELETE_USER.replace(':userId', id));
   },
   getListUser: () => (): Promise<AxiosResponse<any, any>> => {
     return axiosClient.get(ENDPOINTS.GET_LIST_USER);
