@@ -5,7 +5,8 @@ export enum ResourceActionTypes {
   REMOVE_BLOG = 'REMOVE_BLOG',
   ADD_BLOG = 'ADD_BLOG',
   ADD_RESOURCE = 'ADD_RESOURCE',
-  ADD_RESPONSE='ADD_RESPONSE',
+  ADD_RESPONSE = 'ADD_RESPONSE',
+  ADD_COMMENT = 'ADD_COMMENT',
 }
 
 export interface RemoveBlogProps {
@@ -27,6 +28,10 @@ export interface AddResourceProps {
   type: ResourceActionTypes.ADD_RESOURCE;
   payload: ResourceTypes;
 }
+export interface AddCommentProps {
+  type: ResourceActionTypes.ADD_COMMENT;
+  payload: string[];
+}
 
 export const removeBlog = (id: string): RemoveBlogProps => ({
   type: ResourceActionTypes.REMOVE_BLOG,
@@ -46,4 +51,8 @@ export const addResource = (payload: ResourceTypes): AddResourceProps => ({
 export const addResponse = (payload: boolean): AddResponseProps => ({
   type: ResourceActionTypes.ADD_RESPONSE,
   payload,
-})
+});
+export const addComment = (payload: string[]): AddCommentProps => ({
+  type: ResourceActionTypes.ADD_COMMENT,
+  payload,
+});

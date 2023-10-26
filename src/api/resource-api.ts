@@ -33,4 +33,10 @@ export const resourceApi = {
   deleteFile: (fileName: any) => (): Promise<AxiosResponse<any, any>> => {
     return axiosClient.delete(ENDPOINTS.FILE.replace(':fileName', fileName));
   },
+  createComment: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.post(ENDPOINTS.COMMENT, data);
+  },
+  getComment: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.get(ENDPOINTS.COMMENT, { params: data });
+  },
 };

@@ -4,7 +4,6 @@ import axios, { AxiosError } from 'axios';
 import { REACT_APP_BASE_URL } from 'src/configs';
 import { RRError } from 'src/types/Api';
 import CustomError from 'src/utils/CustomError';
-
 const axiosClient = axios.create({
   baseURL: REACT_APP_BASE_URL,
 });
@@ -17,6 +16,7 @@ axiosClient.interceptors.request.use(async (config) => {
 
   return config;
 });
+
 axiosClient.interceptors.response.use(
   (response) => {
     if (response && response.data) {

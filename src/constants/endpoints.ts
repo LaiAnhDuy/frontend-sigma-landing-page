@@ -9,6 +9,7 @@ enum ENDPOINTS {
   UPDATE_USER = '/users/:userId',
   DELETE_USER = '/users/:userId',
   GET_LIST_USER = '/users/list',
+  COMMENT = '/comments',
 }
 
 export default ENDPOINTS;

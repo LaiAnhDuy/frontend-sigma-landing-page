@@ -4,8 +4,8 @@ import { Reducer } from 'redux';
 import { BlogTypes } from 'src/types/Resource';
 import {
   AddBlogProps,
+  AddCommentProps,
   AddResourceProps,
-  AddResponseProps,
   RemoveBlogProps,
   ResourceActionTypes,
 } from './action';
@@ -15,6 +15,7 @@ export interface ResourceState {
   blogs: string[];
   resources: string[];
   response: boolean;
+  comments: string[];
 }
 
 const initialState: ResourceState = {
@@ -22,11 +23,12 @@ const initialState: ResourceState = {
   blogs: [],
   data: [],
   response: false,
+  comments: [],
 };
 
 const resourceReducer: Reducer<
   ResourceState,
-  AddBlogProps | RemoveBlogProps | AddResourceProps | AddResponseProps
+  AddBlogProps | RemoveBlogProps | AddResourceProps | AddCommentProps
 > = (state = initialState, action) => {
   switch (action.type) {
     case ResourceActionTypes.ADD_BLOG:
@@ -44,10 +46,10 @@ const resourceReducer: Reducer<
         blogs: action.payload?.blogs,
         resources: action.payload?.resources,
       };
-    case ResourceActionTypes.ADD_RESPONSE:
+    case ResourceActionTypes.ADD_COMMENT:
       return {
         ...state,
-        response: action.payload,
+        comments: action.payload,
       };
     default:
       return state;

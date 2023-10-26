@@ -32,6 +32,7 @@ export default function Blog() {
   const id = pathname[pathname.length - 1];
   const [recentBlogs, setRecentBlog] = useState([]);
   const [hotNews, setHotNews] = useState([]);
+  const logIn = useSelector((state: any) => state.authReducer.logIn);
   const blogRequest = async () => {
     const errorHandler = (error: RRError) => {
       console.log('Fail: ', error);
@@ -188,7 +189,10 @@ export default function Blog() {
         </div>
       </div>
       <ScrollToTopButton />
-      <Comment />
+      <div className="p-2 text-lg">
+        <h4>Comments</h4>
+      </div>
+      {logIn ? <Comment resourceId={id} /> : 'Hãy đăng nhập để bình luận !'}
     </div>
   );
 }
