@@ -15,22 +15,23 @@ import { IMAGE_PATH } from 'src/constants/images';
 import { RRError } from 'src/types/Api';
 import apiCaller from 'src/api/apiCaller';
 import { categoryMappings } from 'src/constants';
+import { authApi } from 'src/api/auth-api';
+import { Space, Table } from 'antd';
+import FormUser from 'src/components/FormUser';
 import {
   addListUser,
   removeUser,
   showModal,
   updateLoginState,
 } from 'src/redux/auth/action';
-import { authApi } from 'src/api/auth-api';
-import { Space, Table } from 'antd';
-import FormUser from 'src/components/FormUser';
+
 
 export default function Admin() {
   const [remove, setRemove] = useState(false);
   const [delUser, setDelUser] = useState(false);
   const [selectedMenuItem, setSelectedMenuItem] = useState<string>('new');
 
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(1)
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { Meta } = Card;
@@ -69,6 +70,18 @@ export default function Admin() {
     },
     { key: '2', label: 'Users' },
   ];
+
+  useEffect(() => {
+    if (selectedMenuItem !== '2') {
+      resourcesRequest();
+    } else {
+      userRequest();
+    }
+    setRemove(false);
+    setDelUser(false);
+  }, [selectedMenuItem, remove, delUser]);
+
+
 
   useEffect(() => {
     if (selectedMenuItem !== '2') {
@@ -163,7 +176,7 @@ export default function Admin() {
       );
     }
     if (type === 'next') {
-      return currentPage === Math.ceil(user.length / 5) ? null : (
+      return currentPage === Math.ceil(user?.length/5) ? null : (
         <a className="text-black hover:text-black !h-8">Next</a>
       );
     }
@@ -203,7 +216,7 @@ export default function Admin() {
           </div>
           <div className="grid grid-cols-4 gap-4">
             {selectedMenuItem !== '2' ? (
-              resources && resources.length > 0 ? (
+              resources && resources?.length > 0 ? (
                 resources.map((val: any, index: number) => (
                   <Card
                     className="m-auto"
@@ -271,12 +284,12 @@ export default function Admin() {
                 <Table
                   dataSource={user}
                   pagination={{
-                    itemRender: itemRender,
-                    onChange: (page) => {
+                    itemRender:itemRender,
+                    onChange:(page)=>{
                       setCurrentPage(page);
                     },
                     pageSize: 5,
-                    total: user.length,
+                    total: user?.length,
                     position: ['bottomCenter'],
                   }}
                 >

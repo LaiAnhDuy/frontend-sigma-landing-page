@@ -13,3 +13,8 @@ export interface User {
   listUser: string[];
   modalOpen: boolean;
 }
+
+export interface User {
+  listUser: string[];
+  modalOpen: boolean;
+}

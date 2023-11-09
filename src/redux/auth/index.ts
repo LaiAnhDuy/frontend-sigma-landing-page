@@ -113,7 +113,8 @@ const authReducer: Reducer<
       };
     default:
       return state;
-  }
+  };
+  
 };
 
 export default authReducer;

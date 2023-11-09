@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addResource } from 'src/redux/resource/action';
 import { resourcesRequest } from 'src/components/Resource';
 import { ResourceProps } from 'src/types/Resource';
-import Paginations from 'src/components/Pagination';
+import Paginations from '../../components/Pagination';
 
 export default function Resources() {
   const dispatch = useDispatch();
