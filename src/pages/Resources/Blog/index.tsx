@@ -13,6 +13,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { format } from 'date-fns';
 import { RRError } from 'src/types/Api';
 import apiCaller from 'src/api/apiCaller';
+import MarkdownIt from 'markdown-it';
+import { IMAGE_PATH } from 'src/constants/images';
+import { REACT_APP_IMAGE_URL } from 'src/configs';
+
+const mdParser = new MarkdownIt({ html: true });
 
 export default function Blog() {
   const navigate = useNavigate();
@@ -27,6 +32,7 @@ export default function Blog() {
   const id = pathname[pathname.length - 1];
   const [recentBlogs, setRecentBlog] = useState([]);
   const [hotNews, setHotNews] = useState([]);
+  const logIn = useSelector((state: any) => state.authReducer.logIn);
   const blogRequest = async () => {
     const errorHandler = (error: RRError) => {
       console.log('Fail: ', error);
@@ -55,8 +61,6 @@ export default function Blog() {
     blogRequest();
   }, [id]);
 
-  console.log(blogs, 'blogs');
-
   return (
     <div className="lg:container m-auto">
       <div className="grid grid-cols-3 ">
@@ -72,14 +76,34 @@ export default function Blog() {
                   : null}
               </p>
             </div>
-            <p className="font-bold text-[55px] my-0">{blogs?.title}</p>
+            <p className="font-bold text-[55px] my-0 break-words">
+              {blogs?.title}
+            </p>
             {blogs?.author ? (
               <p className="font-normal text-2xl">
                 By <span className="text-main">{blogs?.author}</span>
               </p>
             ) : null}
-            <img alt="# " className="w-full mt-6" src={blogs?.thumbnail}></img>
-            <p className="font-normal text-lg">{blogs?.content}</p>
+            {blogs?.thumbnail && (
+              <div className="text-center mb-9">
+                <img
+                  crossOrigin="anonymous"
+                  alt="# "
+                  onError={({ currentTarget }) => {
+                    currentTarget.src = IMAGE_PATH.THUMBNAIL_ERROR;
+                  }}
+                  className="max-w-[800px] mt-6 rounded-xl max-h-[600px]"
+                  src={`${REACT_APP_IMAGE_URL}${blogs?.thumbnail}`}
+                />
+              </div>
+            )}
+            <p className="font-normal text-lg">
+              {' '}
+              <div
+                dangerouslySetInnerHTML={renderMarkdown(blogs?.content)}
+                className="img-content"
+              />
+            </p>
           </div>
         </div>
         <div className="col-span-1">
@@ -144,7 +168,7 @@ export default function Blog() {
                         className="cursor-pointer"
                         onClick={() => navigate(`/resources/new/${item.id}`)}
                       >
-                        <p className="font-medium  text-lg text-gray-500 mb-0">
+                        <p className="font-medium break-words hot-new text-lg text-gray-500 mb-0">
                           {item.title}
                         </p>
                         <hr />
@@ -165,7 +189,20 @@ export default function Blog() {
         </div>
       </div>
       <ScrollToTopButton />
-      <Comment />
+      <div className="p-2 text-lg">
+        <h4>Comments</h4>
+      </div>
+      {logIn ? <Comment resourceId={id} /> : 'Hãy đăng nhập để bình luận !'}
     </div>
   );
+}
+
+function renderMarkdown(content: string) {
+  try {
+    const renderedContent = mdParser.render(content || ''); // Handle empty content gracefully
+    return { __html: renderedContent };
+  } catch (error) {
+    console.error('Markdown rendering error:', error);
+    return { __html: '<p>Error rendering markdown content</p>' }; // Display an error message
+  }
 }

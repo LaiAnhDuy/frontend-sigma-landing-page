@@ -13,7 +13,30 @@ export const resourceApi = {
   removeBlog: (id: any) => (): Promise<AxiosResponse<any, any>> => {
     return axiosClient.delete(ENDPOINTS.BLOG.replace(':id', id));
   },
-  postResource: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+  createResource: (data: any) => (): Promise<AxiosResponse<any, any>> => {
     return axiosClient.post(ENDPOINTS.RESOURCE, data);
+  },
+  updateBlog: (id: any, data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.put(
+      ENDPOINTS.BLOG.replace(':id', id),
+
+      data,
+    );
+  },
+  upFile: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.post(ENDPOINTS.FILE.replace('/:fileName', ' '), data, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  },
+  deleteFile: (fileName: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.delete(ENDPOINTS.FILE.replace(':fileName', fileName));
+  },
+  createComment: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.post(ENDPOINTS.COMMENT, data);
+  },
+  getComment: (data: any) => (): Promise<AxiosResponse<any, any>> => {
+    return axiosClient.get(ENDPOINTS.COMMENT, { params: data });
   },
 };

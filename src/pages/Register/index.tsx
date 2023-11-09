@@ -78,7 +78,6 @@ export default function Register({ onClick, signUp }: RegisterProps) {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (validateForm()) {
-      console.log('Form value : ', formValue);
     } else {
       console.log('Form invalid');
     }

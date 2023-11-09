@@ -5,6 +5,8 @@ import {
   RemoveUserProps,
   UpdateLoginStateProps,
   AddListUserProps,
+  TokenProps,
+  LoadingProps,
   HideStateProps,
   ShowStateProps,
 } from './action';
@@ -21,6 +23,7 @@ const initialState: AuthState = {
     token: '',
     user: [],
     logIn: false,
+    tokenExpired: false,
   },
   userData: {
     listUser: [],
@@ -34,6 +37,8 @@ const authReducer: Reducer<
   | RemoveUserProps
   | UpdateLoginStateProps
   | AddListUserProps
+  | TokenProps
+  | LoadingProps
   | HideStateProps
   | ShowStateProps
 > = (
@@ -77,6 +82,19 @@ const authReducer: Reducer<
           listUser: action.payload,
         },
       };
+    case AuthActionTypes.TOKEN:
+      return {
+        ...state,
+        authData: {
+          ...state.authData,
+          tokenExpired: action.payload,
+        },
+      };
+    case AuthActionTypes.LOADING:
+      return {
+        ...state,
+        loading: action.payload,
+      };
     case AuthActionTypes.SHOW_MODAL:
       return {
         ...state,
@@ -85,14 +103,14 @@ const authReducer: Reducer<
           modalOpen: true,
         },
       };
-      case AuthActionTypes.HIDE_MODAL:
-        return {
-          ...state,
-          userData: {
-            ...state.userData,
-            modalOpen: false,
-          },
-        };
+    case AuthActionTypes.HIDE_MODAL:
+      return {
+        ...state,
+        userData: {
+          ...state.userData,
+          modalOpen: false,
+        },
+      };
     default:
       return state;
   };

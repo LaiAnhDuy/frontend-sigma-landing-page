@@ -26,7 +26,8 @@ enum ROUTE {
   PRODUCT_SIGMADAI = '/product/sigmadai',
   FORGOT_PASSWORD = '/forgot-password',
   SUPPORT = '/support',
-  POST='/admin/post',
+  POST = '/admin/post',
+  EDIT = '/admin/edit/:id',
   FREE_TRIAL = '/free-trial',
   TALK_TO_EXPERT = '/talk-to-expert',
 }

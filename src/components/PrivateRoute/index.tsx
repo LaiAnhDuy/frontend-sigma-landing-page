@@ -4,7 +4,7 @@ import BaseLayout from '../BaseLayout';
 import useDocumentTitle from 'src/hooks';
 import { useSelector } from 'react-redux';
 import { Button, Result } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 import ROUTE from 'src/constants/route';
 import { ROLE } from 'src/constants';
 
@@ -20,7 +20,6 @@ const PrivateRoute = (props: PrivateRouteProps) => {
   const role = useSelector(
     (state: any) => state.authReducer.authData.user.role,
   );
-
   return (
     <BaseLayout>
       {token && role === ROLE.ADMIN ? (

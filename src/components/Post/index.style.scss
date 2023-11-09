@@ -1,0 +1,38 @@
+.markdown {
+  border-radius: 8px;
+  div div div span {
+    padding: 0 !important;
+  }
+  div:nth-child(1) {
+    border-radius: 8px 8px 0 0;
+  }
+  div:nth-child(2) {
+    border-radius: 0 0 8px 8px;
+    section textarea {
+      border-radius: 0 0 8px 8px;
+      overflow-y: auto !important;
+    }
+  }
+}
+.image-preview {
+  div:nth-child(2) {
+    padding: 15px !important;
+    div:nth-child(2) {
+      padding: 0 !important;
+    }
+    div:nth-child(3) {
+      text-align: center;
+    }
+  }
+}
+.thumbnail-preview {
+  div:nth-child(2) {
+    padding: 15px !important;
+    div:nth-child(2) {
+      padding: 0 !important;
+    }
+    div:nth-child(3) {
+      text-align: center;
+    }
+  }
+}

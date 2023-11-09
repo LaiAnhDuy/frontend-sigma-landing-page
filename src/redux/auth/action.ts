@@ -8,6 +8,8 @@ export enum AuthActionTypes {
   ADD_USER = 'ADD_USER',
   UPDATE_LOGIN_STATE = 'UPDATE_LOGIN_STATE',
   ADD_LIST_USER = 'ADD_LIST_USER',
+  TOKEN = 'TOKEN',
+  LOADING = 'LOADING',
   HIDE_MODAL = 'HIDE_MODAL',
   SHOW_MODAL = 'SHOW_MODAL',
 }
@@ -15,6 +17,10 @@ export enum AuthActionTypes {
 // Action interfaces for reducer 2
 export interface RemoveUserProps {
   type: AuthActionTypes.REMOVE_USER;
+}
+export interface TokenProps {
+  type: AuthActionTypes.TOKEN;
+  payload: boolean;
 }
 export interface AddUserProps {
   type: AuthActionTypes.ADD_USER;
@@ -27,6 +33,11 @@ export interface AddListUserProps {
 }
 export interface UpdateLoginStateProps {
   type: AuthActionTypes.UPDATE_LOGIN_STATE;
+  payload: boolean;
+}
+
+export interface LoadingProps {
+  type: AuthActionTypes.LOADING;
   payload: boolean;
 }
 
@@ -54,9 +65,19 @@ export const updateLoginState = (payload: boolean): UpdateLoginStateProps => ({
   type: AuthActionTypes.UPDATE_LOGIN_STATE,
   payload,
 });
+
+export const tokenHandler = (payload: boolean): TokenProps => ({
+  type: AuthActionTypes.TOKEN,
+  payload,
+});
+
+export const loadingHandler = (payload: boolean): LoadingProps => ({
+  type: AuthActionTypes.LOADING,
+  payload,
+});
 export const hideModal = (): HideStateProps => ({
-  type: AuthActionTypes.HIDE_MODAL
+  type: AuthActionTypes.HIDE_MODAL,
 });
 export const showModal = (): ShowStateProps => ({
-  type: AuthActionTypes.SHOW_MODAL
+  type: AuthActionTypes.SHOW_MODAL,
 });

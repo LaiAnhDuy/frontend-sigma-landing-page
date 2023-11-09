@@ -9,6 +9,7 @@ export const IMAGE_PATH = {
   ABOUT_US: `${PUBLIC_URL}/images/about_us.svg`,
   LOGO_FOOTER: `${PUBLIC_URL}/images/logo-footer.svg`,
   LOGO_ORANGE: `${PUBLIC_URL}/images/logo-orange.svg`,
+  THUMBNAIL_ERROR: `${PUBLIC_URL}/images/thumbnail-error.png`,
   LOGO_WHITE: `${PUBLIC_URL}/images/logo-white.svg`,
   USA: `${PUBLIC_URL}/images/usa.svg`,
   VN: `${PUBLIC_URL}/images/vn.svg`,

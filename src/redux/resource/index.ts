@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/default-param-last */
 import { Reducer } from 'redux';
 import { BlogTypes } from 'src/types/Resource';
 import {
   AddBlogProps,
+  AddCommentProps,
   AddResourceProps,
   RemoveBlogProps,
   ResourceActionTypes,
@@ -12,17 +14,21 @@ export interface ResourceState {
   data: BlogTypes[];
   blogs: string[];
   resources: string[];
+  response: boolean;
+  comments: string[];
 }
 
 const initialState: ResourceState = {
   resources: [],
   blogs: [],
   data: [],
+  response: false,
+  comments: [],
 };
 
 const resourceReducer: Reducer<
   ResourceState,
-  AddBlogProps | RemoveBlogProps | AddResourceProps
+  AddBlogProps | RemoveBlogProps | AddResourceProps | AddCommentProps
 > = (state = initialState, action) => {
   switch (action.type) {
     case ResourceActionTypes.ADD_BLOG:
@@ -39,6 +45,11 @@ const resourceReducer: Reducer<
         ...state,
         blogs: action.payload?.blogs,
         resources: action.payload?.resources,
+      };
+    case ResourceActionTypes.ADD_COMMENT:
+      return {
+        ...state,
+        comments: action.payload,
       };
     default:
       return state;
